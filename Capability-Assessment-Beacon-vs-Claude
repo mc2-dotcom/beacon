@@ -1,0 +1,998 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Beacon vs Claude — Five Capability Gaps</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0E2841;
+    --navy-deep: #0A1E32;
+    --blue: #156082;
+    --blue-bright: #378ADD;
+    --sky: #0F9ED5;
+    --orange: #E97132;
+    --orange-soft: #F5A66E;
+    --paper: #FDFCF8;
+    --paper-warm: #F7F3EB;
+    --ink: #1A1A1A;
+    --ink-soft: #3D4A57;
+    --muted: #8A96A3;
+    --border: #E4DFD4;
+    --accent-red: #C8341F;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', system-ui, sans-serif;
+    background: var(--paper);
+    color: var(--ink);
+    line-height: 1.5;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* === Texture overlay === */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    background-image:
+      radial-gradient(circle at 20% 20%, rgba(233, 113, 50, 0.02) 0%, transparent 40%),
+      radial-gradient(circle at 80% 80%, rgba(14, 40, 65, 0.02) 0%, transparent 40%);
+    z-index: 0;
+  }
+
+  .container {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 64px 48px 96px;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* === HEADER === */
+  .masthead {
+    border-bottom: 2px solid var(--navy);
+    padding-bottom: 24px;
+    margin-bottom: 48px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: end;
+    gap: 24px;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 0.1s forwards;
+  }
+
+  .masthead-left .eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--orange);
+    font-weight: 500;
+    margin-bottom: 8px;
+  }
+
+  .masthead h1 {
+    font-family: 'Fraunces', serif;
+    font-size: 52px;
+    font-weight: 500;
+    line-height: 1;
+    letter-spacing: -0.02em;
+    color: var(--navy);
+  }
+
+  .masthead h1 em {
+    font-style: italic;
+    color: var(--orange);
+    font-weight: 400;
+  }
+
+  .masthead-right {
+    text-align: right;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: var(--ink-soft);
+    letter-spacing: 0.1em;
+    line-height: 1.8;
+    text-transform: uppercase;
+  }
+
+  .masthead-right .date {
+    color: var(--navy);
+    font-weight: 500;
+  }
+
+  /* === Subheader + Controls === */
+  .subheader {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    gap: 24px;
+    margin-bottom: 56px;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 0.25s forwards;
+  }
+
+  .subheader p {
+    font-family: 'Fraunces', serif;
+    font-size: 20px;
+    font-style: italic;
+    color: var(--ink-soft);
+    max-width: 560px;
+    line-height: 1.4;
+  }
+
+  .controls {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+  }
+
+  .toggle-btn {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    background: transparent;
+    border: 1px solid var(--navy);
+    color: var(--navy);
+    padding: 10px 16px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-weight: 500;
+  }
+
+  .toggle-btn:hover {
+    background: var(--navy);
+    color: var(--paper);
+  }
+
+  .toggle-btn.active {
+    background: var(--orange);
+    border-color: var(--orange);
+    color: white;
+  }
+
+  /* === CAPABILITY ROWS === */
+  .rows {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .row {
+    border: 1px solid var(--border);
+    background: var(--paper);
+    position: relative;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: transform 0.4s ease, box-shadow 0.3s ease;
+  }
+
+  .row.visible {
+    animation: fadeUp 0.7s ease forwards;
+  }
+
+  .row:hover {
+    box-shadow: 0 4px 24px rgba(14, 40, 65, 0.08);
+  }
+
+  .row-header {
+    display: grid;
+    grid-template-columns: 48px 1fr auto auto;
+    align-items: center;
+    padding: 20px 24px;
+    gap: 20px;
+    cursor: pointer;
+    user-select: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.3s ease, background 0.2s ease;
+  }
+
+  .row.expanded .row-header {
+    border-bottom-color: var(--border);
+    background: var(--paper-warm);
+  }
+
+  .row-number {
+    font-family: 'Fraunces', serif;
+    font-size: 40px;
+    font-weight: 400;
+    font-style: italic;
+    color: var(--orange);
+    line-height: 1;
+  }
+
+  .row-title {
+    font-family: 'Fraunces', serif;
+    font-size: 24px;
+    font-weight: 500;
+    color: var(--navy);
+    letter-spacing: -0.01em;
+  }
+
+  .score {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    padding: 6px 12px;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+
+  .score.max { background: var(--orange); color: white; }
+  .score.high { background: var(--blue); color: white; }
+
+  .expand-icon {
+    width: 20px;
+    height: 20px;
+    color: var(--ink-soft);
+    transition: transform 0.3s ease;
+  }
+
+  .row.expanded .expand-icon {
+    transform: rotate(45deg);
+  }
+
+  /* === ROW CONTENT === */
+  .row-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease;
+  }
+
+  .row.expanded .row-content {
+    max-height: 800px;
+  }
+
+  .row-inner {
+    padding: 32px 24px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    align-items: start;
+  }
+
+  .panel {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .panel-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    font-weight: 500;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .panel.claude .panel-label {
+    color: var(--muted);
+  }
+
+  .panel.beacon .panel-label {
+    color: var(--orange);
+  }
+
+  .visual-box {
+    background: var(--paper-warm);
+    border: 1px solid var(--border);
+    height: 220px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .panel.beacon .visual-box {
+    background: var(--navy);
+    border-color: var(--navy);
+  }
+
+  .caption {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    color: var(--ink-soft);
+    text-transform: uppercase;
+  }
+
+  .panel.beacon .caption {
+    color: var(--orange-soft);
+  }
+
+  .row-footer {
+    padding: 20px 24px 24px;
+    border-top: 1px solid var(--border);
+    font-family: 'Fraunces', serif;
+    font-size: 17px;
+    font-style: italic;
+    color: var(--ink-soft);
+    line-height: 1.5;
+  }
+
+  .row-footer strong {
+    font-style: normal;
+    color: var(--navy);
+    font-weight: 600;
+  }
+
+  /* === SIDE-BY-SIDE VIEW (Toggle mode) === */
+  body.compare-mode .rows {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  body.compare-mode .row {
+    display: flex;
+    flex-direction: column;
+  }
+
+  body.compare-mode .row-content {
+    max-height: none;
+  }
+
+  body.compare-mode .row-inner {
+    grid-template-columns: 1fr;
+  }
+
+  body.compare-mode .expand-icon {
+    display: none;
+  }
+
+  body.compare-mode .row-header {
+    cursor: default;
+    border-bottom-color: var(--border);
+    background: var(--paper-warm);
+  }
+
+  body.compare-mode .row-number {
+    font-size: 28px;
+  }
+
+  body.compare-mode .row-title {
+    font-size: 18px;
+  }
+
+  /* === FOOTER === */
+  .footer {
+    margin-top: 80px;
+    padding-top: 32px;
+    border-top: 2px solid var(--navy);
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: end;
+    gap: 24px;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 1.5s forwards;
+  }
+
+  .footer blockquote {
+    font-family: 'Fraunces', serif;
+    font-size: 28px;
+    font-weight: 400;
+    line-height: 1.3;
+    color: var(--navy);
+    max-width: 720px;
+    letter-spacing: -0.01em;
+  }
+
+  .footer blockquote em {
+    font-style: italic;
+    color: var(--orange);
+  }
+
+  .footer-meta {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    color: var(--muted);
+    text-transform: uppercase;
+    text-align: right;
+    line-height: 1.8;
+  }
+
+  /* === ANIMATIONS === */
+  @keyframes fadeUp {
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes drawLine {
+    from { stroke-dashoffset: 400; }
+    to { stroke-dashoffset: 0; }
+  }
+
+  @keyframes drawEdge {
+    from { stroke-dashoffset: 200; opacity: 0; }
+    to { stroke-dashoffset: 0; opacity: 0.85; }
+  }
+
+  @keyframes popIn {
+    0% { transform: scale(0); opacity: 0; }
+    70% { transform: scale(1.15); opacity: 1; }
+    100% { transform: scale(1); opacity: 1; }
+  }
+
+  @keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.08); }
+  }
+
+  .row.expanded .network-edge {
+    stroke-dasharray: 200;
+    animation: drawEdge 0.8s ease forwards;
+  }
+
+  .row.expanded .network-node {
+    opacity: 0;
+    animation: popIn 0.4s ease forwards;
+  }
+
+  .row.expanded .hub-pulse {
+    animation: pulse 2s ease-in-out infinite;
+    transform-origin: center;
+    transform-box: fill-box;
+  }
+
+  .row.expanded .trend-line {
+    stroke-dasharray: 400;
+    animation: drawLine 1.2s ease 0.3s forwards;
+  }
+
+  .row.expanded .trend-dot {
+    opacity: 0;
+    animation: popIn 0.3s ease forwards;
+  }
+
+  .row.expanded .bar-fill {
+    transform-origin: left;
+    animation: expandBar 0.8s ease forwards;
+  }
+
+  @keyframes expandBar {
+    from { transform: scaleX(0); }
+    to { transform: scaleX(1); }
+  }
+
+  .row.expanded .ladder-step {
+    opacity: 0;
+    animation: slideInLadder 0.4s ease forwards;
+  }
+
+  @keyframes slideInLadder {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .row.expanded .primitive-card {
+    opacity: 0;
+    animation: popIn 0.35s ease forwards;
+  }
+
+  /* === RESPONSIVE === */
+  @media (max-width: 768px) {
+    .container { padding: 32px 20px 64px; }
+    .masthead { grid-template-columns: 1fr; }
+    .masthead h1 { font-size: 36px; }
+    .masthead-right { text-align: left; }
+    .subheader { grid-template-columns: 1fr; }
+    .subheader p { font-size: 16px; }
+    .row-inner { grid-template-columns: 1fr; }
+    .row-title { font-size: 18px; }
+    .footer { grid-template-columns: 1fr; }
+    .footer blockquote { font-size: 20px; }
+    .footer-meta { text-align: left; }
+    body.compare-mode .rows { grid-template-columns: 1fr; }
+  }
+
+  /* === PRINT STYLES === */
+  @media print {
+    @page {
+      size: letter landscape;
+      margin: 0.4in;
+    }
+
+    body {
+      background: white;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    body::before { display: none; }
+
+    .container {
+      max-width: none;
+      padding: 0;
+    }
+
+    .controls { display: none; }
+
+    .masthead { margin-bottom: 16px; padding-bottom: 12px; animation: none; opacity: 1; }
+    .masthead h1 { font-size: 28px; }
+    .subheader { margin-bottom: 16px; animation: none; opacity: 1; }
+    .subheader p { font-size: 13px; }
+
+    .rows {
+      display: grid !important;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 8px;
+    }
+
+    .row {
+      break-inside: avoid;
+      opacity: 1 !important;
+      transform: none !important;
+      animation: none !important;
+    }
+
+    .row-header {
+      padding: 10px 12px;
+      cursor: default;
+      border-bottom: 1px solid var(--border) !important;
+      grid-template-columns: 32px 1fr auto;
+    }
+
+    .row-number { font-size: 22px; }
+    .row-title { font-size: 13px; }
+    .score { font-size: 9px; padding: 3px 7px; }
+    .expand-icon { display: none; }
+
+    .row-content { max-height: none !important; overflow: visible !important; }
+    .row-inner {
+      padding: 12px;
+      gap: 8px;
+      grid-template-columns: 1fr 1fr;
+    }
+    .visual-box { height: 100px; }
+    .panel-label { font-size: 8px; padding-bottom: 4px; }
+    .caption { font-size: 8px; }
+
+    .row-footer {
+      padding: 10px 12px;
+      font-size: 11px;
+    }
+
+    .footer {
+      margin-top: 16px;
+      padding-top: 12px;
+      animation: none;
+      opacity: 1;
+    }
+    .footer blockquote { font-size: 14px; }
+
+    .row.expanded .network-edge,
+    .row.expanded .network-node,
+    .row.expanded .hub-pulse,
+    .row.expanded .trend-line,
+    .row.expanded .trend-dot,
+    .row.expanded .bar-fill,
+    .row.expanded .ladder-step,
+    .row.expanded .primitive-card {
+      animation: none !important;
+      opacity: 1 !important;
+      stroke-dasharray: none !important;
+      stroke-dashoffset: 0 !important;
+      transform: none !important;
+    }
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <header class="masthead">
+    <div class="masthead-left">
+      <div class="eyebrow">Capability Assessment · Internal</div>
+      <h1>Beacon <em>vs</em> Claude</h1>
+    </div>
+    <div class="masthead-right">
+      <div class="date">April 2026</div>
+      <div>Vine &amp; Fig Tree</div>
+      <div>Partner Success</div>
+    </div>
+  </header>
+
+  <div class="subheader">
+    <p>Five capability gaps where Beacon structurally outperforms a generalist reasoning layer — ranked by demo impact.</p>
+    <div class="controls">
+      <button class="toggle-btn active" id="view-default" onclick="setView('default')">Expanded</button>
+      <button class="toggle-btn" id="view-compare" onclick="setView('compare')">Side by side</button>
+      <button class="toggle-btn" onclick="window.print()">Print · PDF</button>
+    </div>
+  </div>
+
+  <div class="rows" id="rows">
+
+    <!-- ROW 1: FMI Network -->
+    <article class="row expanded" data-row="1">
+      <div class="row-header" onclick="toggleRow(1)">
+        <div class="row-number">01</div>
+        <div class="row-title">FMI network mapping</div>
+        <div class="score max">5 / 5</div>
+        <svg class="expand-icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="10" y1="4" x2="10" y2="16"/><line x1="4" y1="10" x2="16" y2="10"/></svg>
+      </div>
+      <div class="row-content">
+        <div class="row-inner">
+          <div class="panel claude">
+            <div class="panel-label">Claude</div>
+            <div class="visual-box">
+              <svg width="100%" height="100%" viewBox="0 0 260 220">
+                <circle cx="55" cy="68" r="4" fill="#8A96A3"/>
+                <circle cx="95" cy="100" r="4" fill="#8A96A3"/>
+                <circle cx="165" cy="75" r="4" fill="#8A96A3"/>
+                <circle cx="205" cy="115" r="4" fill="#8A96A3"/>
+                <circle cx="75" cy="140" r="4" fill="#8A96A3"/>
+                <circle cx="145" cy="145" r="4" fill="#8A96A3"/>
+                <circle cx="225" cy="155" r="4" fill="#8A96A3"/>
+                <circle cx="50" cy="180" r="4" fill="#8A96A3"/>
+                <circle cx="180" cy="190" r="4" fill="#8A96A3"/>
+              </svg>
+            </div>
+            <div class="caption">Isolated results · No relations</div>
+          </div>
+          <div class="panel beacon">
+            <div class="panel-label">Beacon</div>
+            <div class="visual-box">
+              <svg width="100%" height="100%" viewBox="0 0 260 220">
+                <g stroke="#378ADD" stroke-width="1.2" opacity="0.85" fill="none" stroke-linecap="round">
+                  <line class="network-edge" style="animation-delay:0.1s" x1="130" y1="112" x2="78" y2="60"/>
+                  <line class="network-edge" style="animation-delay:0.15s" x1="130" y1="112" x2="130" y2="40"/>
+                  <line class="network-edge" style="animation-delay:0.2s" x1="130" y1="112" x2="182" y2="60"/>
+                  <line class="network-edge" style="animation-delay:0.25s" x1="130" y1="112" x2="215" y2="92"/>
+                  <line class="network-edge" style="animation-delay:0.3s" x1="130" y1="112" x2="225" y2="135"/>
+                  <line class="network-edge" style="animation-delay:0.35s" x1="130" y1="112" x2="195" y2="175"/>
+                  <line class="network-edge" style="animation-delay:0.4s" x1="130" y1="112" x2="130" y2="195"/>
+                  <line class="network-edge" style="animation-delay:0.45s" x1="130" y1="112" x2="65" y2="175"/>
+                  <line class="network-edge" style="animation-delay:0.5s" x1="130" y1="112" x2="35" y2="135"/>
+                  <line class="network-edge" style="animation-delay:0.55s" x1="130" y1="112" x2="45" y2="92"/>
+                  <line class="network-edge" style="animation-delay:0.7s" x1="78" y1="60" x2="130" y2="40"/>
+                  <line class="network-edge" style="animation-delay:0.75s" x1="130" y1="40" x2="182" y2="60"/>
+                  <line class="network-edge" style="animation-delay:0.8s" x1="182" y1="60" x2="215" y2="92"/>
+                  <line class="network-edge" style="animation-delay:0.85s" x1="215" y1="92" x2="225" y2="135"/>
+                  <line class="network-edge" style="animation-delay:0.9s" x1="225" y1="135" x2="195" y2="175"/>
+                  <line class="network-edge" style="animation-delay:0.95s" x1="195" y1="175" x2="130" y2="195"/>
+                  <line class="network-edge" style="animation-delay:1s" x1="130" y1="195" x2="65" y2="175"/>
+                  <line class="network-edge" style="animation-delay:1.05s" x1="65" y1="175" x2="35" y2="135"/>
+                  <line class="network-edge" style="animation-delay:1.1s" x1="35" y1="135" x2="45" y2="92"/>
+                  <line class="network-edge" style="animation-delay:1.15s" x1="45" y1="92" x2="78" y2="60"/>
+                  <line class="network-edge" style="animation-delay:1.25s" x1="78" y1="60" x2="182" y2="60"/>
+                  <line class="network-edge" style="animation-delay:1.3s" x1="45" y1="92" x2="215" y2="92"/>
+                  <line class="network-edge" style="animation-delay:1.35s" x1="35" y1="135" x2="225" y2="135"/>
+                  <line class="network-edge" style="animation-delay:1.4s" x1="65" y1="175" x2="195" y2="175"/>
+                  <line class="network-edge" style="animation-delay:1.45s" x1="130" y1="40" x2="65" y2="175"/>
+                  <line class="network-edge" style="animation-delay:1.5s" x1="130" y1="40" x2="195" y2="175"/>
+                </g>
+                <g fill="#378ADD">
+                  <circle class="network-node" style="animation-delay:0.3s" cx="78" cy="60" r="5"/>
+                  <circle class="network-node" style="animation-delay:0.35s" cx="130" cy="40" r="4"/>
+                  <circle class="network-node" style="animation-delay:0.4s" cx="182" cy="60" r="5.5"/>
+                  <circle class="network-node" style="animation-delay:0.45s" cx="215" cy="92" r="4"/>
+                  <circle class="network-node" style="animation-delay:0.5s" cx="225" cy="135" r="5"/>
+                  <circle class="network-node" style="animation-delay:0.55s" cx="195" cy="175" r="4"/>
+                  <circle class="network-node" style="animation-delay:0.6s" cx="130" cy="195" r="4.5"/>
+                  <circle class="network-node" style="animation-delay:0.65s" cx="65" cy="175" r="4"/>
+                  <circle class="network-node" style="animation-delay:0.7s" cx="35" cy="135" r="5"/>
+                  <circle class="network-node" style="animation-delay:0.75s" cx="45" cy="92" r="4.5"/>
+                </g>
+                <circle class="hub-pulse" cx="130" cy="112" r="12" fill="#E97132"/>
+              </svg>
+            </div>
+            <div class="caption">Curated actors · Weighted edges · Follower reach</div>
+          </div>
+        </div>
+        <div class="row-footer">
+          <strong>Why it matters:</strong> a curated actor registry with follower-weighted reach lets you map who moved a narrative first and who amplified it — with network edges, not just a list.
+        </div>
+      </div>
+    </article>
+
+    <!-- ROW 2: Citation Architecture -->
+    <article class="row" data-row="2">
+      <div class="row-header" onclick="toggleRow(2)">
+        <div class="row-number">02</div>
+        <div class="row-title">Structural citation architecture</div>
+        <div class="score max">5 / 5</div>
+        <svg class="expand-icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="10" y1="4" x2="10" y2="16"/><line x1="4" y1="10" x2="16" y2="10"/></svg>
+      </div>
+      <div class="row-content">
+        <div class="row-inner">
+          <div class="panel claude">
+            <div class="panel-label">Claude</div>
+            <div class="visual-box">
+              <svg width="100%" height="100%" viewBox="0 0 260 220">
+                <rect x="30" y="60" width="200" height="24" rx="3" fill="#E4DFD4"/>
+                <rect x="30" y="94" width="200" height="24" rx="3" fill="#E4DFD4"/>
+                <rect x="30" y="128" width="200" height="24" rx="3" fill="#E4DFD4"/>
+                <text x="130" y="72" text-anchor="middle" dominant-baseline="central" font-family="JetBrains Mono, monospace" font-size="11" fill="#3D4A57">aggregator.com</text>
+                <text x="130" y="106" text-anchor="middle" dominant-baseline="central" font-family="JetBrains Mono, monospace" font-size="11" fill="#3D4A57">news-roundup.net</text>
+                <text x="130" y="140" text-anchor="middle" dominant-baseline="central" font-family="JetBrains Mono, monospace" font-size="11" fill="#3D4A57">thirdhand-blog</text>
+              </svg>
+            </div>
+            <div class="caption">Flat list · Wrong ladder rung</div>
+          </div>
+          <div class="panel beacon">
+            <div class="panel-label">Beacon</div>
+            <div class="visual-box">
+              <svg width="100%" height="100%" viewBox="0 0 260 220">
+                <g class="ladder-step" style="animation-delay:0.1s">
+                  <rect x="40" y="40" width="180" height="26" rx="3" fill="#E97132"/>
+                  <text x="130" y="53" text-anchor="middle" dominant-baseline="central" font-family="Inter" font-size="12" font-weight="500" fill="#FFFFFF">Primary source</text>
+                </g>
+                <line class="ladder-step" style="animation-delay:0.25s" x1="130" y1="66" x2="130" y2="84" stroke="#E97132" stroke-width="2.5"/>
+                <g class="ladder-step" style="animation-delay:0.3s">
+                  <rect x="55" y="84" width="150" height="26" rx="3" fill="#378ADD"/>
+                  <text x="130" y="97" text-anchor="middle" dominant-baseline="central" font-family="Inter" font-size="12" font-weight="500" fill="#FFFFFF">Direct post link</text>
+                </g>
+                <line class="ladder-step" style="animation-delay:0.45s" x1="130" y1="110" x2="130" y2="128" stroke="#E97132" stroke-width="2.5"/>
+                <g class="ladder-step" style="animation-delay:0.5s">
+                  <rect x="70" y="128" width="120" height="26" rx="3" fill="#185FA5"/>
+                  <text x="130" y="141" text-anchor="middle" dominant-baseline="central" font-family="Inter" font-size="12" font-weight="500" fill="#FFFFFF">Amplifier</text>
+                </g>
+                <line class="ladder-step" style="animation-delay:0.65s" x1="130" y1="154" x2="130" y2="172" stroke="#E97132" stroke-width="2.5"/>
+                <g class="ladder-step" style="animation-delay:0.7s">
+                  <rect x="85" y="172" width="90" height="22" rx="3" fill="none" stroke="#F5A66E" stroke-width="1.2"/>
+                  <text x="130" y="183" text-anchor="middle" dominant-baseline="central" font-family="Inter" font-size="11" fill="#F5A66E">Aggregator</text>
+                </g>
+              </svg>
+            </div>
+            <div class="caption">Primary → Post → Amplifier · One-click verify</div>
+          </div>
+        </div>
+        <div class="row-footer">
+          <strong>Why it matters:</strong> every claim ties to a specific tweet URL, podcast timestamp, or article — so an analyst verifies the primary source in one click instead of wading through aggregators.
+        </div>
+      </div>
+    </article>
+
+    <!-- ROW 3: Longitudinal -->
+    <article class="row" data-row="3">
+      <div class="row-header" onclick="toggleRow(3)">
+        <div class="row-number">03</div>
+        <div class="row-title">Longitudinal corpus queries</div>
+        <div class="score high">4 / 5</div>
+        <svg class="expand-icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="10" y1="4" x2="10" y2="16"/><line x1="4" y1="10" x2="16" y2="10"/></svg>
+      </div>
+      <div class="row-content">
+        <div class="row-inner">
+          <div class="panel claude">
+            <div class="panel-label">Claude</div>
+            <div class="visual-box">
+              <svg width="100%" height="100%" viewBox="0 0 260 220">
+                <circle cx="55" cy="120" r="8" fill="#8A96A3"/>
+                <text x="55" y="150" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="11" fill="#3D4A57">2020</text>
+                <circle cx="210" cy="120" r="16" fill="#0E2841"/>
+                <text x="210" y="121" text-anchor="middle" dominant-baseline="central" font-family="Inter" font-size="11" font-weight="500" fill="#FFFFFF">now</text>
+                <text x="210" y="158" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="11" fill="#3D4A57">today</text>
+              </svg>
+            </div>
+            <div class="caption">Training cutoff · Gap to today</div>
+          </div>
+          <div class="panel beacon">
+            <div class="panel-label">Beacon</div>
+            <div class="visual-box">
+              <svg width="100%" height="100%" viewBox="0 0 260 220">
+                <path d="M30 170 L60 155 L90 140 L120 120 L150 105 L180 85 L210 65 L230 55 L230 180 L30 180 Z" fill="#E97132" opacity="0.22"/>
+                <path class="trend-line" d="M30 170 L60 155 L90 140 L120 120 L150 105 L180 85 L210 65 L230 55" stroke="#E97132" stroke-width="3" fill="none" stroke-linecap="round"/>
+                <circle class="trend-dot" style="animation-delay:1.2s" cx="60" cy="155" r="4.5" fill="#E97132"/>
+                <circle class="trend-dot" style="animation-delay:1.3s" cx="90" cy="140" r="4.5" fill="#E97132"/>
+                <circle class="trend-dot" style="animation-delay:1.4s" cx="120" cy="120" r="4.5" fill="#E97132"/>
+                <circle class="trend-dot" style="animation-delay:1.5s" cx="150" cy="105" r="4.5" fill="#E97132"/>
+                <circle class="trend-dot" style="animation-delay:1.6s" cx="180" cy="85" r="4.5" fill="#E97132"/>
+                <circle class="trend-dot" style="animation-delay:1.7s" cx="210" cy="65" r="4.5" fill="#E97132"/>
+                <line x1="30" y1="180" x2="230" y2="180" stroke="#8A96A3" stroke-width="0.8"/>
+                <text x="30" y="200" font-family="JetBrains Mono, monospace" font-size="11" fill="#3D4A57">90d ago</text>
+                <text x="230" y="200" text-anchor="end" font-family="JetBrains Mono, monospace" font-size="11" fill="#3D4A57">today</text>
+              </svg>
+            </div>
+            <div class="caption">Postgres trends · Timing analysis · Historical lookback</div>
+          </div>
+        </div>
+        <div class="row-footer">
+          <strong>Why it matters:</strong> trend lines, coordinated-timing analysis, and &quot;has this framing appeared before&quot; need a database — not a keyhole into the present.
+        </div>
+      </div>
+    </article>
+
+    <!-- ROW 4: Structured Corpus -->
+    <article class="row" data-row="4">
+      <div class="row-header" onclick="toggleRow(4)">
+        <div class="row-number">04</div>
+        <div class="row-title">Structured corpus for repeatable output</div>
+        <div class="score high">4 / 5</div>
+        <svg class="expand-icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="10" y1="4" x2="10" y2="16"/><line x1="4" y1="10" x2="16" y2="10"/></svg>
+      </div>
+      <div class="row-content">
+        <div class="row-inner">
+          <div class="panel claude">
+            <div class="panel-label">Claude</div>
+            <div class="visual-box">
+              <svg width="100%" height="100%" viewBox="0 0 260 220">
+                <rect x="60" y="60" width="140" height="100" rx="4" fill="#E4DFD4" stroke="#8A96A3" stroke-width="0.8"/>
+                <line x1="72" y1="78" x2="188" y2="78" stroke="#3D4A57" stroke-width="1.2"/>
+                <line x1="72" y1="92" x2="180" y2="92" stroke="#3D4A57" stroke-width="1.2"/>
+                <line x1="72" y1="106" x2="168" y2="106" stroke="#3D4A57" stroke-width="1.2"/>
+                <line x1="72" y1="120" x2="188" y2="120" stroke="#3D4A57" stroke-width="1.2"/>
+                <line x1="72" y1="134" x2="148" y2="134" stroke="#3D4A57" stroke-width="1.2"/>
+                <line x1="72" y1="148" x2="170" y2="148" stroke="#3D4A57" stroke-width="1.2"/>
+                <text x="130" y="185" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" fill="#3D4A57">DIFFERENT SHAPE EVERY RUN</text>
+              </svg>
+            </div>
+            <div class="caption">Unstructured prose · Free-form</div>
+          </div>
+          <div class="panel beacon">
+            <div class="panel-label">Beacon</div>
+            <div class="visual-box">
+              <svg width="100%" height="100%" viewBox="0 0 260 220">
+                <g class="primitive-card" style="animation-delay:0.1s">
+                  <rect x="14" y="30" width="52" height="70" rx="5" fill="#FDFCF8" stroke="#F5A66E" stroke-width="1.2"/>
+                  <circle cx="40" cy="55" r="6" fill="none" stroke="#E97132" stroke-width="2"/>
+                  <path d="M 30 78 Q 40 68 50 78" fill="none" stroke="#E97132" stroke-width="2" stroke-linecap="round"/>
+                  <text x="40" y="94" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9" font-weight="500" fill="#0E2841">actors</text>
+                </g>
+                <g class="primitive-card" style="animation-delay:0.2s">
+                  <rect x="72" y="30" width="52" height="70" rx="5" fill="#FDFCF8" stroke="#F5A66E" stroke-width="1.2"/>
+                  <rect x="88" y="46" width="20" height="26" rx="2" fill="none" stroke="#E97132" stroke-width="2"/>
+                  <line x1="92" y1="54" x2="104" y2="54" stroke="#E97132" stroke-width="1.5" stroke-linecap="round"/>
+                  <line x1="92" y1="60" x2="104" y2="60" stroke="#E97132" stroke-width="1.5" stroke-linecap="round"/>
+                  <line x1="92" y1="66" x2="100" y2="66" stroke="#E97132" stroke-width="1.5" stroke-linecap="round"/>
+                  <text x="98" y="94" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9" font-weight="500" fill="#0E2841">posts</text>
+                </g>
+                <g class="primitive-card" style="animation-delay:0.3s">
+                  <rect x="130" y="30" width="52" height="70" rx="5" fill="#FDFCF8" stroke="#F5A66E" stroke-width="1.2"/>
+                  <circle cx="156" cy="60" r="12" fill="none" stroke="#E97132" stroke-width="2"/>
+                  <line x1="156" y1="60" x2="156" y2="52" stroke="#E97132" stroke-width="2" stroke-linecap="round"/>
+                  <line x1="156" y1="60" x2="162" y2="64" stroke="#E97132" stroke-width="2" stroke-linecap="round"/>
+                  <text x="156" y="94" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="8" font-weight="500" fill="#0E2841">timestamps</text>
+                </g>
+                <g class="primitive-card" style="animation-delay:0.4s">
+                  <rect x="188" y="30" width="52" height="70" rx="5" fill="#FDFCF8" stroke="#F5A66E" stroke-width="1.2"/>
+                  <path d="M 202 50 L 214 50 L 218 56 L 230 56 L 230 74 L 202 74 Z" fill="none" stroke="#E97132" stroke-width="2" stroke-linejoin="round"/>
+                  <text x="214" y="94" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9" font-weight="500" fill="#0E2841">sources</text>
+                </g>
+                <rect class="primitive-card" style="animation-delay:0.6s" x="20" y="128" width="220" height="60" rx="5" fill="#E97132"/>
+                <text class="primitive-card" style="animation-delay:0.65s" x="130" y="152" text-anchor="middle" dominant-baseline="central" font-family="Inter" font-size="13" font-weight="500" fill="#FFFFFF">Built for analysis</text>
+                <text class="primitive-card" style="animation-delay:0.65s" x="130" y="174" text-anchor="middle" dominant-baseline="central" font-family="Inter" font-size="10" fill="#FFFFFF" opacity="0.92">structured fields, repeatable briefs</text>
+              </svg>
+            </div>
+            <div class="caption">Actors · Posts · Timestamps · Sources</div>
+          </div>
+        </div>
+        <div class="row-footer">
+          <strong>Why it matters:</strong> structured fields make daily briefs repeatable — your prompts can enforce rules against typed data, not free-form text.
+        </div>
+      </div>
+    </article>
+
+    <!-- ROW 5: Podcast -->
+    <article class="row" data-row="5">
+      <div class="row-header" onclick="toggleRow(5)">
+        <div class="row-number">05</div>
+        <div class="row-title">Podcast intelligence</div>
+        <div class="score high">4 / 5</div>
+        <svg class="expand-icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="10" y1="4" x2="10" y2="16"/><line x1="4" y1="10" x2="16" y2="10"/></svg>
+      </div>
+      <div class="row-content">
+        <div class="row-inner">
+          <div class="panel claude">
+            <div class="panel-label">Claude</div>
+            <div class="visual-box">
+              <svg width="100%" height="100%" viewBox="0 0 260 220">
+                <g transform="translate(130, 105)">
+                  <rect x="-14" y="-32" width="28" height="38" rx="14" fill="none" stroke="#3D4A57" stroke-width="2.5"/>
+                  <path d="M -22 -6 Q -22 18 0 18 Q 22 18 22 -6" fill="none" stroke="#3D4A57" stroke-width="2.5" stroke-linecap="round"/>
+                  <line x1="0" y1="18" x2="0" y2="32" stroke="#3D4A57" stroke-width="2.5" stroke-linecap="round"/>
+                  <line x1="-11" y1="32" x2="11" y2="32" stroke="#3D4A57" stroke-width="2.5" stroke-linecap="round"/>
+                  <line x1="-30" y1="-38" x2="30" y2="38" stroke="#C8341F" stroke-width="4" stroke-linecap="round"/>
+                  <line x1="30" y1="-38" x2="-30" y2="38" stroke="#C8341F" stroke-width="4" stroke-linecap="round"/>
+                </g>
+              </svg>
+            </div>
+            <div class="caption">No audio access · At all</div>
+          </div>
+          <div class="panel beacon">
+            <div class="panel-label">Beacon</div>
+            <div class="visual-box">
+              <svg width="100%" height="100%" viewBox="0 0 260 220">
+                <g transform="translate(30, 60)">
+                  <rect width="200" height="10" rx="5" fill="#F5A66E" opacity="0.25"/>
+                  <rect class="bar-fill" style="animation-delay:0.1s" width="72" height="10" rx="5" fill="#E97132"/>
+                  <circle cx="72" cy="5" r="7" fill="#E97132"/>
+                  <text x="74" y="32" font-family="JetBrains Mono, monospace" font-size="11" fill="#F5A66E">14:32</text>
+                </g>
+                <g transform="translate(30, 110)">
+                  <rect width="200" height="10" rx="5" fill="#F5A66E" opacity="0.25"/>
+                  <rect class="bar-fill" style="animation-delay:0.25s" width="118" height="10" rx="5" fill="#E97132"/>
+                  <circle cx="118" cy="5" r="7" fill="#E97132"/>
+                  <text x="120" y="32" font-family="JetBrains Mono, monospace" font-size="11" fill="#F5A66E">28:05</text>
+                </g>
+                <g transform="translate(30, 160)">
+                  <rect width="200" height="10" rx="5" fill="#F5A66E" opacity="0.25"/>
+                  <rect class="bar-fill" style="animation-delay:0.4s" width="160" height="10" rx="5" fill="#E97132"/>
+                  <circle cx="160" cy="5" r="7" fill="#E97132"/>
+                  <text x="162" y="32" font-family="JetBrains Mono, monospace" font-size="11" fill="#F5A66E">41:17</text>
+                </g>
+              </svg>
+            </div>
+            <div class="caption">Speaker chunks · Timestamp anchors</div>
+          </div>
+        </div>
+        <div class="row-footer">
+          <strong>Why it matters:</strong> speaker-chunked transcripts with timestamp anchors are a genuine moat — no competitor has this, including Brandwatch and Meltwater.
+        </div>
+      </div>
+    </article>
+
+  </div>
+
+  <footer class="footer">
+    <blockquote>
+      Claude is a generalist reasoning layer. <em>Beacon is a research and social intelligence system.</em>
+    </blockquote>
+    <div class="footer-meta">
+      <div>Vine &amp; Fig Tree · Partner Success</div>
+      <div>Prepared April 2026</div>
+      <div>Internal capability assessment</div>
+    </div>
+  </footer>
+
+</div>
+
+<script>
+  function toggleRow(n) {
+    if (document.body.classList.contains('compare-mode')) return;
+    const row = document.querySelector(`.row[data-row="${n}"]`);
+    row.classList.toggle('expanded');
+    if (row.classList.contains('expanded')) {
+      restartAnimations(row);
+    }
+  }
+
+  function restartAnimations(row) {
+    const animated = row.querySelectorAll('.network-edge, .network-node, .trend-line, .trend-dot, .bar-fill, .ladder-step, .primitive-card');
+    animated.forEach(el => {
+      el.style.animation = 'none';
+      void el.offsetWidth;
+      el.style.animation = '';
+    });
+  }
+
+  function setView(mode) {
+    document.getElementById('view-default').classList.toggle('active', mode === 'default');
+    document.getElementById('view-compare').classList.toggle('active', mode === 'compare');
+    document.body.classList.toggle('compare-mode', mode === 'compare');
+
+    if (mode === 'compare') {
+      document.querySelectorAll('.row').forEach(r => r.classList.add('expanded'));
+    }
+  }
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => {
+          entry.target.classList.add('visible');
+        }, i * 80);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+
+  document.querySelectorAll('.row').forEach(row => observer.observe(row));
+</script>
+
+</body>
+</html>
