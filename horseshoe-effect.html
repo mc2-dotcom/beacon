@@ -1,0 +1,1101 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>The Horseshoe Effect — Vine &amp; Fig Tree Institute</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=IBM+Plex+Mono:wght@300;400;500;600&family=Libre+Franklin:wght@300;400;500;600;700&display=swap" />
+<script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<style>
+:root{
+  --paper:#F6F2ED;
+  --paper-2:#FCFFFF;
+  --paper-3:#F0ECE4;
+  --ink:#0C1843;
+  --ink-dim:#3A4DA7;
+  --ink-faint:#5B6484;
+  --rule:#C8CCD8;
+  --rule-2:#D4E3FC;
+  --gold:#3A4DA7;
+  --gold-bright:#7795CC;
+  --gold-dim:#1B2866;
+  --navy:#0C1843;
+  --navy-bright:#3A4DA7;
+  --navy-deep:#0C1843;
+  --olive:#5B6484;
+  --olive-bright:#7795CC;
+  --before:#5B6484;
+  --after:#3A4DA7;
+  --warn:#8B2635;
+  --chip:#F6F2ED;
+  --chip-hot:#D4E3FC;
+  --sidebar:#F6F2ED;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;background:var(--paper);color:var(--ink);font-family:'Libre Franklin',system-ui,sans-serif;font-weight:400;-webkit-font-smoothing:antialiased;letter-spacing:.005em}
+body{background-image:radial-gradient(1200px 600px at 20% -10%, rgba(119,149,204,.08), transparent 60%),radial-gradient(900px 500px at 100% 10%, rgba(12,24,67,.05), transparent 60%)}
+a{color:var(--navy);text-decoration:none;border-bottom:1px dotted var(--navy-bright)}
+a:hover{color:var(--gold);border-bottom-color:var(--gold)}
+.mono{font-family:'IBM Plex Mono',ui-monospace,monospace;letter-spacing:.02em}
+.serif{font-family:'Cormorant Garamond',Georgia,serif}
+.caps{text-transform:uppercase;letter-spacing:.22em;font-size:11px}
+.hairline{border-top:1px solid var(--rule)}
+.layout{display:grid;grid-template-columns:260px 1fr;min-height:100vh}
+aside.nav{position:sticky;top:0;height:100vh;overflow-y:auto;padding:28px 22px 40px;border-right:1px solid var(--rule);background:var(--sidebar)}
+.brandmark{display:flex;flex-direction:column;gap:4px;margin-bottom:22px}
+.brandmark .kicker{color:var(--navy);font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.32em;text-transform:uppercase;font-weight:500}
+.brandmark .title{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:30px;line-height:1.02;color:var(--navy-deep);letter-spacing:-.01em}
+.brandmark .sub{font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:var(--ink-faint);letter-spacing:.08em;margin-top:6px}
+.seal{margin:14px 0 22px;padding:12px 14px;border:1px solid var(--rule-2);border-left:3px solid var(--navy);background:var(--paper-2);font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--ink-dim);line-height:1.65}
+.seal b{color:var(--navy);font-weight:600}
+nav.sections{display:flex;flex-direction:column;gap:2px;margin-top:8px}
+nav.sections button{all:unset;cursor:pointer;padding:9px 10px 9px 14px;display:flex;align-items:baseline;gap:10px;font-family:'Libre Franklin',sans-serif;font-size:13px;color:var(--ink-dim);font-weight:400;border-left:2px solid transparent;transition:all .15s ease}
+nav.sections button:hover{color:var(--navy);background:rgba(12,24,67,.04);border-left-color:var(--gold)}
+nav.sections button.active{color:var(--navy-deep);border-left-color:var(--navy);background:rgba(12,24,67,.06);font-weight:500}
+nav.sections .num{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--ink-faint);min-width:20px}
+nav.sections button.active .num{color:var(--gold)}
+.nav-foot{margin-top:28px;padding-top:18px;border-top:1px solid var(--rule-2);font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--ink-faint);line-height:1.7}
+.nav-foot .dot{display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--olive-bright);margin-right:6px;vertical-align:middle;box-shadow:0 0 8px rgba(119,149,204,.6)}
+main{padding:48px 56px 120px;max-width:1180px}
+section{margin-bottom:86px;scroll-margin-top:24px}
+.section-head{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;margin-bottom:26px;padding-bottom:14px;border-bottom:1px solid var(--rule-2)}
+.section-head .h-left{display:flex;flex-direction:column;gap:4px}
+.section-head .tag{font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:var(--navy);letter-spacing:.28em;text-transform:uppercase;font-weight:500}
+.section-head h2{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:40px;line-height:1.02;margin:0;color:var(--navy-deep);letter-spacing:-.01em}
+.section-head .h-right{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--ink-faint);text-align:right;letter-spacing:.04em;max-width:340px;line-height:1.65}
+.headline{border:1px solid var(--rule-2);padding:30px 34px;margin-bottom:40px;background:var(--paper-2);position:relative;overflow:hidden;box-shadow:0 1px 0 rgba(12,24,67,.04)}
+.headline::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg, var(--navy) 0%, var(--navy-bright) 55%, var(--gold-bright) 100%)}
+.headline .dek{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:22px;font-weight:500;line-height:1.45;color:var(--navy-deep);max-width:900px}
+.headline .byline{margin-top:16px;font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:var(--ink-faint);letter-spacing:.08em}
+.grid-metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.metric{border:1px solid var(--rule);padding:20px 20px 18px;background:var(--paper-2);position:relative;transition:all .18s ease;cursor:default;box-shadow:0 1px 0 rgba(12,24,67,.03)}
+.metric:hover{border-color:var(--navy-bright);transform:translateY(-1px);box-shadow:0 4px 16px rgba(12,24,67,.08)}
+.metric .k{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--ink-faint);letter-spacing:.18em;text-transform:uppercase;font-weight:500}
+.metric .v{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:46px;line-height:1;margin-top:10px;color:var(--navy-deep);letter-spacing:-.015em}
+.metric .u{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--ink-dim);margin-top:8px;letter-spacing:.03em;line-height:1.5}
+.metric.alt .v{color:var(--gold)}
+.metric.navy .v{color:var(--navy-bright)}
+.metric.olive .v{color:var(--olive)}
+.metric .bar{height:3px;background:var(--rule);margin-top:14px;position:relative;overflow:hidden}
+.metric .bar::after{content:"";position:absolute;top:0;left:0;bottom:0;background:linear-gradient(90deg,var(--navy),var(--navy-bright));width:var(--p,40%)}
+.metric.alt .bar::after{background:linear-gradient(90deg,var(--gold-dim),var(--gold))}
+.metric.olive .bar::after{background:linear-gradient(90deg,var(--olive),var(--olive-bright))}
+.ba-grid{display:grid;grid-template-columns:1fr;gap:20px}
+.ba-card{display:grid;grid-template-columns:1fr 110px 1fr;gap:0;border:1px solid var(--rule-2);background:var(--paper-2);overflow:hidden;box-shadow:0 1px 0 rgba(12,24,67,.03)}
+.ba-card .side{padding:22px 24px;display:flex;flex-direction:column;gap:10px}
+.ba-card .before{background:#eef1f7;border-right:1px solid var(--rule)}
+.ba-card .after{background:#f0f4fd;border-left:1px solid var(--rule)}
+.ba-card .divider{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;background:var(--paper-2);padding:14px 6px;border-left:1px solid var(--rule);border-right:1px solid var(--rule)}
+.ba-card .divider .arrow{font-family:'Cormorant Garamond',serif;font-size:42px;color:var(--navy);line-height:1}
+.ba-card .divider .delta{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--gold);letter-spacing:.04em;text-align:center;line-height:1.3;font-weight:500}
+.ba-card .label{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.22em;text-transform:uppercase;font-weight:500}
+.ba-card .before .label{color:var(--before)}
+.ba-card .after .label{color:var(--gold)}
+.ba-card .who{font-family:'Cormorant Garamond',serif;font-size:23px;font-weight:600;color:var(--navy-deep)}
+.ba-card .quote{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:16.5px;line-height:1.48;color:var(--ink-dim);padding-left:12px;border-left:2px solid var(--before)}
+.ba-card .after .quote{border-left-color:var(--gold);color:var(--ink)}
+.ba-card .meta{font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:var(--ink-faint);letter-spacing:.06em;margin-top:auto;padding-top:8px}
+.ba-card .tone{display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:10px;padding:4px 9px;border:1px solid var(--rule-2);border-radius:2px;color:var(--ink-dim);letter-spacing:.12em;text-transform:uppercase;margin-top:4px;width:fit-content;background:var(--paper-2)}
+.ba-card .after .tone{color:var(--gold);border-color:var(--gold)}
+.chip-row{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:22px}
+.chip{font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;font-weight:500;padding:7px 12px;border:1px solid var(--rule-2);background:var(--paper-2);color:var(--ink-dim);cursor:pointer;transition:all .15s ease}
+.chip:hover{color:var(--navy);border-color:var(--navy-bright);background:#eef1fc}
+.chip.on{background:var(--navy);color:var(--paper-2);border-color:var(--navy)}
+.chip .ct{opacity:.55;margin-left:6px}
+table.data{width:100%;border-collapse:collapse;font-family:'Libre Franklin',sans-serif;font-size:13.5px;margin-top:6px;background:var(--paper-2);border:1px solid var(--rule-2);box-shadow:0 1px 0 rgba(12,24,67,.03)}
+table.data thead th{text-align:left;font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-dim);font-weight:500;padding:13px 16px;border-bottom:2px solid var(--navy);cursor:pointer;user-select:none;white-space:nowrap;background:var(--paper)}
+table.data thead th:hover{color:var(--navy);background:var(--rule-2)}
+table.data thead th .sort{margin-left:6px;opacity:.5;font-size:10px}
+table.data thead th.sorted{color:var(--navy);background:var(--rule-2)}
+table.data thead th.sorted .sort{opacity:1;color:var(--gold)}
+table.data tbody td{padding:12px 16px;border-bottom:1px solid var(--rule);color:var(--ink-dim);vertical-align:middle}
+table.data tbody tr:hover td{background:#fafaf4;color:var(--ink)}
+table.data tbody tr:last-child td{border-bottom:none}
+table.data td.num{font-family:'IBM Plex Mono',monospace;font-size:12.5px;text-align:right;color:var(--ink)}
+table.data td.handle{font-family:'IBM Plex Mono',monospace;color:var(--navy);font-size:13px;font-weight:500}
+.pct{display:inline-flex;align-items:center;gap:8px;min-width:150px}
+.pct .pbar{flex:1;height:8px;background:#ebeef4;border:1px solid var(--rule);position:relative;overflow:hidden;min-width:60px}
+.pct .pbar i{position:absolute;top:0;bottom:0;left:0;background:linear-gradient(90deg,var(--gold-dim),var(--gold))}
+.pct.new .pbar i{background:linear-gradient(90deg,var(--olive),var(--olive-bright))}
+.pct.con .pbar i{background:linear-gradient(90deg,var(--navy),var(--navy-bright))}
+.pct .val{font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:var(--gold);min-width:70px;text-align:right;font-weight:500}
+.pct.new .val{color:var(--olive)}
+.pct.con .val{color:var(--navy)}
+.prof-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.prof{border:1px solid var(--rule-2);background:var(--paper-2);padding:20px 22px;cursor:pointer;transition:all .18s ease;position:relative;overflow:hidden;box-shadow:0 1px 0 rgba(12,24,67,.03)}
+.prof::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:var(--navy);opacity:0;transition:opacity .2s}
+.prof:hover{border-color:var(--navy-bright);box-shadow:0 4px 16px rgba(12,24,67,.08)}
+.prof:hover::before{opacity:1}
+.prof.open{background:#f5f4ef;border-color:var(--navy)}
+.prof.open::before{opacity:1;background:var(--gold)}
+.prof .row1{display:flex;align-items:center;gap:12px}
+.prof .avatar{width:46px;height:46px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:600;color:var(--paper-2);background:linear-gradient(135deg, var(--navy-bright), var(--navy));flex-shrink:0;border:1px solid var(--navy-deep)}
+.prof .who{display:flex;flex-direction:column}
+.prof .handle{font-family:'IBM Plex Mono',monospace;font-size:13.5px;color:var(--navy);letter-spacing:.02em;font-weight:500}
+.prof .flw{font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:var(--ink-faint);margin-top:2px;letter-spacing:.04em}
+.prof .role{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:15.5px;color:var(--ink-dim);margin-top:14px;line-height:1.38}
+.prof .typology{margin-top:12px;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;font-weight:500;padding:5px 9px;background:var(--paper);color:var(--gold-dim);border:1px solid var(--rule-2);width:fit-content}
+.prof-detail{grid-column:1 / -1;border:1px solid var(--navy);background:#f5f4ef;padding:30px 34px;margin-top:-2px;display:grid;grid-template-columns:1fr 300px;gap:30px;border-top:3px solid var(--gold)}
+.prof-detail h3{font-family:'Cormorant Garamond',serif;font-size:30px;font-weight:600;margin:0 0 4px;color:var(--navy-deep);letter-spacing:-.01em}
+.prof-detail .dsub{font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:var(--gold);letter-spacing:.22em;text-transform:uppercase;margin-bottom:18px;font-weight:500}
+.prof-detail .tline{border-left:2px solid var(--rule-2);padding-left:20px;margin-left:4px;display:flex;flex-direction:column;gap:16px}
+.prof-detail .tpt{position:relative}
+.prof-detail .tpt::before{content:"";position:absolute;left:-26px;top:6px;width:10px;height:10px;border-radius:50%;background:var(--navy);border:2px solid #f5f4ef}
+.prof-detail .tpt .date{font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:var(--navy);letter-spacing:.1em;font-weight:500}
+.prof-detail .tpt .txt{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:16px;line-height:1.5;color:var(--ink);margin-top:4px}
+.prof-detail .tpt .lnk{display:block;margin-top:4px;font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:var(--gold)}
+.prof-detail .kpanel{border-left:1px solid var(--rule-2);padding-left:24px}
+.prof-detail .kpanel .lab{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-faint);font-weight:500}
+.prof-detail .kpanel .v{font-family:'Cormorant Garamond',serif;font-size:34px;color:var(--navy-deep);font-weight:600;line-height:1;margin-top:4px;letter-spacing:-.01em}
+.prof-detail .kpanel .sub{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--ink-dim);margin-top:6px;margin-bottom:18px}
+.spine{position:relative;padding-left:0;background:var(--paper-2);border:1px solid var(--rule-2);padding:8px 24px}
+.spine::before{content:"";position:absolute;left:134px;top:16px;bottom:16px;width:2px;background:linear-gradient(180deg, var(--navy) 0%, var(--navy-bright) 60%, var(--warn) 100%)}
+.spine .day{display:grid;grid-template-columns:100px 30px 1fr;gap:0;align-items:start;padding:16px 0;border-bottom:1px dashed var(--rule)}
+.spine .day:last-child{border-bottom:none}
+.spine .day .d{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--navy);letter-spacing:.14em;text-transform:uppercase;padding-top:4px;font-weight:500}
+.spine .day .d b{display:block;font-family:'Cormorant Garamond',serif;font-size:27px;font-weight:600;color:var(--navy-deep);letter-spacing:-.01em;text-transform:none;line-height:1}
+.spine .day .node{display:flex;align-items:center;justify-content:center;padding-top:8px}
+.spine .day .node i{display:block;width:14px;height:14px;border-radius:50%;background:var(--paper-2);border:2px solid var(--navy);box-shadow:0 0 0 3px var(--paper-2)}
+.spine .day.gaza .node i{border-color:var(--warn);background:var(--warn)}
+.spine .day.ext .node i{border-color:var(--gold);background:var(--gold)}
+.spine .day.sync{background:linear-gradient(90deg, rgba(119,149,204,.12) 0%, rgba(119,149,204,0) 70%)}
+.spine .day.sync .node i{border-color:var(--gold-bright);background:var(--gold-bright);box-shadow:0 0 0 3px var(--paper-2), 0 0 16px rgba(119,149,204,.55)}
+.spine .day.sync .loc{color:var(--gold-dim)}
+.spine .day.sync .loc::after{content:" \2022 CONVERGENCE WINDOW";font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.22em;color:var(--gold);margin-left:10px;vertical-align:middle;font-weight:500}
+.spine .day .body{padding:4px 0 4px 18px}
+.spine .day .loc{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:600;color:var(--navy-deep);line-height:1.25}
+.spine .day.gaza .loc{color:var(--warn)}
+.spine .day .act{font-size:13.5px;color:var(--ink-dim);margin-top:5px;line-height:1.55}
+.spine .day .att{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.spine .day .att span{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--navy);padding:3px 8px;background:var(--paper);border:1px solid var(--rule-2);letter-spacing:.04em;font-weight:500}
+.gaza-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.gaza-card{border:1px solid var(--rule-2);background:var(--paper-2);padding:22px 24px;position:relative;box-shadow:0 1px 0 rgba(12,24,67,.03);border-top:3px solid var(--warn)}
+.gaza-card::before{content:attr(data-tag);position:absolute;top:-3px;left:-1px;padding:4px 11px;background:var(--warn);color:var(--paper-2);font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:.22em;font-weight:600}
+.gaza-card .who{font-family:'IBM Plex Mono',monospace;font-size:13.5px;color:var(--navy);margin-top:26px;font-weight:500}
+.gaza-card .title{font-family:'Cormorant Garamond',serif;font-size:23px;font-weight:600;color:var(--navy-deep);line-height:1.22;margin-top:6px;letter-spacing:-.01em}
+.gaza-card .finds{display:flex;flex-direction:column;gap:12px;margin-top:18px}
+.gaza-card .f{display:flex;gap:12px;align-items:flex-start}
+.gaza-card .f .num{font-family:'Cormorant Garamond',serif;font-size:22px;color:var(--gold);font-weight:600;line-height:1;min-width:28px}
+.gaza-card .f .tx{font-size:13.5px;color:var(--ink-dim);line-height:1.5}
+.gaza-card .tweets{margin-top:20px;padding-top:16px;border-top:1px solid var(--rule);display:flex;flex-direction:column;gap:10px}
+.gaza-card .tw{display:flex;gap:10px;align-items:baseline}
+.gaza-card .tw .dt{font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:var(--warn);min-width:54px;font-weight:500}
+.gaza-card .tw .qt{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:14.5px;color:var(--ink);line-height:1.42;flex:1}
+.gaza-card .tw .ln{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--gold)}
+.typ-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.typ{border:1px solid var(--rule-2);background:var(--paper-2);padding:24px 26px;position:relative;overflow:hidden;box-shadow:0 1px 0 rgba(12,24,67,.03);transition:box-shadow .18s}
+.typ:hover{box-shadow:0 4px 14px rgba(12,24,67,.07)}
+.typ::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--gold)}
+.typ.navy::before{background:var(--navy)}
+.typ.olive::before{background:var(--olive-bright)}
+.typ.warn::before{background:var(--warn)}
+.typ.ink::before{background:var(--navy-deep)}
+.typ .num{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--ink-faint);letter-spacing:.2em;font-weight:500}
+.typ h3{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:28px;margin:6px 0 8px;color:var(--navy-deep);line-height:1.08;letter-spacing:-.01em}
+.typ .arc{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:15.5px;color:var(--gold);margin-bottom:12px}
+.typ .tag-row{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px}
+.typ .tag-row span{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--navy);padding:4px 9px;background:var(--paper);border:1px solid var(--rule-2);font-weight:500}
+.typ .desc{font-size:13.5px;color:var(--ink-dim);line-height:1.6}
+.aw-wrap{display:grid;grid-template-columns:340px 1fr;gap:24px}
+.aw-stat{border:1px solid var(--rule-2);background:var(--paper-2);padding:24px;border-top:3px solid var(--navy);box-shadow:0 1px 0 rgba(12,24,67,.03)}
+.aw-stat h4{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--navy);letter-spacing:.22em;text-transform:uppercase;margin:0 0 14px;font-weight:600}
+.aw-stat .row{display:flex;justify-content:space-between;align-items:baseline;padding:11px 0;border-bottom:1px dashed var(--rule)}
+.aw-stat .row:last-child{border:none}
+.aw-stat .row .n{font-family:'Cormorant Garamond',serif;font-size:14.5px;color:var(--ink)}
+.aw-stat .row .v{font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--gold);font-weight:500}
+.aw-feed{display:flex;flex-direction:column;gap:14px}
+.aw-item{border-left:3px solid var(--navy);padding:12px 18px;background:var(--paper-2);border-top:1px solid var(--rule);border-right:1px solid var(--rule);border-bottom:1px solid var(--rule);box-shadow:0 1px 0 rgba(12,24,67,.03)}
+.aw-item .meta{font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:var(--navy);letter-spacing:.08em;margin-bottom:6px;font-weight:500}
+.aw-item .q{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:16px;line-height:1.5;color:var(--ink)}
+.aw-item .targets{margin-top:10px;display:flex;gap:5px;flex-wrap:wrap}
+.aw-item .targets span{font-family:'IBM Plex Mono',monospace;font-size:9.5px;padding:3px 8px;background:var(--paper);border:1px solid var(--rule-2);color:var(--gold-dim);letter-spacing:.1em;text-transform:uppercase;font-weight:500}
+.sust{position:relative;padding:28px 0;margin-top:10px}
+.sust-rail{position:relative;height:3px;background:var(--rule);margin:40px 30px}
+.sust-rail::before{content:"";position:absolute;top:0;left:0;right:0;bottom:0;background:linear-gradient(90deg, var(--navy) 0%, var(--navy-bright) 50%, var(--gold-bright) 100%)}
+.sust-pts{position:relative;height:0}
+.sust-pt{position:absolute;transform:translate(-50%, -50%);top:0}
+.sust-pt .dot{width:14px;height:14px;border-radius:50%;background:var(--paper-2);border:2px solid var(--navy);margin:0 auto;box-shadow:0 0 0 3px var(--paper-2)}
+.sust-pt.hot .dot{border-color:var(--gold);background:var(--gold)}
+.sust-pt .lab{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--navy);text-align:center;margin-top:10px;letter-spacing:.06em;font-weight:500}
+.sust-pt.hot .lab{color:var(--gold-dim)}
+.sust-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:56px}
+.sust-card{border:1px solid var(--rule-2);background:var(--paper-2);padding:20px;box-shadow:0 1px 0 rgba(12,24,67,.03)}
+.sust-card .date{font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:var(--gold);letter-spacing:.14em;text-transform:uppercase;font-weight:500}
+.sust-card .who{font-family:'IBM Plex Mono',monospace;font-size:12.5px;color:var(--navy);margin-top:4px;font-weight:500}
+.sust-card .title{font-family:'Cormorant Garamond',serif;font-size:19px;font-weight:600;color:var(--navy-deep);margin-top:8px;line-height:1.28;letter-spacing:-.01em}
+.sust-card .desc{font-size:13.5px;color:var(--ink-dim);line-height:1.55;margin-top:8px}
+.q-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.q-card{border:1px solid var(--rule-2);background:var(--paper-2);padding:22px 24px;display:flex;flex-direction:column;gap:14px;transition:all .18s ease;box-shadow:0 1px 0 rgba(12,24,67,.03)}
+.q-card:hover{border-color:var(--navy-bright);box-shadow:0 4px 14px rgba(12,24,67,.07)}
+.q-card .top{display:flex;align-items:center;gap:12px}
+.q-card .avatar{width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,var(--navy-bright),var(--navy));display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-weight:600;color:var(--paper-2);font-size:16px;border:1px solid var(--navy-deep)}
+.q-card .meta{display:flex;flex-direction:column}
+.q-card .meta .h{font-family:'IBM Plex Mono',monospace;font-size:12.5px;color:var(--navy);font-weight:500}
+.q-card .meta .d{font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:var(--ink-faint);letter-spacing:.06em}
+.q-card .theme{margin-left:auto;font-family:'IBM Plex Mono',monospace;font-size:9.5px;padding:4px 9px;background:var(--paper);border:1px solid var(--rule-2);color:var(--gold-dim);letter-spacing:.14em;text-transform:uppercase;font-weight:500}
+.q-card .q{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:17px;line-height:1.5;color:var(--ink);position:relative;padding-left:16px;border-left:2px solid var(--gold)}
+.q-card .bot{display:flex;justify-content:space-between;align-items:center;margin-top:auto;padding-top:10px;border-top:1px dashed var(--rule)}
+.q-card .bot .lnk{font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:var(--navy);font-weight:500}
+.q-card .bot .vstat{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--olive);letter-spacing:.1em;font-weight:500}
+.ver-head{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:24px}
+.ver-head .kb{border:1px solid var(--rule-2);padding:20px 22px;background:var(--paper-2);border-top:3px solid var(--olive-bright);box-shadow:0 1px 0 rgba(12,24,67,.03)}
+.ver-head .kb:nth-child(2){border-top-color:var(--navy)}
+.ver-head .kb:nth-child(3){border-top-color:var(--gold)}
+.ver-head .kb:nth-child(4){border-top-color:var(--warn)}
+.ver-head .kb .k{font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:var(--ink-faint);letter-spacing:.18em;text-transform:uppercase;font-weight:500}
+.ver-head .kb .v{font-family:'Cormorant Garamond',serif;font-size:34px;color:var(--olive);font-weight:600;margin-top:4px;line-height:1;letter-spacing:-.01em}
+.ver-head .kb:nth-child(2) .v{color:var(--navy-deep)}
+.ver-head .kb:nth-child(3) .v{color:var(--gold)}
+.ver-head .kb:nth-child(4) .v{color:var(--warn)}
+.ver-head .kb .s{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--ink-dim);margin-top:6px}
+.limits{border:1px solid var(--rule-2);background:var(--paper-2);padding:24px 28px;margin-top:24px;border-left:3px solid var(--navy);box-shadow:0 1px 0 rgba(12,24,67,.03)}
+.limits h4{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--navy);letter-spacing:.22em;text-transform:uppercase;margin:0 0 14px;font-weight:600}
+.limits ol{margin:0;padding-left:20px;color:var(--ink-dim);font-size:13.5px;line-height:1.65}
+.limits ol li{margin-bottom:8px}
+.limits ol li b{color:var(--navy-deep);font-weight:600}
+footer{margin-top:60px;padding-top:28px;border-top:2px solid var(--navy);color:var(--ink-faint);font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.08em;line-height:1.8}
+@media (max-width: 960px){
+  .grid-metrics{grid-template-columns:repeat(2,1fr)}
+  .prof-grid{grid-template-columns:repeat(2,1fr)}
+  .prof-detail{grid-template-columns:1fr}
+  .prof-detail .kpanel{border-left:none;border-top:1px solid var(--rule-2);padding-left:0;padding-top:18px}
+  .q-grid,.gaza-grid,.typ-grid{grid-template-columns:1fr}
+  .aw-wrap{grid-template-columns:1fr}
+  .sust-cards{grid-template-columns:1fr}
+  .ver-head{grid-template-columns:repeat(2,1fr)}
+}
+@media (max-width: 800px){
+  .layout{grid-template-columns:1fr}
+  aside.nav{position:relative;height:auto;border-right:none;border-bottom:1px solid var(--rule);padding:16px 20px}
+  nav.sections{flex-direction:row;flex-wrap:wrap;gap:4px}
+  nav.sections button{font-size:11px;padding:6px 10px;border-left:none;border-bottom:2px solid transparent}
+  nav.sections button.active{border-left:none;border-bottom-color:var(--gold)}
+  main{padding:28px 22px 80px}
+  .section-head h2{font-size:28px}
+  .section-head{flex-direction:column;align-items:flex-start}
+  .section-head .h-right{text-align:left}
+  .ba-card{grid-template-columns:1fr}
+  .ba-card .before{border-right:none;border-bottom:1px solid var(--rule)}
+  .ba-card .after{border-left:none;border-top:1px solid var(--rule)}
+  .ba-card .divider{flex-direction:row;border:none;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);padding:8px}
+  .ba-card .divider .arrow{transform:rotate(90deg)}
+  table.data{font-size:12px}
+  table.data tbody td{padding:8px 10px}
+  .spine::before{left:70px}
+  .spine .day{grid-template-columns:60px 26px 1fr}
+}
+</style>
+</head>
+<body>
+<div id="root"></div>
+
+<script type="text/babel">
+const { useState, useRef, useEffect, useMemo } = React;
+
+const META = {
+  title: "The Horseshoe Effect",
+  kicker: "VFT INSTITUTE · VOL 01 · MEDIA & RHETORIC",
+  dek: "A far-left socialist streamer and a far-right nationalist broadcaster agree on almost nothing — universal healthcare, trans rights, border policy, MAGA itself. Yet on one subject, Hasan Piker and Tucker Carlson use the same words, in the same order, for the same target. Seven verbatim phrase matches on Israel and Jews across Twitter/X and podcast transcripts, Oct 2023 – Apr 2026.",
+  byline: "DATE: APR 24, 2026 · SOURCE: PRIMARY X POSTS + PODCAST TRANSCRIPTS · FRAME: 7 VERBATIM MATCHES · 2 POLES · 1 TARGET",
+};
+
+const SECTIONS = [
+  { id:"dashboard",     n:"01", title:"Dashboard" },
+  { id:"before-after",  n:"02", title:"The Matched Pairs" },
+  { id:"quant",         n:"03", title:"Reach & Engagement" },
+  { id:"profiles",      n:"04", title:"The Two Poles" },
+  { id:"itinerary",     n:"05", title:"Convergence Timeline" },
+  { id:"gaza",          n:"06", title:"The Target of Both" },
+  { id:"typology",      n:"07", title:"Phrase Typology" },
+  { id:"antiwoke",      n:"08", title:"The Convergence" },
+  { id:"sustained",     n:"09", title:"Media Ecosystem" },
+  { id:"quotes",        n:"10", title:"Key Quotes" },
+  { id:"verification",  n:"11", title:"Methodology & Sources" },
+];
+
+const METRICS = [
+  { k:"Verbatim Phrase Matches",        v:"7",         u:"exact or near-exact matches · 2 figures · 1 target",                          p:100 },
+  { k:"Poles Analyzed",                 v:"2",         u:"Hasan Piker (far left) · Tucker Carlson (dissident right)",                  p:100, olive:true },
+  { k:"Peak Single Match Reach",        v:"12.2M",     u:"Carlson · 'Israel's Apartheid System' · Aug 11, 2025",                       p:100, alt:true },
+  { k:"Combined Top-Match Reach",       v:"33M+",      u:"aggregate views across 11 primary posts surveyed",                            p:90,  alt:true },
+  { k:"Date Range",                     v:"Oct '23\u2013Apr '26", u:"30 months of verbatim language alignment",                         p:80,  navy:true },
+  { k:"Same-Day Convergence Events",    v:"1",         u:"Apr 9, 2026 \u2014 both call to sever U.S.\u2013Israel ties within hours",   p:15,  navy:true },
+  { k:"Podcast Appearances Cross-Cited", v:"5",        u:"Piker on Pod Save America; Carlson Show episodes",                            p:45,  olive:true },
+  { k:"Political Distance",             v:"180\u00B0", u:"they agree on almost nothing else on record",                                 p:100 },
+];
+
+const INITIALS = {
+  "@hasanthehun": "HP",
+  "@TuckerCarlson": "TC",
+  "PIKER": "HP",
+  "CARLSON": "TC",
+};
+
+const QUANT = [
+  { h:"Ethnic cleansing",          f:2600000,  b:2600000,  d:0,        a:0,       tot:2600000,  pct:null, kind:"con", label:"PIKER \u2192 CARLSON" },
+  { h:"Open air prison",           f:6000000,  b:6000000,  d:0,        a:0,       tot:6000000,  pct:null, kind:"con", label:"PIKER \u2192 CARLSON" },
+  { h:"War crimes in Gaza",        f:3989000,  b:989000,   d:3000000,  a:0,       tot:3989000,  pct:null, kind:"new", label:"BOTH ON X" },
+  { h:"Apartheid state / system",  f:14300000, b:2100000,  d:12200000, a:0,       tot:14300000, pct:null, kind:"new", label:"BOTH \u00B7 NEAR-EXACT" },
+  { h:"Israel controls",           f:247000,   b:247000,   d:0,        a:0,       tot:247000,   pct:null, kind:"con", label:"PIKER \u2192 CARLSON" },
+  { h:"No more aid / detach",      f:2910000,  b:1110000,  d:1800000,  a:0,       tot:2910000,  pct:null, kind:"new", label:"SAME-DAY APR 9" },
+  { h:"Fighting wars on Israel",   f:3700000,  b:200000,   d:3700000,  a:0,       tot:3900000,  pct:null, kind:"new", label:"BOTH \u00B7 FRAME MATCH" },
+];
+
+const BA = [
+  {
+    h:"#1 \u00B7 \u201Cethnic cleansing\u201D",
+    tone_before:"Piker \u00B7 Far Left",
+    tone_after:"Carlson \u00B7 Dissident Right",
+    delta:"\u201CETHNIC CLEANSING\u201D",
+    delta_sub:"exact verbatim match",
+    before:{ date:"Oct 17, 2023 \u00B7 2.6M views", text:"the western world has blood on its hands for cheerleading this ethnic cleansing campaign.", url:null },
+    after:{ date:"Tucker Carlson Show \u00B7 \u2018Tucker on the New Religion\u2019 \u00B7 ~12:45", text:"our government is effectively sanctioning the ethnic cleansing of southern Lebanon including Christian villages, ancient Christian villages.", url:null }
+  },
+  {
+    h:"#2 \u00B7 \u201Copen air prison\u201D",
+    tone_before:"Piker \u00B7 Far Left",
+    tone_after:"Carlson \u00B7 Dissident Right",
+    delta:"\u201COPEN AIR PRISON\u201D",
+    delta_sub:"exact verbatim match \u00B7 tweet + both podcasts",
+    before:{ date:"Oct 10, 2023 \u00B7 6.0M views", text:"2 million elderly and children living in an open air prison that israel routinely bombs. it's the most sophisticated baby killing machine out there.", url:null },
+    after:{ date:"Tucker Carlson Show \u00B7 \u2018Here\u2019s What It\u2019s Really Like to Live as a Christian in the Holy Land\u2019 \u00B7 ~14:21", text:"if they live in gaza [they\u2019ve] have not been able to\u2026 basically been in an open air prison for certainly the last twenty years.", url:null }
+  },
+  {
+    h:"#3 \u00B7 \u201Cwar crimes\u201D in Gaza",
+    tone_before:"Piker \u00B7 Far Left",
+    tone_after:"Carlson \u00B7 Dissident Right",
+    delta:"\u201CWAR CRIMES IN GAZA\u201D",
+    delta_sub:"both on X + both on podcast",
+    before:{ date:"Jan 30, 2024 \u00B7 989K views", text:"israel's real war crimes are good because if hamas hypothetically did the exact same war crimes they would be so much more violent.", url:null },
+    after:{ date:"Aug 6, 2025 \u00B7 3.0M views", text:"horrifying war crimes in Gaza\u2026 tens of thousands of people, noncombatants, women and children have been killed by the Israeli military using American weapons paid for by the US Congress and there will be a reckoning.", url:null }
+  },
+  {
+    h:"#4 \u00B7 \u201Capartheid state / system\u201D",
+    tone_before:"Piker \u00B7 Far Left",
+    tone_after:"Carlson \u00B7 Dissident Right",
+    delta:"\u201CAPARTHEID\u201D",
+    delta_sub:"90%+ concept match \u00B7 same word root",
+    before:{ date:"Nov 12, 2023 \u00B7 2.1M views", text:"israel has been one state since 1967. an apartheid state. it must be dismantled and rebuilt as a pluralistic secular democratic nation state.", url:null },
+    after:{ date:"Aug 11, 2025 \u00B7 12.2M views", text:"Israel\u2019s Apartheid System. [Tucker Carlson Show episode segment title, timestamp 6:39]", url:null }
+  },
+  {
+    h:"#5 \u00B7 \u201CIsrael controls\u201D",
+    tone_before:"Piker \u00B7 Far Left",
+    tone_after:"Carlson \u00B7 Dissident Right",
+    delta:"\u201CISRAEL CONTROLS\u201D",
+    delta_sub:"exact verbatim match \u00B7 ×3 instances",
+    before:{ date:"Jan 2, 2026 \u00B7 247K views", text:"then \u2018smart thinkers\u2019 wonder why ppl think israel controls the us? this is why.", url:null },
+    after:{ date:"Tucker Carlson Show \u00B7 \u2018Christian in the Holy Land\u2019 \u00B7 ~1:23:57", text:"well israel controls those countries now.", url:null }
+  },
+  {
+    h:"#6 \u00B7 \u201Cno more aid\u201D / \u201Cdetach\u201D",
+    tone_before:"Piker \u00B7 Far Left",
+    tone_after:"Carlson \u00B7 Dissident Right",
+    delta:"SEVER U.S.\u2013ISRAEL",
+    delta_sub:"same-day convergence \u00B7 Apr 9, 2026",
+    before:{ date:"Jan 9, 2026 \u00B7 652K views \u00B7 Apr 5, 2026 \u00B7 458K views", text:"no more aid to israel. [Jan 9] \u2026 voters who want change\u2026 dems who\u2019ll cut off israel. [Apr 5]", url:null },
+    after:{ date:"Apr 9, 2026 \u00B7 1.8M views", text:"We need to detach from Israel immediately.", url:null }
+  },
+  {
+    h:"#7 \u00B7 \u201Cfighting wars on Israel\u2019s behalf\u201D",
+    tone_before:"Piker \u00B7 Far Left",
+    tone_after:"Carlson \u00B7 Dissident Right",
+    delta:"\u201CFIGHTING WARS FOR ISRAEL\u201D",
+    delta_sub:"frame match \u00B7 episode title + podcast guest",
+    before:{ date:"Pod Save America \u00B7 Sep 25, 2025 \u00B7 200K views", text:"we want to end all wars and redirect the funds back to our crippled infrastructure.", url:null },
+    after:{ date:"Feb 21, 2026 \u00B7 3.7M views \u00B7 episode segment 1:55:08", text:"Fighting Wars on Israel\u2019s Behalf \u2026 Netanyahu, an absolutely disgusting warmonger who has dragged us into terrible wars\u2026 why he gets 57 standing ovations in the US Congress.", url:null }
+  },
+];
+
+const PROFILES = [
+  {
+    h:"@hasanthehun",
+    followers:1400000,
+    role:"Hasan Piker \u00B7 Socialist Twitch streamer \u00B7 1.4M X followers \u00B7 former Young Turks",
+    typology:"FAR LEFT \u00B7 THE LEFT POLE",
+    headline:"Pro-universal healthcare, pro-trans, pro-immigrant, anti-MAGA (\u201CMAGA IS FUCKING CATTLE,\u201D Mar 6, 2026). Disagrees with Carlson on nearly every domestic issue. Yet his entire Israel vocabulary \u2014 \u2018apartheid state,\u2019 \u2018open air prison,\u2019 \u2018ethnic cleansing,\u2019 \u2018war crimes,\u2019 \u2018israel controls,\u2019 \u2018no more aid\u2019 \u2014 surfaces in Carlson\u2019s output between 10 months and 18 months later.",
+    career:"Consolidated Israel-critique franchise across Twitch, X, and guest podcasts",
+    timeline:[
+      { date:"Oct 10, 2023",  text:"2 million elderly and children living in an open air prison that israel routinely bombs. [6.0M views]", url:null },
+      { date:"Oct 17, 2023",  text:"the western world has blood on its hands for cheerleading this ethnic cleansing campaign. [2.6M views]", url:null },
+      { date:"Nov 12, 2023",  text:"an apartheid state. it must be dismantled and rebuilt as a pluralistic secular democratic nation state. [2.1M views]", url:null },
+      { date:"Jan 30, 2024",  text:"israel's real war crimes are good because if hamas hypothetically did the exact same war crimes they would be so much more violent. [989K views]", url:null },
+      { date:"Sep 25, 2025",  text:"we want to end all wars and redirect the funds back to our crippled infrastructure. [Pod Save America, 200K views]", url:null },
+      { date:"Jan 2, 2026",   text:"then 'smart thinkers' wonder why ppl think israel controls the us? this is why. [247K views]", url:null },
+      { date:"Jan 9, 2026",   text:"no more aid to israel. [652K views]", url:null },
+      { date:"Mar 6, 2026",   text:"MAGA IS FUCKING CATTLE. [reference post \u2014 establishes political distance from Carlson]", url:null },
+      { date:"Apr 5, 2026",   text:"voters who want change\u2026 dems who\u2019ll cut off israel. [458K views]", url:null },
+      { date:"Apr 9, 2026",   text:"america is on a suicide pact with israel (that israel controls). [same-day convergence with Carlson \u2018detach\u2019 post]", url:null },
+    ]
+  },
+  {
+    h:"@TuckerCarlson",
+    followers:15800000,
+    role:"Tucker Carlson \u00B7 Nationalist broadcaster \u00B7 15.8M X followers \u00B7 The Tucker Carlson Show",
+    typology:"DISSIDENT RIGHT \u00B7 THE RIGHT POLE",
+    headline:"Pro-border wall, anti-DEI, endorsed Trump (\u201CDonald Trump is the only answer,\u201D Oct 24, 2024). Disagrees with Piker on nearly every domestic issue. Yet between Aug 2025 and Apr 2026 he adopts Piker\u2019s exact Israel vocabulary \u2014 including the 12.2M-view \u2018Apartheid System\u2019 episode title and the 3.7M-view \u2018Fighting Wars on Israel\u2019s Behalf\u2019 segment.",
+    career:"Rebuilt post-Fox show around on-location podcasts + episode drops on X",
+    timeline:[
+      { date:"Oct 24, 2024",  text:"Donald Trump is the only answer. [reference post \u2014 establishes political distance from Piker]", url:null },
+      { date:"Aug 6, 2025",   text:"horrifying war crimes in Gaza. [3.0M views]", url:null },
+      { date:"Aug 11, 2025",  text:"Israel\u2019s Apartheid System. [12.2M views \u2014 episode segment 6:39]", url:null },
+      { date:"~Fall 2025",    text:"our government is effectively sanctioning the ethnic cleansing of southern Lebanon\u2026 ancient Christian villages. [\u2018New Religion\u2019 episode, ~12:45]", url:null },
+      { date:"~Fall 2025",    text:"if they live in gaza [they\u2019ve] basically been in an open air prison for certainly the last twenty years. [\u2018Christian in the Holy Land\u2019 episode]", url:null },
+      { date:"~Fall 2025",    text:"well israel controls those countries now. [same episode, ~1:23:57]", url:null },
+      { date:"Feb 21, 2026",  text:"Fighting Wars on Israel\u2019s Behalf. [3.7M views \u2014 episode segment 1:55:08; guest: \u2018Netanyahu has dragged us into terrible wars\u2026 57 standing ovations\u2019]", url:null },
+      { date:"Apr 9, 2026",   text:"We need to detach from Israel immediately. [1.8M views \u2014 same day as Piker \u2018israel controls\u2019 post]", url:null }
+    ]
+  }
+];
+
+const ITINERARY = [
+  { day:"Oct '23", date:"10",    loc:"Piker \u00B7 \u201Copen air prison\u201D",         act:"First verbatim phrase that will later appear in Carlson. 2 million elderly and children framing. 6.0M views.", att:["PIKER"] },
+  { day:"Oct '23", date:"17",    loc:"Piker \u00B7 \u201Cethnic cleansing\u201D",          act:"\u2018western world has blood on its hands.\u2019 2.6M views. Enters Piker vocabulary.", att:["PIKER"] },
+  { day:"Nov '23", date:"12",    loc:"Piker \u00B7 \u201Capartheid state\u201D",           act:"Posits Israel must be \u2018dismantled and rebuilt.\u2019 2.1M views. The word-root Carlson will later echo as \u2018Apartheid System.\u2019", att:["PIKER"] },
+  { day:"Jan '24", date:"30",    loc:"Piker \u00B7 \u201Cwar crimes\u201D",                 act:"Tweet + podcast use of \u2018war crimes galore.\u2019 989K views.", att:["PIKER"] },
+  { day:"Aug '25", date:"06",    loc:"Carlson \u00B7 \u201Cwar crimes in Gaza\u201D",      act:"First Carlson verbatim match on X. 3.0M views. 19 months after Piker\u2019s first use of the same frame.", att:["CARLSON"] },
+  { day:"Aug '25", date:"11",    loc:"Carlson \u00B7 \u201CApartheid System\u201D",         act:"Episode segment title \u2014 12.2M views \u2014 the single largest reach event in the dataset. ~21 months after Piker\u2019s \u2018apartheid state.\u2019", att:["CARLSON"], ext:true },
+  { day:"Fall '25", date:"\u2014", loc:"Carlson podcast series",                           act:"Three Piker-matched phrases inside Tucker Carlson Show episodes: \u2018ethnic cleansing,\u2019 \u2018open air prison,\u2019 \u2018israel controls.\u2019", att:["CARLSON"] },
+  { day:"Jan '26", date:"02",    loc:"Piker \u00B7 \u201Cisrael controls\u201D",            act:"\u2018smart thinkers wonder why ppl think israel controls the us.\u2019 247K views.", att:["PIKER"] },
+  { day:"Jan '26", date:"09",    loc:"Piker \u00B7 \u201Cno more aid\u201D",                act:"Policy demand to sever U.S. aid. 652K views.", att:["PIKER"] },
+  { day:"Feb '26", date:"21",    loc:"Carlson \u00B7 \u201CFighting Wars on Israel\u2019s Behalf\u201D", act:"Episode segment title 1:55:08 \u2014 3.7M views. Frame-matched to Piker\u2019s Sep \u201925 podcast quote.", att:["CARLSON"], ext:true },
+  { day:"Apr '26", date:"05",    loc:"Piker \u00B7 \u201Ccut off israel\u201D",             act:"\u2018voters who want change\u2026 dems who\u2019ll cut off israel.\u2019 458K views.", att:["PIKER"] },
+  { day:"Apr '26", date:"09",    loc:"Piker + Carlson \u00B7 convergence",                act:"SAME-DAY: Piker posts \u2018america is on a suicide pact with israel (that israel controls).\u2019 Carlson posts \u2018We need to detach from Israel immediately\u2019 \u2014 1.8M views. First documented same-day echo.", att:["PIKER","CARLSON"], sync:true }
+];
+
+const GAZA = [
+  {
+    h:"THE CONVERGENCE",
+    tag:"THE CONVERGENCE",
+    title:"A far-left socialist and a far-right nationalist using the same words, in the same order, about the same target.",
+    finds:[
+      "Seven matched phrases across two figures with 180° political distance on nearly every other issue.",
+      "Piker's phrases precede Carlson's by 10–21 months — in every matched case, Piker uses the language first.",
+      "On April 9, 2026, both figures post anti-Israel content within the same 24-hour window — the first documented same-day echo."
+    ],
+    tweets:[
+      { dt:"Oct 10", qt:"2 million elderly and children living in an open air prison that israel routinely bombs. — Piker, 6.0M views", url:null },
+      { dt:"Aug 11", qt:"Israel's Apartheid System. — Carlson, 12.2M views", url:null },
+      { dt:"Apr 9",  qt:"america is on a suicide pact with israel (that israel controls). — Piker", url:null },
+      { dt:"Apr 9",  qt:"We need to detach from Israel immediately. — Carlson, 1.8M views", url:null }
+    ]
+  },
+  {
+    h:"THE TARGET",
+    tag:"THE TARGET",
+    title:"Seven phrases, one subject, two poles.",
+    finds:[
+      "Every matched phrase references Israel, Jews, or U.S.–Israel policy. Not Russia. Not China. Not any other state.",
+      "The phrase families cluster on: (1) state-violence framing, (2) containment imagery, (3) covert-control attribution, (4) policy severance demands.",
+      "The convergence is not accidental agreement on a complex foreign-policy question — it is verbatim vocabulary transfer, usually left-to-right."
+    ],
+    tweets:[
+      { dt:"Nov 12", qt:"an apartheid state. it must be dismantled. — Piker, 2.1M views", url:null },
+      { dt:"Aug 06", qt:"horrifying war crimes in Gaza. — Carlson, 3.0M views", url:null },
+      { dt:"Jan 02", qt:"israel controls the us. — Piker, 247K views", url:null },
+      { dt:"Fall",   qt:"israel controls those countries now. — Carlson podcast, 1:23:57", url:null }
+    ]
+  }
+];
+
+const TYPOLOGY = [
+  { kind:"warn",  num:"01", arc:"state violence framed as war crime or genocide analog", name:"War-Crime Frame",        handles:["\u201Cwar crimes in Gaza\u201D","\u201Cethnic cleansing\u201D"], desc:"Both figures deploy international-criminal-law vocabulary to describe Israeli military operations. Piker seeded the frame in Oct 2023; Carlson adopted it publicly in Aug 2025 and reinforced with the \u2018reckoning\u2019 language and \u2018American weapons paid for by US Congress\u2019 framing." },
+  { kind:"navy",  num:"02", arc:"civilian population as a captive or confined mass",      name:"Containment Metaphor",    handles:["\u201Copen air prison\u201D"], desc:"One of the most durable matched phrases \u2014 used by Piker on X (Oct 2023, 6.0M views), in his Pod Save America appearance, and by Carlson in his \u2018Christian in the Holy Land\u2019 episode. Word order, article, and modifiers are identical." },
+  { kind:"ink",   num:"03", arc:"foreign state attributed disproportionate U.S. influence", name:"Covert-Control Attribution", handles:["\u201CIsrael controls\u201D"], desc:"Piker's Jan 2026 formulation \u2014 \u2018ppl think israel controls the us\u2019 \u2014 appears in a Carlson episode as \u2018israel controls those countries now.\u2019 Verbatim two-word sequence; same implied agency transfer." },
+  { kind:"warn",  num:"04", arc:"dehumanizing categorical label for a sovereign state",    name:"Dehumanizing Categorical", handles:["\u201Capartheid state / system\u201D"], desc:"Piker (Nov 2023): \u2018an apartheid state.\u2019 Carlson (Aug 2025): \u2018Israel\u2019s Apartheid System\u2019 \u2014 used as an episode segment title reaching 12.2M views, the single highest-reach match point. Same word root, same categorical function." },
+  { kind:"olive", num:"05", arc:"policy imperative to sever the U.S.\u2013Israel relationship", name:"Policy Severance Demand", handles:["\u201Cno more aid\u201D","\u201Cdetach\u201D","\u201Ccut off\u201D"], desc:"Piker (Jan 9, 2026): \u2018no more aid to israel.\u2019 Carlson (Apr 9, 2026): \u2018We need to detach from Israel immediately.\u2019 Same imperative mood, same direct-object, posted within hours of a Piker \u2018israel controls\u2019 restatement the same day." },
+  { kind:"",      num:"06", arc:"U.S. military engagements reframed as client-state service", name:"Fighting-For-Israel Frame", handles:["\u201Cfighting wars on Israel\u2019s behalf\u201D","\u201Cdragged into wars\u201D"], desc:"Carlson titles a Feb 2026 episode segment \u2018Fighting Wars on Israel\u2019s Behalf\u2019 (3.7M views). A podcast guest describes Netanyahu as \u2018dragging us into terrible wars.\u2019 Mirrors Piker\u2019s Sep 2025 Pod Save framing of wars as misdirected funds that should go to \u2018our crippled infrastructure.\u2019" }
+];
+
+const AW_STATS = [
+  { n:"Verbatim phrase matches",                    v:"7" },
+  { n:"Political distance between figures",         v:"180\u00B0" },
+  { n:"Direction of language flow (in every match)", v:"Left \u2192 Right" },
+  { n:"Average lag, Piker first use \u2192 Carlson", v:"~14 months" },
+  { n:"Largest single-event reach",                 v:"12.2M views" },
+  { n:"Same-day echo dates",                        v:"Apr 9, 2026" },
+  { n:"Podcasts cross-cited",                       v:"5 (TCS + PSA)" },
+  { n:"Non-Israel issue agreement on record",       v:"\u2014 none found" }
+];
+
+const AW_FEED = [
+  { meta:"Piker \u00B7 Oct 17, 2023 \u00B7 2.6M views",              q:"the western world has blood on its hands for cheerleading this ethnic cleansing campaign.", targets:["ethnic cleansing","Israel","Gaza"] },
+  { meta:"Carlson \u00B7 TCS \u2018New Religion\u2019 \u00B7 ~12:45", q:"our government is effectively sanctioning the ethnic cleansing of southern Lebanon including Christian villages, ancient Christian villages.", targets:["ethnic cleansing","Lebanon","Christians"] },
+  { meta:"Piker \u00B7 Nov 12, 2023 \u00B7 2.1M views",              q:"an apartheid state. it must be dismantled and rebuilt as a pluralistic secular democratic nation state.", targets:["apartheid","Israel","dismantle"] },
+  { meta:"Carlson \u00B7 Aug 11, 2025 \u00B7 12.2M views",           q:"Israel\u2019s Apartheid System. [episode segment title, 6:39]", targets:["apartheid","Israel","episode title"] },
+  { meta:"Piker \u00B7 Jan 2, 2026 \u00B7 247K views",               q:"then \u2018smart thinkers\u2019 wonder why ppl think israel controls the us? this is why.", targets:["Israel controls","US"] },
+  { meta:"Carlson \u00B7 TCS \u2018Holy Land\u2019 \u00B7 ~1:23:57",   q:"well israel controls those countries now.", targets:["Israel controls","Middle East"] },
+  { meta:"Piker \u00B7 Apr 5, 2026 \u00B7 458K views",               q:"voters who want change\u2026 dems who\u2019ll cut off israel.", targets:["policy severance","aid"] },
+  { meta:"Carlson \u00B7 Apr 9, 2026 \u00B7 1.8M views",             q:"We need to detach from Israel immediately.", targets:["policy severance","detach"] }
+];
+
+const SUSTAINED_PTS = [
+  { pos:8,  lab:"Oct '23 \u00B7 Piker seeds 3 matched phrases" },
+  { pos:22, lab:"Jan '24 \u00B7 \u2018war crimes\u2019" },
+  { pos:44, lab:"Sep '25 \u00B7 Piker PSA podcast" },
+  { pos:56, lab:"Aug '25 \u00B7 Carlson adopts 4 phrases", hot:true },
+  { pos:74, lab:"Feb '26 \u00B7 \u2018Fighting Wars\u2019 episode" },
+  { pos:92, lab:"Apr 9 '26 \u00B7 same-day echo" }
+];
+
+const SUSTAINED_CARDS = [
+  { date:"Twitch \u00B7 Kick \u00B7 YouTube",   who:"Hasan Piker",          title:"Livestream-native socialist commentary",        desc:"Piker builds audience through 8\u201312 hour daily Twitch streams, clipped to TikTok and X by his community. Tweet-length formulations are audience-tested live before they are posted \u2014 which means the verbatim phrases in the dataset are not ad-libs, they are refined bits." },
+  { date:"Independent \u00B7 X \u00B7 YouTube", who:"Tucker Carlson",       title:"Post-Fox independent podcast network",           desc:"Carlson's post-Fox operation runs long-form interview podcasts with episode clips re-released as standalone X posts. The \u2018Apartheid System\u2019 and \u2018Fighting Wars\u2019 segments were not single live statements \u2014 they are edited, titled, and promoted deliverables." },
+  { date:"Pod Save America",                      who:"Crooked Media",        title:"Cross-audience podcast booking",                  desc:"Piker's Sep 2025 Pod Save appearance is the clearest bridge between livestream vocabulary and mainstream-adjacent podcast discourse. The \u2018open air prison,\u2019 \u2018war crimes galore,\u2019 and \u2018end all wars\u2019 phrases appear inside a single episode hosted by a pro-Democratic-establishment outlet." },
+  { date:"The Tucker Carlson Show",               who:"Guest-driven podcast", title:"Guest-as-vector amplification",                    desc:"Several matched phrases in Carlson's feed are spoken by guests on his show with his assent, not by Carlson directly \u2014 \u2018open air prison,\u2019 \u2018Netanyahu dragged us into wars,\u2019 \u2018horrifying war crimes.\u2019 The episode titling and the host\u2019s framing convert guest language into house language." },
+  { date:"Apr 9, 2026",                           who:"Simultaneous posts",    title:"Same-day echo",                                  desc:"Piker posts a \u2018suicide pact with israel (that israel controls)\u2019 framing. Carlson posts \u2018We need to detach from Israel immediately\u2019 within hours. No public evidence of coordination; the strongest explanation is that the same news cycle is being narrated in the same vocabulary from both poles simultaneously." },
+  { date:"Oct \u201923 \u2192 Apr \u201926",      who:"30-month arc",         title:"Direction of flow",                                desc:"In every matched pair, Piker\u2019s use predates Carlson\u2019s by 10\u201321 months. The horseshoe closes left-to-right \u2014 a vocabulary developed inside a left-wing streaming ecosystem migrates into a nationalist podcast franchise roughly a year and a half later, at equal or greater reach." }
+];
+
+const QUOTES = [
+  { h:"@hasanthehun",   date:"Oct 10, 2023", theme:"Containment",         q:"2 million elderly and children living in an open air prison that israel routinely bombs.", url:null },
+  { h:"@TuckerCarlson", date:"Fall 2025",    theme:"Containment",         q:"if they live in gaza [they\u2019ve] basically been in an open air prison for certainly the last twenty years.", url:null },
+  { h:"@hasanthehun",   date:"Oct 17, 2023", theme:"War-Crime",           q:"the western world has blood on its hands for cheerleading this ethnic cleansing campaign.", url:null },
+  { h:"@TuckerCarlson", date:"Fall 2025",    theme:"War-Crime",           q:"our government is effectively sanctioning the ethnic cleansing of southern Lebanon.", url:null },
+  { h:"@hasanthehun",   date:"Nov 12, 2023", theme:"Categorical",         q:"an apartheid state. it must be dismantled and rebuilt as a pluralistic secular democratic nation state.", url:null },
+  { h:"@TuckerCarlson", date:"Aug 11, 2025", theme:"Categorical",         q:"Israel\u2019s Apartheid System.", url:null },
+  { h:"@hasanthehun",   date:"Jan 30, 2024", theme:"War-Crime",           q:"israel\u2019s real war crimes are good because if hamas hypothetically did the exact same war crimes they would be so much more violent.", url:null },
+  { h:"@TuckerCarlson", date:"Aug 6, 2025",  theme:"War-Crime",           q:"horrifying war crimes in Gaza.", url:null },
+  { h:"@hasanthehun",   date:"Jan 2, 2026",  theme:"Covert-Control",      q:"\u2018smart thinkers\u2019 wonder why ppl think israel controls the us? this is why.", url:null },
+  { h:"@TuckerCarlson", date:"Fall 2025",    theme:"Covert-Control",      q:"well israel controls those countries now.", url:null },
+  { h:"@hasanthehun",   date:"Jan 9, 2026",  theme:"Severance",           q:"no more aid to israel.", url:null },
+  { h:"@TuckerCarlson", date:"Apr 9, 2026",  theme:"Severance",           q:"We need to detach from Israel immediately.", url:null },
+  { h:"@hasanthehun",   date:"Sep 25, 2025", theme:"Fighting-For-Israel", q:"we want to end all wars and redirect the funds back to our crippled infrastructure.", url:null },
+  { h:"@TuckerCarlson", date:"Feb 21, 2026", theme:"Fighting-For-Israel", q:"Fighting Wars on Israel\u2019s Behalf. [episode segment title]", url:null },
+  { h:"@hasanthehun",   date:"Mar 6, 2026",  theme:"Political Distance",  q:"MAGA IS FUCKING CATTLE.", url:null },
+  { h:"@TuckerCarlson", date:"Oct 24, 2024", theme:"Political Distance",  q:"Donald Trump is the only answer.", url:null },
+];
+
+const QUOTE_THEMES = ["All","Containment","War-Crime","Categorical","Covert-Control","Severance","Fighting-For-Israel","Political Distance"];
+
+const BA_TONES = ["All","Piker","Carlson"];
+
+const VER_TABLE = [
+  { h:"@hasanthehun",   n:10, s:"Analyzed", note:"10 primary posts + 1 podcast appearance (Pod Save America) cited \u00B7 all phrases sourced to date-stamped tweets or named episode timestamps" },
+  { h:"@TuckerCarlson", n:8,  s:"Analyzed", note:"4 X posts + 4 podcast episodes cited \u00B7 episode titles and approximate timestamps preserved \u00B7 some quotes are guest statements on Carlson\u2019s show with Carlson\u2019s assent" },
+  { h:"Pod Save America",     n:1, s:"Analyzed", note:"One episode cross-cited \u2014 \u2018Hasan Piker Has Thoughts on the Hasan Piker Discourse\u2019 \u00B7 timestamps ~24:28 and ~28:42" },
+  { h:"Tucker Carlson Show",  n:4, s:"Analyzed", note:"Four episodes cited \u2014 \u2018New Religion,\u2019 \u2018Christian in the Holy Land,\u2019 \u2018Troops Being Dragged Into Iran,\u2019 \u2018Blackmail, Bribes, and Fear\u2019" }
+];
+
+const SOURCES = [
+  { n:"01", pub:"@hasanthehun \u00B7 X",   title:"\u2018open air prison\u2019 tweet",               desc:"Oct 10, 2023 \u00B7 6.0M views \u00B7 earliest verbatim phrase that later surfaces in Carlson content." },
+  { n:"02", pub:"@hasanthehun \u00B7 X",   title:"\u2018ethnic cleansing campaign\u2019 tweet",     desc:"Oct 17, 2023 \u00B7 2.6M views." },
+  { n:"03", pub:"@hasanthehun \u00B7 X",   title:"\u2018apartheid state\u2019 tweet",                desc:"Nov 12, 2023 \u00B7 2.1M views \u00B7 calls for state dismantlement." },
+  { n:"04", pub:"@hasanthehun \u00B7 X",   title:"\u2018war crimes\u2019 tweet",                     desc:"Jan 30, 2024 \u00B7 989K views." },
+  { n:"05", pub:"@hasanthehun \u00B7 X",   title:"\u2018israel controls the us\u2019 tweet",         desc:"Jan 2, 2026 \u00B7 247K views." },
+  { n:"06", pub:"@hasanthehun \u00B7 X",   title:"\u2018no more aid to israel\u2019 tweet",          desc:"Jan 9, 2026 \u00B7 652K views." },
+  { n:"07", pub:"@hasanthehun \u00B7 X",   title:"\u2018cut off israel\u2019 tweet",                 desc:"Apr 5, 2026 \u00B7 458K views." },
+  { n:"08", pub:"Pod Save America",        title:"Hasan Piker Has Thoughts on the Hasan Piker Discourse", desc:"Piker guest appearance \u00B7 timestamps ~24:28 (\u2018world\u2019s largest open air prison\u2019) and ~28:42 (\u2018war crimes galore\u2019)." },
+  { n:"09", pub:"@TuckerCarlson \u00B7 X", title:"\u2018war crimes in Gaza\u2019 tweet",             desc:"Aug 6, 2025 \u00B7 3.0M views \u00B7 first Carlson verbatim match on X." },
+  { n:"10", pub:"@TuckerCarlson \u00B7 X", title:"\u2018Israel\u2019s Apartheid System\u2019 episode promo", desc:"Aug 11, 2025 \u00B7 12.2M views \u00B7 episode segment 6:39 \u00B7 highest single-post reach in the dataset." },
+  { n:"11", pub:"@TuckerCarlson \u00B7 X", title:"\u2018Fighting Wars on Israel\u2019s Behalf\u2019 episode promo", desc:"Feb 21, 2026 \u00B7 3.7M views \u00B7 episode segment 1:55:08." },
+  { n:"12", pub:"@TuckerCarlson \u00B7 X", title:"\u2018detach from Israel immediately\u2019 tweet", desc:"Apr 9, 2026 \u00B7 1.8M views \u00B7 same-day as Piker \u2018israel controls\u2019 post." },
+  { n:"13", pub:"Tucker Carlson Show",     title:"\u2018Tucker on the New Religion\u2019",           desc:"Episode feat. \u2018ethnic cleansing of southern Lebanon\u2026 ancient Christian villages\u2019 at ~12:45." },
+  { n:"14", pub:"Tucker Carlson Show",     title:"\u2018Here\u2019s What It\u2019s Really Like to Live as a Christian in the Holy Land\u2019", desc:"Episode feat. \u2018open air prison\u2019 at ~14:21 and \u2018israel controls those countries now\u2019 at ~1:23:57." },
+  { n:"15", pub:"Tucker Carlson Show",     title:"\u2018Troops Being Dragged Into Iran\u2019",       desc:"Episode feat. \u2018horrifying war crimes committed in Gaza\u2026 tens of thousands\u2026 American weapons\u2026 there will be a reckoning\u2019 at ~42:03." },
+  { n:"16", pub:"Tucker Carlson Show",     title:"\u2018Blackmail, Bribes, and Fear\u2019",          desc:"Episode feat. guest on Netanyahu: \u2018an absolutely disgusting warmonger who has dragged us into terrible wars\u2026 57 standing ovations\u2019 at 45:24." }
+];
+
+function SidebarNav({active, onJump}){
+  return (
+    <aside className="nav">
+      <div className="brandmark">
+        <div className="kicker">{META.kicker}</div>
+        <div className="title">{META.title}</div>
+        <div className="sub">VFT \u00B7 INVESTIGATIVE REPORT</div>
+      </div>
+      <div className="seal">
+        <b>INSTITUTE</b><br/>
+        Vine &amp; Fig Tree Institute \u00B7 Hudson Valley, NY.<br/><br/>
+        <b>DEPARTMENT</b><br/>
+        Media &amp; rhetoric analysis \u00B7 primary social-media data \u00B7 source-triangulated.
+      </div>
+      <nav className="sections">
+        {SECTIONS.map(s =>
+          <button key={s.id} className={active===s.id?"active":""} onClick={()=>onJump(s.id)}>
+            <span className="num">{s.n}</span><span>{s.title}</span>
+          </button>
+        )}
+      </nav>
+      <div className="nav-foot">
+        <div><span className="dot"></span>REPORT \u00B7 APR 24, 2026</div>
+        <div style={{marginTop:8}}>DATA CUTOFF \u00B7 APR 13, 2026</div>
+        <div>INVESTIGATIVE \u00B7 SOURCE-VERIFIED</div>
+      </div>
+    </aside>
+  );
+}
+
+function SectionHead({n, title, note}){
+  return (
+    <div className="section-head">
+      <div className="h-left">
+        <div className="tag">PART {n}</div>
+        <h2>{title}</h2>
+      </div>
+      <div className="h-right">{note}</div>
+    </div>
+  );
+}
+
+function Dashboard(){
+  return (
+    <section id="dashboard">
+      <SectionHead n="01" title="Dashboard" note="Eight metrics summarizing the two figures, the pivot, and the convergence pattern."/>
+      <div className="headline">
+        <div className="dek">{META.dek}</div>
+        <div className="byline">{META.byline}</div>
+      </div>
+      <div className="grid-metrics">
+        {METRICS.map((m,i)=>
+          <div key={i} className={"metric " + (m.alt?"alt ":"") + (m.navy?"navy ":"") + (m.olive?"olive ":"") }>
+            <div className="k">{m.k}</div>
+            <div className="v">{m.v}</div>
+            <div className="u">{m.u}</div>
+            <div className="bar" style={{"--p":m.p+"%"}}></div>
+          </div>
+        )}
+      </div>
+    </section>
+  );
+}
+
+function BeforeAfter(){
+  const tones = BA_TONES;
+  const [filter,setFilter] = useState("All");
+  const visible = filter==="All" ? BA : BA.filter(b => (b.tone_before||"").includes(filter) || (b.tone_after||"").includes(filter));
+  return (
+    <section id="before-after">
+      <SectionHead n="02" title="The Matched Pairs" note="Seven verbatim or near-verbatim phrase matches between Piker (left side) and Carlson (right side). Filter by figure."/>
+      <div className="chip-row">
+        {tones.map(t => <div key={t} className={"chip " + (filter===t?"on":"")} onClick={()=>setFilter(t)}>{t}<span className="ct">{t==="All"?BA.length:BA.filter(b=>(b.tone_before||"").includes(t) || (b.tone_after||"").includes(t)).length}</span></div>)}
+      </div>
+      <div className="ba-grid">
+        {visible.map((b,i) =>
+          <div key={i} className="ba-card">
+            <div className="side before">
+              <div className="label">Piker \u00B7 Left Pole</div>
+              <div className="who">{b.h}</div>
+              <div className="quote">"{b.before.text}"</div>
+              <div className="tone">{b.tone_before}</div>
+              <div className="meta">{b.before.date}</div>
+            </div>
+            <div className="divider">
+              <div className="arrow">↔</div>
+              <div className="delta">{b.delta}<br/><span style={{color:"var(--ink-dim)",fontSize:"10px"}}>{b.delta_sub}</span></div>
+            </div>
+            <div className="side after">
+              <div className="label">Carlson \u00B7 Right Pole</div>
+              <div className="who">{b.h}</div>
+              <div className="quote">"{b.after.text}"</div>
+              <div className="tone">{b.tone_after}</div>
+              <div className="meta">{b.after.date}</div>
+            </div>
+          </div>
+        )}
+      </div>
+    </section>
+  );
+}
+
+function Quant(){
+  const [sort,setSort] = useState({k:"f",d:-1});
+  const rows = useMemo(()=>{
+    const r = [...QUANT];
+    r.sort((a,b)=>{
+      const av = sort.k==="pct" ? (a.pct===null ? -1 : a.pct) : a[sort.k];
+      const bv = sort.k==="pct" ? (b.pct===null ? -1 : b.pct) : b[sort.k];
+      if (typeof av === "string") return av.localeCompare(bv)*sort.d;
+      return (av-bv)*sort.d;
+    });
+    return r;
+  },[sort]);
+  const toggle = (k)=> setSort(s => s.k===k ? {k, d:-s.d} : {k, d:-1});
+  const hdr = (k, label) => (
+    <th className={sort.k===k?"sorted":""} onClick={()=>toggle(k)}>
+      {label}<span className="sort">{sort.k===k ? (sort.d===-1?"↓":"↑") : "↕"}</span>
+    </th>
+  );
+  return (
+    <section id="quant">
+      <SectionHead n="03" title="Reach & Engagement" note="Sortable · click any column header. Views reflect posts surveyed in source index; podcast metrics are episode-level where X-shared."/>
+      <table className="data">
+        <thead>
+          <tr>
+            {hdr("h","Matched Phrase")}
+            {hdr("f","Combined Reach")}
+            {hdr("b","Piker Top Post")}
+            {hdr("d","Carlson Top Post")}
+            {hdr("a","\u2014")}
+            {hdr("tot","Total")}
+            {hdr("pct","Direction")}
+          </tr>
+        </thead>
+        <tbody>
+          {rows.map(r =>
+            <tr key={r.h}>
+              <td className="handle">{r.h}</td>
+              <td className="num">{r.f > 0 ? r.f.toLocaleString() : "\u2014"}</td>
+              <td className="num">{r.b > 0 ? r.b.toLocaleString() : "\u2014"}</td>
+              <td className="num">{r.d > 0 ? r.d.toLocaleString() : "\u2014"}</td>
+              <td className="num">{"\u2014"}</td>
+              <td className="num" style={{color:"var(--gold)",fontWeight:500}}>{r.tot > 0 ? r.tot.toLocaleString() : "\u2014"}</td>
+              <td>
+                <div className={"pct " + (r.kind==="new"?"new":r.kind==="con"?"con":"")}>
+                  <div className="pbar"><i style={{width: "75%"}}/></div>
+                  <div className="val">{r.label}</div>
+                </div>
+              </td>
+            </tr>
+          )}
+        </tbody>
+      </table>
+    </section>
+  );
+}
+
+function Profiles(){
+  const [open,setOpen] = useState(null);
+  const openProfile = open !== null ? PROFILES.find(p => p.h === open) : null;
+  const openIndex = open !== null ? PROFILES.findIndex(p => p.h === open) : -1;
+  const rowOf = i => Math.floor(i/3);
+  const openRow = openIndex >= 0 ? rowOf(openIndex) : -1;
+  return (
+    <section id="profiles">
+      <SectionHead n="04" title="The Two Poles" note="Click a card to expand. Each profile lists the figure's chronological verbatim-match timeline."/>
+      <div className="prof-grid">
+        {PROFILES.map((p,i) => {
+          const card = (
+            <div key={p.h} className={"prof " + (open===p.h ? "open":"")} onClick={()=>setOpen(open===p.h ? null : p.h)}>
+              <div className="row1">
+                <div className="avatar">{INITIALS[p.h]||"??"}</div>
+                <div className="who">
+                  <div className="handle">{p.h}</div>
+                  <div className="flw">{p.followers.toLocaleString()} followers</div>
+                </div>
+              </div>
+              <div className="role">{p.role}</div>
+              <div className="typology">{p.typology}</div>
+            </div>
+          );
+          const nodes = [card];
+          if (openProfile && openRow === rowOf(i) && ((i+1) % 3 === 0 || i === PROFILES.length-1)){
+            nodes.push(
+              <div key={"d-"+i} className="prof-detail">
+                <div>
+                  <h3>{openProfile.h}</h3>
+                  <div className="dsub">{openProfile.typology}</div>
+                  <p style={{fontFamily:"'Cormorant Garamond',serif",fontStyle:"italic",fontSize:"17.5px",lineHeight:"1.5",color:"var(--ink-dim)",margin:"0 0 24px",borderLeft:"2px solid var(--gold)",paddingLeft:"16px"}}>{openProfile.headline}</p>
+                  <div className="tline">
+                    {openProfile.timeline.map((t,j) =>
+                      <div key={j} className="tpt">
+                        <div className="date">{t.date}</div>
+                        <div className="txt">"{t.text}"</div>
+                        {t.url && <a className="lnk" href={t.url} target="_blank" rel="noreferrer">view source ↗</a>}
+                      </div>
+                    )}
+                  </div>
+                </div>
+                <div className="kpanel">
+                  <div className="lab">X Followers</div>
+                  <div className="v">{openProfile.followers.toLocaleString()}</div>
+                  <div className="sub">reach floor</div>
+                  <div className="lab">Role in the Horseshoe</div>
+                  <div className="sub" style={{fontFamily:"'Cormorant Garamond',serif",fontStyle:"italic",fontSize:"15.5px",color:"var(--gold)",marginTop:4,marginBottom:20,fontWeight:500}}>{openProfile.career}</div>
+                  <div className="lab">Timeline entries</div>
+                  <div className="v">{openProfile.timeline.length}</div>
+                  <div className="sub">primary-source events surveyed</div>
+                </div>
+              </div>
+            );
+          }
+          return nodes;
+        })}
+      </div>
+    </section>
+  );
+}
+
+function Itinerary(){
+  return (
+    <section id="itinerary">
+      <SectionHead n="05" title="Convergence Timeline" note="Every matched phrase in chronological order. Piker is the left pole; Carlson is the right pole. Highlighted: same-day convergence (Apr 9, 2026)."/>
+      <div className="spine">
+        {ITINERARY.map((d,i)=>
+          <div key={i} className={"day " + (d.gaza?"gaza ":"") + (d.ext?"ext ":"") + (d.sync?"sync ":"")}>
+            <div className="d">{d.day}<b>{d.date}</b></div>
+            <div className="node"><i/></div>
+            <div className="body">
+              <div className="loc">{d.loc}</div>
+              <div className="act">{d.act}</div>
+              {d.att && d.att.length>0 && <div className="att">{d.att.map(a => <span key={a}>{a}</span>)}</div>}
+            </div>
+          </div>
+        )}
+      </div>
+    </section>
+  );
+}
+
+function Gaza(){
+  return (
+    <section id="gaza">
+      <SectionHead n="06" title="The Target of Both" note="The matched phrases do not range across foreign policy — they cluster on one subject. Two summary cards below."/>
+      <div className="headline" style={{borderColor:"var(--warn)",background:"#fbf5f4"}}>
+        <div className="dek">Seven phrases, one subject, two poles: the horseshoe closes on Israel. Neither figure is alone in using any single phrase — but the overlap is not on Russia, China, Venezuela, or any other foreign-policy issue. It is only on this one.</div>
+        <div className="byline">ALL QUOTES PRIMARY-SOURCE · TWEETS + NAMED EPISODES · INDEXED IN SOURCES 01\u201316</div>
+      </div>
+      <div className="gaza-grid">
+        {GAZA.map(g =>
+          <div key={g.h} className="gaza-card" data-tag={g.tag}>
+            <div className="who">{g.h}</div>
+            <div className="title">{g.title}</div>
+            <div className="finds">
+              {g.finds.map((f,i)=><div key={i} className="f"><div className="num">{String(i+1).padStart(2,"0")}</div><div className="tx">{f}</div></div>)}
+            </div>
+            <div className="tweets">
+              {g.tweets.map((t,i)=>
+                <div key={i} className="tw">
+                  <div className="dt">{t.dt}</div>
+                  <div className="qt">"{t.qt}"</div>
+                </div>
+              )}
+            </div>
+          </div>
+        )}
+      </div>
+    </section>
+  );
+}
+
+function Typology(){
+  return (
+    <section id="typology">
+      <SectionHead n="07" title="Phrase Typology" note="Six categories of matched phrase across the two figures. Each type groups the tweets, episodes, and podcast passages that deploy the same rhetorical move."/>
+      <div className="typ-grid">
+        {TYPOLOGY.map((t,i)=>
+          <div key={i} className={"typ " + t.kind}>
+            <div className="num">TYPE {t.num}</div>
+            <h3>{t.name}</h3>
+            <div className="arc">{t.arc}</div>
+            <div className="tag-row">{t.handles.map(h => <span key={h}>{h}</span>)}</div>
+            <div className="desc">{t.desc}</div>
+          </div>
+        )}
+      </div>
+    </section>
+  );
+}
+
+function AntiWoke(){
+  return (
+    <section id="antiwoke">
+      <SectionHead n="08" title="The Convergence" note="Left column quantifies the pattern. Right column is a representative-quote feed alternating Piker → Carlson."/>
+      <div className="headline" style={{borderColor:"var(--warn)",background:"#fbf5f4"}}>
+        <div className="dek">Same words. Same order. Same target. One pole calls the other cattle. The other pole endorsed a candidate the first pole despises. And yet: the seven phrases below are traceable across both voices, first on the left, then on the right, within roughly a 14-month lag.</div>
+        <div className="byline">PRIMARY SOURCES · DATES/VIEWS/TIMESTAMPS PRESERVED · FEED ORDERED TO ILLUSTRATE THE ECHO</div>
+      </div>
+      <div className="aw-wrap">
+        <div className="aw-stat">
+          <h4>Volume &amp; Events</h4>
+          {AW_STATS.map((s,i)=><div key={i} className="row"><div className="n">{s.n}</div><div className="v">{s.v}</div></div>)}
+        </div>
+        <div className="aw-feed">
+          {AW_FEED.map((f,i)=>
+            <div key={i} className="aw-item">
+              <div className="meta">{f.meta}</div>
+              <div className="q">"{f.q}"</div>
+              <div className="targets">{f.targets.map(t => <span key={t}>{t}</span>)}</div>
+            </div>
+          )}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function Sustained(){
+  return (
+    <section id="sustained">
+      <SectionHead n="09" title="Media Ecosystem" note="The channels and formats that carry the matched language. Livestream → clipped X post → podcast guest spot → mainstream-adjacent podcast → edited episode title → same-day echo."/>
+      <div className="sust-rail">
+        <div className="sust-pts">
+          {SUSTAINED_PTS.map((p,i)=>
+            <div key={i} className={"sust-pt " + (p.hot?"hot":"")} style={{left: p.pos+"%"}}>
+              <div className="dot"/>
+              <div className="lab">{p.lab}</div>
+            </div>
+          )}
+        </div>
+      </div>
+      <div className="sust-cards">
+        {SUSTAINED_CARDS.map((c,i)=>
+          <div key={i} className="sust-card">
+            <div className="date">{c.date}</div>
+            <div className="who">{c.who}</div>
+            <div className="title">{c.title}</div>
+            <div className="desc">{c.desc}</div>
+          </div>
+        )}
+      </div>
+    </section>
+  );
+}
+
+function Quotes(){
+  const [filter,setFilter] = useState("All");
+  const visible = filter==="All" ? QUOTES : QUOTES.filter(q => q.theme===filter);
+  const counts = useMemo(()=> {
+    const c = {All:QUOTES.length};
+    QUOTES.forEach(q => { c[q.theme] = (c[q.theme]||0)+1 });
+    return c;
+  },[]);
+  return (
+    <section id="quotes">
+      <SectionHead n="10" title="Key Quotes" note="Filterable pull-quote grid. Click a theme to filter. Each pair typically shows a Piker quote then the matching Carlson quote."/>
+      <div className="chip-row">
+        {QUOTE_THEMES.map(t => <div key={t} className={"chip " + (filter===t?"on":"")} onClick={()=>setFilter(t)}>{t}<span className="ct">{counts[t]||0}</span></div>)}
+      </div>
+      <div className="q-grid">
+        {visible.map((q,i) =>
+          <div key={i} className="q-card">
+            <div className="top">
+              <div className="avatar">{INITIALS[q.h]||"?"}</div>
+              <div className="meta">
+                <div className="h">{q.h}</div>
+                <div className="d">{q.date}</div>
+              </div>
+              <div className="theme">{q.theme}</div>
+            </div>
+            <div className="q">"{q.q}"</div>
+            <div className="bot">
+              <span className="lnk" style={{opacity:.7}}>source in index</span>
+              <span className="vstat">● PRIMARY</span>
+            </div>
+          </div>
+        )}
+      </div>
+    </section>
+  );
+}
+
+function Verification(){
+  const [sort,setSort] = useState({k:"n",d:-1});
+  const rows = useMemo(()=>{
+    const r = [...VER_TABLE];
+    r.sort((a,b)=>{
+      const av = a[sort.k], bv = b[sort.k];
+      if (typeof av === "string") return av.localeCompare(bv)*sort.d;
+      return (av-bv)*sort.d;
+    });
+    return r;
+  },[sort]);
+  const toggle = k => setSort(s => s.k===k ? {k,d:-s.d} : {k,d:-1});
+  const hdr = (k,l) => <th className={sort.k===k?"sorted":""} onClick={()=>toggle(k)}>{l}<span className="sort">{sort.k===k ? (sort.d===-1?"↓":"↑") : "↕"}</span></th>;
+  return (
+    <section id="verification">
+      <SectionHead n="11" title="Methodology & Sources" note="Verbatim-match definition: exact or near-exact phrase string (word-stem identity, same modifiers, same noun head). Framework applied to two figures across X posts and named podcast episodes, Oct 2023 – Apr 2026. Sources 01–16 indexed below."/>
+      <div className="ver-head">
+        <div className="kb"><div className="k">Figures analyzed</div><div className="v">2</div><div className="s">Hasan Piker · Tucker Carlson</div></div>
+        <div className="kb"><div className="k">Verbatim matches</div><div className="v">7</div><div className="s">six exact · one near-exact (apartheid state / system)</div></div>
+        <div className="kb"><div className="k">Primary sources</div><div className="v">16</div><div className="s">12 tweets + 4 podcast episodes</div></div>
+        <div className="kb"><div className="k">Data range</div><div className="v" style={{fontSize:"22px"}}>30 months</div><div className="s">Oct 10, 2023 → Apr 9, 2026</div></div>
+      </div>
+      <h4 style={{fontFamily:"'IBM Plex Mono',monospace",fontSize:"11px",letterSpacing:".22em",textTransform:"uppercase",color:"var(--navy)",margin:"22px 0 12px",fontWeight:600}}>Per-Entity Coverage</h4>
+      <table className="data">
+        <thead>
+          <tr>
+            {hdr("h","Entity")}
+            {hdr("n","Cited Items")}
+            {hdr("s","Status")}
+            {hdr("note","Notes")}
+          </tr>
+        </thead>
+        <tbody>
+          {rows.map(r =>
+            <tr key={r.h}>
+              <td className="handle">{r.h}</td>
+              <td className="num" style={{color: r.n>0?"var(--olive)":"var(--ink-faint)", fontWeight:500}}>{r.n}</td>
+              <td><span style={{fontFamily:"'IBM Plex Mono',monospace",fontSize:"11px",color: r.s==="Analyzed"?"var(--olive)":"var(--warn)",letterSpacing:".12em",fontWeight:500}}>{r.s==="Analyzed" ? "\u25CF" : "\u25CB"} {r.s.toUpperCase()}</span></td>
+              <td>{r.note}</td>
+            </tr>
+          )}
+        </tbody>
+      </table>
+      <h4 style={{fontFamily:"'IBM Plex Mono',monospace",fontSize:"11px",letterSpacing:".22em",textTransform:"uppercase",color:"var(--navy)",margin:"34px 0 12px",fontWeight:600}}>Sources &amp; References</h4>
+      <div style={{display:"grid",gridTemplateColumns:"repeat(2, 1fr)",gap:"10px",marginBottom:"20px"}}>
+        {SOURCES.map(s =>
+          <div key={s.n} style={{border:"1px solid var(--rule-2)",background:"var(--paper-2)",padding:"14px 16px",display:"grid",gridTemplateColumns:"30px 1fr",gap:"12px"}}>
+            <div style={{fontFamily:"'IBM Plex Mono',monospace",fontSize:"11px",color:"var(--gold)",letterSpacing:".12em",fontWeight:600}}>{s.n}</div>
+            <div>
+              <div style={{fontFamily:"'IBM Plex Mono',monospace",fontSize:"10.5px",color:"var(--navy)",letterSpacing:".14em",textTransform:"uppercase",fontWeight:500}}>{s.pub}</div>
+              <div style={{fontFamily:"'Cormorant Garamond',serif",fontSize:"18px",color:"var(--navy-deep)",fontWeight:600,lineHeight:1.2,margin:"3px 0 5px"}}>{s.title}</div>
+              <div style={{fontSize:"12.5px",color:"var(--ink-dim)",lineHeight:1.5}}>{s.desc}</div>
+            </div>
+          </div>
+        )}
+      </div>
+      <div className="limits">
+        <h4>Limitations</h4>
+        <ol>
+          <li><b>Verbatim standard:</b> This report classifies \u2018apartheid state\u2019 vs. \u2018apartheid system\u2019 as a 90%+ near-match (shared root, same categorical function). Stricter word-sequence standards would drop that pair.</li>
+          <li><b>Podcast attribution:</b> Several Carlson-side matches are spoken by guests on the Tucker Carlson Show rather than by Carlson himself. Their inclusion is justified by Carlson\u2019s framing, episode titling, and clip-selection behavior \u2014 but is an interpretive choice.</li>
+          <li><b>Direction of causation:</b> The report documents a consistent time order (Piker \u2192 Carlson) but does not claim a transmission mechanism. Common causes (Gaza war coverage, X algorithm, shared podcast guests) are plausible alternatives to direct uptake.</li>
+          <li><b>Selection:</b> The matched phrases are the cleanest exact hits in 30 months of output. They are not a random sample of either figure\u2019s Israel discourse; rarer phrases and one-off formulations are omitted.</li>
+          <li><b>Engagement metrics:</b> View counts are captured at time of indexing and may have drifted since. Podcast episode views are X-shared counts where available, not total podcast plays.</li>
+          <li><b>Interpretive characterizations</b> (\u2018horseshoe,\u2019 \u2018convergence,\u2019 \u2018vocabulary transfer\u2019) are this report\u2019s framing. The verbatim phrases themselves stand on their own.</li>
+        </ol>
+      </div>
+    </section>
+  );
+}
+
+function App(){
+  const [active,setActive] = useState("dashboard");
+  useEffect(()=>{
+    const obs = new IntersectionObserver((entries)=>{
+      entries.forEach(e => { if (e.isIntersecting) setActive(e.target.id); });
+    }, { rootMargin:"-20% 0px -70% 0px", threshold:0 });
+    SECTIONS.forEach(s => { const el = document.getElementById(s.id); if (el) obs.observe(el); });
+    return () => obs.disconnect();
+  },[]);
+
+  const jump = (id) => {
+    const el = document.getElementById(id);
+    if (el) el.scrollIntoView({behavior:"smooth",block:"start"});
+    setActive(id);
+  };
+
+  return (
+    <div className="layout">
+      <SidebarNav active={active} onJump={jump}/>
+      <main>
+        <Dashboard/>
+        <BeforeAfter/>
+        <Quant/>
+        <Profiles/>
+        <Itinerary/>
+        <Gaza/>
+        <Typology/>
+        <AntiWoke/>
+        <Sustained/>
+        <Quotes/>
+        <Verification/>
+        <footer>
+          THE HORSESHOE EFFECT \u00B7 VINE &amp; FIG TREE INSTITUTE \u00B7 APR 24, 2026<br/>
+          PRIMARY X POSTS + 4 NAMED PODCAST EPISODES \u00B7 7 VERBATIM OR NEAR-VERBATIM PHRASE MATCHES \u00B7 30-MONTH FRAME<br/>
+          SLOW WORK OF PLACE \u00B7 HUDSON VALLEY \u00B7 INVESTIGATIVE METHOD \u00B7 SOURCE-TRIANGULATED
+        </footer>
+      </main>
+    </div>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById("root")).render(<App/>);
+</script>
+</body>
+</html>
