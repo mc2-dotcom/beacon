@@ -41,14 +41,6 @@ aside.sidebar{
   overflow-y:auto;
 }
 .brand{display:flex;align-items:center;gap:10px}
-.seal{
-  width:36px;height:36px;border-radius:50%;
-  background:radial-gradient(circle at 30% 30%,#fff,var(--rule-2) 60%,var(--accent));
-  border:1px solid var(--ink);position:relative;
-}
-.seal::after{
-  content:"";position:absolute;inset:6px;border-radius:50%;border:1px solid var(--ink);
-}
 .brand .name{font-family:"Cormorant Garamond",serif;font-size:18px;font-weight:600;color:var(--ink);letter-spacing:.01em;line-height:1.1}
 .brand .sub{font-family:"IBM Plex Mono",monospace;font-size:9px;letter-spacing:.16em;color:var(--ink-faint);text-transform:uppercase}
 .nav{display:flex;flex-direction:column;gap:2px;margin-top:10px;border-top:1px solid var(--rule);padding-top:14px}
@@ -257,7 +249,6 @@ footer{margin-top:80px;padding-top:24px;border-top:1px solid var(--rule);font-fa
 
 <aside class="sidebar">
   <div class="brand">
-    <div class="seal" aria-hidden="true"></div>
     <div>
       <div class="name">Vine &amp; Fig Tree</div>
       <div class="sub">Institute · Report V2</div>
