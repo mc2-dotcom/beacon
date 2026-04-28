@@ -1,0 +1,1837 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The American Political Spectrum — Beacon Ideology Scorecard</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=IBM+Plex+Mono:wght@400;500;600&family=Libre+Franklin:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --paper: #F6F2ED;
+  --paper-2: #FCFFFF;
+  --paper-3: #EFEAE2;
+  --ink: #0C1843;
+  --ink-dim: #3A4DA7;
+  --ink-faint: #5B6484;
+  --rule: #C8CCD8;
+  --rule-2: #D4E3FC;
+  --navy: #0C1843;
+  --navy-bright: #3A4DA7;
+  --navy-deep: #1B2866;
+  --accent: #7795CC;
+  --warn: #8B2635;
+  --sidebar: #F6F2ED;
+
+  /* Ideology palette — horseshoe-aware. Extremes darker/saturated, center lighter. */
+  --i-fl:   #8B2635;  /* Far Left (Radical Left) — VFT warn-red */
+  --i-pl:   #3A4DA7;  /* Progressive Left — navy-bright */
+  --i-td:   #7795CC;  /* Traditional Democrat — accent */
+  --i-tr:   #C9A66B;  /* Traditional Republican — sand */
+  --i-mg:   #9B3A2A;  /* MAGA — earth red */
+  --i-dr:   #2A1A2E;  /* Dissident Right — deep plum */
+
+  --i-fl-soft:   #F0DADA;
+  --i-pl-soft:   #DCE2F4;
+  --i-td-soft:   #E5ECF7;
+  --i-tr-soft:   #F2E7D1;
+  --i-mg-soft:   #F0D6CE;
+  --i-dr-soft:   #DCD3DD;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Libre Franklin', system-ui, sans-serif;
+  background: var(--paper);
+  color: var(--ink);
+  font-weight: 400;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  font-feature-settings: "ss01", "ss02";
+  overflow-x: hidden;
+}
+
+/* ============ LAYOUT ============ */
+.layout {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  min-height: 100vh;
+}
+
+/* ============ SIDEBAR ============ */
+.sidebar {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  background: var(--sidebar);
+  border-right: 1px solid var(--rule);
+  padding: 32px 24px 24px;
+  display: flex;
+  flex-direction: column;
+  z-index: 10;
+}
+.brandmark {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 600;
+  font-size: 22px;
+  color: var(--ink);
+  letter-spacing: 0.5px;
+  margin-bottom: 4px;
+}
+.brandmark .amp { color: var(--ink-dim); font-style: italic; }
+.brand-sub {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 9.5px;
+  color: var(--ink-faint);
+  text-transform: uppercase;
+  letter-spacing: 1.4px;
+  margin-bottom: 28px;
+}
+.seal {
+  border: 1px solid var(--rule);
+  background: var(--paper-2);
+  padding: 12px 14px;
+  margin-bottom: 28px;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 1.2px;
+  color: var(--ink-faint);
+  text-transform: uppercase;
+}
+.seal .seal-title {
+  color: var(--ink);
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+.seal .seal-id {
+  color: var(--ink-dim);
+}
+.nav { display: flex; flex-direction: column; gap: 2px; }
+.nav a {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  padding: 8px 10px 8px 12px;
+  font-family: 'Libre Franklin', sans-serif;
+  font-size: 12.5px;
+  font-weight: 500;
+  color: var(--ink-faint);
+  text-decoration: none;
+  border-left: 2px solid transparent;
+  transition: all 0.2s ease;
+}
+.nav a:hover { color: var(--ink); background: rgba(58,77,167,0.04); }
+.nav a.active {
+  color: var(--ink);
+  border-left-color: var(--ink-dim);
+  background: rgba(58,77,167,0.06);
+}
+.nav .num {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 9px;
+  color: var(--ink-dim);
+  letter-spacing: 1px;
+  min-width: 24px;
+}
+.sidebar-footer {
+  margin-top: auto;
+  padding-top: 20px;
+  border-top: 1px solid var(--rule);
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 9px;
+  color: var(--ink-faint);
+  letter-spacing: 1px;
+  line-height: 1.6;
+}
+
+/* ============ MAIN ============ */
+.main {
+  padding: 0;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+.section {
+  padding: 80px 64px;
+  border-bottom: 1px solid var(--rule);
+  position: relative;
+}
+.section.tight { padding: 64px 64px; }
+.section-head {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  margin-bottom: 12px;
+}
+.section-num {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 1.6px;
+  color: var(--ink-dim);
+  text-transform: uppercase;
+}
+.section-kicker {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 1.6px;
+  color: var(--ink-faint);
+  text-transform: uppercase;
+}
+.section-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 500;
+  font-size: 48px;
+  line-height: 1.05;
+  color: var(--ink);
+  letter-spacing: -0.5px;
+  margin-bottom: 16px;
+  max-width: 920px;
+}
+.section-dek {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: 19px;
+  line-height: 1.55;
+  color: var(--ink-faint);
+  max-width: 720px;
+  margin-bottom: 40px;
+}
+
+/* ============ HERO ============ */
+.hero {
+  padding: 96px 64px 64px;
+  border-bottom: 1px solid var(--rule);
+  position: relative;
+  overflow: hidden;
+}
+.hero-rule {
+  height: 4px;
+  background: linear-gradient(90deg,
+    var(--i-fl) 0%,
+    var(--i-pl) 20%,
+    var(--i-td) 40%,
+    var(--i-tr) 60%,
+    var(--i-mg) 80%,
+    var(--i-dr) 100%);
+  margin-bottom: 32px;
+  width: 100%;
+  transform-origin: left center;
+  animation: ruleGrow 1.2s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+@keyframes ruleGrow {
+  from { transform: scaleX(0); opacity: 0; }
+  to { transform: scaleX(1); opacity: 1; }
+}
+.hero-kicker {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 1.8px;
+  color: var(--ink-dim);
+  text-transform: uppercase;
+  margin-bottom: 18px;
+  opacity: 0;
+  animation: fadeUp 0.8s 0.3s ease forwards;
+}
+.hero-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 500;
+  font-size: 88px;
+  line-height: 1.0;
+  color: var(--ink);
+  letter-spacing: -2px;
+  margin-bottom: 24px;
+  max-width: 1100px;
+  opacity: 0;
+  animation: fadeUp 1s 0.4s ease forwards;
+}
+.hero-title em { font-style: italic; color: var(--ink-dim); font-weight: 400; }
+.hero-dek {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 22px;
+  line-height: 1.5;
+  color: var(--ink-faint);
+  max-width: 760px;
+  margin-bottom: 40px;
+  opacity: 0;
+  animation: fadeUp 1s 0.6s ease forwards;
+}
+.hero-byline {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  color: var(--ink-faint);
+  text-transform: uppercase;
+  opacity: 0;
+  animation: fadeUp 1s 0.8s ease forwards;
+}
+.hero-byline span { color: var(--ink-dim); }
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ============ STATS GRID ============ */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  margin-top: 48px;
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+}
+.stat {
+  padding: 28px 24px;
+  border-right: 1px solid var(--rule);
+  position: relative;
+  opacity: 0;
+  animation: fadeUp 0.8s ease forwards;
+}
+.stat:last-child { border-right: none; }
+.stat:nth-child(1) { animation-delay: 1.0s; }
+.stat:nth-child(2) { animation-delay: 1.15s; }
+.stat:nth-child(3) { animation-delay: 1.30s; }
+.stat:nth-child(4) { animation-delay: 1.45s; }
+.stat-label {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 9.5px;
+  letter-spacing: 1.4px;
+  color: var(--ink-faint);
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+.stat-value {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 56px;
+  font-weight: 500;
+  line-height: 1;
+  color: var(--ink);
+  letter-spacing: -1.5px;
+}
+.stat-value .unit {
+  font-size: 22px;
+  color: var(--ink-dim);
+  letter-spacing: -0.5px;
+  font-weight: 400;
+}
+.stat-sub {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 1px;
+  color: var(--ink-dim);
+  text-transform: uppercase;
+  margin-top: 8px;
+}
+
+/* ============ SPECTRUM (BANDS) ============ */
+.spectrum-wrap {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 1px;
+  background: var(--rule);
+  border: 1px solid var(--rule);
+  margin-top: 24px;
+  margin-bottom: 24px;
+}
+.band {
+  background: var(--paper-2);
+  padding: 0;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+.band:hover { z-index: 5; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(12,24,67,0.12); }
+.band-color {
+  height: 6px;
+  width: 100%;
+  background: var(--bandcolor);
+}
+.band-fill {
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  background: var(--bandcolor);
+  opacity: 0.06;
+  height: 0;
+  transition: height 1.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.band.in-view .band-fill { height: var(--fillpct); }
+.band-content { padding: 22px 18px; position: relative; z-index: 2; }
+.band-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 500;
+  font-size: 22px;
+  line-height: 1.1;
+  color: var(--ink);
+  margin-bottom: 6px;
+  letter-spacing: -0.3px;
+}
+.band-tag {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 9px;
+  color: var(--bandcolor);
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  margin-bottom: 18px;
+  font-weight: 600;
+}
+.band-stat {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 6px 0;
+  border-top: 1px solid var(--rule);
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+}
+.band-stat .lbl {
+  color: var(--ink-faint);
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  font-size: 9px;
+}
+.band-stat .v {
+  color: var(--ink);
+  font-weight: 600;
+  font-size: 12px;
+}
+.band-bar-wrap {
+  margin-top: 14px;
+  margin-bottom: 6px;
+  position: relative;
+  height: 60px;
+  display: flex;
+  align-items: flex-end;
+  border-bottom: 1px solid var(--rule);
+}
+.band-bar {
+  width: 100%;
+  background: var(--bandcolor);
+  height: 0;
+  transition: height 1.4s cubic-bezier(0.22, 1, 0.36, 1) 0.2s;
+}
+.band.in-view .band-bar { height: var(--barpct); }
+.band-bar-cap {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 9px;
+  color: var(--ink-faint);
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  margin-top: 6px;
+}
+.band-tops {
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid var(--rule);
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  color: var(--ink-faint);
+  line-height: 1.65;
+}
+.band-tops .name { color: var(--ink); font-weight: 500; }
+.band-tops .num { color: var(--bandcolor); font-weight: 600; }
+
+/* ============ SCORECARD GRID ============ */
+.scorecard-controls {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--rule);
+  align-items: center;
+}
+.controls-label {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 1.4px;
+  color: var(--ink-faint);
+  text-transform: uppercase;
+  margin-right: 8px;
+}
+.chip {
+  font-family: 'Libre Franklin', sans-serif;
+  font-size: 11.5px;
+  font-weight: 500;
+  padding: 7px 14px;
+  border: 1px solid var(--rule);
+  background: var(--paper-2);
+  color: var(--ink);
+  cursor: pointer;
+  letter-spacing: 0.2px;
+  transition: all 0.2s ease;
+  user-select: none;
+}
+.chip:hover { background: var(--paper-3); }
+.chip.active {
+  background: var(--ink);
+  color: var(--paper);
+  border-color: var(--ink);
+}
+.chip[data-band="fl"].active { background: var(--i-fl); border-color: var(--i-fl); }
+.chip[data-band="pl"].active { background: var(--i-pl); border-color: var(--i-pl); }
+.chip[data-band="td"].active { background: var(--i-td); border-color: var(--i-td); color: var(--ink); }
+.chip[data-band="tr"].active { background: var(--i-tr); border-color: var(--i-tr); color: var(--ink); }
+.chip[data-band="mg"].active { background: var(--i-mg); border-color: var(--i-mg); }
+.chip[data-band="dr"].active { background: var(--i-dr); border-color: var(--i-dr); }
+
+.scorecard {
+  border: 1px solid var(--rule);
+  background: var(--paper-2);
+}
+.sc-headers {
+  display: grid;
+  grid-template-columns: 240px repeat(6, 1fr);
+  background: var(--paper-3);
+  border-bottom: 1px solid var(--rule);
+  position: sticky;
+  top: 0;
+  z-index: 4;
+}
+.sc-headers .sc-h {
+  padding: 14px 12px;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 9.5px;
+  letter-spacing: 1.4px;
+  color: var(--ink);
+  text-transform: uppercase;
+  font-weight: 600;
+  border-right: 1px solid var(--rule);
+  position: relative;
+}
+.sc-headers .sc-h:last-child { border-right: none; }
+.sc-headers .sc-h.dim-h {
+  color: var(--ink-faint);
+  letter-spacing: 1.2px;
+}
+.sc-headers .sc-h .col-stripe {
+  height: 4px;
+  background: var(--bandcolor);
+  margin: -14px -12px 10px;
+}
+.sc-headers .sc-h .col-count {
+  font-size: 9px;
+  color: var(--ink-faint);
+  font-weight: 400;
+  margin-top: 4px;
+  letter-spacing: 0.8px;
+  text-transform: none;
+}
+.sc-row {
+  display: grid;
+  grid-template-columns: 240px repeat(6, 1fr);
+  border-bottom: 1px solid var(--rule);
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+.sc-row:last-child { border-bottom: none; }
+.sc-row:hover { background: rgba(58,77,167,0.025); }
+.sc-row.expanded { background: var(--paper-3); }
+.sc-row.dimmed { opacity: 0.35; }
+.sc-row.fade-in { opacity: 0; animation: fadeUp 0.5s ease forwards; }
+.sc-cell {
+  padding: 14px 12px;
+  border-right: 1px solid var(--rule);
+  font-size: 11.5px;
+  line-height: 1.5;
+  color: var(--ink);
+  position: relative;
+}
+.sc-cell:last-child { border-right: none; }
+.sc-dim {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  background: var(--paper);
+}
+.sc-dim .num {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 9.5px;
+  letter-spacing: 1.2px;
+  color: var(--ink-dim);
+}
+.sc-dim .name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 16px;
+  line-height: 1.2;
+  color: var(--ink);
+  font-weight: 500;
+}
+.sc-cell.scell {
+  position: relative;
+  overflow: hidden;
+}
+.sc-cell.scell .summary {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  font-size: 11px;
+  line-height: 1.45;
+  color: var(--ink);
+}
+.sc-cell.scell::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; bottom: 0;
+  width: 3px;
+  background: var(--bandcolor);
+  opacity: 0.6;
+}
+.sc-row.expanded .sc-cell.scell .summary {
+  -webkit-line-clamp: unset;
+  display: block;
+}
+.sc-row.expanded .sc-cell.scell {
+  padding: 18px 14px;
+}
+
+/* ============ VOICES (BUBBLE GRID) ============ */
+.voices-wrap {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 16px;
+  margin-top: 24px;
+}
+.voices-col {
+  background: var(--paper-2);
+  border: 1px solid var(--rule);
+  border-top-width: 4px;
+  border-top-color: var(--bandcolor);
+  padding: 18px 14px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.voices-col-head {
+  margin-bottom: 6px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--rule);
+}
+.voices-col-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 500;
+  font-size: 18px;
+  color: var(--ink);
+  line-height: 1.1;
+}
+.voices-col-stat {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 9.5px;
+  letter-spacing: 1px;
+  color: var(--bandcolor);
+  text-transform: uppercase;
+  margin-top: 4px;
+  font-weight: 600;
+}
+.voice {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+.voices-col.in-view .voice { opacity: 1; transform: translateY(0); }
+.voices-col.in-view .voice:nth-child(2) { transition-delay: 0.05s; }
+.voices-col.in-view .voice:nth-child(3) { transition-delay: 0.1s; }
+.voices-col.in-view .voice:nth-child(4) { transition-delay: 0.15s; }
+.voices-col.in-view .voice:nth-child(5) { transition-delay: 0.2s; }
+.voices-col.in-view .voice:nth-child(6) { transition-delay: 0.25s; }
+.voices-col.in-view .voice:nth-child(7) { transition-delay: 0.3s; }
+.voices-col.in-view .voice:nth-child(8) { transition-delay: 0.35s; }
+.voices-col.in-view .voice:nth-child(9) { transition-delay: 0.4s; }
+.voices-col.in-view .voice:nth-child(10) { transition-delay: 0.45s; }
+.voice-bubble {
+  border-radius: 50%;
+  background: var(--bandcolor);
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 8.5px;
+  font-weight: 600;
+  color: white;
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+}
+.voice-meta { flex: 1; min-width: 0; }
+.voice-name {
+  font-family: 'Libre Franklin', sans-serif;
+  font-weight: 600;
+  font-size: 12px;
+  color: var(--ink);
+  line-height: 1.15;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.voice-handle {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 9px;
+  color: var(--ink-faint);
+  letter-spacing: 0.2px;
+  margin-top: 2px;
+}
+.voice-followers {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  color: var(--bandcolor);
+  font-weight: 600;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+/* ============ VOLUME (TIME SERIES) ============ */
+.volume-wrap {
+  background: var(--paper-2);
+  border: 1px solid var(--rule);
+  padding: 28px 28px 20px;
+  margin-top: 16px;
+}
+.volume-legend {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  color: var(--ink);
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--rule);
+}
+.volume-legend .li {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.volume-legend .sw {
+  width: 10px; height: 10px;
+  background: var(--swc);
+}
+.volume-svg {
+  width: 100%;
+  height: 360px;
+  display: block;
+}
+.volume-axis-x {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  margin-top: 8px;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.5px;
+  color: var(--ink-faint);
+  text-transform: uppercase;
+}
+.volume-axis-x span {
+  text-align: center;
+  border-top: 1px solid var(--rule);
+  padding-top: 6px;
+}
+
+/* ============ REACH ASYMMETRY ============ */
+.reach-wrap {
+  background: var(--paper-2);
+  border: 1px solid var(--rule);
+  padding: 28px 28px;
+  margin-top: 16px;
+}
+.reach-row {
+  display: grid;
+  grid-template-columns: 200px 1fr 110px 90px 90px;
+  align-items: center;
+  gap: 16px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--rule);
+}
+.reach-row:last-child { border-bottom: none; }
+.reach-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 500;
+  font-size: 18px;
+  color: var(--ink);
+}
+.reach-bar-track {
+  height: 28px;
+  background: var(--paper-3);
+  position: relative;
+  overflow: hidden;
+}
+.reach-bar-fill {
+  height: 100%;
+  background: var(--bandcolor);
+  width: 0;
+  transition: width 1.4s cubic-bezier(0.22, 1, 0.36, 1);
+  position: relative;
+}
+.reach-row.in-view .reach-bar-fill { width: var(--reachpct); }
+.reach-bar-fill::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.18), transparent);
+  animation: shine 3s ease-in-out infinite;
+}
+@keyframes shine {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+.reach-stat {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 13px;
+  color: var(--ink);
+  font-weight: 600;
+  text-align: right;
+}
+.reach-stat .sub {
+  display: block;
+  font-size: 9px;
+  color: var(--ink-faint);
+  font-weight: 400;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  margin-top: 2px;
+}
+
+/* ============ HORSESHOE ============ */
+.horseshoe-wrap {
+  background: var(--paper-2);
+  border: 1px solid var(--rule);
+  padding: 32px;
+  margin-top: 16px;
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 32px;
+  align-items: center;
+}
+.horseshoe-svg {
+  width: 100%;
+  height: 460px;
+}
+.horseshoe-side h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 24px;
+  font-weight: 500;
+  color: var(--ink);
+  margin-bottom: 12px;
+  line-height: 1.2;
+}
+.horseshoe-side p {
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--ink-faint);
+  margin-bottom: 18px;
+}
+.horseshoe-callout {
+  border-left: 3px solid var(--ink-dim);
+  padding: 12px 16px;
+  background: var(--paper);
+  margin-bottom: 16px;
+}
+.horseshoe-callout .num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 36px;
+  font-weight: 500;
+  color: var(--ink);
+  line-height: 1;
+  letter-spacing: -1px;
+}
+.horseshoe-callout .lbl {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 9.5px;
+  color: var(--ink-faint);
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  margin-top: 6px;
+}
+
+/* ============ METHOD ============ */
+.method-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 24px;
+}
+.method-card {
+  background: var(--paper-2);
+  border: 1px solid var(--rule);
+  padding: 20px 22px;
+}
+.method-card h4 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 8px;
+  letter-spacing: -0.2px;
+}
+.method-card p {
+  font-size: 12.5px;
+  line-height: 1.6;
+  color: var(--ink-faint);
+}
+.method-card .kw {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 9.5px;
+  color: var(--ink-dim);
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+  font-weight: 600;
+}
+.limits {
+  margin-top: 32px;
+  padding: 20px 24px;
+  border: 1px solid var(--rule);
+  background: var(--paper-3);
+}
+.limits h4 {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 1.4px;
+  color: var(--ink-dim);
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+.limits ol {
+  padding-left: 22px;
+}
+.limits li {
+  font-size: 12.5px;
+  line-height: 1.6;
+  color: var(--ink);
+  margin-bottom: 6px;
+}
+
+/* ============ FOOTER ============ */
+.footer {
+  padding: 32px 64px;
+  background: var(--ink);
+  color: var(--paper);
+}
+.footer-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+}
+.footer-row .lhs { color: rgba(246,242,237,0.95); }
+.footer-row .rhs { color: rgba(246,242,237,0.55); }
+
+/* ============ PRINT / RESPONSIVE GUARDS ============ */
+@media (max-width: 1100px) {
+  .layout { grid-template-columns: 1fr; }
+  .sidebar { position: relative; height: auto; }
+  .voices-wrap { grid-template-columns: repeat(2, 1fr); }
+  .stats-grid { grid-template-columns: repeat(2, 1fr); }
+  .stats-grid .stat:nth-child(2) { border-right: none; }
+  .horseshoe-wrap { grid-template-columns: 1fr; }
+  .method-grid { grid-template-columns: 1fr; }
+  .reach-row { grid-template-columns: 140px 1fr 80px; }
+  .reach-row .reach-stat:nth-child(4),
+  .reach-row .reach-stat:nth-child(5) { display: none; }
+  .sc-headers, .sc-row { grid-template-columns: 200px repeat(6, 1fr); }
+}
+</style>
+</head>
+<body>
+
+<div class="layout">
+
+  <!-- ============ SIDEBAR ============ -->
+  <aside class="sidebar">
+    <div class="brandmark">Vine <span class="amp">&amp;</span> Fig Tree</div>
+    <div class="brand-sub">Beacon · Narrative Intelligence</div>
+    <div class="seal">
+      <div class="seal-title">Instrument 04</div>
+      <div class="seal-id">Ideology Scorecard v2 · 04.2026</div>
+    </div>
+    <nav class="nav" id="nav">
+      <a href="#hero" class="active"><span class="num">00</span>Overview</a>
+      <a href="#spectrum"><span class="num">01</span>The Six Bands</a>
+      <a href="#scorecard"><span class="num">02</span>The Scorecard</a>
+      <a href="#voices"><span class="num">03</span>The Voices</a>
+      <a href="#volume"><span class="num">04</span>Volume</a>
+      <a href="#reach"><span class="num">05</span>Reach Asymmetry</a>
+      <a href="#horseshoe"><span class="num">06</span>The Horseshoe</a>
+      <a href="#method"><span class="num">07</span>Method</a>
+    </nav>
+    <div class="sidebar-footer">
+      Beacon AI · 457 X accounts<br>
+      Window: Feb 02 — Apr 27, 2026<br>
+      v2.0 · Scorecard build
+    </div>
+  </aside>
+
+  <!-- ============ MAIN ============ -->
+  <main class="main">
+
+    <!-- HERO -->
+    <section class="hero" id="hero">
+      <div class="hero-rule"></div>
+      <div class="hero-kicker">Vine &amp; Fig Tree Institute · Beacon Instrument 04</div>
+      <h1 class="hero-title">The American Political <em>Spectrum</em>, audited.</h1>
+      <p class="hero-dek">Mapping nineteen ideological dimensions across six bands of American political identity — and grounding each band in the social-media voices Beacon monitors in real time on X.</p>
+      <div class="hero-byline">By <span>Beacon Research</span> · April 2026 · Methodology v2 · 457 monitored accounts · 90-day engagement window</div>
+
+      <div class="stats-grid" id="stats-grid">
+        <div class="stat">
+          <div class="stat-label">Tagged Accounts</div>
+          <div class="stat-value"><span class="cnt" data-target="457">0</span></div>
+          <div class="stat-sub">Across 6 ideology bands</div>
+        </div>
+        <div class="stat">
+          <div class="stat-label">Combined Followers</div>
+          <div class="stat-value"><span class="cnt" data-target="678" data-suffix="">0</span><span class="unit">M</span></div>
+          <div class="stat-sub">Sum of follower counts</div>
+        </div>
+        <div class="stat">
+          <div class="stat-label">90-Day Posts</div>
+          <div class="stat-value"><span class="cnt" data-target="248" data-suffix="">0</span><span class="unit">K</span></div>
+          <div class="stat-sub">Original posts &amp; replies</div>
+        </div>
+        <div class="stat">
+          <div class="stat-label">90-Day Views</div>
+          <div class="stat-value"><span class="cnt" data-target="16.7" data-decimal="1">0</span><span class="unit">B</span></div>
+          <div class="stat-sub">Across all bands</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 1: THE SIX BANDS -->
+    <section class="section" id="spectrum">
+      <div class="section-head">
+        <span class="section-num">01 ·</span>
+        <span class="section-kicker">The Spectrum</span>
+      </div>
+      <h2 class="section-title">Six bands. <em style="font-style:italic;color:var(--ink-dim)">Four hundred fifty-seven voices.</em></h2>
+      <p class="section-dek">The American political conversation, as it shows up on X, is not a continuum — it is a set of distinct camps with their own institutional trust, media diets, and rhetoric. We sort our monitored accounts into six bands, from Far Left to Dissident Right.</p>
+
+      <div class="spectrum-wrap" id="spectrum-wrap">
+        <!-- 6 bands inserted by JS -->
+      </div>
+
+      <p style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:0.8px;color:var(--ink-faint);text-transform:uppercase;margin-top:8px;">
+        Bar height = share of total monitored accounts · Hover a band to surface
+      </p>
+    </section>
+
+    <!-- SECTION 2: SCORECARD -->
+    <section class="section" id="scorecard">
+      <div class="section-head">
+        <span class="section-num">02 ·</span>
+        <span class="section-kicker">The 19-Dimension Scorecard</span>
+      </div>
+      <h2 class="section-title">What each band <em style="font-style:italic;color:var(--ink-dim)">actually believes.</em></h2>
+      <p class="section-dek">Nineteen dimensions covering institutional trust, media epistemics, conspiracism, democratic commitment, political violence, populism, immigration, race, religion, gender, and more. Each cell is the position the band holds — in their own framing.</p>
+
+      <div class="scorecard-controls">
+        <span class="controls-label">Highlight band:</span>
+        <button class="chip" data-filter="all">All</button>
+        <button class="chip" data-band="fl" data-filter="fl">Far Left</button>
+        <button class="chip" data-band="pl" data-filter="pl">Progressive Left</button>
+        <button class="chip" data-band="td" data-filter="td">Trad. Democrat</button>
+        <button class="chip" data-band="tr" data-filter="tr">Trad. Republican</button>
+        <button class="chip" data-band="mg" data-filter="mg">MAGA</button>
+        <button class="chip" data-band="dr" data-filter="dr">Dissident Right</button>
+      </div>
+
+      <div class="scorecard">
+        <div class="sc-headers">
+          <div class="sc-h dim-h">Dimension</div>
+          <div class="sc-h" style="--bandcolor: var(--i-fl)">
+            <div class="col-stripe"></div>
+            Far Left<div class="col-count">65 accounts · 24M followers</div>
+          </div>
+          <div class="sc-h" style="--bandcolor: var(--i-pl)">
+            <div class="col-stripe"></div>
+            Progressive Left<div class="col-count">75 accounts · 54M followers</div>
+          </div>
+          <div class="sc-h" style="--bandcolor: var(--i-td)">
+            <div class="col-stripe"></div>
+            Trad. Democrat<div class="col-count">83 accounts · 233M followers</div>
+          </div>
+          <div class="sc-h" style="--bandcolor: var(--i-tr)">
+            <div class="col-stripe"></div>
+            Trad. Republican<div class="col-count">65 accounts · 57M followers</div>
+          </div>
+          <div class="sc-h" style="--bandcolor: var(--i-mg)">
+            <div class="col-stripe"></div>
+            MAGA<div class="col-count">103 accounts · 238M followers</div>
+          </div>
+          <div class="sc-h" style="--bandcolor: var(--i-dr)">
+            <div class="col-stripe"></div>
+            Dissident Right<div class="col-count">69 accounts · 72M followers</div>
+          </div>
+        </div>
+        <div id="sc-body">
+          <!-- 19 rows inserted by JS -->
+        </div>
+      </div>
+      <p style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:0.8px;color:var(--ink-faint);text-transform:uppercase;margin-top:14px;">
+        Click any row to expand · Use chips above to highlight a single band
+      </p>
+    </section>
+
+    <!-- SECTION 3: VOICES -->
+    <section class="section" id="voices">
+      <div class="section-head">
+        <span class="section-num">03 ·</span>
+        <span class="section-kicker">The Voices</span>
+      </div>
+      <h2 class="section-title">Top accounts <em style="font-style:italic;color:var(--ink-dim)">in each band</em>.</h2>
+      <p class="section-dek">The people moving the most attention in each ideological camp on X. Bubble size is a function of follower count; columns are ordered left-to-right matching the spectrum above.</p>
+
+      <div class="voices-wrap" id="voices-wrap">
+        <!-- 6 columns of top accounts inserted by JS -->
+      </div>
+    </section>
+
+    <!-- SECTION 4: VOLUME -->
+    <section class="section" id="volume">
+      <div class="section-head">
+        <span class="section-num">04 ·</span>
+        <span class="section-kicker">Posting Volume</span>
+      </div>
+      <h2 class="section-title">Twelve weeks of posting <em style="font-style:italic;color:var(--ink-dim)">in flow</em>.</h2>
+      <p class="section-dek">A stacked stream of weekly post counts across all six bands, Feb 2 through Apr 27. The wings — Far Left, MAGA, Dissident Right — together produce more than twice the daily volume of the political center.</p>
+
+      <div class="volume-wrap">
+        <div class="volume-legend">
+          <div class="li"><span class="sw" style="--swc:var(--i-fl);background:var(--i-fl)"></span>Far Left</div>
+          <div class="li"><span class="sw" style="--swc:var(--i-pl);background:var(--i-pl)"></span>Progressive Left</div>
+          <div class="li"><span class="sw" style="--swc:var(--i-td);background:var(--i-td)"></span>Trad. Democrat</div>
+          <div class="li"><span class="sw" style="--swc:var(--i-tr);background:var(--i-tr)"></span>Trad. Republican</div>
+          <div class="li"><span class="sw" style="--swc:var(--i-mg);background:var(--i-mg)"></span>MAGA</div>
+          <div class="li"><span class="sw" style="--swc:var(--i-dr);background:var(--i-dr)"></span>Dissident Right</div>
+        </div>
+        <svg class="volume-svg" id="volume-svg" viewBox="0 0 1200 360" preserveAspectRatio="none"></svg>
+        <div class="volume-axis-x" id="volume-axis"></div>
+      </div>
+    </section>
+
+    <!-- SECTION 5: REACH ASYMMETRY -->
+    <section class="section" id="reach">
+      <div class="section-head">
+        <span class="section-num">05 ·</span>
+        <span class="section-kicker">Reach Asymmetry</span>
+      </div>
+      <h2 class="section-title">Posting volume <em style="font-style:italic;color:var(--ink-dim)">is not</em> reach.</h2>
+      <p class="section-dek">A handful of mega-accounts dominate. MAGA and Dissident Right combined produce 9.9 billion 90-day views — more than the four other bands combined. Traditional Democrats post the least but punch above their volume on raw views, driven by accounts like Obama, Clinton, and Pelosi.</p>
+
+      <div class="reach-wrap" id="reach-wrap">
+        <!-- 6 reach rows inserted by JS -->
+      </div>
+    </section>
+
+    <!-- SECTION 6: HORSESHOE -->
+    <section class="section" id="horseshoe">
+      <div class="section-head">
+        <span class="section-num">06 ·</span>
+        <span class="section-kicker">The Horseshoe</span>
+      </div>
+      <h2 class="section-title">A line, <em style="font-style:italic;color:var(--ink-dim)">bent at the ends.</em></h2>
+      <p class="section-dek">Read as a straight line, the spectrum implies the wings are as far apart as possible. Read as a horseshoe — the more honest shape — the wings curve toward each other, sharing rhetorical moves: anti-establishment populism, anti-mainstream-media epistemics, conspiratorial framings of foreign policy, and contempt for the political center.</p>
+
+      <div class="horseshoe-wrap">
+        <svg class="horseshoe-svg" id="horseshoe-svg" viewBox="0 0 800 460"></svg>
+        <div class="horseshoe-side">
+          <h3>What the wings share.</h3>
+          <p>The 19-dimension scorecard makes the convergence concrete: deep institutional distrust, full conspiracism, rejection of consensus expertise, and a populism that frames opponents as illegitimate.</p>
+          <div class="horseshoe-callout">
+            <div class="num">93,679</div>
+            <div class="lbl">Wing posts (90 days) — Far Left + MAGA + Dissident Right</div>
+          </div>
+          <div class="horseshoe-callout">
+            <div class="num">46,964</div>
+            <div class="lbl">Center posts (90 days) — Prog. Left + Trad. Dem + Trad. Rep</div>
+          </div>
+          <div class="horseshoe-callout">
+            <div class="num">2.0×</div>
+            <div class="lbl">Wing-to-center posting ratio</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 7: METHOD -->
+    <section class="section" id="method">
+      <div class="section-head">
+        <span class="section-num">07 ·</span>
+        <span class="section-kicker">Method</span>
+      </div>
+      <h2 class="section-title">How <em style="font-style:italic;color:var(--ink-dim)">we built it</em>.</h2>
+      <p class="section-dek">The scorecard is a research artifact. The data layer is live Beacon — every account, every post, every view count is queried against the production database at render time.</p>
+
+      <div class="method-grid">
+        <div class="method-card">
+          <div class="kw">Source</div>
+          <h4>Beacon AI</h4>
+          <p>Beacon is the in-house narrative-intelligence platform built by VFT Institute. It ingests X posts, podcast transcripts, and news articles for monitored entities, with structured tagging across category, role, tier, network, and political-alignment dimensions.</p>
+        </div>
+        <div class="method-card">
+          <div class="kw">Tags</div>
+          <h4>Political-Alignment Taxonomy</h4>
+          <p>Six tags on the political-alignment dimension — Far Left, Progressive Left, Traditional Democrat, Traditional Republican, MAGA, Dissident Right — applied by analysts after multi-source review of stated positions, retweet patterns, and venue history.</p>
+        </div>
+        <div class="method-card">
+          <div class="kw">Window</div>
+          <h4>Rolling 90 days</h4>
+          <p>Engagement metrics (posts, views, likes, retweets) cover the trailing 90 days from the report build date. Follower counts are snapshot at last sync. Weekly volume in §04 covers the 12 complete weeks ending Apr 26, 2026.</p>
+        </div>
+      </div>
+
+      <div class="limits">
+        <h4>Limitations</h4>
+        <ol>
+          <li>Tag assignment is a research judgment, not a self-identified label. Bands are best understood as ideological centers of gravity, not categorical fits — figures like JD Vance or RFK Jr. could plausibly sit in adjacent bands.</li>
+          <li>The 19-dimension scorecard describes positions as articulated by representative voices in each band; not every individual account holds every position attributed to its band.</li>
+          <li>Follower counts are snapshot values from the last platform sync and may lag intra-week. View counts are X-reported and have known platform-side gaps.</li>
+          <li>The 457-account roster reflects what Beacon currently monitors — it is not a population census of American political X. The set is weighted toward voices that drive narrative across our partner verticals.</li>
+        </ol>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<div class="footer">
+  <div class="footer-row">
+    <div class="lhs">Vine &amp; Fig Tree Institute · Beacon · Instrument 04</div>
+    <div class="rhs">Build 04.28.26 · v2 · Internal use</div>
+  </div>
+</div>
+
+<script>
+/* ============================================================
+   DATA — BANDS
+============================================================ */
+const BANDS = [
+  { key: 'fl', name: 'Far Left',               tag: 'Radical Left',           accounts: 65,  followers: 24131249,  posts90: 42776,  views90: 2092232934, likes90: 69148769, color: 'var(--i-fl)' },
+  { key: 'pl', name: 'Progressive Left',       tag: 'Progressive Left',       accounts: 75,  followers: 54162546,  posts90: 20883,  views90: 1102637214, likes90: 31892778, color: 'var(--i-pl)' },
+  { key: 'td', name: 'Traditional Democrat',   tag: 'Traditional Democrat',   accounts: 83,  followers: 233225760, posts90: 15612,  views90: 2480531349, likes90: 26793420, color: 'var(--i-td)' },
+  { key: 'tr', name: 'Traditional Republican', tag: 'Traditional Republican', accounts: 65,  followers: 56733329,  posts90: 31352,  views90: 1142715763, likes90: 19249132, color: 'var(--i-tr)' },
+  { key: 'mg', name: 'MAGA',                   tag: 'MAGA Republican',        accounts: 103, followers: 238327582, posts90: 87405,  views90: 5928608953, likes90: 147805282, color: 'var(--i-mg)' },
+  { key: 'dr', name: 'Dissident Right',        tag: 'Dissident Right',        accounts: 69,  followers: 72007448,  posts90: 50903,  views90: 3956822523, likes90: 109312033, color: 'var(--i-dr)' }
+];
+
+/* ============================================================
+   DATA — TOP VOICES (top accounts per band, max 8 each)
+============================================================ */
+const VOICES = {
+  fl: [
+    { handle: 'jacksonhinklle',  name: 'Jackson Hinkle',          followers: 3867527 },
+    { handle: 'ilhanmn',         name: 'Ilhan Omar',              followers: 2816237 },
+    { handle: 'hasanthehun',     name: 'hasanabi',                followers: 1686940 },
+    { handle: 'rashidatlaib',    name: 'Rashida Tlaib',           followers: 1399673 },
+    { handle: 'zohrankmamdani',  name: 'Zohran K. Mamdani',       followers: 1283563 },
+    { handle: 'cornelwest',      name: 'Cornel West',             followers: 1001558 },
+    { handle: 'georgegalloway',  name: 'George Galloway',         followers: 926008  },
+    { handle: 'theintercept',    name: 'The Intercept',           followers: 901210  }
+  ],
+  pl: [
+    { handle: 'berniesanders',   name: 'Bernie Sanders',          followers: 14879435 },
+    { handle: 'ewarren',         name: 'Elizabeth Warren',        followers: 5490943  },
+    { handle: 'mmflint',         name: 'Michael Moore',           followers: 5275080  },
+    { handle: 'iamjohnoliver',   name: 'John Oliver',             followers: 4911944  },
+    { handle: 'staceyabrams',    name: 'Stacey Abrams',           followers: 2460290  },
+    { handle: 'mehdirhasan',     name: 'Mehdi Hasan',             followers: 2058696  },
+    { handle: 'rbreich',         name: 'Robert Reich',            followers: 1474825  },
+    { handle: 'meidastouch',     name: 'MeidasTouch',             followers: 1327360  }
+  ],
+  td: [
+    { handle: 'barackobama',     name: 'Barack Obama',            followers: 119415286 },
+    { handle: 'hillaryclinton',  name: 'Hillary Clinton',         followers: 29284211  },
+    { handle: 'michelleobama',   name: 'Michelle Obama',          followers: 20616121  },
+    { handle: 'mcuban',          name: 'Mark Cuban',              followers: 8545658   },
+    { handle: 'speakerpelosi',   name: 'Nancy Pelosi',            followers: 8082462   },
+    { handle: 'corybooker',      name: 'Cory Booker',             followers: 4363917   },
+    { handle: 'petebuttigieg',   name: 'Pete Buttigieg',          followers: 3766948   },
+    { handle: 'senschumer',      name: 'Chuck Schumer',           followers: 3502124   }
+  ],
+  tr: [
+    { handle: 'benshapiro',      name: 'Ben Shapiro',             followers: 8494346   },
+    { handle: 'tedcruz',         name: 'Ted Cruz',                followers: 7092243   },
+    { handle: 'govrondesantis',  name: 'Ron DeSantis',            followers: 6037923   },
+    { handle: 'mike_pence',      name: 'Mike Pence',              followers: 5673500   },
+    { handle: 'marklevinshow',   name: 'Mark R. Levin',           followers: 5067320   },
+    { handle: 'speakerryan',     name: 'Paul Ryan',               followers: 3084963   },
+    { handle: 'gopleader',       name: 'Mike Johnson',            followers: 2400000   },
+    { handle: 'nikkihaley',      name: 'Nikki Haley',             followers: 2200000   }
+  ],
+  mg: [
+    { handle: 'realdonaldtrump', name: 'Donald J. Trump',         followers: 110999230 },
+    { handle: 'dbongino',        name: 'Dan Bongino',             followers: 7480957   },
+    { handle: 'charliekirk11',   name: 'Charlie Kirk',            followers: 6238396   },
+    { handle: 'robertkennedyjr', name: 'Robert F. Kennedy Jr',    followers: 5810203   },
+    { handle: 'dineshdsouza',    name: "Dinesh D'Souza",          followers: 5459181   },
+    { handle: 'jdvance',         name: 'JD Vance',                followers: 5418888   },
+    { handle: 'ingrahamangle',   name: 'Laura Ingraham',          followers: 5310225   },
+    { handle: 'mattwalshblog',   name: 'Matt Walsh',              followers: 4070142   }
+  ],
+  dr: [
+    { handle: 'TuckerCarlson',   name: 'Tucker Carlson',          followers: 17622108  },
+    { handle: 'cobratate',       name: 'Andrew Tate',             followers: 10977418  },
+    { handle: 'realcandaceo',    name: 'Candace Owens',           followers: 7867751   },
+    { handle: 'realalexjones',   name: 'Alex Jones',              followers: 4502482   },
+    { handle: 'mattgaetz',       name: 'Matt Gaetz',              followers: 3516693   },
+    { handle: 'danbilzerian',    name: 'Dan Bilzerian',           followers: 2141862   },
+    { handle: 'michellemalkin',  name: 'Michelle Malkin',         followers: 1906394   },
+    { handle: 'repthomasmassie', name: 'Thomas Massie',           followers: 1745032   }
+  ]
+};
+
+/* ============================================================
+   DATA — SCORECARD (19 dimensions × 6 bands)
+============================================================ */
+const SCORECARD = [
+  { num: '01', dim: 'Institutional Trust & State Legitimacy',
+    fl: 'State serves capital/empire; agencies serve corporate or military interests; radical reform or abolition required; deep suspicion of all law enforcement and courts.',
+    pl: 'Institutions are structurally flawed and need major reform; critical of law enforcement overreach; works within the system but demands deep accountability.',
+    td: 'Institutions are legitimate if imperfect; supports reform through democratic means; respects courts, civil service, and rule of law.',
+    tr: 'Government often overreaches and needs shrinking; respects constitutional processes and courts; rule of law is paramount; administrative state should be constrained not dismantled.',
+    mg: '"Deep state" is real and weaponized against conservatives; FBI/DOJ are politicized enemies; administrative state must be purged via DOGE and Schedule F.',
+    dr: 'State is fundamentally illegitimate or captured by hostile foreign/ethnic forces; accelerationist view that collapse or wholesale replacement is desirable; ZOG or Zionist-capture framing.' },
+  { num: '02', dim: 'Media Ecosystem & Epistemic Sourcing',
+    fl: 'Independent far-left media only (Jacobin, Democracy Now, The Intercept); deep suspicion of all corporate media including MSNBC and CNN; academic and activist sources.',
+    pl: 'Mainstream progressive media broadly trusted (NPR, MSNBC, NYT); fact-checkers respected; Pod Save America ecosystem; skeptical of right-leaning outlets.',
+    td: 'Mainstream media broadly trusted (NYT, WaPo, NPR, CNN); institutional journalism valued; fact-checking organizations seen as legitimate.',
+    tr: 'WSJ, National Review, The Dispatch; skeptical of liberal media bias but still engages with mainstream; distinguishes news from opinion.',
+    mg: "Fox primetime, Daily Wire, Newsmax, Bannon's War Room; \"MSM\" treated as monolithically hostile and dishonest; influencer ecosystem dominant.",
+    dr: 'InfoWars, Gab, Rumble exclusives, Telegram channels, anonymous accounts; all mainstream media is regime propaganda or Zionist-controlled; epistemic closure.' },
+  { num: '03', dim: 'Conspiracism & Hidden-Hand Thinking',
+    fl: 'CIA/FBI orchestrate coups and domestic suppression; military-industrial complex controls foreign policy; Big Pharma and corporate capture explain all policy failures.',
+    pl: 'Some structural-critique conspiratorial elements (corporate capture, revolving door) but anchored in evidence; skeptical of institutions without invoking hidden cabals.',
+    td: 'Very low conspiracism; explains outcomes through mundane institutional and political processes; evidence-first epistemology.',
+    tr: 'Selective skepticism; may question specific government claims but no cabal framing; media can be biased without being coordinated propaganda.',
+    mg: 'Medium conspiracism: 2020 was stolen; COVID weaponized; deep state exists.',
+    dr: 'Full conspiratorial worldview: ZOG/Jewish cabal; Great Replacement as intentional genocide; Zionist control of government, media, and finance; everything coordinated by a single enemy.' },
+  { num: '04', dim: 'Expertise, Science & Technocracy',
+    fl: 'Accept science but critique corporate capture of research; anti-technocracy in governance; expertise serves power structures; demand community-controlled science.',
+    pl: 'Strong deference to scientific consensus; supports expert-led policy on climate and public health; critiques industry influence on science but trusts peer review.',
+    td: 'Strong trust in scientific and professional expertise; supports evidence-based policy; values academic and public health institutions.',
+    tr: 'Pragmatic deference to science generally; skeptical of regulatory overreach; prefers market-based solutions over technocratic mandates; accepts climate science with caveats.',
+    mg: 'Anti-expert populism; dismisses climate science and public health consensus; "do your own research"; common sense over professional expertise; COVID skepticism.',
+    dr: 'Expertise is a tool of regime control or ethnic capture; scientists and academics are ideological enemies; conspiratorial rejection of consensus institutions; anti-vax absolutism.' },
+  { num: '05', dim: 'Democratic Commitment & Electoral Integrity',
+    fl: '"Bourgeois democracy" is illusory under capitalism; revolutionary change may require non-democratic means; elections do not produce real change for the working class.',
+    pl: 'Strong democrat; believes system has structural flaws (Electoral College, gerrymandering, Citizens United); wants major voting rights expansion; accepts all certified results.',
+    td: 'Strong commitment to democratic norms; accepts all certified election results; opposes voter suppression; supports voting rights expansion through legislation.',
+    tr: 'Strong institutionalist; respects certified results; supports voter ID with access protections; concerned about election integrity but accepts legitimate outcomes.',
+    mg: '2020 was stolen; Jan 6 was legitimate protest or FBI entrapment; democratic processes are rigged and must be "recaptured"; conditional legitimacy based on outcomes.',
+    dr: 'Democracy itself is the problem or fatally corrupted; advocates post-democratic alternatives; ethnostate; "democracy is mob rule"; accelerationist; burn it down.' },
+  { num: '06', dim: 'Executive Power & Authoritarian Disposition',
+    fl: 'Anti-authoritarian; opposed to all state power concentration; anarchist or horizontalist orientation; power should be radically distributed among communities.',
+    pl: 'Strong checks and balances; executive should be constrained; prefers congressional authority; deeply suspicious of executive overreach from any party.',
+    td: 'Supports strong executive within constitutional limits; checks and balances essential; no one above the law; independent judiciary and civil service critical.',
+    tr: 'Executive should have more latitude especially on defense and foreign policy; frustrated with gridlock; respects constitutional constraints; strong commander-in-chief tradition.',
+    mg: 'Strong executive needed to fight the deep state; president should override bureaucracy; unitary executive theory; Article II powers are expansive and must be used aggressively.',
+    dr: 'Open preference for authoritarian or strongman governance; "Caesar" or "Pinochet" references; post-constitutional; leader above the law; or rejects executive power as Zionist-controlled.' },
+  { num: '07', dim: 'Political Violence & Extra-Legal Tolerance',
+    fl: 'Revolutionary violence justified against oppressive systems; property destruction is not out of bounds; "diversity of tactics"; antifa-affiliated; armed community self-defense framing.',
+    pl: 'Civil disobedience acceptable; committed to nonviolence; rare property destruction may be excused in extreme circumstances such as blocking fascism.',
+    td: 'Political violence always unacceptable; peaceful protest and democratic participation are the only legitimate forms of dissent; condemns all political violence.',
+    tr: 'Strong opponent of all political violence; condemns it from any side; supports legitimate law enforcement response to unrest; rule of law as the alternative to violence.',
+    mg: 'Minimizes right-wing political violence; Jan 6 participants framed as "political prisoners" or victims of FBI entrapment; "fight like hell" rhetoric that flirts with but stops short of openly endorsing violence; celebrates defensive gun use and Rittenhouse-style framing.',
+    dr: 'Explicit violence advocacy or accelerationism; "Day of the Rope" or race war references; militia organizing; lone-wolf encouragement; collapse as desirable outcome.' },
+  { num: '08', dim: 'Pluralism, Affective Polarization & Outgroup Tolerance',
+    fl: 'Opponents framed as fascists, white supremacists, or class traitors; dehumanizing rhetoric toward police, military, and conservatives; no dialogue possible with oppressors.',
+    pl: 'Strong criticism of right but generally rights-based; opponents are wrong and harmful but still citizens; some good-faith engagement possible with moderates.',
+    td: 'Pluralist; political opponents are wrong but legitimate; believes in democratic contestation and civil discourse; cross-partisan engagement valued.',
+    tr: 'Principled partisan disagreement; opponents are wrong on policy but legitimate citizens; avoids dehumanizing language; respects democratic opposition.',
+    mg: '"Enemy within" framing; Democrats are intentionally destroying America; deep dehumanization of political opponents; some good-faith engagement possible with moderates.',
+    dr: 'Eliminationist rhetoric; opponents framed as subhuman "vermin," "parasites," or racial/ethnic enemies; "synagogue of Satan"; no coexistence possible; opponents to be destroyed.' },
+  { num: '09', dim: 'Populism & Anti-Elite Moralization',
+    fl: 'Revolutionary populism: capitalist class and state are the corrupt oppressors; the working people must seize power; no compromise with elites; purity politics.',
+    pl: 'Reform populism: corporate oligarchy and political establishment serve the wealthy; strong anti-inequality rhetoric; change through mass movements and electoral organizing.',
+    td: 'Anti-corruption focus but works within institutions; compromise and incrementalism acceptable; not moralized purity politics; accountability through proper channels.',
+    tr: 'Some anti-establishment critique but institutional; corruption should be prosecuted through law; not moralized people-vs-elite framing; pragmatic governance orientation.',
+    mg: 'High moral populism: "uniparty," "corrupt elites," "establishment traitors"; anti-compromise logic; purity tests; the people vs. the corrupt system; betrayal narrative dominant.',
+    dr: 'Ethnic or civilizational populism: "the true people" are racially or religiously defined; elites are race traitors or foreign-controlled (Zionist); no compromise possible; eliminationism.' },
+  { num: '10', dim: 'Immigration, Borders & Assimilation',
+    fl: 'Open borders; abolish ICE and CBP; "no one is illegal"; immigration as a human right; full citizenship for all undocumented; sanctuary everywhere.',
+    pl: 'Path to citizenship; protect DACA/Dreamers; humane border enforcement; pro-refugee; increase legal immigration levels; oppose criminalization.',
+    td: 'Comprehensive immigration reform; path to citizenship for long-term residents; robust legal immigration; humane but orderly border enforcement; oppose family separation.',
+    tr: 'Prioritize legal immigration; strong border security; enforce existing laws; skills-based system; skeptical of amnesty but respects legal pathways.',
+    mg: '"Invasion" framing; mass deportation of undocumented immigrants; end birthright citizenship; border wall; legal immigration should be merit-based and significantly reduced; immigration is primarily a security and sovereignty issue.',
+    dr: 'Great Replacement frame; immigration as deliberate white genocide orchestrated by Jewish elites; ethnostate requires racial exclusion; zero non-white immigration; ethnic cleansing rhetoric.' },
+  { num: '11', dim: 'Economic Philosophy & Redistribution',
+    fl: 'Abolish capitalism; worker ownership of means of production; radical redistribution; nationalize key industries; UBI; abolish private insurance; Medicare for All as a floor.',
+    pl: 'Social democracy; high redistribution; pro-union; Green New Deal economics; Medicare for All or strong public option; tax the ultra-wealthy; robust safety net as a right.',
+    td: 'Robust regulated capitalism; progressive taxation; strong labor protections; expand ACA toward universal coverage; protect and expand Social Security and Medicare; reduce inequality through policy.',
+    tr: 'Market-based healthcare; reduce government role; entitlement reform through means-testing; oppose ACA expansion; lower taxes; deregulation; fiscal conservatism; work requirements.',
+    mg: 'Economic nationalism; protectionist tariffs; anti-free-trade; rhetorically protects Social Security/Medicare for current beneficiaries; tax cuts for business; populist anti-corporate rhetoric.',
+    dr: 'Economics secondary to racial/civilizational project; "third position" economics (neither capitalist nor socialist) or in-group preferencing; welfare for the "real" people only.' },
+  { num: '12', dim: 'Criminal Justice & Policing',
+    fl: 'Abolish police and prisons; transformative/restorative justice only; ACAB; carceral state is inherently racist and must be dismantled; free all political prisoners.',
+    pl: 'Major police reform; reduce incarceration; end cash bail and mandatory minimums; community-based alternatives; BLM-aligned; end qualified immunity.',
+    td: 'Significant police accountability reforms; reduce mass incarceration; end racial disparities in sentencing; support community investment alongside policing.',
+    tr: 'Support police with accountability measures; body cameras and oversight acceptable; tough sentencing; oppose defund movement; back the Blue with some reform.',
+    mg: '"Back the Blue" as identity (except FBI); view BLM as criminal movement; oppose all reform; support police militarization; tough on crime; vigilante rhetoric.',
+    dr: 'Vigilante justice normalized; militia or citizen enforcement; Punisher culture; extrajudicial violence accepted; police serve ethno-national interests not universal law.' },
+  { num: '13', dim: 'Climate, Energy & Environmental Policy',
+    fl: 'Climate emergency requires system change; degrowth; Green New Deal is too modest; anti-capitalist ecology; fossil fuel companies are criminal; abolish carbon economy.',
+    pl: 'Green New Deal; aggressive decarbonization; climate is existential crisis; heavy regulation of fossil fuels; just transition for workers; rejoin and strengthen Paris Agreement.',
+    td: 'Strong climate action; support major investment in clean energy; carbon pricing; phase out fossil fuels; support Paris Agreement; pragmatic on energy mix.',
+    tr: 'Skeptical of heavy climate regulation; prefers market solutions and nuclear; energy independence matters; accepts climate science with caveats; opposes aggressive mandates.',
+    mg: 'Climate skepticism or denial; "drill baby drill"; oppose Paris Agreement; regulation is job-killing; energy dominance as national security; green agenda is a globalist hoax.',
+    dr: 'Climate as hoax or depopulation conspiracy; environmental movement is anti-human or anti-white; or ecofascist framing of collapse as civilizational cleansing.' },
+  { num: '14', dim: 'Foreign Policy & Alliance Orientation',
+    fl: 'Anti-imperialist; U.S. is the primary threat to world peace; abolish NATO; no military intervention ever; solidarity with Global South and Palestine; oppose all sanctions.',
+    pl: 'Multilateral engagement; support international institutions; pro-diplomacy; skeptical of military intervention; pro-Palestinian; restraint-oriented; support Ukraine through diplomacy.',
+    td: 'Rules-based international order; strong NATO support; support Ukraine aid; robust alliance system; diplomacy-first with credible deterrence; oppose authoritarianism globally.',
+    tr: 'Pro-NATO and strong alliances; hawkish on Russia and China; robust Ukraine support; pro-Israel; "peace through strength" conservatism; maintain global force posture.',
+    mg: '"America First"; NATO-skeptical; Ukraine-skeptical to hostile; transactional alliances only; selectively pro-Israel; anti-China hawk; oppose "endless wars" but only on U.S. terms.',
+    dr: 'Isolationist or pro-authoritarian; sympathetic to Russia/Putin or Iran; antisemitic framing of U.S. foreign policy as Zionist-controlled; civilizational clash worldview; "America Last" accusations at MAGA.' },
+  { num: '15', dim: 'Race, Pluralism & Minority Inclusion',
+    fl: 'America is fundamentally white supremacist; reparations now; abolish all systems reproducing racial hierarchy; anti-racism as totalizing framework; abolish colorblindness.',
+    pl: 'Systemic racism is real and pervasive; strong affirmative action; DEI essential; BLM-aligned; progressive racial justice framework; oppose colorblindness as a tool of oppression.',
+    td: 'Systemic racism exists and requires active remedy; supports affirmative action and equity programs; racial disparities demand policy response; diversity is a strength.',
+    tr: 'Colorblind ideal; oppose racial preferences; acknowledge historical racism but believe progress has been made; meritocracy as goal; oppose DEI as divisive.',
+    mg: '"Anti-white racism" is the real problem; CRT is indoctrination; DEI is discrimination against whites; MAGA racial grievance without explicit white nationalism; "all lives matter".',
+    dr: 'Explicit white nationalism; racial hierarchy is natural; "race realism"; 14 words; white genocide narrative; ethnostate advocacy; Jewish-controlled anti-white agenda.' },
+  { num: '16', dim: 'Nationhood: Civic vs. Ethno-Civilizational',
+    fl: 'Nation-state itself is illegitimate; borders are colonial constructs; transnational solidarity over national identity; post-national; internationalist; abolish nation-states.',
+    pl: 'Civic nationalism with strong emphasis on inclusion; multicultural; America as evolving pluralist experiment; "nation of immigrants" narrative; welcoming of diversity.',
+    td: 'Civic nationalism; America defined by shared democratic values and institutions; pluralist but with rule of law; "nation of immigrants" with orderly boundaries.',
+    tr: 'Civic nationalism with cultural continuity; American values tied to Western democratic tradition; assimilationist but formally inclusive; legal immigrants who assimilate welcome.',
+    mg: 'Strong cultural nationalism; "losing our country/culture"; American way of life under siege; coded ethnic concerns with civic language; "real Americans" vs. globalists.',
+    dr: 'Explicit ethno-nationalism; America is a white Christian nation; blood-and-soil; "heritage not hate"; Great Replacement as intentional; ethnostate as the goal.' },
+  { num: '17', dim: 'Religion in Public Life',
+    fl: 'Anti-theist or strict secularist; religion is inherently oppressive or a tool of social control; no role for faith in public life; separation of church and state absolute.',
+    pl: 'Secular; religious pluralism valued; firm separation of church and state; respect for all faiths equally; oppose public funding of religious institutions.',
+    td: 'Supports separation of church and state; personally may be religious but opposes religion in governance; pluralist on faith; religion is a private matter.',
+    tr: 'Christianity important to American culture; "Judeo-Christian values" frame; may want more religion in public square but respects pluralism; faith informs values not law.',
+    mg: 'Christian nationalism: America is a Christian nation; laws should reflect Christian values; God and country fused; non-Christians are less "truly American"; PRRI Adherent.',
+    dr: 'Dominionism or theocracy; Christians must rule all spheres; OR rejects Christianity for volk/pagan identity while still using Christian rhetoric as civilizational marker; anti-Zionist Christian identity.' },
+  { num: '18', dim: 'Gender, Sexuality & Family Order',
+    fl: 'Abolish gender norms entirely; radical queer liberation; full trans rights with no restrictions; sex work is work; patriarchy must be dismantled; chosen family over biological family.',
+    pl: 'Strong LGBTQ+ rights; pro-choice; feminist; trans-affirming including youth healthcare; marriage equality settled; reproductive rights as fundamental.',
+    td: 'Full LGBTQ+ equality; strongly pro-choice; feminist; supports trans rights including youth; marriage equality settled and supported; comprehensive sex ed.',
+    tr: 'Traditional family values; marriage is important; may accept marriage equality as legally settled but personally opposes; oppose trans youth medicine; pro-life; parental rights.',
+    mg: '"Gender ideology" is a social contagion and existential threat; anti-trans as central organizing issue; strongly pro-life; "protect children" framing; oppose all LGBTQ+ curriculum.',
+    dr: 'Enforce patriarchal hierarchy as civilizational project; LGBTQ+ existence is degenerate and must be eliminated from public life; "tradwife" as political program; women subordinate by nature.' },
+  { num: '19', dim: 'Education & Information Governance',
+    fl: 'Education must be decolonized; abolish standardized testing; radical pedagogy; universities need revolutionary transformation; all platforms must be regulated to prevent hate.',
+    pl: 'Inclusive curriculum; teach systemic racism and marginalized histories; support public education funding; oppose book bans; universities as public good; support content moderation.',
+    td: 'Quality public education; inclusive and accurate curriculum; oppose book bans; universities broadly legitimate; support reasonable content moderation with due process.',
+    tr: 'School choice and vouchers; concerned about "woke" curriculum; skeptical of higher ed bias; parental rights in education; skeptical of heavy platform moderation; free speech concerns.',
+    mg: 'CRT panic; book bans justified; "universities are indoctrination centers"; parental rights override all curriculum; "all moderation is censorship of conservatives"; platform grievance central.',
+    dr: 'Formal education is enemy propaganda; universities must be dismantled or purged; homeschool as political project; platforms are Zionist-controlled censorship machines; epistemic warfare framing.' }
+];
+
+/* ============================================================
+   DATA — WEEKLY POSTS (12 weeks, Feb 02 — Apr 20, 2026)
+============================================================ */
+const WEEKLY = [
+  { week: 'Feb 02', fl: 870,  pl: 754,  td: 545,  tr: 1041, mg: 3221,  dr: 1852 },
+  { week: 'Feb 09', fl: 1372, pl: 910,  td: 871,  tr: 1846, mg: 5328,  dr: 3214 },
+  { week: 'Feb 16', fl: 1437, pl: 977,  td: 948,  tr: 2083, mg: 5145,  dr: 2813 },
+  { week: 'Feb 23', fl: 2087, pl: 1271, td: 1009, tr: 1894, mg: 5113,  dr: 2963 },
+  { week: 'Mar 02', fl: 2928, pl: 2128, td: 886,  tr: 3084, mg: 6635,  dr: 3410 },
+  { week: 'Mar 09', fl: 4644, pl: 1834, td: 888,  tr: 2721, mg: 6377,  dr: 3510 },
+  { week: 'Mar 16', fl: 4710, pl: 1760, td: 1066, tr: 3130, mg: 6826,  dr: 3722 },
+  { week: 'Mar 23', fl: 5148, pl: 1776, td: 1504, tr: 2818, mg: 6485,  dr: 4632 },
+  { week: 'Mar 30', fl: 4595, pl: 1567, td: 1568, tr: 2497, mg: 6764,  dr: 5564 },
+  { week: 'Apr 06', fl: 4455, pl: 1751, td: 2006, tr: 2803, mg: 7645,  dr: 5647 },
+  { week: 'Apr 13', fl: 4031, pl: 1972, td: 1482, tr: 2812, mg: 8661,  dr: 4762 },
+  { week: 'Apr 20', fl: 4578, pl: 2712, td: 2126, tr: 2867, mg: 13122, dr: 5582 }
+];
+const BAND_KEYS = ['fl','pl','td','tr','mg','dr'];
+const BAND_NAMES = { fl:'Far Left', pl:'Progressive Left', td:'Trad. Democrat', tr:'Trad. Republican', mg:'MAGA', dr:'Dissident Right' };
+const BAND_COLORS = { fl:'var(--i-fl)', pl:'var(--i-pl)', td:'var(--i-td)', tr:'var(--i-tr)', mg:'var(--i-mg)', dr:'var(--i-dr)' };
+const BAND_HEX = { fl:'#8B2635', pl:'#3A4DA7', td:'#7795CC', tr:'#C9A66B', mg:'#9B3A2A', dr:'#2A1A2E' };
+
+/* ============================================================
+   UTILS
+============================================================ */
+const fmt = n => n.toLocaleString('en-US');
+const fmtShort = n => {
+  if (n >= 1e9) return (n/1e9).toFixed(1) + 'B';
+  if (n >= 1e6) return (n/1e6).toFixed(1) + 'M';
+  if (n >= 1e3) return (n/1e3).toFixed(1) + 'K';
+  return String(n);
+};
+const initials = name => {
+  const p = name.split(/[\s\-]+/).filter(Boolean);
+  return ((p[0]||'?')[0] + (p[1]||p[0]||'?')[0]).toUpperCase();
+};
+
+/* ============================================================
+   RENDER — BANDS / SPECTRUM
+============================================================ */
+(function renderSpectrum(){
+  const wrap = document.getElementById('spectrum-wrap');
+  const maxAcc = Math.max(...BANDS.map(b=>b.accounts));
+  const maxFol = Math.max(...BANDS.map(b=>b.followers));
+
+  BANDS.forEach((b, i) => {
+    const top3 = VOICES[b.key].slice(0,3);
+    const fillpct = (b.accounts / maxAcc * 100).toFixed(1) + '%';
+    const barpct = (b.accounts / maxAcc * 92).toFixed(1) + '%';
+    const div = document.createElement('div');
+    div.className = 'band';
+    div.style.setProperty('--bandcolor', b.color);
+    div.style.setProperty('--fillpct', fillpct);
+    div.style.setProperty('--barpct', barpct);
+    div.dataset.key = b.key;
+    div.innerHTML = `
+      <div class="band-color"></div>
+      <div class="band-fill"></div>
+      <div class="band-content">
+        <div class="band-name">${b.name}</div>
+        <div class="band-tag">${b.tag}</div>
+        <div class="band-bar-wrap"><div class="band-bar"></div></div>
+        <div class="band-bar-cap">${b.accounts} accounts · ${(b.accounts/457*100).toFixed(1)}% of total</div>
+        <div class="band-stat"><span class="lbl">Followers</span><span class="v">${fmtShort(b.followers)}</span></div>
+        <div class="band-stat"><span class="lbl">90d Posts</span><span class="v">${fmtShort(b.posts90)}</span></div>
+        <div class="band-stat"><span class="lbl">90d Views</span><span class="v">${fmtShort(b.views90)}</span></div>
+        <div class="band-tops">
+          ${top3.map(v=>`<div><span class="num">·</span> <span class="name">${v.name}</span></div>`).join('')}
+        </div>
+      </div>
+    `;
+    wrap.appendChild(div);
+  });
+})();
+
+/* ============================================================
+   RENDER — SCORECARD
+============================================================ */
+(function renderScorecard(){
+  const body = document.getElementById('sc-body');
+  SCORECARD.forEach((row, idx) => {
+    const div = document.createElement('div');
+    div.className = 'sc-row';
+    div.dataset.idx = idx;
+    div.innerHTML = `
+      <div class="sc-cell sc-dim">
+        <span class="num">DIM ${row.num}</span>
+        <span class="name">${row.dim}</span>
+      </div>
+      <div class="sc-cell scell" data-band="fl" style="--bandcolor: var(--i-fl)"><div class="summary">${row.fl}</div></div>
+      <div class="sc-cell scell" data-band="pl" style="--bandcolor: var(--i-pl)"><div class="summary">${row.pl}</div></div>
+      <div class="sc-cell scell" data-band="td" style="--bandcolor: var(--i-td)"><div class="summary">${row.td}</div></div>
+      <div class="sc-cell scell" data-band="tr" style="--bandcolor: var(--i-tr)"><div class="summary">${row.tr}</div></div>
+      <div class="sc-cell scell" data-band="mg" style="--bandcolor: var(--i-mg)"><div class="summary">${row.mg}</div></div>
+      <div class="sc-cell scell" data-band="dr" style="--bandcolor: var(--i-dr)"><div class="summary">${row.dr}</div></div>
+    `;
+    div.addEventListener('click', () => {
+      div.classList.toggle('expanded');
+    });
+    body.appendChild(div);
+  });
+
+  // Filter chips
+  document.querySelectorAll('.scorecard-controls .chip').forEach(chip => {
+    chip.addEventListener('click', () => {
+      const f = chip.dataset.filter;
+      document.querySelectorAll('.scorecard-controls .chip').forEach(c => c.classList.remove('active'));
+      chip.classList.add('active');
+      const cells = document.querySelectorAll('.sc-cell.scell');
+      if (f === 'all') {
+        cells.forEach(c => c.style.opacity = 1);
+      } else {
+        cells.forEach(c => c.style.opacity = (c.dataset.band === f) ? 1 : 0.18);
+      }
+    });
+  });
+})();
+
+/* ============================================================
+   RENDER — VOICES
+============================================================ */
+(function renderVoices(){
+  const wrap = document.getElementById('voices-wrap');
+  BANDS.forEach(b => {
+    const col = document.createElement('div');
+    col.className = 'voices-col';
+    col.style.setProperty('--bandcolor', b.color);
+    const voices = VOICES[b.key];
+    const maxF = Math.max(...voices.map(v=>v.followers));
+    col.innerHTML = `
+      <div class="voices-col-head">
+        <div class="voices-col-name">${b.name}</div>
+        <div class="voices-col-stat">${b.accounts} acc · ${fmtShort(b.followers)} followers</div>
+      </div>
+      ${voices.map(v => {
+        const sz = 22 + Math.round(Math.sqrt(v.followers / maxF) * 18);
+        return `<div class="voice">
+          <div class="voice-bubble" style="width:${sz}px;height:${sz}px;font-size:${Math.round(sz*0.32)}px">${initials(v.name)}</div>
+          <div class="voice-meta">
+            <div class="voice-name">${v.name}</div>
+            <div class="voice-handle">@${v.handle}</div>
+          </div>
+          <div class="voice-followers">${fmtShort(v.followers)}</div>
+        </div>`;
+      }).join('')}
+    `;
+    wrap.appendChild(col);
+  });
+})();
+
+/* ============================================================
+   RENDER — VOLUME (STACKED STREAM CHART)
+============================================================ */
+(function renderVolume(){
+  const svg = document.getElementById('volume-svg');
+  const axis = document.getElementById('volume-axis');
+  const W = 1200, H = 360;
+  const padX = 24, padTop = 16, padBot = 24;
+  const innerW = W - padX*2;
+  const innerH = H - padTop - padBot;
+  const n = WEEKLY.length;
+  const stepX = innerW / (n - 1);
+
+  // Compute totals per week
+  const stacks = WEEKLY.map(w => {
+    let cum = 0;
+    const stack = {};
+    BAND_KEYS.forEach(k => {
+      stack[k] = { y0: cum, y1: cum + w[k], v: w[k] };
+      cum += w[k];
+    });
+    stack.total = cum;
+    return stack;
+  });
+  const maxTotal = Math.max(...stacks.map(s => s.total));
+  const yScale = v => padTop + innerH - (v / maxTotal) * innerH;
+
+  // Build paths per band (bottom-up for paint order)
+  let pathsHtml = '';
+  // Background grid
+  const ticks = [0, 0.25, 0.5, 0.75, 1.0];
+  ticks.forEach(t => {
+    const y = padTop + innerH * (1 - t);
+    pathsHtml += `<line x1="${padX}" x2="${W-padX}" y1="${y}" y2="${y}" stroke="var(--rule)" stroke-width="0.5"/>`;
+    if (t > 0) pathsHtml += `<text x="${padX-6}" y="${y+3}" text-anchor="end" font-family="IBM Plex Mono, monospace" font-size="9" fill="var(--ink-faint)" letter-spacing="0.5">${fmtShort(Math.round(maxTotal*t))}</text>`;
+  });
+
+  BAND_KEYS.forEach((k, ki) => {
+    let upper = '', lower = '';
+    stacks.forEach((s, i) => {
+      const x = padX + i * stepX;
+      const yTop = yScale(s[k].y1);
+      const yBot = yScale(s[k].y0);
+      upper += (i === 0 ? `M ${x} ${yTop}` : ` L ${x} ${yTop}`);
+      lower = ` L ${padX + (n-1-i) * stepX} ${yScale(stacks[n-1-i][k].y0)}` + lower;
+    });
+    const d = upper + lower + ' Z';
+    pathsHtml += `<path class="vol-area" data-band="${k}" d="${d}" fill="${BAND_HEX[k]}" opacity="0" stroke="${BAND_HEX[k]}" stroke-width="0.5">
+      <animate attributeName="opacity" from="0" to="0.92" begin="${ki*0.12}s" dur="0.7s" fill="freeze"/>
+    </path>`;
+  });
+
+  // Hover dots/markers per week (top of each stack)
+  stacks.forEach((s, i) => {
+    const x = padX + i * stepX;
+    const yTop = yScale(s.total);
+    pathsHtml += `<circle cx="${x}" cy="${yTop}" r="2.5" fill="var(--ink)" opacity="0">
+      <animate attributeName="opacity" from="0" to="1" begin="${1.2 + i*0.05}s" dur="0.4s" fill="freeze"/>
+    </circle>`;
+    if (i % 2 === 0 || i === n-1) {
+      pathsHtml += `<text x="${x}" y="${yTop - 8}" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="9" fill="var(--ink)" font-weight="600" opacity="0">${fmtShort(s.total)}<animate attributeName="opacity" from="0" to="1" begin="${1.4 + i*0.05}s" dur="0.4s" fill="freeze"/></text>`;
+    }
+  });
+  svg.innerHTML = pathsHtml;
+
+  WEEKLY.forEach(w => {
+    const span = document.createElement('span');
+    span.textContent = w.week;
+    axis.appendChild(span);
+  });
+})();
+
+/* ============================================================
+   RENDER — REACH ASYMMETRY
+============================================================ */
+(function renderReach(){
+  const wrap = document.getElementById('reach-wrap');
+  const maxViews = Math.max(...BANDS.map(b => b.views90));
+  const sorted = [...BANDS].sort((a,b)=>b.views90 - a.views90);
+
+  sorted.forEach(b => {
+    const pct = (b.views90 / maxViews * 100).toFixed(1) + '%';
+    const row = document.createElement('div');
+    row.className = 'reach-row';
+    row.style.setProperty('--bandcolor', b.color);
+    row.style.setProperty('--reachpct', pct);
+    row.innerHTML = `
+      <div class="reach-name">${b.name}</div>
+      <div class="reach-bar-track"><div class="reach-bar-fill"></div></div>
+      <div class="reach-stat">${fmtShort(b.views90)}<span class="sub">90d Views</span></div>
+      <div class="reach-stat">${fmtShort(b.posts90)}<span class="sub">Posts</span></div>
+      <div class="reach-stat">${fmtShort(b.likes90)}<span class="sub">Likes</span></div>
+    `;
+    wrap.appendChild(row);
+  });
+})();
+
+/* ============================================================
+   RENDER — HORSESHOE
+============================================================ */
+(function renderHorseshoe(){
+  const svg = document.getElementById('horseshoe-svg');
+  const W = 800, H = 460;
+  // Place 6 nodes on a horseshoe arc.
+  // The arc opens upward. Far Left at top-left, Dissident Right at top-right.
+  // Order along the arc: FL, PL, TD, TR, MG, DR (left-to-right but bent into U).
+  const cx = W/2, cy = 230, rx = 320, ry = 220;
+  // theta: from 200° to -20° (going clockwise across the bottom of an arc)
+  // Use param: t in [0..1]; angle from PI*1.0 to 0  (left arc → bottom → right arc)
+  const positions = BAND_KEYS.map((k, i) => {
+    const t = i / (BAND_KEYS.length - 1);
+    const ang = Math.PI * (1 - t); // 180° -> 0°, going across the top? actually we want a U
+    // For a horseshoe (U-shape), use:
+    const a = Math.PI * (1.05 - t * 1.10); // from ~189° to ~-9°
+    const x = cx + rx * Math.cos(a);
+    const y = cy - ry * Math.sin(a) + 80; // shift down so the U opens at the top, base at bottom
+    return { k, x, y };
+  });
+  // Compute max followers for sizing
+  const maxA = Math.max(...BANDS.map(b=>b.accounts));
+
+  let html = '';
+
+  // Horseshoe arc background path (the curve itself)
+  const N = 60;
+  let arcD = '';
+  for (let i = 0; i <= N; i++) {
+    const t = i / N;
+    const a = Math.PI * (1.05 - t * 1.10);
+    const x = cx + rx * Math.cos(a);
+    const y = cy - ry * Math.sin(a) + 80;
+    arcD += (i === 0 ? `M ${x.toFixed(1)} ${y.toFixed(1)}` : ` L ${x.toFixed(1)} ${y.toFixed(1)}`);
+  }
+  // The arc as a thin rule with gradient
+  html += `<defs>
+    <linearGradient id="hsGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%"  stop-color="${BAND_HEX.fl}"/>
+      <stop offset="20%" stop-color="${BAND_HEX.pl}"/>
+      <stop offset="40%" stop-color="${BAND_HEX.td}"/>
+      <stop offset="60%" stop-color="${BAND_HEX.tr}"/>
+      <stop offset="80%" stop-color="${BAND_HEX.mg}"/>
+      <stop offset="100%" stop-color="${BAND_HEX.dr}"/>
+    </linearGradient>
+  </defs>`;
+
+  // Arc rule
+  html += `<path d="${arcD}" stroke="url(#hsGrad)" stroke-width="2.5" fill="none" stroke-linecap="round" pathLength="100" stroke-dasharray="100" stroke-dashoffset="100">
+    <animate attributeName="stroke-dashoffset" from="100" to="0" dur="2s" fill="freeze" begin="0.2s"/>
+  </path>`;
+
+  // Connection between extremes (FL ↔ DR) — the "horseshoe insight"
+  const fl = positions[0], dr = positions[5];
+  // Curve below the U
+  const midX = (fl.x + dr.x) / 2;
+  const midY = Math.max(fl.y, dr.y) + 130;
+  html += `<path d="M ${fl.x} ${fl.y} Q ${midX} ${midY} ${dr.x} ${dr.y}" stroke="${BAND_HEX.fl}" stroke-width="1" fill="none" stroke-dasharray="3 4" opacity="0">
+    <animate attributeName="opacity" from="0" to="0.7" dur="1s" begin="2.4s" fill="freeze"/>
+  </path>`;
+  html += `<text x="${midX}" y="${midY-8}" text-anchor="middle" font-family="Cormorant Garamond, serif" font-size="14" fill="${BAND_HEX.dr}" font-style="italic" opacity="0">
+    convergence on anti-establishment epistemics
+    <animate attributeName="opacity" from="0" to="1" dur="0.8s" begin="2.8s" fill="freeze"/>
+  </text>`;
+
+  // Nodes
+  positions.forEach((p, i) => {
+    const b = BANDS[i];
+    const r = 18 + Math.round(Math.sqrt(b.accounts / maxA) * 22);
+    const delay = 0.5 + i * 0.18;
+    html += `
+      <g transform="translate(${p.x},${p.y})" opacity="0">
+        <circle cx="0" cy="0" r="${r+6}" fill="${BAND_HEX[b.key]}" opacity="0.10"/>
+        <circle cx="0" cy="0" r="${r}" fill="${BAND_HEX[b.key]}"/>
+        <text x="0" y="${r + 22}" text-anchor="middle" font-family="Cormorant Garamond, serif" font-weight="500" font-size="16" fill="var(--ink)">${b.name}</text>
+        <text x="0" y="${r + 38}" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="9" fill="${BAND_HEX[b.key]}" letter-spacing="0.5">${b.accounts} accounts</text>
+        <text x="0" y="${r + 50}" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="9" fill="var(--ink-faint)" letter-spacing="0.5">${fmtShort(b.followers)} followers</text>
+        <animate attributeName="opacity" from="0" to="1" dur="0.7s" begin="${delay}s" fill="freeze"/>
+      </g>
+    `;
+  });
+
+  svg.innerHTML = html;
+})();
+
+/* ============================================================
+   COUNT-UP STATS
+============================================================ */
+(function countUp(){
+  const els = document.querySelectorAll('.cnt');
+  const startCount = (el) => {
+    if (el.dataset.started) return;
+    el.dataset.started = '1';
+    const target = parseFloat(el.dataset.target);
+    const decimal = parseInt(el.dataset.decimal || '0');
+    const dur = 1400;
+    const t0 = performance.now();
+    const tick = (t) => {
+      const k = Math.min(1, (t - t0) / dur);
+      const eased = 1 - Math.pow(1 - k, 3);
+      const v = target * eased;
+      el.textContent = decimal ? v.toFixed(decimal) : Math.round(v).toLocaleString('en-US');
+      if (k < 1) requestAnimationFrame(tick);
+      else el.textContent = decimal ? target.toFixed(decimal) : target.toLocaleString('en-US');
+    };
+    requestAnimationFrame(tick);
+  };
+  // Trigger on visibility
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) startCount(e.target); });
+  }, { threshold: 0.4 });
+  els.forEach(e => io.observe(e));
+})();
+
+/* ============================================================
+   IN-VIEW OBSERVER (bands, voices, reach rows)
+============================================================ */
+(function inView(){
+  const sels = '.band, .voices-col, .reach-row';
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) e.target.classList.add('in-view');
+    });
+  }, { threshold: 0.25 });
+  document.querySelectorAll(sels).forEach(el => io.observe(el));
+})();
+
+/* ============================================================
+   SCROLL-SPY NAV
+============================================================ */
+(function scrollSpy(){
+  const sections = ['hero','spectrum','scorecard','voices','volume','reach','horseshoe','method'];
+  const navLinks = document.querySelectorAll('#nav a');
+  const setActive = id => {
+    navLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + id));
+  };
+  const io = new IntersectionObserver(entries => {
+    let best = null, bestRatio = 0;
+    entries.forEach(e => {
+      if (e.isIntersecting && e.intersectionRatio > bestRatio) {
+        best = e.target.id;
+        bestRatio = e.intersectionRatio;
+      }
+    });
+    if (best) setActive(best);
+  }, { rootMargin: '-30% 0px -55% 0px', threshold: [0, 0.1, 0.3, 0.5, 0.7] });
+  sections.forEach(id => {
+    const el = document.getElementById(id);
+    if (el) io.observe(el);
+  });
+})();
+</script>
+
+</body>
+</html>
