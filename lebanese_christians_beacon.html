@@ -150,6 +150,18 @@ section:last-of-type{border-bottom:none}
 
 /* ===== Quant table ===== */
 .qtbl-wrap{overflow-x:auto;border:1px solid var(--rule);border-radius:3px;background:var(--paper-2);margin-top:14px}
+.contrib-head{font-family:var(--mono);font-size:10px;letter-spacing:.16em;color:var(--ink);text-transform:uppercase;font-weight:600;margin-top:36px;padding-top:20px;border-top:1px solid var(--rule)}
+.contrib-wrap{overflow-x:auto;border:1px solid var(--rule);border-radius:3px;background:var(--paper-2);margin-top:14px}
+.contrib-tbl{min-width:760px}
+.contrib-tbl thead th{cursor:default}
+.contrib-tbl thead th:first-child{width:22%}
+.contrib-tbl thead th:nth-child(2){width:30%;color:var(--warn)}
+.contrib-tbl thead th:nth-child(3){width:48%;color:var(--ink-dim)}
+.contrib-tbl thead th:hover{background:var(--paper-3);color:inherit}
+.contrib-tbl tbody td{vertical-align:top;line-height:1.55}
+.contrib-tbl td.dim{font-family:var(--sans);font-weight:600;color:var(--ink);font-size:13px}
+.contrib-tbl td.claude-side{color:var(--warn);font-style:normal;font-size:12.5px;font-family:var(--sans)}
+.contrib-tbl td.beacon-side{color:var(--ink);font-size:12.5px;font-family:var(--sans)}
 .qtbl{width:100%;border-collapse:collapse;font-size:13px;min-width:760px}
 .qtbl thead th{background:var(--paper-3);text-align:left;padding:11px 12px;font-family:var(--mono);font-size:10px;letter-spacing:.12em;color:var(--ink);text-transform:uppercase;font-weight:600;border-bottom:1px solid var(--rule);cursor:pointer;user-select:none;white-space:nowrap}
 .qtbl thead th:hover{background:var(--accent-soft);color:var(--ink-dim)}
@@ -358,9 +370,9 @@ section:last-of-type{border-bottom:none}
     </div>
 
     <div class="seal">
-      <div class="seal-label">Intelligence Layer</div>
+      <div class="seal-label">Companion · Claude vs. Beacon</div>
       <div class="seal-title">Lebanese Christian Leaders &amp; Israel</div>
-      <div class="seal-meta">v1.0 · Apr 28, 2026<br>Beacon DB · 15 X · 7 IG · 6 podcasts</div>
+      <div class="seal-meta">v1.1 · Apr 28, 2026<br>Beacon DB · 15 X · 7 IG · 6 podcasts · 9 KB sources</div>
     </div>
 
     <div class="nav-label">Sections</div>
@@ -393,12 +405,12 @@ section:last-of-type{border-bottom:none}
     <!-- 01 OVERVIEW / HERO -->
     <section id="overview">
       <div class="hero-rule"></div>
-      <div class="kicker"><span class="kicker-num">01</span><span>Beacon · Narrative Intelligence Layer</span><span class="kicker-rule"></span><span>Apr 28, 2026</span></div>
+      <div class="kicker"><span class="kicker-num">01</span><span>Companion to a Claude-generated brief</span><span class="kicker-rule"></span><span>Apr 28, 2026</span></div>
       <h1 class="h1">Lebanese Christian Leaders &amp; Israel</h1>
-      <p class="lede">A multi-source intelligence layer over a standard Claude report — what an LLM-only summary missed, and what only Beacon can verify with timestamped quotes, engagement data, and cross-platform corroboration.</p>
+      <p class="lede">A multi-source intelligence layer over a standard Claude report — what an LLM-only summary missed, and what only Beacon can verify with timestamped quotes, engagement data, longitudinal position tracking, and cross-platform corroboration.</p>
       <div class="body">
-        <p>Claude produced a plausible-looking biographical brief on nine Lebanese Christian figures. Beacon produces a verified one. Across 15 X accounts (15,332 tweets ingested), 7 Instagram accounts (1,102 posts), six podcast transcripts, and a curated knowledge base, Beacon resolves three position tiers, traces a 12-year ideological reversal in the Maronite Patriarch, captures a 151K-view breakout tweet from Samy Gemayel, surfaces a Trump &harr; ALPAC back-channel invisible to LLMs, and flags three figures in the Claude report with zero verifiable digital footprint.</p>
-        <p>Every claim in this report links to a real source in the Beacon database. Sources are tagged for ideology and credibility. Where data is absent, it is marked &mdash; not papered over.</p>
+        <p>Claude produced a plausible biographical brief on nine Lebanese Christian figures. Beacon produces a verified one. Across 15 X accounts (15,332 tweets), 7 Instagram accounts (1,102 posts), six podcast transcripts, 14 sourced citations, and a 258,906-segment knowledge base spanning 9 think tanks, Beacon resolves three position tiers, traces a twelve-year ideological reversal in the Maronite Patriarch, captures a 151K-view breakout tweet from Samy Gemayel, surfaces a Trump &harr; ALPAC back-channel invisible to LLMs, surfaces three high-engagement voices Claude missed entirely (Khalloul, Zakaria, Aoun), and flags three figures in the Claude report with zero verifiable digital footprint.</p>
+        <p>This is a companion document. Read it next to the Claude brief: every section maps to a dimension where the LLM alone falls short.</p>
       </div>
       <div class="byline">Prepared by Beacon Intelligence · Apr 28, 2026 · Subject window: Mar &ndash; Apr 2026, with longitudinal context Nov 2024 &ndash; Apr 2026</div>
     </section>
@@ -406,10 +418,10 @@ section:last-of-type{border-bottom:none}
     <!-- 02 METRICS -->
     <section id="metrics">
       <div class="kicker"><span class="kicker-num">02</span><span>Data Coverage</span><span class="kicker-rule"></span><span>Eight signal cards</span></div>
-      <h2 class="h2">What Beacon ingested for this report</h2>
-      <p class="body">Coverage is heavily skewed toward X &mdash; the dominant venue for live political commentary on Lebanon in this window. Instagram supplements with institutional pastoral posts. Podcast and news layers triangulate the events that drive social commentary.</p>
+      <h2 class="h2">What an LLM cannot see &mdash; and what Beacon ingested</h2>
+      <p class="body">Each card is a dimension a Claude-only brief leaves blank. Coverage is heavily weighted toward X &mdash; the dominant venue for live political commentary on Lebanon in this window. Instagram supplements with institutional pastoral posts. Podcast and news layers triangulate the events that drive social commentary. The knowledge base spans 9 think tanks across 258,906 indexed segments &mdash; this is the layer that sources Patriarch Al-Rahi&apos;s 12-year reversal.</p>
       <div class="metrics" id="metrics-grid"></div>
-      <div class="note"><strong>Reading note.</strong> Tweet counts are total ingestions, not Lebanon-Israel-keyword filtered. The 12 X accounts in this report account for 15,332 of those ingested tweets; three additional X handles in the Claude report (El-Hage, Abdel Sater, Zaidan&apos;s Eparchy) have zero tweets in the database.</div>
+      <div class="note"><strong>Reading note.</strong> Tweet counts are total ingestions, not Lebanon-Israel-keyword filtered. The 12 active X accounts in this report account for 15,332 of those ingested tweets; three additional X handles in the Claude report (El-Hage, Abdel Sater, Zaidan&apos;s Eparchy) have zero tweets in the database. Three voices not in the Claude brief at all &mdash; Khalloul, Zakaria, and President Aoun &mdash; were surfaced by Beacon&apos;s account discovery layer.</div>
     </section>
 
     <!-- 03 POSITION SPECTRUM -->
@@ -427,6 +439,19 @@ section:last-of-type{border-bottom:none}
       <p class="body">Six matched pairs. The left side is what a generic LLM with training-data knowledge can produce: plausible, biographical, generic. The right side is what Beacon adds: timestamped quotes, engagement metrics, cross-platform corroboration, and ideologically-tagged source citations.</p>
       <div class="ba-tones" id="ba-tones"></div>
       <div class="ba-grid" id="ba-grid"></div>
+
+      <div class="contrib-head">Contribution matrix &mdash; what Beacon adds across eight dimensions</div>
+      <p class="body">A generic Claude brief gives you a plausible biographical sketch. The Beacon layer gives you what an LLM cannot: verified posts, exact engagement, podcast triangulation, longitudinal position tracking, and continuous live monitoring.</p>
+      <div class="contrib-wrap">
+        <table class="qtbl contrib-tbl" id="contrib-tbl">
+          <thead><tr>
+            <th>Dimension</th>
+            <th>Claude alone</th>
+            <th>With Beacon layer</th>
+          </tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
     </section>
 
     <!-- 05 QUANT TABLE -->
@@ -531,13 +556,15 @@ section:last-of-type{border-bottom:none}
       <h4 class="h4">Source Grid</h4>
       <div class="src-grid" id="src-grid"></div>
 
+      <div class="note"><strong>Live monitoring.</strong> Unlike a one-shot Claude brief, this report can be re-run at any time. Live feeds update as accounts post; new podcast episodes ingest within hours; knowledge base segments accumulate continuously. The version on file represents the dataset as of Apr 28, 2026 &mdash; not a permanent ceiling on what Beacon can show.</div>
+
       <h3 class="lim-h">Known limitations</h3>
       <ol class="lim" id="lim"></ol>
     </section>
 
     <div class="foot-bar">
       <span>Beacon · VFT Institute · Apr 28, 2026</span>
-      <span>v1.0 · Internal · 15X · 7IG · 6 podcasts · 14 sources</span>
+      <span>v1.1 · Internal · 15X · 7IG · 6 podcasts · 14 sources · 9 KB origins</span>
     </div>
   </main>
 </div>
@@ -546,19 +573,19 @@ section:last-of-type{border-bottom:none}
 /* ====== DATA ====== */
 const META = {
   title:"Lebanese Christian Leaders & Israel",
-  kicker:"Beacon · Narrative Intelligence Layer",
-  byline:"Prepared by Beacon Intelligence · Apr 28, 2026"
+  kicker:"Companion Report · How Beacon Enriched the Claude Brief",
+  byline:"Prepared by Beacon Intelligence · Apr 28, 2026 · Companion to a Claude-generated brief"
 };
 
 const METRICS = [
-  {k:"Twitter / X accounts", v:"15", u:"tracked", p:"12 active, 3 with zero ingested tweets", navy:true},
-  {k:"X tweets ingested", v:"15,332", u:"records", p:"Active cohort total · ~5.5K from @lfpartyofficial alone"},
-  {k:"Instagram accounts", v:"7", u:"tracked", p:"1,102 posts across the cohort", olive:true},
-  {k:"Named figures profiled", v:"9", u:"+", p:"Plus 6 institutional/amplifier accounts", alt:true},
+  {k:"Verified social posts", v:"12K", u:"+", p:"Tweets &amp; IG with engagement metrics &mdash; Claude alone can only describe", navy:true},
+  {k:"Knowledge base segments", v:"258,906", u:"indexed", p:"Across 9 think tanks &mdash; Claude has none of this"},
+  {k:"X tweets ingested", v:"15,332", u:"records", p:"Active cohort total · ~5.5K from @lfpartyofficial alone", olive:true},
+  {k:"Voices Claude missed", v:"3", u:"surfaced", p:"Khalloul · Zakaria · Aoun &mdash; not in the original 9-figure brief", alt:true},
   {k:"Top single-tweet reach", v:"628K", u:"views", p:"Khalloul on Tucker Carlson · Jan 13, 2026"},
-  {k:"Position tiers identified", v:"3", u:"distinct", p:"Maximalist · Negotiation · Pastoral", alt:true},
-  {k:"Father Pierre coverage", v:"6", u:"sources", p:"3 podcasts · 3 outlets · cross-platform"},
-  {k:"Sourced citations", v:"50", u:"+", p:"Every quote linked · ideology tags applied", navy:true}
+  {k:"Claude figures with zero data", v:"3", u:"flagged", p:"El-Hage · Abdel Sater · Zaidan &mdash; unverifiable in any layer", alt:true},
+  {k:"Father Pierre coverage", v:"6", u:"sources", p:"3 podcasts · 3 outlets · cross-platform &mdash; Claude had zero"},
+  {k:"Position tracking arc", v:"12", u:"years", p:"Patriarch Al-Rahi 2014 &rarr; 2026 reversal documented", navy:true}
 ];
 
 const TIERS = [
@@ -764,13 +791,13 @@ const PROFILES = [
       {date:"Mar 25, 2026", text:"I grew up as young Aramaic Maronite Christian boy in Israel during the 1980s. Time for a new Lebanon that meets Christian aspirations. Thank God I was born Israeli. 94K views.", url:"https://x.com/i/status/2036926491481825510"}
     ]},
 
-  {h:"Brigitte Gabriel", tier:"t1", followers:1262, role:"Founder, ACT for America. Lebanese-American Christian advocate. The cohort&apos;s highest individual viral X reach.", typology:"Tier 1 · Diaspora Maximalist",
-    headline:"X is her primary influence channel, with 126K-view single posts dwarfing her Instagram reach.",
-    career:"Gabriel&apos;s X content mirrors her Instagram messaging but achieves dramatically higher viral reach. She frames Hezbollah as the existential threat to Lebanon, supports Israeli military operations directly, and ties Lebanese Christian survival to broader US-Iran confrontation.",
+  {h:"Brigitte Gabriel", tier:"t1", followers:1262, role:"Founder, ACT for America. Lebanese-American Christian advocate. The cohort&apos;s highest individual viral X reach. Beacon IG layer: 279 posts, 1.37M total likes &mdash; the cohort&apos;s highest aggregate IG engagement.", typology:"Tier 1 · Diaspora Maximalist",
+    headline:"X is her primary influence channel, with 126K-view single posts dwarfing her IG reach &mdash; though IG aggregate of 1.37M likes is still the cohort&apos;s largest.",
+    career:"Gabriel&apos;s X content mirrors her Instagram messaging but achieves dramatically higher viral reach per post. She frames Hezbollah as the existential threat to Lebanon, supports Israeli military operations directly, and is the only tracked figure who explicitly calls for Lebanon to join the Abraham Accords. Total IG engagement across 279 posts: 1.37 million likes.",
     timeline:[
+      {date:"Mar 6, 2026", text:"I call on all Lebanese to unite and join Egypt, Jordan, the UAE, Gulf states, and Saudi Arabia in the Abraham Accord and make peace with Israel. 4,423 IG likes.", url:"https://www.instagram.com/p/DW9HTzHt8VR/"},
       {date:"Apr 11, 2026", text:"Hezbollah will be destroyed. This is great news for Lebanon. 62K views.", url:"https://x.com/i/status/2042857932933464326"},
       {date:"Apr 13, 2026", text:"Israel is not going to stop bombing Lebanon until Hezbollah is completely destroyed. This is a good thing for world peace and security. 126K views.", url:"https://x.com/i/status/2043725168007107014"},
-      {date:"Apr 13, 2026", text:"I cannot return to Lebanon until Hezbollah is completely destroyed. Lebanon is a terrorist state right now.", url:"https://x.com/i/status/2043811707240251700"},
       {date:"Apr 18, 2026", text:"I&apos;m from Lebanon. I know how these people operate. Iran is determined to destroy us. We have to destroy them first. 78K views.", url:"https://x.com/i/status/2045623401641898498"}
     ]},
 
@@ -876,7 +903,10 @@ const AW_FEED = [
    targets:["IDF support","Hezbollah destruction"]},
   {meta:"Gemayel · Apr 9, 2026 · 151K views",
    q:"Full and explicit support for the negotiation track between official Lebanon and Israel. The goal is clear: stop the war, disarm Hezbollah, Israeli withdrawal as a first step toward sovereignty and peace.",
-   targets:["Negotiation","Disarmament","Tier 2"]}
+   targets:["Negotiation","Disarmament","Tier 2"]},
+  {meta:"Pres. Aoun · Apr 17, 2026 · 30,985 IG likes",
+   q:"Ceasefire address from the Lebanese presidency &mdash; the institutional baseline against which every other voice in this dataset is measured.",
+   targets:["Institutional","Aoun","Surfaced by Beacon"]}
 ];
 window.AW_FEED = AW_FEED;
 
@@ -970,10 +1000,39 @@ window.QUOTE_THEMES = QUOTE_THEMES;
 
 /* VERIFICATION */
 const VER_KPIS = [
-  {k:"Total source citations", v:"50+", d:"Every claim in this report links to a Beacon database source. Tagged for ideology and credibility."},
-  {k:"Cross-platform corroboration", v:"6 / 1", d:"Six independent sources triangulating the Father Pierre El-Rahi killing &mdash; one of the densest single-event coverages in the corpus."},
-  {k:"Figures with zero coverage", v:"3", d:"El-Hage, Abdel Sater, Zaidan&apos;s Eparchy &mdash; all in Claude&apos;s 9-figure brief, all flagged here as unverifiable."}
+  {k:"Knowledge base segments", v:"258,906", d:"Indexed segments across 9 think tanks (CAMERA, Terrorism Info, Washington Institute, others). Sources Patriarch Al-Rahi&apos;s 2014 &rarr; 2026 reversal that Claude alone cannot reconstruct."},
+  {k:"Cross-platform corroboration", v:"6 / 1", d:"Six independent sources triangulating the Father Pierre El-Rahi killing &mdash; podcasts, news, social, institutional. Not in Claude&apos;s brief."},
+  {k:"Figures with zero coverage", v:"3", d:"El-Hage, Abdel Sater, Zaidan&apos;s Eparchy &mdash; all in Claude&apos;s 9-figure brief, all flagged here as unverifiable in any Beacon layer."}
 ];
+
+/* CONTRIBUTION MATRIX — 8 dimensions of Claude alone vs Beacon layer */
+const CONTRIB_MATRIX = [
+  {dim:"Social media posts",
+   claude:"Referenced but unverifiable",
+   beacon:"12,000+ verified tweets and IG posts from tracked accounts &mdash; with engagement metrics"},
+  {dim:"Engagement data",
+   claude:"Estimated, generic",
+   beacon:"Exact view counts, likes, retweets &mdash; e.g., Khalloul 628K, Gemayel 151K, Gabriel 1.37M total IG"},
+  {dim:"Podcast coverage",
+   claude:"Not included",
+   beacon:"Megyn Kelly, PBS NewsHour, NPR, Ben Shapiro &mdash; verified with timestamps"},
+  {dim:"Knowledge base",
+   claude:"General references only",
+   beacon:"258,906 indexed segments across 9 think tanks &mdash; longitudinal context"},
+  {dim:"News cross-reference",
+   claude:"Not included",
+   beacon:"Daily Wire, Al Jazeera, BBC, WaPo coverage of El-Rahi killing, ceasefire, papal visit"},
+  {dim:"Position tracking over time",
+   claude:"Static snapshot",
+   beacon:"Dynamic: Al-Rahi 2014 &rarr; 2021 &rarr; 2025 &rarr; 2026 verified across sources"},
+  {dim:"New voices discovered",
+   claude:"9 figures profiled",
+   beacon:"3 additional high-engagement voices surfaced: Khalloul, Zakaria, Aoun"},
+  {dim:"Continuous monitoring",
+   claude:"One-time output",
+   beacon:"Live feeds update as accounts post &mdash; report can be re-run at any time"}
+];
+window.CONTRIB_MATRIX = CONTRIB_MATRIX;
 window.VER_KPIS = VER_KPIS;
 
 const VER_TABLE = [
@@ -1133,6 +1192,19 @@ window.LIMITATIONS = LIMITATIONS;
     });
   }
   renderBaTones(); renderBa();
+
+  /* CONTRIBUTION MATRIX */
+  (function renderContrib(){
+    const tbl = document.getElementById("contrib-tbl");
+    if(!tbl || !window.CONTRIB_MATRIX) return;
+    const tb = tbl.querySelector("tbody");
+    tb.innerHTML = "";
+    window.CONTRIB_MATRIX.forEach(r=>{
+      const tr = document.createElement("tr");
+      tr.innerHTML = `<td class="dim">${esc(r.dim)}</td><td class="claude-side">${r.claude}</td><td class="beacon-side">${r.beacon}</td>`;
+      tb.appendChild(tr);
+    });
+  })();
 
   /* QUANT TABLE */
   const qtbl = $("#qtbl");
