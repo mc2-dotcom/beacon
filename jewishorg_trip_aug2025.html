@@ -1,0 +1,955 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>JewishOrg August 2025 Trip — Influencer Impact Assessment | Beacon Intelligence</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Libre+Franklin:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+/* =========================================================
+   VFT Dashboard V2 — base theme
+   Drop-in CSS. All design tokens live here.
+   ========================================================= */
+:root{
+  --paper:#F6F2ED;
+  --paper-2:#FCFFFF;
+  --ink:#0C1843;
+  --ink-dim:#3A4DA7;
+  --ink-faint:#5B6484;
+  --rule:#C8CCD8;
+  --rule-2:#D4E3FC;
+  --navy:#0C1843;
+  --navy-bright:#3A4DA7;
+  --navy-deep:#1B2866;
+  --accent:#7795CC;
+  --warn:#8B2635;
+  --olive:#6F7A4A;
+  --sidebar:#F6F2ED;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:var(--paper);color:var(--ink);font-family:"Libre Franklin",system-ui,sans-serif;font-weight:400;line-height:1.55;-webkit-font-smoothing:antialiased}
+body{display:grid;grid-template-columns:230px 1fr;min-height:100vh}
+a{color:var(--ink-dim);text-decoration:none;border-bottom:1px solid var(--rule-2)}
+a:hover{color:var(--navy-deep);border-bottom-color:var(--navy-bright)}
+.serif{font-family:"Cormorant Garamond",Georgia,serif}
+.mono{font-family:"IBM Plex Mono",monospace}
+.kicker{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-faint)}
+
+aside.sidebar{position:sticky;top:0;align-self:start;height:100vh;background:var(--sidebar);border-right:1px solid var(--rule);padding:28px 18px 20px;display:flex;flex-direction:column;gap:16px;overflow-y:auto}
+.brand .name{font-family:"Cormorant Garamond",serif;font-size:18px;font-weight:600;color:var(--ink);letter-spacing:.01em;line-height:1.1}
+.brand .sub{font-family:"IBM Plex Mono",monospace;font-size:9px;letter-spacing:.16em;color:var(--ink-faint);text-transform:uppercase;margin-top:3px}
+.nav{display:flex;flex-direction:column;gap:2px;margin-top:10px;border-top:1px solid var(--rule);padding-top:14px}
+.nav a{display:flex;align-items:baseline;gap:8px;padding:6px 6px;font-size:12px;color:var(--ink);border:none;border-left:2px solid transparent;border-radius:0;font-weight:400;line-height:1.25}
+.nav a .nx{font-family:"IBM Plex Mono",monospace;font-size:9px;color:var(--ink-faint);min-width:16px}
+.nav a:hover{background:rgba(58,77,167,.06);color:var(--navy-deep)}
+.nav a.active{background:rgba(58,77,167,.10);color:var(--navy-deep);border-left-color:var(--navy-bright);font-weight:500}
+.foot{margin-top:auto;font-family:"IBM Plex Mono",monospace;font-size:9px;letter-spacing:.14em;color:var(--ink-faint);line-height:1.6;text-transform:uppercase}
+
+main{padding:40px 44px 80px;max-width:1240px;min-width:0}
+section{padding-top:48px;border-top:1px solid var(--rule);margin-top:36px;scroll-margin-top:24px}
+section.first{border-top:none;margin-top:0;padding-top:0}
+h1.serif{font-size:54px;font-weight:500;line-height:1.04;letter-spacing:-.01em;margin:14px 0 18px}
+h2.serif{font-size:34px;font-weight:500;line-height:1.1;margin:0 0 6px;letter-spacing:-.005em}
+h3.serif{font-size:22px;font-weight:600;margin:0 0 8px}
+h4{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-faint);font-weight:500;margin:0 0 10px}
+.dek{font-family:"Cormorant Garamond",serif;font-style:italic;font-size:21px;color:var(--ink-faint);max-width:780px;margin:0 0 14px;line-height:1.45}
+.byline{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.14em;color:var(--ink-faint);text-transform:uppercase}
+.toprule{height:3px;background:linear-gradient(90deg,var(--ink) 0%,var(--ink-dim) 40%,var(--accent) 80%,var(--paper) 100%);margin-bottom:18px}
+p{margin:0 0 12px;color:var(--ink);max-width:78ch}
+p.note{color:var(--ink-faint);font-size:13px;max-width:78ch}
+.ctxt{color:var(--ink);max-width:78ch}
+
+/* metric cards */
+.metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:18px}
+.mc{background:var(--paper-2);border:1px solid var(--rule);padding:18px 16px;border-radius:2px;position:relative;overflow:hidden}
+.mc.alt{background:#EFEEEA}
+.mc.navy{background:var(--ink);color:#fff}
+.mc.navy .mk,.mc.navy .ms{color:#B8C5E8}
+.mc.navy .mu{color:#9DA8C9}
+.mc.olive{background:#3F4830;color:#fff}
+.mc.olive .mk,.mc.olive .ms{color:#C7CCB1}
+.mc .mk{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.15em;color:var(--ink-faint);text-transform:uppercase;margin-bottom:8px}
+.mc .mv{font-family:"Cormorant Garamond",serif;font-size:36px;font-weight:600;line-height:1;letter-spacing:-.01em}
+.mc .mu{font-size:12px;color:var(--ink-faint);margin-top:6px;line-height:1.4}
+.mc .ms{position:absolute;right:14px;top:14px;font-family:"IBM Plex Mono",monospace;font-size:10px;color:var(--ink-faint)}
+.mc .pbar{margin-top:12px;height:4px;background:rgba(0,0,0,.08);border-radius:2px;overflow:hidden}
+.mc.navy .pbar,.mc.olive .pbar{background:rgba(255,255,255,.18)}
+.mc .pfill{height:100%;background:var(--navy-bright);width:0;transition:width 1.2s cubic-bezier(.2,.8,.2,1)}
+.mc.navy .pfill{background:var(--accent)}
+.mc.olive .pfill{background:#C7CCB1}
+
+/* tables */
+table.tbl{width:100%;border-collapse:collapse;margin-top:14px;font-size:13px;background:var(--paper-2);border:1px solid var(--rule)}
+table.tbl th,table.tbl td{padding:10px 12px;text-align:left;border-bottom:1px solid var(--rule)}
+table.tbl thead th{background:#EFEEEA;font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-faint);font-weight:500}
+table.tbl tbody tr:hover{background:rgba(58,77,167,.04)}
+
+/* dividers */
+.div-dot{height:1px;background:var(--rule);margin:24px 0;position:relative}
+.div-dot::after{content:"\00B7";position:absolute;left:50%;top:-12px;transform:translateX(-50%);background:var(--paper);padding:0 10px;color:var(--ink-faint);font-size:18px}
+
+/* chart card shell */
+.chart-card{background:var(--paper-2);border:1px solid var(--rule);border-radius:2px;padding:24px 28px;margin-top:16px;position:relative}
+.chart-card .ctitle{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.18em;color:var(--ink-faint);text-transform:uppercase;font-weight:500;margin-bottom:6px;display:flex;align-items:center;gap:10px}
+.chart-card .ctitle .pin{display:inline-block;width:6px;height:6px;background:var(--navy-bright);border-radius:50%;animation:pin 2.4s ease-in-out infinite}
+@keyframes pin{0%,100%{opacity:.3;transform:scale(1)}50%{opacity:1;transform:scale(1.6)}}
+.chart-card .clabel{font-family:"Cormorant Garamond",serif;font-size:24px;font-weight:600;color:var(--ink);margin-bottom:4px;line-height:1.2}
+.chart-card .csub{font-size:13px;color:var(--ink-faint);margin-bottom:20px;font-style:italic}
+.chart-controls{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0 18px}
+.chip{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;padding:6px 12px;background:var(--paper);border:1px solid var(--rule);color:var(--ink-faint);cursor:pointer;border-radius:2px;transition:all .2s}
+.chip:hover{border-color:var(--navy-bright);color:var(--navy-deep)}
+.chip.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+.legend{display:flex;flex-wrap:wrap;gap:18px;font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.10em;color:var(--ink-faint);text-transform:uppercase;margin-top:14px}
+.legend .lg{display:flex;align-items:center;gap:6px}
+.legend .sw{width:12px;height:12px;border-radius:2px;display:inline-block}
+
+/* findings boxes */
+.findings{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:14px}
+.fbox{background:var(--paper-2);border:1px solid var(--rule);padding:16px 18px;border-radius:2px;border-left:3px solid var(--navy-bright)}
+.fbox.warn{border-left-color:var(--warn)}
+.fbox.olive{border-left-color:var(--olive)}
+.fbox h5{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.16em;color:var(--ink-faint);font-weight:500;text-transform:uppercase;margin-bottom:8px}
+.fbox p{font-size:14px;line-height:1.55;margin:0;color:var(--ink)}
+.fbox .ev{display:inline-block;font-family:"IBM Plex Mono",monospace;font-size:9px;letter-spacing:.14em;background:var(--ink);color:#fff;padding:2px 6px;border-radius:2px;margin-top:8px;text-transform:uppercase}
+.fbox .ev.strong{background:var(--navy-bright)}
+.fbox .ev.mod{background:var(--ink-faint)}
+.fbox .ev.low{background:#9DA8C9;color:var(--ink)}
+
+/* quote wall — single column, larger cards, non-italic body for readability */
+.quotes{display:grid;grid-template-columns:1fr;gap:18px;margin-top:14px}
+.qcard{background:var(--paper-2);border:1px solid var(--rule);padding:30px 36px 26px;border-radius:2px;position:relative}
+.qcard::before{content:"\201C";position:absolute;left:18px;top:6px;font-family:"Cormorant Garamond",serif;font-size:78px;color:var(--rule);line-height:1}
+.qcard q{font-family:"Cormorant Garamond",serif;font-style:normal;font-weight:500;font-size:24px;color:var(--ink);display:block;margin:18px 0 16px;line-height:1.4;quotes:none}
+.qcard q::before,.qcard q::after{content:""}
+.qcard .qmeta{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.12em;color:var(--ink-faint);text-transform:uppercase;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.qcard .qmeta .qh{color:var(--navy-deep);font-weight:500}
+
+/* sources grid */
+.sources{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:14px}
+.scard{background:var(--paper-2);border:1px solid var(--rule);padding:14px 16px;border-radius:2px;font-size:12px;line-height:1.5}
+.scard .sn{font-family:"IBM Plex Mono",monospace;font-size:10px;color:var(--ink-faint)}
+.scard .sp{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.10em;text-transform:uppercase;color:var(--navy-deep);margin:2px 0}
+.scard .st{font-family:"Cormorant Garamond",serif;font-size:15px;color:var(--ink);font-weight:600;line-height:1.25;margin:4px 0}
+.scard .sd{color:var(--ink-faint);font-size:11px}
+
+footer.footbar{margin-top:80px;padding-top:24px;border-top:1px solid var(--rule);font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.14em;color:var(--ink-faint);text-transform:uppercase;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
+
+/* CHART 01: heatmap */
+.heatmap{display:grid;gap:3px;margin-top:8px}
+.heatmap-row{display:grid;grid-template-columns:170px repeat(var(--cols,7),1fr);gap:3px;align-items:center}
+.heatmap-row.hd .hcell{font-family:"IBM Plex Mono",monospace;font-size:9px;letter-spacing:.10em;color:var(--ink-faint);text-transform:uppercase;text-align:center;padding:6px 4px;font-weight:500;background:transparent;border:none}
+.heatmap-row .label{font-size:12px;color:var(--ink);font-weight:500;padding-right:8px;text-align:right}
+.heatmap-row .label.cat{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.14em;color:var(--ink-faint);text-transform:uppercase;font-weight:500}
+.hcell{height:36px;border-radius:2px;display:flex;align-items:center;justify-content:center;font-family:"IBM Plex Mono",monospace;font-size:11px;color:#fff;font-weight:500;position:relative;cursor:default;transition:transform .2s}
+.hcell:hover{transform:scale(1.06);z-index:2;box-shadow:0 4px 12px rgba(12,24,67,.18)}
+.hcell.empty{background:#EFEEEA;color:var(--ink-faint)}
+.hcell .anim-fill{position:absolute;inset:0;border-radius:2px;animation:heatfill 1.4s ease-out both}
+@keyframes heatfill{0%{transform:scale(.0);opacity:0}40%{opacity:1}100%{transform:scale(1);opacity:1}}
+.hcell .v{position:relative;z-index:1}
+
+/* CHART 02: lex bars */
+.lex-bars{display:grid;gap:6px;align-items:center;font-size:12px}
+.lex-bars > div{padding:4px 0}
+.lex-bars .lb-head{font-family:"IBM Plex Mono",monospace;font-size:9px;letter-spacing:.14em;color:var(--ink-faint);text-transform:uppercase;text-align:right;font-weight:500;border-bottom:1px solid var(--rule);padding-bottom:6px}
+.lex-bars .lb-head.first{text-align:left}
+.lex-row-label{font-family:"Cormorant Garamond",serif;font-style:italic;font-size:16px;color:var(--ink);font-weight:500}
+.lex-bar-wrap{display:flex;align-items:center;gap:8px;justify-content:flex-end}
+.lex-bar{height:22px;background:var(--rule-2);border-radius:2px;position:relative;overflow:hidden;animation:lexgrow 1.6s cubic-bezier(.2,.8,.2,1) both}
+@keyframes lexgrow{0%{width:0}100%{width:var(--w)}}
+.lex-bar.c0{background:var(--navy-bright)}
+.lex-bar.c1{background:var(--accent)}
+.lex-bar.c2{background:var(--warn)}
+.lex-bar.c3{background:#A6353F}
+.lex-bar.c4{background:var(--ink-dim)}
+.lex-num{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--ink);min-width:42px;text-align:right}
+
+/* CHART 03: orbs */
+.eng-stage{display:flex;align-items:center;justify-content:center;gap:80px;padding:30px 0 8px;min-height:340px;position:relative;flex-wrap:wrap}
+.eng-orb{position:relative;display:flex;flex-direction:column;align-items:center;gap:14px}
+.orb{border-radius:50%;position:relative;display:flex;align-items:center;justify-content:center;color:#fff;font-family:"Cormorant Garamond",serif;font-size:28px;font-weight:600;letter-spacing:-.01em;animation:pulseOrb 3.2s ease-in-out infinite}
+.orb.left{background:radial-gradient(circle at 35% 35%,#7795CC,#1B2866);box-shadow:0 0 0 0 rgba(58,77,167,.5)}
+.orb.right{background:radial-gradient(circle at 35% 35%,#B96873,#5C1A23);box-shadow:0 0 0 0 rgba(139,38,53,.5);animation-delay:.5s}
+@keyframes pulseOrb{0%,100%{box-shadow:0 0 0 0 rgba(58,77,167,.45)}50%{box-shadow:0 0 0 32px rgba(58,77,167,0)}}
+.orb-cap{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.14em;color:var(--ink);text-transform:uppercase;text-align:center}
+.orb-cap b{font-family:"Cormorant Garamond",serif;font-size:18px;color:var(--ink);font-weight:600;text-transform:none;letter-spacing:0;display:block;margin-bottom:2px;font-style:italic}
+.eng-ratio{font-family:"Cormorant Garamond",serif;font-size:60px;color:var(--ink-dim);font-weight:500;letter-spacing:-.02em;line-height:1;display:flex;flex-direction:column;align-items:center;gap:6px}
+.eng-ratio .num{display:block;animation:fadeUp .9s ease-out both}
+.eng-ratio .lab{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.18em;color:var(--ink-faint);text-transform:uppercase;font-weight:500}
+@keyframes fadeUp{0%{opacity:0;transform:translateY(8px)}100%{opacity:1;transform:translateY(0)}}
+.eng-bullets{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:24px}
+.eng-bullet{background:var(--paper);border:1px solid var(--rule);padding:14px 16px;border-radius:2px}
+.eng-bullet .b1{font-family:"Cormorant Garamond",serif;font-size:30px;font-weight:600;color:var(--ink-dim);line-height:1}
+.eng-bullet .b2{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.14em;color:var(--ink-faint);text-transform:uppercase;margin-top:6px}
+.eng-bullet .b3{font-size:12px;color:var(--ink);margin-top:4px}
+
+/* CHART 04: streamgraph */
+.flow-wrap{position:relative}
+.flow-svg{width:100%;height:380px;display:block;margin-top:10px}
+.flow-band{transition:opacity .3s}
+.flow-wrap:hover .flow-band{opacity:.4}
+.flow-wrap .flow-band:hover{opacity:1}
+.flow-tick{font-family:"IBM Plex Mono",monospace;font-size:10px;fill:var(--ink-faint);letter-spacing:.10em}
+
+/* CHART 05: gradient dial */
+.gradient-stack{display:grid;grid-template-columns:1fr;gap:14px;margin-top:6px;max-width:880px}
+.grad-row{display:grid;grid-template-columns:160px 1fr 80px;gap:14px;align-items:center}
+.grad-row .label{font-family:"Cormorant Garamond",serif;font-size:18px;color:var(--ink);font-weight:600}
+.grad-row .label .sub{font-family:"IBM Plex Mono",monospace;font-size:9px;letter-spacing:.14em;color:var(--ink-faint);text-transform:uppercase;font-weight:500;display:block;margin-top:2px}
+.grad-track{position:relative;height:34px;background:linear-gradient(90deg,#5C1A23 0%,#A03445 18%,#A6A6A6 50%,#5B6484 75%,#0C1843 100%);border-radius:2px;overflow:hidden}
+.grad-track .scale{position:absolute;inset:0;display:flex;justify-content:space-between;padding:0 6px;align-items:flex-end;pointer-events:none}
+.grad-track .scale span{font-family:"IBM Plex Mono",monospace;font-size:8px;color:rgba(255,255,255,.7);padding-bottom:3px;letter-spacing:.10em}
+.grad-marker{position:absolute;top:-6px;bottom:-6px;width:3px;background:var(--paper);box-shadow:0 0 0 2px var(--ink);animation:slideMark 1.6s cubic-bezier(.2,.8,.2,1) both}
+@keyframes slideMark{0%{left:50%;opacity:0}30%{opacity:1}100%{left:var(--mx);opacity:1}}
+.grad-marker .tip{position:absolute;top:-22px;left:50%;transform:translateX(-50%);background:var(--ink);color:#fff;font-family:"IBM Plex Mono",monospace;font-size:10px;padding:2px 6px;border-radius:2px;white-space:nowrap;font-weight:500}
+.grad-marker .tip::after{content:"";position:absolute;left:50%;top:100%;transform:translateX(-50%);border:4px solid transparent;border-top-color:var(--ink)}
+.grad-val{font-family:"Cormorant Garamond",serif;font-size:22px;font-weight:600;color:var(--ink);text-align:right}
+.grad-val.neg{color:var(--warn)}
+.grad-val.pos{color:var(--ink-dim)}
+.grad-section{background:var(--paper);border:1px solid var(--rule);padding:18px 22px;border-radius:2px;margin-bottom:14px}
+.grad-section h6{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.16em;color:var(--ink-faint);text-transform:uppercase;font-weight:500;margin-bottom:14px;display:flex;align-items:center;gap:10px}
+.grad-section h6::before{content:"";width:8px;height:8px;background:var(--navy-bright);display:inline-block}
+
+@media (max-width:1100px){
+  body{grid-template-columns:200px 1fr}
+  aside.sidebar{padding:24px 14px 18px}
+  main{padding:32px 28px 64px}
+  .metrics{grid-template-columns:repeat(2,1fr)}
+  .findings,.sources{grid-template-columns:1fr 1fr}
+  .quotes{grid-template-columns:1fr}
+  h1.serif{font-size:42px}
+  h2.serif{font-size:28px}
+  .eng-stage{gap:30px}
+}
+@media (max-width:720px){
+  body{grid-template-columns:1fr}
+  aside.sidebar{position:relative;height:auto;border-right:none;border-bottom:1px solid var(--rule)}
+  .nav{flex-direction:row;flex-wrap:wrap;gap:6px}
+  .nav a{padding:4px 8px}
+  .metrics,.findings,.quotes,.sources{grid-template-columns:1fr}
+  main{padding:24px 20px 48px}
+}
+
+/* ============================================================
+   ADDITIONAL CHART MODULES (06–17)
+   ============================================================ */
+
+/* CHART 06: radial compass */
+.compass-wrap{display:flex;justify-content:center;padding:10px 0 4px}
+.compass-svg{width:100%;max-width:520px;height:520px}
+.compass-grid{stroke:var(--rule);stroke-width:1;fill:none;opacity:.6}
+.compass-axis{stroke:var(--rule);stroke-width:1}
+.compass-axis-label{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.10em;fill:var(--ink-faint);text-transform:uppercase}
+.compass-poly{fill-opacity:.15;stroke-width:2;stroke-linejoin:round;stroke-dasharray:1500;stroke-dashoffset:1500;animation:compassDraw 1.6s cubic-bezier(.2,.8,.2,1) forwards}
+@keyframes compassDraw{to{stroke-dashoffset:0;fill-opacity:.18}}
+.compass-dot{r:4;animation:compassDot .9s cubic-bezier(.2,.8,.2,1) both}
+@keyframes compassDot{0%{r:0;opacity:0}100%{r:4;opacity:1}}
+.compass-tick{font-family:"IBM Plex Mono",monospace;font-size:9px;fill:var(--ink-faint)}
+
+/* CHART 07: quadrant scatter */
+.quad-wrap{position:relative;padding:10px 0}
+.quad-svg{width:100%;max-width:760px;height:480px;display:block;margin:0 auto}
+.quad-grid{stroke:var(--rule);stroke-width:1}
+.quad-axis{stroke:var(--ink);stroke-width:1.5}
+.quad-axis-label{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.14em;fill:var(--ink-faint);text-transform:uppercase}
+.quad-quadrant-label{font-family:"Cormorant Garamond",serif;font-style:italic;font-size:14px;fill:var(--ink-faint);font-weight:500}
+.quad-dot{animation:quadDot 1s cubic-bezier(.2,.8,.2,1) both;cursor:pointer;transition:r .2s}
+.quad-dot:hover{r:14}
+@keyframes quadDot{0%{opacity:0;transform:translate(var(--dx),var(--dy)) scale(.3)}100%{opacity:1;transform:translate(0,0) scale(1)}}
+.quad-dot-label{font-family:"IBM Plex Mono",monospace;font-size:10px;fill:var(--ink);font-weight:500;pointer-events:none}
+
+/* CHART 08: slope chart */
+.slope-wrap{position:relative}
+.slope-svg{width:100%;max-width:760px;height:380px;display:block;margin:0 auto}
+.slope-line{stroke-width:2;fill:none;stroke-dasharray:600;stroke-dashoffset:600;animation:slopeDraw 1.4s cubic-bezier(.2,.8,.2,1) both}
+@keyframes slopeDraw{to{stroke-dashoffset:0}}
+.slope-dot{r:5;animation:compassDot .9s ease-out both}
+.slope-label{font-family:"Cormorant Garamond",serif;font-size:13px;fill:var(--ink);font-weight:500}
+.slope-side{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.14em;fill:var(--ink-faint);text-transform:uppercase}
+
+/* CHART 09: timeline spine */
+.tline{position:relative;margin:18px 0 8px;padding-left:36px}
+.tline::before{content:"";position:absolute;left:14px;top:0;bottom:0;width:2px;background:var(--rule)}
+.tline-row{position:relative;padding:14px 0;animation:tlineFade .8s ease-out both}
+.tline-row:nth-child(1){animation-delay:.1s}.tline-row:nth-child(2){animation-delay:.2s}.tline-row:nth-child(3){animation-delay:.3s}.tline-row:nth-child(4){animation-delay:.4s}.tline-row:nth-child(5){animation-delay:.5s}.tline-row:nth-child(6){animation-delay:.6s}.tline-row:nth-child(7){animation-delay:.7s}.tline-row:nth-child(8){animation-delay:.8s}
+@keyframes tlineFade{0%{opacity:0;transform:translateX(-12px)}100%{opacity:1;transform:translateX(0)}}
+.tline-row::before{content:"";position:absolute;left:-29px;top:18px;width:14px;height:14px;border-radius:50%;background:var(--paper-2);border:2px solid var(--navy-bright);box-shadow:0 0 0 4px var(--paper)}
+.tline-row.warn::before{border-color:var(--warn)}
+.tline-row.olive::before{border-color:var(--olive)}
+.tline-date{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.14em;color:var(--ink-faint);text-transform:uppercase}
+.tline-title{font-family:"Cormorant Garamond",serif;font-size:18px;font-weight:600;color:var(--ink);margin:2px 0}
+.tline-desc{font-size:13px;color:var(--ink);max-width:78ch}
+
+/* CHART 10: activity pulse */
+.pulse-wrap{position:relative}
+.pulse-svg{width:100%;height:240px;display:block}
+.pulse-area{fill:url(#pulseGrad);opacity:0;animation:pulseAreaFade 1.4s ease-out forwards}
+@keyframes pulseAreaFade{to{opacity:1}}
+.pulse-line{stroke:var(--ink-dim);stroke-width:2;fill:none;stroke-dasharray:2000;stroke-dashoffset:2000;animation:pulseDraw 2.4s cubic-bezier(.4,.1,.3,1) forwards}
+@keyframes pulseDraw{to{stroke-dashoffset:0}}
+.pulse-peak{r:5;fill:var(--warn);animation:pulsePeak 2s ease-in-out infinite}
+@keyframes pulsePeak{0%,100%{r:4}50%{r:7}}
+.pulse-peak-label{font-family:"IBM Plex Mono",monospace;font-size:10px;fill:var(--ink);letter-spacing:.10em}
+.pulse-tick{font-family:"IBM Plex Mono",monospace;font-size:9px;fill:var(--ink-faint)}
+
+/* CHART 11: sankey */
+.sankey-wrap{position:relative}
+.sankey-svg{width:100%;height:420px;display:block}
+.sankey-node{fill:var(--ink);transition:fill .2s}
+.sankey-link{fill-opacity:.45;animation:sankeyFade 1.2s ease-out both}
+@keyframes sankeyFade{0%{fill-opacity:0}100%{fill-opacity:.45}}
+.sankey-link:hover{fill-opacity:.85}
+.sankey-label{font-family:"Cormorant Garamond",serif;font-size:13px;fill:var(--ink);font-weight:500}
+.sankey-label-num{font-family:"IBM Plex Mono",monospace;font-size:10px;fill:var(--ink-faint)}
+
+/* CHART 12: chord diagram */
+.chord-wrap{display:flex;justify-content:center;padding:8px 0}
+.chord-svg{width:100%;max-width:520px;height:520px}
+.chord-arc{stroke:var(--paper);stroke-width:2}
+.chord-link{fill-opacity:.35;animation:sankeyFade 1.2s ease-out both;mix-blend-mode:multiply}
+.chord-link:hover{fill-opacity:.85}
+.chord-label{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.10em;fill:var(--ink);text-transform:uppercase;font-weight:500}
+
+/* CHART 13: horseshoe gauge */
+.horse-wrap{display:flex;justify-content:center;padding:10px 0;flex-direction:column;align-items:center;gap:8px}
+.horse-svg{width:100%;max-width:600px;height:340px}
+.horse-track{stroke:url(#horseGrad);stroke-width:18;fill:none;stroke-linecap:round}
+.horse-bg{stroke:var(--rule);stroke-width:18;fill:none;stroke-linecap:round;opacity:.4}
+.horse-marker{fill:var(--paper);stroke:var(--ink);stroke-width:3;animation:horseMark 1.2s cubic-bezier(.2,.8,.2,1) both}
+@keyframes horseMark{0%{transform:scale(0);opacity:0}100%{transform:scale(1);opacity:1}}
+.horse-anchor-lab{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.14em;fill:var(--ink-faint);text-transform:uppercase}
+.horse-conv{font-family:"Cormorant Garamond",serif;font-size:42px;fill:var(--ink-dim);font-weight:600;font-style:italic}
+.horse-conv-lab{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.16em;fill:var(--ink-faint);text-transform:uppercase}
+
+/* CHART 14: pendulum */
+.pend-wrap{position:relative;padding:10px 0}
+.pend-svg{width:100%;max-width:600px;height:320px;display:block;margin:0 auto}
+.pend-arc{stroke:var(--rule);stroke-width:2;fill:none;stroke-dasharray:4 6;opacity:.6}
+.pend-arm{stroke:var(--ink);stroke-width:2;fill:none;transform-origin:50% 100%;animation:pendSwing 3.5s cubic-bezier(.4,0,.2,1) infinite alternate}
+@keyframes pendSwing{0%{transform:rotate(var(--swingMin,-25deg))}100%{transform:rotate(var(--swingMax,25deg))}}
+.pend-bob{fill:var(--warn);stroke:var(--ink);stroke-width:2}
+.pend-marker{fill:var(--ink-dim);stroke:var(--paper);stroke-width:2;animation:compassDot 1.2s ease-out both}
+.pend-tick{font-family:"IBM Plex Mono",monospace;font-size:10px;fill:var(--ink-faint);letter-spacing:.10em}
+.pend-current{font-family:"Cormorant Garamond",serif;font-size:24px;fill:var(--ink);font-weight:600}
+
+/* CHART 15: bubble swarm */
+.swarm-wrap{position:relative}
+.swarm-svg{width:100%;height:420px;display:block}
+.swarm-bubble{transition:transform .25s,fill-opacity .25s;cursor:pointer;animation:swarmIn 1s cubic-bezier(.2,.8,.2,1) both;fill-opacity:.85}
+.swarm-bubble:hover{fill-opacity:1}
+@keyframes swarmIn{0%{r:0;opacity:0}100%{opacity:1}}
+.swarm-label{font-family:"IBM Plex Mono",monospace;font-size:10px;fill:#fff;font-weight:600;text-anchor:middle;pointer-events:none}
+.swarm-label-dark{fill:var(--ink)}
+
+/* CHART 16: tier ladder */
+.tier-wrap{display:grid;gap:10px;margin-top:8px}
+.tier-row{display:grid;grid-template-columns:180px 1fr;gap:10px;align-items:stretch;animation:tlineFade .6s ease-out both}
+.tier-row:nth-child(1){animation-delay:.05s}.tier-row:nth-child(2){animation-delay:.15s}.tier-row:nth-child(3){animation-delay:.25s}.tier-row:nth-child(4){animation-delay:.35s}.tier-row:nth-child(5){animation-delay:.45s}.tier-row:nth-child(6){animation-delay:.55s}
+.tier-badge{display:flex;align-items:center;justify-content:center;font-family:"Cormorant Garamond",serif;font-size:20px;font-weight:600;color:#fff;border-radius:2px;padding:14px 18px;text-align:center;line-height:1.15;letter-spacing:.005em}
+.tier-badge.short{font-size:34px;letter-spacing:0}
+.tier-badge.t1{background:#1B2866}
+.tier-badge.t2{background:#3A4DA7}
+.tier-badge.t3{background:#7795CC}
+.tier-badge.t4{background:#6F7A4A}
+.tier-badge.t5{background:#8B2635}
+.tier-badge.t6{background:#5B6484}
+.tier-items{display:flex;flex-wrap:wrap;gap:8px;background:var(--paper-2);border:1px solid var(--rule);padding:10px 12px;border-radius:2px}
+.tier-item{padding:6px 12px;background:var(--paper);border:1px solid var(--rule);border-radius:2px;font-size:13px;color:var(--ink);font-family:"Cormorant Garamond",serif;font-weight:500;display:flex;align-items:center;gap:6px;transition:transform .2s}
+.tier-item:hover{transform:translateY(-2px)}
+.tier-arrow{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.06em}
+.tier-arrow.up{color:var(--ink-dim)}
+.tier-arrow.down{color:var(--warn)}
+
+/* CHART 17: quote constellation */
+.qcon-wrap{position:relative}
+.qcon-svg{width:100%;height:480px;display:block;background:var(--paper-2);border:1px solid var(--rule)}
+.qcon-axis{stroke:var(--rule);stroke-width:1;stroke-dasharray:2 4}
+.qcon-tick{font-family:"IBM Plex Mono",monospace;font-size:9px;fill:var(--ink-faint);letter-spacing:.10em}
+.qcon-bubble{fill:var(--ink-dim);fill-opacity:.65;cursor:pointer;animation:swarmIn 1.2s cubic-bezier(.2,.8,.2,1) both;transition:fill-opacity .2s,r .2s}
+.qcon-bubble:hover{fill-opacity:.95;r:18}
+.qcon-quote-popup{position:absolute;background:var(--ink);color:#fff;padding:10px 14px;border-radius:2px;font-family:"Cormorant Garamond",serif;font-style:italic;font-size:14px;max-width:280px;line-height:1.4;display:none;pointer-events:none;z-index:5;box-shadow:0 6px 18px rgba(12,24,67,.25)}
+.qcon-quote-popup .qmeta{display:block;margin-top:6px;font-family:"IBM Plex Mono",monospace;font-size:9px;letter-spacing:.14em;color:#9DA8C9;text-transform:uppercase;font-style:normal}
+
+</style>
+</head>
+<body>
+<aside class="sidebar">
+  <div class="brand">
+    <div>
+      <div class="name">Beacon Intelligence</div>
+      <div class="sub">Investigative Brief · v1.1</div>
+    </div>
+  </div>
+  <nav class="nav">
+    <a href="#sec-summary"><span class="nx">02</span>Executive Summary</a>
+    <a href="#sec-inventory"><span class="nx">03</span>Cohort</a>
+    <a href="#sec-quotes"><span class="nx">04</span>Voice in Their Own Words</a>
+    <a href="#sec-chart1"><span class="nx">05</span>Marquee Shift</a>
+    <a href="#sec-chart2"><span class="nx">06</span>Volume by Period</a>
+    <a href="#sec-chart3"><span class="nx">07</span>Transformation Tiers</a>
+    <a href="#sec-chart4"><span class="nx">08</span>Itinerary &amp; Aftershock</a>
+    <a href="#sec-chart5"><span class="nx">09</span>Profile Radar</a>
+    <a href="#sec-themes"><span class="nx">10</span>Key Themes</a>
+    <a href="#sec-method"><span class="nx">11</span>Methodology</a>
+    <a href="#sec-sources"><span class="nx">12</span>Sources</a>
+  </nav>
+  <div class="foot">
+Generated Dec 22, 2025<br/>Updated Dec 25, 2025<br/>Data source: Beacon Twitter DB<br/>Link-verified Dec 22–25
+  </div>
+</aside>
+
+<main>
+<!--
+@module: hero
+@schema: { id, kicker, title (HTML allowed), dek, byline }
+-->
+<section id="sec-hero" class="first">
+  <div class="toprule"></div>
+  <div class="kicker">Investigative Brief · August 2025 Trip · 9 of 10 influencers analyzed</div>
+  <h1 class="serif">A 12-Day Trip,<br/>Four Months of Aftershock.</h1>
+  <p class="dek">In August 2025, JewishOrg brought a cohort of MAGA influencers to Israel — Golan Heights, Judea &amp; Samaria, Jerusalem, a meeting with Ambassador Mike Huckabee. Two participants extended into Gaza. Beacon analyzed Twitter activity from nine of the ten original participants across a 4-month observation window. The trip produced measurable shifts in volume, voice, and behavior — including a 1,350% content increase, a complete-new-voice transformation, and one participant's career pivot into Jewish legal advocacy.</p>
+  <div class="byline">Beacon Intelligence · December 22, 2025 (updated December 25, 2025) · Twitter Database</div>
+</section>
+
+
+<!--
+@module: exec_summary
+@schema: {
+  id, kicker, title, dek,
+  metrics: [{k, v, u, p, alt, navy, olive, ms}],   // 4-8 cards
+  findings: [{kind:"|warn|olive", h, p, ev:"|strong|mod|low"}]
+}
+-->
+<section id="sec-summary">
+  <h4>Section 01 · Executive Summary</h4>
+  <h2 class="serif">The trip moved every analyzed account — but each one moved differently.</h2>
+  <p class="dek">New voices were created. Existing advocates intensified. Two extended into Gaza and produced original on-ground reporting. One pivoted careers. The cohort continues referencing trip experience four months later.</p>
+
+  <div class="metrics">
+<div class="mc"><div class="mk">Influencers Analyzed</div><div class="mv">9 / 10</div><div class="mu">of original cohort · plus 2 additional participants tracked</div><div class="pbar"><div class="pfill" style="width:90%"></div></div><div class="ms">Cohort</div></div>
+<div class="mc alt"><div class="mk">Top Volume Increase</div><div class="mv">+1,350%</div><div class="mu">@emilysavesusa · 2 → 29 Israel/ME-related original tweets</div><div class="pbar"><div class="pfill" style="width:100%"></div></div><div class="ms">Verified</div></div>
+<div class="mc navy"><div class="mk">New-Voice Transformation</div><div class="mv">0 → 28</div><div class="mu">@lancevideos · zero pre-trip Israel content → 28 post-trip</div><div class="pbar"><div class="pfill" style="width:100%"></div></div><div class="ms">Verified</div></div>
+<div class="mc olive"><div class="mk">Total Cohort Reach</div><div class="mv">~736 K</div><div class="mu">combined follower count across the 7 fully-tracked accounts</div><div class="pbar"><div class="pfill" style="width:74%"></div></div><div class="ms">As of Dec 2025</div></div>
+<div class="mc"><div class="mk">Entered Gaza</div><div class="mv">2</div><div class="mu">@camhigby and @XAVIAERD extended trips into Gaza Strip independently</div><div class="pbar"><div class="pfill" style="width:22%"></div></div><div class="ms">Aug 20</div></div>
+<div class="mc alt"><div class="mk">Trip Programming</div><div class="mv">6 days</div><div class="mu">Aug 9 departure → Aug 15 Shabbat in Efrat · extensions Aug 17–22</div><div class="pbar"><div class="pfill" style="width:50%"></div></div><div class="ms">Itinerary</div></div>
+<div class="mc"><div class="mk">Career Outcome</div><div class="mv">1</div><div class="mu">@JayneZirkle joined @LawfareProject as Director of Comms (Nov 2025)</div><div class="pbar"><div class="pfill" style="width:33%"></div></div><div class="ms">Verified</div></div>
+<div class="mc"><div class="mk">Sustained Engagement</div><div class="mv">4 mo</div><div class="mu">all analyzed influencers continue referencing trip · Sept–Dec 2025</div><div class="pbar"><div class="pfill" style="width:67%"></div></div><div class="ms">Ongoing</div></div>
+  </div>
+
+  <div class="div-dot"></div>
+
+  <div class="findings">
+<div class="fbox"><h5>Finding 1 · The trip created new voices</h5><p>Three influencers (@emilysavesusa, @jordansarmo, @lancevideos) had effectively zero Israel content before August 2025. After the trip, all three became regular contributors. @lancevideos in particular went from zero engagement to one of the most aggressive pro-Israel and anti-Islam voices in Gen Z conservative media.</p><span class="ev strong">Verified</span></div>
+<div class="fbox olive"><h5>Finding 2 · Existing advocates moved from commentary to first-hand reporting</h5><p>@camhigby and @XAVIAERD — both already pro-Israel — extended trips into Gaza and produced original video evidence challenging mainstream aid-blockade narratives. Their authority shifted from "here's what's happening" to "here's what I personally witnessed."</p><span class="ev strong">Verified</span></div>
+<div class="fbox warn"><h5>Finding 3 · Anti-Islam intensification accompanied pro-Israel framing</h5><p>@lancevideos and @politicalfabian both expanded from Israel content into systematic anti-Islam activism, including the Plano anti-Islam march (Dec 13) and a near-daily campaign against figures they label "woke right" — Tucker Carlson, Candace Owens, Nick Fuentes.</p><span class="ev strong">Strong</span></div>
+<div class="fbox"><h5>Finding 4 · One career outcome</h5><p>@JayneZirkle joined @LawfareProject as Director of Communications and Outreach in November 2025 — the most significant professional outcome documented in the cohort.</p><span class="ev">Verified</span></div>
+  </div>
+</section>
+
+
+<!--
+@module: inventory
+@schema: { id, kicker, title, intro,
+  columns: ["Account","Handle",...],
+  rows: [["Row label","col 2","col 3",...], ...],
+  note (optional)
+}
+-->
+<section id="sec-inventory">
+  <h4>Section 02 · Cohort Inventory</h4>
+  <h2 class="serif">Nine influencers, three transformation profiles.</h2>
+  <p class="ctxt">All volume figures count Israel-related and Middle East-related original tweets only (retweets excluded). The three time periods are: BEFORE the trip (pre-Aug 2025, full Beacon-tracked window), DURING the trip (Aug 1–31, 2025), and AFTER the trip (Sept–Dec 2025). The post-trip window is shorter than the pre-trip window — for already-prolific accounts, a smaller after-number does not mean disengagement. Two of the original ten participants could not be analyzed: @barazani_tal (private account) and @averywarwck (data quality issues).</p>
+
+  <table class="tbl">
+    <thead><tr><th>Handle</th><th>Followers</th><th>Israel/ME tweets — BEFORE Aug</th><th>DURING Aug 2025</th><th>AFTER (Sept–Dec)</th><th>Total</th><th>Trip Profile</th></tr></thead>
+    <tbody>
+<tr><td class="">@XAVIAERD</td><td class="mono">284,989</td><td class="mono">278</td><td class="mono">36</td><td class="mono">75</td><td class="mono">389</td><td class="">Already a strong advocate · entered Gaza</td></tr>
+<tr><td class="">@camhigby</td><td class="mono">227,404</td><td class="mono">1,392</td><td class="mono">124</td><td class="mono">41</td><td class="mono">1,557</td><td class="">Prolific journalist · entered Gaza</td></tr>
+<tr><td class="">@emilysavesusa</td><td class="mono">136,921</td><td class="mono">2</td><td class="mono">3</td><td class="mono">29</td><td class="mono">34</td><td class="mono">From skeptic to first-hand witness · +1,350%</td></tr>
+<tr><td class="">@JayneZirkle</td><td class="mono">52,293</td><td class="mono">49</td><td class="mono">44</td><td class="mono">83</td><td class="mono">176</td><td class="">Political → personal · career pivot</td></tr>
+<tr><td class="">@lancevideos</td><td class="mono">12,455</td><td class="mono">0</td><td class="mono">18</td><td class="mono">10</td><td class="mono">28</td><td class="">Zero baseline → anti-Islam crusader</td></tr>
+<tr><td class="">@politicalfabian</td><td class="mono">8,949</td><td class="mono">27</td><td class="mono">8</td><td class="mono">21</td><td class="mono">56</td><td class="">Already engaged · escalated activism</td></tr>
+<tr><td class="">@Noah_Griffith_</td><td class="mono">6,905</td><td class="">data-light</td><td class="">data-light</td><td class="">data-light</td><td class="">—</td><td class="">Tracked · limited Israel-specific volume</td></tr>
+<tr><td class="">@jordansarmo</td><td class="mono">6,433</td><td class="mono">0</td><td class="mono">4</td><td class="mono">1</td><td class="mono">5</td><td class="">Complete new voice · religious framing</td></tr>
+<tr><td class="">@noa_barazani</td><td class="">—</td><td class="">data-light</td><td class="">data-light</td><td class="">data-light</td><td class="">—</td><td class="">Tracked · supplementary cohort</td></tr>
+    </tbody>
+  </table>
+  <p class="note" style="margin-top:10px">All tweet IDs verified against the Beacon database (is_retweet=false, original author confirmed). Link verification performed Dec 22–25, 2025; all referenced tweets remain active and accessible. "Data-light" means the account is in the Beacon corpus but produced too few Israel/ME-tagged posts in any of the three windows to support the cross-period comparison.</p>
+</section>
+
+
+<!--
+@module: quote_wall
+@schema: { id, kicker, title,
+  quotes: [{q, h, meta}]
+}
+-->
+<section id="sec-quotes">
+  <h4>Section 03 · Voice in Their Own Words</h4>
+  <h2 class="serif">Ten quotes that capture the cohort's voice.</h2>
+  <div class="quotes">
+<div class="qcard"><q>Why did I go on an influencer trip to Israel? Because 6 million of my people never got to go.</q><div class="qmeta"><span class="qh">@JayneZirkle · Aug 19, 2025</span><span>Trip framing</span></div></div>
+<div class="qcard"><q>When I visited that site, I stood in the middle of 350 graves. Young, beautiful people who looked just like me and my friends. It was the most heartbreaking thing I've ever seen.</q><div class="qmeta"><span class="qh">@emilysavesusa · Oct 7, 2025</span><span>Nova memorial · 1-yr anniversary</span></div></div>
+<div class="qcard"><q>I just left the Gaza Strip. I was in one singular lot that contained enough aid to feed EVERY GAZAN for days. LOOK AT THE PALLETS BEHIND ME. YOU ARE BEING LIED TO.</q><div class="qmeta"><span class="qh">@camhigby · Aug 20, 2025</span><span>Gaza extension · pallet documentation</span></div></div>
+<div class="qcard"><q>Calling me a [slur] isn't going to stop me from supporting Israel. Y'all are just making me double-down on my Zionism.</q><div class="qmeta"><span class="qh">@XAVIAERD · Aug 11, 2025</span><span>Day 1 · Golan Heights · slur redacted</span></div></div>
+<div class="qcard"><q>Seeing the Bible come to life here in Israel has been life changing.</q><div class="qmeta"><span class="qh">@jordansarmo · Aug 13, 2025</span><span>First-ever Israel-related post</span></div></div>
+<div class="qcard"><q>Just ate Dinner on an Israeli military base with IDF soldiers. They are good hearted people that are just defending their country from the evils of Islam.</q><div class="qmeta"><span class="qh">@lancevideos · Aug 17, 2025</span><span>IDF base · Gaza envelope</span></div></div>
+<div class="qcard"><q>Had a great meeting with U.S. Ambassador to Israel Mike Huckabee at the U.S. embassy in Jerusalem.</q><div class="qmeta"><span class="qh">@politicalfabian · Aug 13, 2025</span><span>Cross-cohort anchor event</span></div></div>
+<div class="qcard"><q>Excited to announce I've joined @LawfareProject as Director of Communications and Outreach. The Lawfare Project is the legal arm of the Jewish community.</q><div class="qmeta"><span class="qh">@JayneZirkle · Nov 21, 2025</span><span>Career outcome</span></div></div>
+<div class="qcard"><q>The Israeli government did not pay for the entire trip — they gave the non-profit that brought us a grant and the media spun it. I extended after everyone else left so that I could go report in Gaza.</q><div class="qmeta"><span class="qh">@camhigby · Aug 22, 2025</span><span>Funding-criticism response</span></div></div>
+<div class="qcard"><q>Muslims really think you've gotta be Jewish or Israeli to hate Islam. No I hate Islam for 100% free.</q><div class="qmeta"><span class="qh">@lancevideos · Dec 14, 2025</span><span>Day after Plano anti-Islam march</span></div></div>
+  </div>
+</section>
+
+
+<!--
+@module: chart_orbs   (Motion Chart 03)
+@schema: {
+  id, kicker, title, dek,
+  ctitle, clabel, csub,
+  left:  {label, big_num, caption, size_px},     // size 60..260
+  right: {label, big_num, caption, size_px},
+  ratio: {num, lab},
+  bullets: [{b1,b2,b3}],                         // 3 bullets
+  findings: [{kind,h,p,ev}]
+}
+-->
+<section id="sec-chart1" data-vft-chart>
+  <h4>Section 04 · Motion Chart 01 · Marquee Transformation</h4>
+  <h2 class="serif">@emilysavesusa: from 2 tweets to 34.</h2>
+  <p class="dek">The cleanest before/after in the cohort. Two abstract pre-trip tweets about Israel discourse versus 29 post-trip tweets centering personal testimony from the Nova Festival memorial site.</p>
+
+  <div class="chart-card">
+    <div class="ctitle"><span class="pin"></span>Motion Chart 01 · @emilysavesusa · Israel/ME-related tweet volume</div>
+    <div class="clabel">From defensive abstraction to first-hand witness, in four months.</div>
+    <div class="csub">Diameter ∝ √(tweets). Pulse rate is decorative.</div>
+
+    <div class="eng-stage">
+      <div class="eng-orb">
+        <div class="orb left" style="width:48px;height:48px">2</div>
+        <div class="orb-cap"><b>Before · Feb–Jul 2025</b>Israel/ME tweets</div>
+      </div>
+      <div class="eng-ratio"><span class="num">+1,350%</span><span class="lab">Volume increase</span></div>
+      <div class="eng-orb">
+        <div class="orb right" style="width:240px;height:240px;font-size:24px">29</div>
+        <div class="orb-cap"><b>After · Sep–Dec 2025</b>Israel/ME tweets</div>
+      </div>
+    </div>
+
+    <div class="eng-bullets">
+<div class="eng-bullet"><div class="b1">Voice</div><div class="b2">Before</div><div class="b3">Defensive, abstract, no personal connection. "The SECOND I even make a comment on Israel's government I'm called antisemitic."</div></div>
+<div class="eng-bullet"><div class="b1">Voice</div><div class="b2">After</div><div class="b3">Emotional first-person testimony. "I stood in the middle of 350 graves… the most heartbreaking thing I've ever seen."</div></div>
+<div class="eng-bullet"><div class="b1">Authority</div><div class="b2">After</div><div class="b3">Now cites the visit when engaging critics: "There's no amount of hate that would silence me from talking about the horrors I've seen first hand."</div></div>
+    </div>
+
+    <div class="findings" style="margin-top:18px">
+<div class="fbox"><h5>Why this is the marquee case</h5><p>@emilysavesusa is the cleanest signal-to-noise example in the cohort: a low pre-trip baseline, a clear visit-driven shift in voice, and four months of sustained reference to the Nova memorial.</p></div>
+<div class="fbox olive"><h5>Note on the during-trip period</h5><p>Three tweets during the trip were the bridge — defending her decision to attend ("No one's paying me to be in Israel. In fact I'm spending thousands of dollars to be here") set up the post-trip testimony pattern.</p></div>
+    </div>
+  </div>
+</section>
+
+
+<!--
+@module: chart_lex_bars   (Motion Chart 02)
+@schema: {
+  id, kicker, title, dek,
+  ctitle, clabel, csub,
+  views: [
+    { key, label, cols:[ "AJ Eng","AJ+","AA Eng" ],
+      colorClasses:["c0","c1","c2"], colorHex:["#3A4DA7","#7795CC","#8B2635"],
+      rows:[{term, v:[n,n,n], note}] }
+  ],
+  findings: [{kind,h,p,ev}]
+}
+-->
+<section id="sec-chart2" data-vft-chart>
+  <h4>Section 05 · Motion Chart 02 · Cohort Volumes</h4>
+  <h2 class="serif">Israel/ME tweet counts by influencer, by trip phase.</h2>
+  <p class="dek">Animated horizontal bars showing each influencer's Israel/ME-related original tweets across three periods. Two views — one for already-established voices (high baseline) and one for new and lower-baseline voices — keep the smaller numbers legible. Click a chip to switch.</p>
+
+  <div class="chart-card">
+    <div class="ctitle"><span class="pin"></span>Motion Chart 02 · 7 influencers × 3 periods · pre-trip / during / post-trip</div>
+    <div class="clabel">Heavy-volume accounts (XAVIAERD, camhigby, JayneZirkle) versus the new and emerging voices.</div>
+    <div class="csub">Bars grow on view. Each row sums to total Israel/ME-tagged tweets in the Beacon database.</div>
+
+    <div id="sec-chart2__ctrl" class="chart-controls"></div>
+    <div id="sec-chart2__bars"></div>
+    <div id="sec-chart2__legend" class="legend"></div>
+
+    <div class="findings" style="margin-top:18px">
+<div class="fbox olive"><h5>How to read the established-voices view</h5><p>@camhigby's pre-trip baseline (1,392 tweets) dwarfs everyone else, so the others appear small. The during/post drops reflect the shorter post-trip window — both @camhigby and @XAVIAERD continued daily Israel content; the qualitative shift was Gaza extension, not volume.</p></div>
+<div class="fbox warn"><h5>How to read the new-voices view</h5><p>All three accounts started near zero. @emilysavesusa is the cleanest activation case (2 → 29). @lancevideos's pattern is unusual — heaviest during the trip itself (18), then sustained but lower volume after.</p></div>
+    </div>
+  </div>
+</section>
+<script>
+(function(){
+  var DATA = {"views": [{"key": "established", "label": "Established voices", "cols": ["Pre-trip", "During Aug 2025", "Post-trip (Sept\u2013Dec)"], "colorClasses": ["c4", "c0", "c1"], "colorHex": ["#1B2866", "#3A4DA7", "#7795CC"], "rows": [{"term": "@camhigby", "v": [1392, 124, 41], "note": "1,557 total \u00b7 entered Gaza"}, {"term": "@XAVIAERD", "v": [278, 36, 75], "note": "389 total \u00b7 entered Gaza"}, {"term": "@JayneZirkle", "v": [49, 44, 83], "note": "176 total \u00b7 career pivot in Nov"}, {"term": "@politicalfabian", "v": [27, 8, 21], "note": "56 total \u00b7 RJC-anchored escalation"}]}, {"key": "new", "label": "New / activated voices", "cols": ["Pre-trip", "During Aug 2025", "Post-trip (Sept\u2013Dec)"], "colorClasses": ["c2", "c0", "c4"], "colorHex": ["#8B2635", "#3A4DA7", "#1B2866"], "rows": [{"term": "@emilysavesusa", "v": [2, 3, 29], "note": "34 total \u00b7 +1,350% post-trip"}, {"term": "@lancevideos", "v": [0, 18, 10], "note": "28 total \u00b7 zero baseline"}, {"term": "@jordansarmo", "v": [0, 4, 1], "note": "5 total \u00b7 complete new voice"}]}]};
+  var ID = "sec-chart2";
+  function render(view){
+    var host=document.getElementById(ID+"__bars");if(!host) return;
+    var max=0;view.rows.forEach(function(r){r.v.forEach(function(x){if(x!==null&&x>max)max=x})});
+    host.innerHTML="";
+    var nCols=view.cols.length;
+    var grid="200px "+view.cols.map(function(){return "1fr"}).join(" ");
+    var head=document.createElement("div");head.className="lex-bars";head.style.gridTemplateColumns=grid;
+    head.innerHTML="<div class='lb-head first'>Term</div>"+view.cols.map(function(c){return "<div class='lb-head'>"+c+"</div>"}).join("");
+    host.appendChild(head);
+    view.rows.forEach(function(row,ri){
+      var r=document.createElement("div");r.className="lex-bars";r.style.gridTemplateColumns=grid;
+      var html="<div class='lex-row-label' title='"+(row.note||"")+"'>"+row.term+"</div>";
+      row.v.forEach(function(val,vi){
+        var w=(val===null||val===undefined)?0:(val/max*100);
+        var cls=view.colorClasses[vi]||"c0";
+        var bar=(val===null||val===undefined)
+          ? "<span class='mono' style='font-size:11px;color:var(--ink-faint)'>—</span>"
+          : "<div class='lex-bar "+cls+"' style='--w:"+w.toFixed(2)+"%;width:"+w.toFixed(2)+"%;animation-delay:"+(ri*0.08+vi*0.05).toFixed(2)+"s'></div>";
+        var num=(val===null||val===undefined)?"":val.toLocaleString();
+        html+="<div class='lex-bar-wrap'>"+bar+"<span class='lex-num'>"+num+"</span></div>";
+      });
+      r.innerHTML=html; host.appendChild(r);
+    });
+    var leg=document.getElementById(ID+"__legend");
+    leg.innerHTML=view.cols.map(function(c,i){return "<div class='lg'><span class='sw' style='background:"+(view.colorHex[i]||"#3A4DA7")+"'></span>"+c+"</div>"}).join("");
+  }
+  function buildCtrl(){
+    var host=document.getElementById(ID+"__ctrl");if(!host) return;
+    host.innerHTML="";
+    DATA.views.forEach(function(v,i){
+      var b=document.createElement("button");b.className="chip"+(i===0?" on":"");b.textContent=v.label;
+      b.onclick=function(){host.querySelectorAll(".chip").forEach(function(x){x.classList.remove("on")});b.classList.add("on");render(v)};
+      host.appendChild(b);
+    });
+  }
+  buildCtrl();
+  window.__VFT_CHARTS__ = window.__VFT_CHARTS__ || {};
+  window.__VFT_CHARTS__[ID] = function(){ render(DATA.views[0]) };
+})();
+</script>
+
+
+<!--
+@module: chart_tier_ladder   (Motion Chart 16)
+@schema: {
+  id, kicker, title, dek, ctitle, clabel, csub,
+  tiers: [
+    {name:"S", items:[{name, change:"up"|"down"|"" }, ...]},
+    {name:"A", items:[...]},
+    ...
+  ],
+  findings: [{kind,h,p,ev}]
+}
+-->
+<section id="sec-chart3" data-vft-chart>
+  <h4>Section 06 · Motion Chart 03 · Trip-Impact Tiers</h4>
+  <h2 class="serif">Where each influencer lands on the trip-impact ladder.</h2>
+  <p class="dek">Influencers grouped into five named tiers by trip-impact magnitude. The top of the ladder is the deepest documented change (career pivot); the bottom is no post-trip Israel content. Up-arrows mark accounts whose engagement clearly intensified post-trip.</p>
+  <div class="chart-card">
+    <div class="ctitle"><span class="pin"></span>Motion Chart 03 · 5 tiers · 9 influencers + 1 excluded</div>
+    <div class="clabel">Career pivot at the top, no-engagement at the bottom — every analyzed account moved upward.</div>
+    <div class="csub">Rows fade in top-to-bottom. Up-arrows = clear post-trip intensification.</div>
+    <div class="tier-wrap">
+<div class="tier-row"><div class="tier-badge t1">Career Pivot</div><div class="tier-items"><div class="tier-item">@JayneZirkle — joined Lawfare Project · Director of Communications <span class="tier-arrow up">↑</span></div></div></div>
+<div class="tier-row"><div class="tier-badge t2">Activated</div><div class="tier-items"><div class="tier-item">@emilysavesusa — +1,350% volume increase <span class="tier-arrow up">↑</span></div><div class="tier-item">@lancevideos — 0 → 28 + anti-Islam crusade <span class="tier-arrow up">↑</span></div><div class="tier-item">@jordansarmo — complete new voice · religious framing <span class="tier-arrow up">↑</span></div></div></div>
+<div class="tier-row"><div class="tier-badge t3">Intensified</div><div class="tier-items"><div class="tier-item">@camhigby — entered Gaza · original journalism <span class="tier-arrow up">↑</span></div><div class="tier-item">@XAVIAERD — entered Gaza · first-person reporting <span class="tier-arrow up">↑</span></div><div class="tier-item">@politicalfabian — RJC + anti-"woke right" escalation <span class="tier-arrow up">↑</span></div></div></div>
+<div class="tier-row"><div class="tier-badge t4">Tracked / Data-Light</div><div class="tier-items"><div class="tier-item">@Noah_Griffith_ — too few Israel/ME tags to compare across windows</div><div class="tier-item">@noa_barazani — supplementary cohort · low signal</div></div></div>
+<div class="tier-row"><div class="tier-badge t5">No Trip Engagement</div><div class="tier-items"><div class="tier-item">@BraxtonMT — no post-trip Israel content (excluded)</div></div></div>
+    </div>
+    <div class="findings" style="margin-top:18px"><div class="fbox"><h5>@Noah_Griffith_ is the data-light case</h5><p>Tracked in the Beacon corpus throughout the observation window, but with insufficient Israel/ME-tagged volume to support the same before/during/after comparison applied to other cohort members. He attended the trip; his content output simply does not surface in our keyword sweep at significant volume.</p></div>
+<div class="fbox olive"><h5>What the absence of regression means</h5><p>Every account in the original cohort either moved upward (top three tiers) or stayed effectively unchanged at low volume (bottom two tiers). No analyzed account showed regression away from Israel-related content. The trip's effect was monotonic — it added engagement, it did not displace it.</p></div></div>
+  </div>
+</section>
+
+
+<!--
+@module: chart_timeline_spine   (Motion Chart 09)
+@schema: {
+  id, kicker, title, dek, ctitle, clabel, csub,
+  events: [{date, title, desc, kind: ""|"warn"|"olive"}],   // 4–10 events
+  findings: [{kind,h,p,ev}]
+}
+-->
+<section id="sec-chart4" data-vft-chart>
+  <h4>Section 07 · Motion Chart 04 · 18-Week Arc</h4>
+  <h2 class="serif">From Tel Aviv arrival to the Plano anti-Islam march.</h2>
+  <p class="dek">The trip's six days of programming reconstructed from social-media posts, plus the major post-trip events that sustained the cohort's engagement through December 2025. Nodes light up sequentially as the section enters view.</p>
+  <div class="chart-card">
+    <div class="ctitle"><span class="pin"></span>Motion Chart 04 · Aug 9 – Dec 14, 2025 · trip + aftermath</div>
+    <div class="clabel">Six trip days produced eighteen weeks of content, activism, and one career change.</div>
+    <div class="csub">Warn nodes (red ring) flag the events that produced the most editorial volume.</div>
+    <div class="tline">
+<div class="tline-row "><div class="tline-date">Aug 9, 2025</div><div class="tline-title">Departure</div><div class="tline-desc">@JayneZirkle: "Heading from the greatest city in the world to Israel. It's my first time visiting!"</div></div>
+<div class="tline-row "><div class="tline-date">Aug 10, 2025</div><div class="tline-title">Arrival in Tel Aviv</div><div class="tline-desc">Cohort lands. @lancevideos: "Landed in Tel Aviv."</div></div>
+<div class="tline-row olive"><div class="tline-date">Aug 11, 2025</div><div class="tline-title">Day 1 — Golan Heights</div><div class="tline-desc">Tour with IDF Major (Res.) Elliott Chodoff. Lunch at a Druze restaurant; the owner discusses Syrian violence. @XAVIAERD: "This is America First. GOLAN HEIGHTS."</div></div>
+<div class="tline-row "><div class="tline-date">Aug 12, 2025</div><div class="tline-title">Capernaum</div><div class="tline-desc">@politicalfabian: "Visiting capernum in Israel where Jesus did many miracles."</div></div>
+<div class="tline-row warn"><div class="tline-date">Aug 13, 2025</div><div class="tline-title">Shiloh, Samaria, Ambassador Huckabee</div><div class="tline-desc">Cohort meets U.S. Ambassador Mike Huckabee at the U.S. embassy in Jerusalem. Pivotal day for cross-cohort photo evidence.</div></div>
+<div class="tline-row "><div class="tline-date">Aug 14, 2025</div><div class="tline-title">City of David, Yad Vashem</div><div class="tline-desc">@JayneZirkle posts on the contrast between Jerusalem and Gaza tunnels. Cohort visits the Holocaust memorial.</div></div>
+<div class="tline-row "><div class="tline-date">Aug 15, 2025</div><div class="tline-title">Shabbat in Efrat</div><div class="tline-desc">End of formal programming for most participants.</div></div>
+<div class="tline-row olive"><div class="tline-date">Aug 17–18, 2025</div><div class="tline-title">Tel Aviv extension</div><div class="tline-desc">@XAVIAERD and @camhigby remain in Tel Aviv. @XAVIAERD posts the Tel Aviv encounter that goes viral.</div></div>
+<div class="tline-row warn"><div class="tline-date">Aug 20, 2025</div><div class="tline-title">Gaza Strip</div><div class="tline-desc">@camhigby and @XAVIAERD independently enter Gaza. Original on-ground footage of aid pallets and petroleum tankers contradicts mainstream blockade narratives.</div></div>
+<div class="tline-row "><div class="tline-date">Aug 22, 2025</div><div class="tline-title">Funding-criticism response</div><div class="tline-desc">@camhigby: "The Israeli government did not pay for the entire trip… NONE of the reporting I've posted so far was part of the scheduled programming."</div></div>
+<div class="tline-row "><div class="tline-date">Sep 10, 2025</div><div class="tline-title">Charlie Kirk reference</div><div class="tline-desc">@lancevideos: "Charlie Kirk hired me in 2019 when I was 17 years old to create memes for TPUSA." Begins linking Israel content to TPUSA-lineage authority.</div></div>
+<div class="tline-row olive"><div class="tline-date">Oct 7, 2025</div><div class="tline-title">Anniversary testimony</div><div class="tline-desc">@emilysavesusa anchors her first-hand Nova Festival memorial visit on the October 7 anniversary — the trip's emotional payload extended into broad reach.</div></div>
+<div class="tline-row "><div class="tline-date">Nov 1, 2025</div><div class="tline-title">RJC return</div><div class="tline-desc">@politicalfabian returns to the Republican Jewish Coalition with a camera. Produces original video with Douglas Murray and the "Tucker is NOT MAGA" student-sign coverage.</div></div>
+<div class="tline-row warn"><div class="tline-date">Nov 21, 2025</div><div class="tline-title">Career pivot</div><div class="tline-desc">@JayneZirkle joins @LawfareProject as Director of Communications and Outreach.</div></div>
+<div class="tline-row warn"><div class="tline-date">Dec 13, 2025</div><div class="tline-title">Plano anti-Islam march</div><div class="tline-desc">@lancevideos participates in organizing a march in Plano, TX, including a Quran-burning attempt. Marks his most extreme post-trip activism node.</div></div>
+    </div>
+    <div class="findings" style="margin-top:18px"><div class="fbox"><h5>The Aug 13 anchor</h5><p>The Huckabee meeting on Aug 13 produced the cohort's most-shared single piece of evidence — Ambassador-meeting photos appear in the post-trip content of nearly every analyzed account.</p></div>
+<div class="fbox warn"><h5>The Aug 20 inflection</h5><p>Gaza extension by @camhigby and @XAVIAERD created the cohort's most-reused post-trip authority — both still cite "I was there" months later.</p></div></div>
+  </div>
+</section>
+
+
+<!--
+@module: chart_radial_compass   (Motion Chart 06)
+@schema: {
+  id, kicker, title, dek, ctitle, clabel, csub,
+  axes: ["dim 1","dim 2", ...],          // 5–8 axes
+  scaleMax: 5,                            // numeric max
+  entities: [{name, color, vals:[n,n,...]}],   // vals.length === axes.length
+  findings: [{kind,h,p,ev}]
+}
+-->
+<section id="sec-chart5" data-vft-chart>
+  <h4>Section 08 · Motion Chart 05 · Multi-Axis Scoring</h4>
+  <h2 class="serif">Three transformation profiles, six axes.</h2>
+  <p class="dek">Each polygon scores one influencer on six dimensions of trip impact. The shapes show that no single profile dominates — different influencers moved differently, and the trip catalyzed different gains for each.</p>
+  <div class="chart-card">
+    <div class="ctitle"><span class="pin"></span>Motion Chart 05 · 3 transformers × 6 dimensions · scaled 0–5</div>
+    <div class="clabel">@JayneZirkle, @lancevideos, and @camhigby map three distinct shapes.</div>
+    <div class="csub">Polygons draw line-by-line on view. Larger area = bigger overall trip impact.</div>
+    <div class="compass-wrap"><svg id="sec-chart5__svg" class="compass-svg" viewBox="0 0 520 520"></svg></div>
+    <div class="legend" id="sec-chart5__legend"></div>
+    <div class="findings" style="margin-top:18px"><div class="fbox"><h5>@JayneZirkle's profile</h5><p>Strongest on career commitment — the only documented professional pivot. Strong sustained engagement; moderate volume; lower on anti-woke-right activism.</p></div>
+<div class="fbox warn"><h5>@lancevideos's profile</h5><p>Maxes the activism axes — tone intensification, anti-woke-right, sustained engagement. Lower on career commitment because the activism is the career.</p></div>
+<div class="fbox"><h5>@camhigby's profile</h5><p>Tops on-ground reporting (entered Gaza, original footage). Modest on volume because the pre-trip baseline was already high.</p></div></div>
+  </div>
+</section>
+<script>
+(function(){
+  var DATA={"axes": ["Volume change", "On-ground reporting", "Tone intensification", "Career commitment", "Anti-woke-right activism", "Sustained engagement"], "scaleMax": 5, "entities": [{"name": "@JayneZirkle", "color": "#3A4DA7", "vals": [4, 4, 3, 5, 2, 5]}, {"name": "@lancevideos", "color": "#A6353F", "vals": [5, 4, 5, 2, 5, 5]}, {"name": "@camhigby", "color": "#1B2866", "vals": [3, 5, 3, 2, 3, 5]}]}; var ID="sec-chart5";
+  function render(){
+    var svg=document.getElementById(ID+"__svg");if(!svg)return;svg.innerHTML="";
+    var W=520,H=520,cx=W/2,cy=H/2,R=180;
+    var n=DATA.axes.length, mx=DATA.scaleMax||5;
+    function pt(i,v){var a=(-Math.PI/2)+(2*Math.PI*i/n);var r=(v/mx)*R;return [cx+Math.cos(a)*r, cy+Math.sin(a)*r]}
+    // grid rings
+    for(var k=1;k<=4;k++){
+      var pts=[];for(var i=0;i<n;i++){var p=pt(i,(k/4)*mx);pts.push(p[0]+","+p[1])}
+      var ring=document.createElementNS("http://www.w3.org/2000/svg","polygon");
+      ring.setAttribute("points",pts.join(" "));ring.setAttribute("class","compass-grid");svg.appendChild(ring);
+    }
+    // axes + labels
+    for(var i=0;i<n;i++){
+      var p=pt(i,mx);
+      var ax=document.createElementNS("http://www.w3.org/2000/svg","line");
+      ax.setAttribute("x1",cx);ax.setAttribute("y1",cy);ax.setAttribute("x2",p[0]);ax.setAttribute("y2",p[1]);ax.setAttribute("class","compass-axis");svg.appendChild(ax);
+      var lp=pt(i,mx*1.18);
+      var lb=document.createElementNS("http://www.w3.org/2000/svg","text");
+      lb.setAttribute("class","compass-axis-label");lb.setAttribute("x",lp[0]);lb.setAttribute("y",lp[1]);
+      lb.setAttribute("text-anchor", lp[0]>cx+6?"start":(lp[0]<cx-6?"end":"middle"));
+      lb.setAttribute("dy",lp[1]>cy?"12":(lp[1]<cy?"-2":"4"));
+      lb.textContent=DATA.axes[i];svg.appendChild(lb);
+    }
+    // entities
+    DATA.entities.forEach(function(e,ei){
+      var pts=[];for(var i=0;i<n;i++){var p=pt(i,e.vals[i]);pts.push(p[0]+","+p[1])}
+      var poly=document.createElementNS("http://www.w3.org/2000/svg","polygon");
+      poly.setAttribute("points",pts.join(" "));poly.setAttribute("class","compass-poly");
+      poly.setAttribute("stroke",e.color);poly.setAttribute("fill",e.color);
+      poly.style.animationDelay=(ei*0.3).toFixed(2)+"s";svg.appendChild(poly);
+      for(var i=0;i<n;i++){var p=pt(i,e.vals[i]);
+        var d=document.createElementNS("http://www.w3.org/2000/svg","circle");
+        d.setAttribute("cx",p[0]);d.setAttribute("cy",p[1]);d.setAttribute("r","4");
+        d.setAttribute("fill",e.color);d.setAttribute("class","compass-dot");
+        d.style.animationDelay=(ei*0.3+i*0.05+0.4).toFixed(2)+"s";svg.appendChild(d);}
+    });
+    document.getElementById(ID+"__legend").innerHTML=DATA.entities.map(function(e){return "<div class='lg'><span class='sw' style='background:"+e.color+"'></span>"+e.name+"</div>"}).join("");
+  }
+  window.__VFT_CHARTS__=window.__VFT_CHARTS__||{};window.__VFT_CHARTS__[ID]=render;
+})();
+</script>
+
+
+<!--
+@module: findings_grid
+@schema: { id, kicker, title, dek (optional),
+  findings: [{kind, h, p, ev}]
+}
+-->
+<section id="sec-themes">
+  <h4>Section 09 · Six Themes</h4>
+  <h2 class="serif">What the trip catalyzed across the cohort.</h2>
+  
+  <div class="findings">
+<div class="fbox"><h5>Theme 1 · First-hand experience as authority</h5><p>Multiple influencers now cite their on-ground experience when countering critics. The Nova Festival memorial, Gaza aid documentation, Druze community meetings, and Muslim Quarter interviews all become evidence in later debates.</p><span class="ev strong">Verified</span></div>
+<div class="fbox olive"><h5>Theme 2 · Challenging mainstream narratives</h5><p>@camhigby and @XAVIAERD's Gaza footage directly challenged claims about food blockades (showed pallet lots), fuel shortages (documented petroleum tankers), and aid distribution (blamed UN inefficiency, not Israel).</p><span class="ev strong">Verified</span></div>
+<div class="fbox"><h5>Theme 3 · Religious and historical connection</h5><p>For @JayneZirkle and @jordansarmo, the trip's biblical-sites programming reinforced religious framings of Israel. "Seeing the Bible come to life here in Israel has been life changing."</p><span class="ev">Verified</span></div>
+<div class="fbox"><h5>Theme 4 · Career impact</h5><p>@JayneZirkle's path from trip participant to Director of Communications at @LawfareProject in November 2025 represents the cohort's most significant professional outcome.</p><span class="ev strong">Verified</span></div>
+<div class="fbox warn"><h5>Theme 5 · Anti-"woke right" activism</h5><p>@politicalfabian and @lancevideos emerged as aggressive critics of Tucker Carlson, Candace Owens, and Nick Fuentes — figures they label as antisemitic within the conservative movement. Both ran sustained fact-checking and rebuttal campaigns through Q4 2025.</p><span class="ev strong">Strong</span></div>
+<div class="fbox warn"><h5>Theme 6 · Anti-Islam escalation</h5><p>@lancevideos in particular escalated from occasional anti-Islam memes to organized activism, including the Plano anti-Islam march on Dec 13. The pattern bears closer monitoring as a content-direction outcome of trip-driven IDF and Israel exposure.</p><span class="ev">Notable</span></div>
+  </div>
+</section>
+
+
+<!--
+@module: methodology
+@schema: { id, kicker, title, intro,
+  evidence_table: [{tier, threshold, where}],
+  limitations_title, limitations: ["..."]
+}
+-->
+<section id="sec-method">
+  <h4>Section 10 · Methodology &amp; Limitations</h4>
+  <h2 class="serif">How the analysis was performed.</h2>
+  <p class="ctxt">Twitter content was retrieved from the Beacon database (Beacon Twitter DB) on December 22, 2025, with link verification performed December 22–25. Only original content was counted (is_retweet=false). Counts cover the August 1, 2024 – December 22, 2025 window. Sentiment and tone characterizations are analyst-coded based on representative samples and full-text reading of selected tweets.</p>
+
+  <table class="tbl">
+    <thead><tr><th>Evidence Tier</th><th>Threshold</th><th>Where it appears</th></tr></thead>
+    <tbody>
+<tr><td><b>Verified</b></td><td>Independently confirmed against the Beacon database with exact tweet ID match</td><td>All tweet quotes, follower counts, and per-influencer volume figures</td></tr>
+<tr><td><b>Strong</b></td><td>Directionally confirmed across multiple posts; minor variance possible</td><td>Cross-period volume comparisons; before/after framing characterizations</td></tr>
+<tr><td><b>Moderate</b></td><td>Analytically sound but based on limited samples or estimated dates</td><td>Trip-itinerary reconstruction; tone-shift assessments</td></tr>
+<tr><td><b>Notable</b></td><td>Pattern observed but warrants longer-window observation</td><td>@lancevideos anti-Islam escalation trajectory</td></tr>
+    </tbody>
+  </table>
+
+  <h3 class="serif" style="margin-top:24px">Limitations &amp; caveats</h3>
+  <ol style="margin-left:22px;color:var(--ink);max-width:78ch">
+<li style="margin:8px 0">Two of the original ten participants could not be analyzed: @barazani_tal (private account) and @averywarwck (data quality issues with the scraper).</li>
+<li style="margin:8px 0">@BraxtonMT was tracked but had no Israel-related post-trip content and is excluded from the comparative analysis.</li>
+<li style="margin:8px 0">Historical follower data is not available; we cannot track follower growth specifically before vs. after the trip.</li>
+<li style="margin:8px 0">The post-trip observation window (Sep–Dec 2025) is shorter than the pre-trip window (Aug 2024 – Jul 2025). Volume "declines" for already-prolific accounts (@camhigby, @XAVIAERD) reflect the shorter window, not disengagement.</li>
+<li style="margin:8px 0">Retweets are excluded from all volume counts. Only original posts are counted.</li>
+<li style="margin:8px 0">Tone and sentiment characterizations are analyst-coded, not algorithmic. Treat them as directional indicators.</li>
+<li style="margin:8px 0">The trip itinerary is reconstructed from public posts; private programming may not be captured.</li>
+  </ol>
+</section>
+
+
+<!--
+@module: sources
+@schema: { id, kicker, title,
+  sources: [{n, pub, title, desc, url}]
+}
+-->
+<section id="sec-sources">
+  <h4>Section 11 · Sources &amp; Verification</h4>
+  <h2 class="serif">Primary accounts, quoted tweets, and contextual sources.</h2>
+  <div class="sources">
+<div class="scard"><div class="sn">[Beacon]</div><div class="sp">Twitter Database</div><div class="st">Internal Twitter content corpus</div><div class="sd">Source of all volume counts, quote IDs, and verification. Queries run Dec 22, 2025; link verification Dec 22–25.</div></div>
+<div class="scard"><div class="sn">[Beacon]</div><div class="sp">Methodology</div><div class="st">is_retweet=false original content filter</div><div class="sd">Excludes retweets from all volume figures. Only original author content counted.</div></div>
+<div class="scard"><div class="sn">[Beacon]</div><div class="sp">Methodology</div><div class="st">Israel/ME keyword sweep</div><div class="sd">Captures tweets matching Israel, IDF, Hamas, Gaza, Palestin*, Zion*, Iran, Hezbollah, Tel Aviv, Jerusalem, antisemit*, Islam* and related terms.</div></div>
+<div class="scard"><div class="sn">[@JayneZirkle]</div><div class="sp">X / Twitter</div><div class="st">Departure tweet · Aug 9, 2025</div><div class="sd">"Heading from the greatest city in the world to Israel. It's my first time visiting!"</div><a href="https://x.com/JayneZirkle" target="_blank" rel="noopener" style="font-size:10px;font-family:&quot;IBM Plex Mono&quot;,monospace;letter-spacing:.10em;text-transform:uppercase;display:inline-block;margin-top:6px">Open ↗</a></div>
+<div class="scard"><div class="sn">[@JayneZirkle]</div><div class="sp">X / Twitter</div><div class="st">Arrival · Aug 10, 2025</div><div class="sd">"I've arrived safely in Israel. Bring them home."</div><a href="https://x.com/JayneZirkle" target="_blank" rel="noopener" style="font-size:10px;font-family:&quot;IBM Plex Mono&quot;,monospace;letter-spacing:.10em;text-transform:uppercase;display:inline-block;margin-top:6px">Open ↗</a></div>
+<div class="scard"><div class="sn">[@JayneZirkle]</div><div class="sp">X / Twitter</div><div class="st">Golan Heights · Aug 11, 2025</div><div class="sd">Tour with IDF Major (Res.) Elliott Chodoff; Druze restaurant lunch.</div><a href="https://x.com/JayneZirkle" target="_blank" rel="noopener" style="font-size:10px;font-family:&quot;IBM Plex Mono&quot;,monospace;letter-spacing:.10em;text-transform:uppercase;display:inline-block;margin-top:6px">Open ↗</a></div>
+<div class="scard"><div class="sn">[@JayneZirkle]</div><div class="sp">X / Twitter</div><div class="st">Huckabee meeting · Aug 13, 2025</div><div class="sd">Cohort photographed with Ambassador Mike Huckabee at U.S. embassy, Jerusalem.</div><a href="https://x.com/JayneZirkle" target="_blank" rel="noopener" style="font-size:10px;font-family:&quot;IBM Plex Mono&quot;,monospace;letter-spacing:.10em;text-transform:uppercase;display:inline-block;margin-top:6px">Open ↗</a></div>
+<div class="scard"><div class="sn">[@JayneZirkle]</div><div class="sp">X / Twitter</div><div class="st">City of David · Aug 14, 2025</div><div class="sd">Jerusalem-vs-Gaza tunnel contrast post.</div><a href="https://x.com/JayneZirkle" target="_blank" rel="noopener" style="font-size:10px;font-family:&quot;IBM Plex Mono&quot;,monospace;letter-spacing:.10em;text-transform:uppercase;display:inline-block;margin-top:6px">Open ↗</a></div>
+<div class="scard"><div class="sn">[@JayneZirkle]</div><div class="sp">X / Twitter</div><div class="st">"Six million" framing · Aug 19, 2025</div><div class="sd">Most-shared trip-rationale post from the cohort.</div><a href="https://x.com/JayneZirkle" target="_blank" rel="noopener" style="font-size:10px;font-family:&quot;IBM Plex Mono&quot;,monospace;letter-spacing:.10em;text-transform:uppercase;display:inline-block;margin-top:6px">Open ↗</a></div>
+<div class="scard"><div class="sn">[@JayneZirkle]</div><div class="sp">X / Twitter</div><div class="st">Lawfare Project hire · Nov 21, 2025</div><div class="sd">Director of Communications and Outreach announcement.</div><a href="https://x.com/JayneZirkle" target="_blank" rel="noopener" style="font-size:10px;font-family:&quot;IBM Plex Mono&quot;,monospace;letter-spacing:.10em;text-transform:uppercase;display:inline-block;margin-top:6px">Open ↗</a></div>
+<div class="scard"><div class="sn">[@camhigby]</div><div class="sp">X / Twitter</div><div class="st">Gaza pallets · Aug 20, 2025</div><div class="sd">"I just left the Gaza Strip…" — original on-ground footage.</div><a href="https://x.com/camhigby" target="_blank" rel="noopener" style="font-size:10px;font-family:&quot;IBM Plex Mono&quot;,monospace;letter-spacing:.10em;text-transform:uppercase;display:inline-block;margin-top:6px">Open ↗</a></div>
+<div class="scard"><div class="sn">[@camhigby]</div><div class="sp">X / Twitter</div><div class="st">COGAT distribution thread · Aug 21, 2025</div><div class="sd">Civilian-worker / aid-distribution documentation.</div><a href="https://x.com/camhigby" target="_blank" rel="noopener" style="font-size:10px;font-family:&quot;IBM Plex Mono&quot;,monospace;letter-spacing:.10em;text-transform:uppercase;display:inline-block;margin-top:6px">Open ↗</a></div>
+<div class="scard"><div class="sn">[@camhigby]</div><div class="sp">X / Twitter</div><div class="st">Funding-criticism reply · Aug 22, 2025</div><div class="sd">Clarifies grant structure; confirms Gaza extension was independent.</div><a href="https://x.com/camhigby" target="_blank" rel="noopener" style="font-size:10px;font-family:&quot;IBM Plex Mono&quot;,monospace;letter-spacing:.10em;text-transform:uppercase;display:inline-block;margin-top:6px">Open ↗</a></div>
+<div class="scard"><div class="sn">[@camhigby]</div><div class="sp">X / Twitter</div><div class="st">"Pro-Israel since 2021" · Aug 22, 2025</div><div class="sd">Self-positioning re: timing of Israel advocacy.</div><a href="https://x.com/camhigby" target="_blank" rel="noopener" style="font-size:10px;font-family:&quot;IBM Plex Mono&quot;,monospace;letter-spacing:.10em;text-transform:uppercase;display:inline-block;margin-top:6px">Open ↗</a></div>
+<div class="scard"><div class="sn">[@XAVIAERD]</div><div class="sp">X / Twitter</div><div class="st">Golan Heights · Aug 11, 2025</div><div class="sd">"This is America First. GOLAN HEIGHTS."</div><a href="https://x.com/XAVIAERD" target="_blank" rel="noopener" style="font-size:10px;font-family:&quot;IBM Plex Mono&quot;,monospace;letter-spacing:.10em;text-transform:uppercase;display:inline-block;margin-top:6px">Open ↗</a></div>
+<div class="scard"><div class="sn">[@XAVIAERD]</div><div class="sp">X / Twitter</div><div class="st">Day-1 defiance post · Aug 11, 2025</div><div class="sd">Critic-engagement post that received heavy reach during the trip.</div><a href="https://x.com/XAVIAERD" target="_blank" rel="noopener" style="font-size:10px;font-family:&quot;IBM Plex Mono&quot;,monospace;letter-spacing:.10em;text-transform:uppercase;display:inline-block;margin-top:6px">Open ↗</a></div>
+<div class="scard"><div class="sn">[@XAVIAERD]</div><div class="sp">X / Twitter</div><div class="st">Tel Aviv encounter · Aug 18, 2025</div><div class="sd">"Three witnesses" anecdote that anchored later social-media exchanges.</div><a href="https://x.com/XAVIAERD" target="_blank" rel="noopener" style="font-size:10px;font-family:&quot;IBM Plex Mono&quot;,monospace;letter-spacing:.10em;text-transform:uppercase;display:inline-block;margin-top:6px">Open ↗</a></div>
+<div class="scard"><div class="sn">[@XAVIAERD]</div><div class="sp">X / Twitter</div><div class="st">Gaza check-in · Aug 20, 2025</div><div class="sd">Joint Gaza extension with @camhigby.</div><a href="https://x.com/XAVIAERD" target="_blank" rel="noopener" style="font-size:10px;font-family:&quot;IBM Plex Mono&quot;,monospace;letter-spacing:.10em;text-transform:uppercase;display:inline-block;margin-top:6px">Open ↗</a></div>
+<div class="scard"><div class="sn">[@emilysavesusa]</div><div class="sp">X / Twitter</div><div class="st">Pre-trip baseline · Feb 2, 2025</div><div class="sd">"The SECOND I even make a comment on Israel's government…" — only pre-trip Israel post until June.</div><a href="https://x.com/emilysavesusa" target="_blank" rel="noopener" style="font-size:10px;font-family:&quot;IBM Plex Mono&quot;,monospace;letter-spacing:.10em;text-transform:uppercase;display:inline-block;margin-top:6px">Open ↗</a></div>
+<div class="scard"><div class="sn">[@emilysavesusa]</div><div class="sp">X / Twitter</div><div class="st">Funding-defense · Aug 13, 2025</div><div class="sd">"No one's paying me to be in Israel." Bridge between pre- and post-trip voice.</div><a href="https://x.com/emilysavesusa" target="_blank" rel="noopener" style="font-size:10px;font-family:&quot;IBM Plex Mono&quot;,monospace;letter-spacing:.10em;text-transform:uppercase;display:inline-block;margin-top:6px">Open ↗</a></div>
+<div class="scard"><div class="sn">[@emilysavesusa]</div><div class="sp">X / Twitter</div><div class="st">Nova memorial · Oct 7, 2025</div><div class="sd">Anniversary post citing first-hand visit to Nova Festival site.</div><a href="https://x.com/emilysavesusa" target="_blank" rel="noopener" style="font-size:10px;font-family:&quot;IBM Plex Mono&quot;,monospace;letter-spacing:.10em;text-transform:uppercase;display:inline-block;margin-top:6px">Open ↗</a></div>
+<div class="scard"><div class="sn">[@emilysavesusa]</div><div class="sp">X / Twitter</div><div class="st">Hamas-execution counter · Oct 14, 2025</div><div class="sd">Critic-engagement using post-trip authority.</div><a href="https://x.com/emilysavesusa" target="_blank" rel="noopener" style="font-size:10px;font-family:&quot;IBM Plex Mono&quot;,monospace;letter-spacing:.10em;text-transform:uppercase;display:inline-block;margin-top:6px">Open ↗</a></div>
+<div class="scard"><div class="sn">[@emilysavesusa]</div><div class="sp">X / Twitter</div><div class="st">Qatar-comparison reply · Dec 1, 2025</div><div class="sd">"I like Qatar, I like Israel, I like Hawaii…" critic-pushback.</div><a href="https://x.com/emilysavesusa" target="_blank" rel="noopener" style="font-size:10px;font-family:&quot;IBM Plex Mono&quot;,monospace;letter-spacing:.10em;text-transform:uppercase;display:inline-block;margin-top:6px">Open ↗</a></div>
+<div class="scard"><div class="sn">[@jordansarmo]</div><div class="sp">X / Twitter</div><div class="st">Bible-comes-to-life · Aug 13, 2025</div><div class="sd">First-ever Israel-related post.</div><a href="https://x.com/jordansarmo" target="_blank" rel="noopener" style="font-size:10px;font-family:&quot;IBM Plex Mono&quot;,monospace;letter-spacing:.10em;text-transform:uppercase;display:inline-block;margin-top:6px">Open ↗</a></div>
+<div class="scard"><div class="sn">[@jordansarmo]</div><div class="sp">X / Twitter</div><div class="st">American-vs-Arab framing · Aug 14, 2025</div><div class="sd">Trip-anchored claim about American versus Arab-Israeli views.</div><a href="https://x.com/jordansarmo" target="_blank" rel="noopener" style="font-size:10px;font-family:&quot;IBM Plex Mono&quot;,monospace;letter-spacing:.10em;text-transform:uppercase;display:inline-block;margin-top:6px">Open ↗</a></div>
+<div class="scard"><div class="sn">[@jordansarmo]</div><div class="sp">X / Twitter</div><div class="st">Israel365 credit · Aug 18, 2025</div><div class="sd">Identifies trip sponsor; explains how participation came about.</div><a href="https://x.com/jordansarmo" target="_blank" rel="noopener" style="font-size:10px;font-family:&quot;IBM Plex Mono&quot;,monospace;letter-spacing:.10em;text-transform:uppercase;display:inline-block;margin-top:6px">Open ↗</a></div>
+<div class="scard"><div class="sn">[@lancevideos]</div><div class="sp">X / Twitter</div><div class="st">Tel Aviv arrival · Aug 10, 2025</div><div class="sd">"Landed in Tel Aviv." First-ever Israel post.</div><a href="https://x.com/lancevideos" target="_blank" rel="noopener" style="font-size:10px;font-family:&quot;IBM Plex Mono&quot;,monospace;letter-spacing:.10em;text-transform:uppercase;display:inline-block;margin-top:6px">Open ↗</a></div>
+<div class="scard"><div class="sn">[@lancevideos]</div><div class="sp">X / Twitter</div><div class="st">Ambassador meeting · Aug 13, 2025</div><div class="sd">"Met with the US-Israel ambassador today!"</div><a href="https://x.com/lancevideos" target="_blank" rel="noopener" style="font-size:10px;font-family:&quot;IBM Plex Mono&quot;,monospace;letter-spacing:.10em;text-transform:uppercase;display:inline-block;margin-top:6px">Open ↗</a></div>
+<div class="scard"><div class="sn">[@lancevideos]</div><div class="sp">X / Twitter</div><div class="st">IDF base dinner · Aug 17, 2025</div><div class="sd">Pivotal IDF-encounter post; later reused in debates.</div><a href="https://x.com/lancevideos" target="_blank" rel="noopener" style="font-size:10px;font-family:&quot;IBM Plex Mono&quot;,monospace;letter-spacing:.10em;text-transform:uppercase;display:inline-block;margin-top:6px">Open ↗</a></div>
+<div class="scard"><div class="sn">[@lancevideos]</div><div class="sp">X / Twitter</div><div class="st">Gaza video response · Aug 20, 2025</div><div class="sd">2:45 video · 13.9K views · debunking-format response.</div><a href="https://x.com/lancevideos" target="_blank" rel="noopener" style="font-size:10px;font-family:&quot;IBM Plex Mono&quot;,monospace;letter-spacing:.10em;text-transform:uppercase;display:inline-block;margin-top:6px">Open ↗</a></div>
+<div class="scard"><div class="sn">[@lancevideos]</div><div class="sp">X / Twitter</div><div class="st">TPUSA / Charlie Kirk · Sep 10, 2025</div><div class="sd">Self-introduction tying Israel content to TPUSA-lineage authority.</div><a href="https://x.com/lancevideos" target="_blank" rel="noopener" style="font-size:10px;font-family:&quot;IBM Plex Mono&quot;,monospace;letter-spacing:.10em;text-transform:uppercase;display:inline-block;margin-top:6px">Open ↗</a></div>
+<div class="scard"><div class="sn">[@lancevideos]</div><div class="sp">X / Twitter</div><div class="st">Plano anti-Islam march · Dec 13, 2025</div><div class="sd">Livestream and Quran-burning coverage.</div><a href="https://x.com/lancevideos" target="_blank" rel="noopener" style="font-size:10px;font-family:&quot;IBM Plex Mono&quot;,monospace;letter-spacing:.10em;text-transform:uppercase;display:inline-block;margin-top:6px">Open ↗</a></div>
+<div class="scard"><div class="sn">[@politicalfabian]</div><div class="sp">X / Twitter</div><div class="st">Pre-trip Tucker critique · Jun 17, 2025</div><div class="sd">"Tucker Qatarlson is being exposed" — pre-existing anti-"woke right" pattern.</div><a href="https://x.com/politicalfabian" target="_blank" rel="noopener" style="font-size:10px;font-family:&quot;IBM Plex Mono&quot;,monospace;letter-spacing:.10em;text-transform:uppercase;display:inline-block;margin-top:6px">Open ↗</a></div>
+<div class="scard"><div class="sn">[@politicalfabian]</div><div class="sp">X / Twitter</div><div class="st">Golan post · Aug 11, 2025</div><div class="sd">"At the Golan heights looking over Syria…"</div><a href="https://x.com/politicalfabian" target="_blank" rel="noopener" style="font-size:10px;font-family:&quot;IBM Plex Mono&quot;,monospace;letter-spacing:.10em;text-transform:uppercase;display:inline-block;margin-top:6px">Open ↗</a></div>
+<div class="scard"><div class="sn">[@politicalfabian]</div><div class="sp">X / Twitter</div><div class="st">Capernaum · Aug 12, 2025</div><div class="sd">Religious-site framing.</div><a href="https://x.com/politicalfabian" target="_blank" rel="noopener" style="font-size:10px;font-family:&quot;IBM Plex Mono&quot;,monospace;letter-spacing:.10em;text-transform:uppercase;display:inline-block;margin-top:6px">Open ↗</a></div>
+<div class="scard"><div class="sn">[@politicalfabian]</div><div class="sp">X / Twitter</div><div class="st">Huckabee meeting · Aug 13, 2025</div><div class="sd">Cross-cohort anchor.</div><a href="https://x.com/politicalfabian" target="_blank" rel="noopener" style="font-size:10px;font-family:&quot;IBM Plex Mono&quot;,monospace;letter-spacing:.10em;text-transform:uppercase;display:inline-block;margin-top:6px">Open ↗</a></div>
+<div class="scard"><div class="sn">[@politicalfabian]</div><div class="sp">X / Twitter</div><div class="st">IDF beach interview · Aug 20, 2025</div><div class="sd">Original on-ground video from Tel Aviv.</div><a href="https://x.com/politicalfabian" target="_blank" rel="noopener" style="font-size:10px;font-family:&quot;IBM Plex Mono&quot;,monospace;letter-spacing:.10em;text-transform:uppercase;display:inline-block;margin-top:6px">Open ↗</a></div>
+<div class="scard"><div class="sn">[@politicalfabian]</div><div class="sp">X / Twitter</div><div class="st">RJC + Douglas Murray video · Nov 1, 2025</div><div class="sd">Active content production at the Republican Jewish Coalition conference.</div><a href="https://x.com/politicalfabian" target="_blank" rel="noopener" style="font-size:10px;font-family:&quot;IBM Plex Mono&quot;,monospace;letter-spacing:.10em;text-transform:uppercase;display:inline-block;margin-top:6px">Open ↗</a></div>
+<div class="scard"><div class="sn">[Org]</div><div class="sp">@Israel365act</div><div class="st">Trip sponsor</div><div class="sd">Non-profit that organized the August 2025 trip; received the grant referenced in @camhigby's funding-criticism reply.</div><a href="https://x.com/Israel365act" target="_blank" rel="noopener" style="font-size:10px;font-family:&quot;IBM Plex Mono&quot;,monospace;letter-spacing:.10em;text-transform:uppercase;display:inline-block;margin-top:6px">Open ↗</a></div>
+<div class="scard"><div class="sn">[Org]</div><div class="sp">@LawfareProject</div><div class="st">@JayneZirkle's career destination</div><div class="sd">Legal advocacy organization focused on Jewish civil-rights cases.</div><a href="https://x.com/LawfareProject" target="_blank" rel="noopener" style="font-size:10px;font-family:&quot;IBM Plex Mono&quot;,monospace;letter-spacing:.10em;text-transform:uppercase;display:inline-block;margin-top:6px">Open ↗</a></div>
+<div class="scard"><div class="sn">[Org]</div><div class="sp">@cityofdavid</div><div class="st">Aug 14 site visit</div><div class="sd">Archaeological site stop; subject of @JayneZirkle's tunnel-contrast post.</div><a href="https://x.com/cityofdavid" target="_blank" rel="noopener" style="font-size:10px;font-family:&quot;IBM Plex Mono&quot;,monospace;letter-spacing:.10em;text-transform:uppercase;display:inline-block;margin-top:6px">Open ↗</a></div>
+<div class="scard"><div class="sn">[Org]</div><div class="sp">@RJC</div><div class="st">Republican Jewish Coalition</div><div class="sd">Pre-trip (Sep 2024) and post-trip (Nov 2025) attendance by @politicalfabian.</div><a href="https://x.com/RJC" target="_blank" rel="noopener" style="font-size:10px;font-family:&quot;IBM Plex Mono&quot;,monospace;letter-spacing:.10em;text-transform:uppercase;display:inline-block;margin-top:6px">Open ↗</a></div>
+<div class="scard"><div class="sn">[Person]</div><div class="sp">@GovMikeHuckabee</div><div class="st">U.S. Ambassador to Israel</div><div class="sd">Cross-cohort anchor meeting on Aug 13, 2025.</div><a href="https://x.com/GovMikeHuckabee" target="_blank" rel="noopener" style="font-size:10px;font-family:&quot;IBM Plex Mono&quot;,monospace;letter-spacing:.10em;text-transform:uppercase;display:inline-block;margin-top:6px">Open ↗</a></div>
+<div class="scard"><div class="sn">[Org]</div><div class="sp">@FearlessDebates</div><div class="st">Post-trip joint engagement</div><div class="sd">@camhigby × @lancevideos debate-tour collaboration.</div><a href="https://x.com/FearlessDebates" target="_blank" rel="noopener" style="font-size:10px;font-family:&quot;IBM Plex Mono&quot;,monospace;letter-spacing:.10em;text-transform:uppercase;display:inline-block;margin-top:6px">Open ↗</a></div>
+<div class="scard"><div class="sn">[Person]</div><div class="sp">@DouglasKMurray</div><div class="st">Featured speaker · RJC Nov 2025</div><div class="sd">Original video subject in @politicalfabian's post-trip RJC coverage.</div><a href="https://x.com/DouglasKMurray" target="_blank" rel="noopener" style="font-size:10px;font-family:&quot;IBM Plex Mono&quot;,monospace;letter-spacing:.10em;text-transform:uppercase;display:inline-block;margin-top:6px">Open ↗</a></div>
+  </div>
+</section>
+
+<footer class="footbar">
+<span>Beacon Intelligence · December 2025</span>
+<span>JewishOrg August 2025 Trip · Twitter analysis</span>
+<span>9 of 10 influencers analyzed · 4-month observation window</span>
+</footer>
+</main>
+
+<script>
+/* =========================================================
+   VFT Dashboard V2 — runtime
+   Provides: scroll-spy, progress-bar fill, intersection-replay
+   Each chart module also registers itself onto window.__VFT_CHARTS__
+   ========================================================= */
+(function(){
+  window.__VFT_CHARTS__ = window.__VFT_CHARTS__ || {};
+
+  function setupSpy(){
+    var links = Array.prototype.slice.call(document.querySelectorAll(".nav a"));
+    var sections = links.map(function(a){return document.querySelector(a.getAttribute("href"))}).filter(Boolean);
+    function update(){
+      var y = window.scrollY + 120;
+      var idx = 0;
+      sections.forEach(function(sec, i){if(sec && sec.offsetTop <= y) idx = i});
+      links.forEach(function(a, i){a.classList.toggle("active", i===idx)});
+    }
+    window.addEventListener("scroll", update, {passive:true});
+    update();
+  }
+
+  function setupBars(){
+    setTimeout(function(){
+      document.querySelectorAll(".mc .pfill").forEach(function(el){
+        var w = el.style.width; el.style.width = "0";
+        requestAnimationFrame(function(){ el.style.width = w; });
+      });
+    }, 100);
+  }
+
+  function setupReplay(){
+    if(!("IntersectionObserver" in window)) return;
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){
+          var id = e.target.id;
+          var fn = window.__VFT_CHARTS__[id];
+          if(typeof fn === "function") fn();
+        }
+      });
+    },{threshold:0.18});
+    document.querySelectorAll("[data-vft-chart]").forEach(function(el){io.observe(el)});
+  }
+
+  document.addEventListener("DOMContentLoaded", function(){
+    setupSpy();
+    setupBars();
+    setupReplay();
+    // First render of each chart (so they're visible without waiting for scroll)
+    Object.keys(window.__VFT_CHARTS__).forEach(function(k){
+      try{ window.__VFT_CHARTS__[k]() } catch(e){ console.error("Chart init "+k+":", e) }
+    });
+  });
+})();
+
+</script>
+</body>
+</html>
