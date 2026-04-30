@@ -1,1526 +1,831 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=1280">
-<title>Lebanese Christian Leaders & Israel — Beacon Intelligence Layer</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Libre+Franklin:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Latest Posts, Underlying Numbers — What Beacon Returned for the Brief</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Libre+Franklin:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
 <style>
+/* =========================================================
+   VFT Dashboard V2 — base theme
+   Drop-in CSS. All design tokens live here.
+   ========================================================= */
 :root{
   --paper:#F6F2ED;
   --paper-2:#FCFFFF;
-  --paper-3:#EFEAE3;
   --ink:#0C1843;
   --ink-dim:#3A4DA7;
   --ink-faint:#5B6484;
-  --ink-deeper:#091233;
   --rule:#C8CCD8;
   --rule-2:#D4E3FC;
-  --rule-soft:#E5DFD6;
   --navy:#0C1843;
   --navy-bright:#3A4DA7;
   --navy-deep:#1B2866;
   --accent:#7795CC;
-  --accent-soft:#E0E8F5;
   --warn:#8B2635;
-  --warn-soft:#F2E1E3;
-  --olive:#5C6B4A;
-  --gold:#A47B3C;
+  --olive:#6F7A4A;
   --sidebar:#F6F2ED;
-  --serif:'Cormorant Garamond', 'Iowan Old Style', Georgia, serif;
-  --sans:'Libre Franklin', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  --mono:'IBM Plex Mono', 'SFMono-Regular', Menlo, Consolas, monospace;
 }
-*{box-sizing:border-box}
-html,body{margin:0;padding:0;background:var(--paper);color:var(--ink);font-family:var(--sans);font-weight:400;font-size:14px;line-height:1.55;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
-a{color:var(--ink-dim);text-decoration:none}
-a:hover{text-decoration:underline}
-em,i{font-style:normal}
-button{font-family:inherit;cursor:pointer}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:var(--paper);color:var(--ink);font-family:"Libre Franklin",system-ui,sans-serif;font-weight:400;line-height:1.55;-webkit-font-smoothing:antialiased}
+body{display:grid;grid-template-columns:230px 1fr;min-height:100vh}
+a{color:var(--ink-dim);text-decoration:none;border-bottom:1px solid var(--rule-2)}
+a:hover{color:var(--navy-deep);border-bottom-color:var(--navy-bright)}
+.serif{font-family:"Cormorant Garamond",Georgia,serif}
+.mono{font-family:"IBM Plex Mono",monospace}
+.kicker{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-faint)}
 
-/* ===== Layout shell ===== */
-.shell{display:grid;grid-template-columns:260px 1fr;min-height:100vh}
-@media (max-width:1024px){.shell{grid-template-columns:220px 1fr}}
+aside.sidebar{position:sticky;top:0;align-self:start;height:100vh;background:var(--sidebar);border-right:1px solid var(--rule);padding:28px 18px 20px;display:flex;flex-direction:column;gap:16px;overflow-y:auto}
+.brand .name{font-family:"Cormorant Garamond",serif;font-size:18px;font-weight:600;color:var(--ink);letter-spacing:.01em;line-height:1.1}
+.brand .sub{font-family:"IBM Plex Mono",monospace;font-size:9px;letter-spacing:.16em;color:var(--ink-faint);text-transform:uppercase;margin-top:3px}
+.nav{display:flex;flex-direction:column;gap:2px;margin-top:10px;border-top:1px solid var(--rule);padding-top:14px}
+.nav a{display:flex;align-items:baseline;gap:8px;padding:6px 6px;font-size:12px;color:var(--ink);border:none;border-left:2px solid transparent;border-radius:0;font-weight:400;line-height:1.25}
+.nav a .nx{font-family:"IBM Plex Mono",monospace;font-size:9px;color:var(--ink-faint);min-width:16px}
+.nav a:hover{background:rgba(58,77,167,.06);color:var(--navy-deep)}
+.nav a.active{background:rgba(58,77,167,.10);color:var(--navy-deep);border-left-color:var(--navy-bright);font-weight:500}
+.foot{margin-top:auto;font-family:"IBM Plex Mono",monospace;font-size:9px;letter-spacing:.14em;color:var(--ink-faint);line-height:1.6;text-transform:uppercase}
 
-/* ===== Sidebar ===== */
-.side{position:sticky;top:0;height:100vh;background:var(--sidebar);border-right:1px solid var(--rule);padding:28px 22px;display:flex;flex-direction:column;overflow:hidden}
-.brand{display:flex;align-items:center;gap:10px;padding-bottom:18px;border-bottom:1px solid var(--rule)}
-.brand-mark{width:34px;height:34px;border:1px solid var(--ink);border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--paper-2)}
-.brand-mark svg{width:18px;height:18px}
-.brand-name{font-family:var(--serif);font-weight:600;font-size:17px;letter-spacing:.01em;color:var(--ink);line-height:1.05}
-.brand-name small{display:block;font-family:var(--mono);font-size:8.5px;letter-spacing:.18em;color:var(--ink-faint);font-weight:500;margin-top:3px;text-transform:uppercase}
+main{padding:40px 44px 80px;max-width:1240px;min-width:0}
+section{padding-top:48px;border-top:1px solid var(--rule);margin-top:36px;scroll-margin-top:24px}
+section.first{border-top:none;margin-top:0;padding-top:0}
+h1.serif{font-size:54px;font-weight:500;line-height:1.04;letter-spacing:-.01em;margin:14px 0 18px}
+h2.serif{font-size:34px;font-weight:500;line-height:1.1;margin:0 0 6px;letter-spacing:-.005em}
+h3.serif{font-size:22px;font-weight:600;margin:0 0 8px}
+h4{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-faint);font-weight:500;margin:0 0 10px}
+.dek{font-family:"Cormorant Garamond",serif;font-style:italic;font-size:21px;color:var(--ink-faint);max-width:780px;margin:0 0 14px;line-height:1.45}
+.byline{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.14em;color:var(--ink-faint);text-transform:uppercase}
+.toprule{height:3px;background:linear-gradient(90deg,var(--ink) 0%,var(--ink-dim) 40%,var(--accent) 80%,var(--paper) 100%);margin-bottom:18px}
+p{margin:0 0 12px;color:var(--ink);max-width:78ch}
+p.note{color:var(--ink-faint);font-size:13px;max-width:78ch}
+.ctxt{color:var(--ink);max-width:78ch}
 
-.seal{margin:18px 0 18px;padding:14px;border:1px solid var(--rule);background:var(--paper-2);border-radius:3px}
-.seal-label{font-family:var(--mono);font-size:9px;letter-spacing:.2em;color:var(--ink-faint);text-transform:uppercase;margin-bottom:8px}
-.seal-title{font-family:var(--serif);font-size:15px;font-weight:600;color:var(--ink);line-height:1.2;margin-bottom:6px}
-.seal-meta{font-family:var(--mono);font-size:9.5px;color:var(--ink-faint);letter-spacing:.04em;line-height:1.5}
+/* metric cards */
+.metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:18px}
+.mc{background:var(--paper-2);border:1px solid var(--rule);padding:18px 16px;border-radius:2px;position:relative;overflow:hidden}
+.mc.alt{background:#EFEEEA}
+.mc.navy{background:var(--ink);color:#fff}
+.mc.navy .mk,.mc.navy .ms{color:#B8C5E8}
+.mc.navy .mu{color:#9DA8C9}
+.mc.olive{background:#3F4830;color:#fff}
+.mc.olive .mk,.mc.olive .ms{color:#C7CCB1}
+.mc .mk{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.15em;color:var(--ink-faint);text-transform:uppercase;margin-bottom:8px}
+.mc .mv{font-family:"Cormorant Garamond",serif;font-size:36px;font-weight:600;line-height:1;letter-spacing:-.01em}
+.mc .mu{font-size:12px;color:var(--ink-faint);margin-top:6px;line-height:1.4}
+.mc .ms{position:absolute;right:14px;top:14px;font-family:"IBM Plex Mono",monospace;font-size:10px;color:var(--ink-faint)}
+.mc .pbar{margin-top:12px;height:4px;background:rgba(0,0,0,.08);border-radius:2px;overflow:hidden}
+.mc.navy .pbar,.mc.olive .pbar{background:rgba(255,255,255,.18)}
+.mc .pfill{height:100%;background:var(--navy-bright);width:0;transition:width 1.2s cubic-bezier(.2,.8,.2,1)}
+.mc.navy .pfill{background:var(--accent)}
+.mc.olive .pfill{background:#C7CCB1}
 
-.nav-label{font-family:var(--mono);font-size:9.5px;letter-spacing:.2em;color:var(--ink-faint);text-transform:uppercase;margin:6px 0 10px}
-.nav{flex:1;overflow:auto;margin:0 -8px;padding:0 8px}
-.nav a{display:flex;align-items:center;gap:10px;padding:7px 8px;color:var(--ink);font-size:12.5px;letter-spacing:.005em;border-radius:3px;border-left:2px solid transparent;margin-bottom:2px}
-.nav a:hover{background:var(--paper-2);text-decoration:none}
-.nav a.active{background:var(--paper-2);border-left-color:var(--navy-bright);color:var(--ink)}
-.nav-num{font-family:var(--mono);font-size:9.5px;color:var(--ink-faint);width:18px;flex-shrink:0}
-.nav a.active .nav-num{color:var(--navy-bright)}
+/* tables */
+table.tbl{width:100%;border-collapse:collapse;margin-top:14px;font-size:13px;background:var(--paper-2);border:1px solid var(--rule)}
+table.tbl th,table.tbl td{padding:10px 12px;text-align:left;border-bottom:1px solid var(--rule)}
+table.tbl thead th{background:#EFEEEA;font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-faint);font-weight:500}
+table.tbl tbody tr:hover{background:rgba(58,77,167,.04)}
 
-.foot{margin-top:14px;padding-top:14px;border-top:1px solid var(--rule);font-family:var(--mono);font-size:9px;color:var(--ink-faint);letter-spacing:.04em;line-height:1.6}
+/* dividers */
+.div-dot{height:1px;background:var(--rule);margin:24px 0;position:relative}
+.div-dot::after{content:"\00B7";position:absolute;left:50%;top:-12px;transform:translateX(-50%);background:var(--paper);padding:0 10px;color:var(--ink-faint);font-size:18px}
 
-/* ===== Main column ===== */
-.main{padding:0 56px 80px;max-width:1120px;width:100%}
-@media (max-width:1280px){.main{padding:0 36px 80px}}
-section{padding:60px 0;border-bottom:1px solid var(--rule);scroll-margin-top:24px}
-section:last-of-type{border-bottom:none}
+/* chart card shell */
+.chart-card{background:var(--paper-2);border:1px solid var(--rule);border-radius:2px;padding:24px 28px;margin-top:16px;position:relative}
+.chart-card .ctitle{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.18em;color:var(--ink-faint);text-transform:uppercase;font-weight:500;margin-bottom:6px;display:flex;align-items:center;gap:10px}
+.chart-card .ctitle .pin{display:inline-block;width:6px;height:6px;background:var(--navy-bright);border-radius:50%;animation:pin 2.4s ease-in-out infinite}
+@keyframes pin{0%,100%{opacity:.3;transform:scale(1)}50%{opacity:1;transform:scale(1.6)}}
+.chart-card .clabel{font-family:"Cormorant Garamond",serif;font-size:24px;font-weight:600;color:var(--ink);margin-bottom:4px;line-height:1.2}
+.chart-card .csub{font-size:13px;color:var(--ink-faint);margin-bottom:20px;font-style:italic}
+.chart-controls{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0 18px}
+.chip{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;padding:6px 12px;background:var(--paper);border:1px solid var(--rule);color:var(--ink-faint);cursor:pointer;border-radius:2px;transition:all .2s}
+.chip:hover{border-color:var(--navy-bright);color:var(--navy-deep)}
+.chip.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+.legend{display:flex;flex-wrap:wrap;gap:18px;font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.10em;color:var(--ink-faint);text-transform:uppercase;margin-top:14px}
+.legend .lg{display:flex;align-items:center;gap:6px}
+.legend .sw{width:12px;height:12px;border-radius:2px;display:inline-block}
 
-.kicker{font-family:var(--mono);font-size:10px;letter-spacing:.22em;color:var(--ink-faint);text-transform:uppercase;display:flex;align-items:center;gap:10px;margin-bottom:12px}
-.kicker .kicker-num{color:var(--navy-bright);font-weight:600}
-.kicker .kicker-rule{flex:1;height:1px;background:var(--rule)}
+/* findings boxes */
+.findings{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:14px}
+.fbox{background:var(--paper-2);border:1px solid var(--rule);padding:16px 18px;border-radius:2px;border-left:3px solid var(--navy-bright)}
+.fbox.warn{border-left-color:var(--warn)}
+.fbox.olive{border-left-color:var(--olive)}
+.fbox h5{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.16em;color:var(--ink-faint);font-weight:500;text-transform:uppercase;margin-bottom:8px}
+.fbox p{font-size:14px;line-height:1.55;margin:0;color:var(--ink)}
+.fbox .ev{display:inline-block;font-family:"IBM Plex Mono",monospace;font-size:9px;letter-spacing:.14em;background:var(--ink);color:#fff;padding:2px 6px;border-radius:2px;margin-top:8px;text-transform:uppercase}
+.fbox .ev.strong{background:var(--navy-bright)}
+.fbox .ev.mod{background:var(--ink-faint)}
+.fbox .ev.low{background:#9DA8C9;color:var(--ink)}
 
-.h1{font-family:var(--serif);font-weight:500;font-size:54px;line-height:1.05;letter-spacing:-.012em;color:var(--ink);margin:0 0 18px;max-width:24ch}
-.h2{font-family:var(--serif);font-weight:500;font-size:36px;line-height:1.1;letter-spacing:-.005em;color:var(--ink);margin:0 0 12px}
-.h3{font-family:var(--serif);font-weight:600;font-size:22px;line-height:1.18;color:var(--ink);margin:0 0 8px}
-.h4{font-family:var(--mono);font-size:10px;letter-spacing:.2em;color:var(--ink-faint);text-transform:uppercase;margin:0 0 8px;font-weight:500}
-.lede{font-family:var(--serif);font-weight:400;font-size:21px;line-height:1.45;color:var(--ink);max-width:62ch;margin:0 0 14px}
-.body{font-size:14px;line-height:1.65;color:var(--ink);max-width:64ch}
-.body p{margin:0 0 12px}
-.byline{font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:var(--ink-faint);text-transform:uppercase;margin-top:18px}
+/* quote wall — single column, larger cards, non-italic body for readability */
+.quotes{display:grid;grid-template-columns:1fr;gap:18px;margin-top:14px}
+.qcard{background:var(--paper-2);border:1px solid var(--rule);padding:30px 36px 26px;border-radius:2px;position:relative}
+.qcard::before{content:"\201C";position:absolute;left:18px;top:6px;font-family:"Cormorant Garamond",serif;font-size:78px;color:var(--rule);line-height:1}
+.qcard q{font-family:"Cormorant Garamond",serif;font-style:normal;font-weight:500;font-size:24px;color:var(--ink);display:block;margin:18px 0 16px;line-height:1.4;quotes:none}
+.qcard q::before,.qcard q::after{content:""}
+.qcard .qmeta{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.12em;color:var(--ink-faint);text-transform:uppercase;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.qcard .qmeta .qh{color:var(--navy-deep);font-weight:500}
 
-/* ===== Hero ===== */
-.hero-rule{height:3px;background:linear-gradient(90deg,var(--navy) 0%,var(--navy-bright) 50%,var(--accent) 100%);margin-bottom:36px}
+/* sources grid */
+.sources{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:14px}
+.scard{background:var(--paper-2);border:1px solid var(--rule);padding:14px 16px;border-radius:2px;font-size:12px;line-height:1.5}
+.scard .sn{font-family:"IBM Plex Mono",monospace;font-size:10px;color:var(--ink-faint)}
+.scard .sp{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.10em;text-transform:uppercase;color:var(--navy-deep);margin:2px 0}
+.scard .st{font-family:"Cormorant Garamond",serif;font-size:15px;color:var(--ink);font-weight:600;line-height:1.25;margin:4px 0}
+.scard .sd{color:var(--ink-faint);font-size:11px}
 
-/* ===== Metric cards ===== */
-.metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:14px}
-@media (max-width:1024px){.metrics{grid-template-columns:repeat(2,1fr)}}
-.mc{background:var(--paper-2);border:1px solid var(--rule);border-radius:4px;padding:18px 16px 16px;position:relative;overflow:hidden}
-.mc-k{font-family:var(--mono);font-size:9.5px;letter-spacing:.18em;color:var(--ink-faint);text-transform:uppercase;margin-bottom:10px;line-height:1.3}
-.mc-v{font-family:var(--serif);font-size:38px;font-weight:500;color:var(--ink);line-height:1;letter-spacing:-.01em}
-.mc-u{display:inline-block;font-family:var(--mono);font-size:10px;color:var(--ink-faint);margin-left:6px;letter-spacing:.06em;font-weight:500}
-.mc-p{font-size:11.5px;color:var(--ink-faint);margin-top:8px;line-height:1.4}
-.mc-bar{position:absolute;left:0;bottom:0;height:3px;background:var(--accent);width:0;opacity:.85}
-.mc.alt{background:var(--accent-soft)}
-.mc.alt .mc-bar{background:var(--navy-bright)}
-.mc.navy{background:var(--navy);border-color:var(--navy)}
-.mc.navy .mc-k{color:#9DB3E0}
-.mc.navy .mc-v{color:#FCFFFF}
-.mc.navy .mc-u{color:#9DB3E0}
-.mc.navy .mc-p{color:#C2D0EC}
-.mc.navy .mc-bar{background:var(--accent)}
-.mc.olive{background:var(--paper-2);border-color:var(--ink-dim);border-left-width:3px}
-.mc.olive .mc-bar{background:var(--ink-dim)}
+footer.footbar{margin-top:80px;padding-top:24px;border-top:1px solid var(--rule);font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.14em;color:var(--ink-faint);text-transform:uppercase;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
 
-/* ===== Tier panels (typology) ===== */
-.tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:14px}
-@media (max-width:1024px){.tiers{grid-template-columns:1fr}}
-.tier{background:var(--paper-2);border:1px solid var(--rule);border-left:4px solid var(--accent);border-radius:3px;padding:20px 18px}
-.tier.t1{border-left-color:var(--warn)}
-.tier.t2{border-left-color:var(--navy-bright)}
-.tier.t3{border-left-color:var(--accent)}
-.tier-num{font-family:var(--mono);font-size:10px;letter-spacing:.2em;color:var(--ink-faint);text-transform:uppercase;font-weight:600}
-.tier-name{font-family:var(--serif);font-size:24px;font-weight:600;color:var(--ink);line-height:1.15;margin:6px 0 4px}
-.tier-arc{font-family:var(--mono);font-size:10px;letter-spacing:.06em;color:var(--ink-faint);text-transform:uppercase;margin-bottom:10px;font-weight:500}
-.tier-desc{font-size:13px;line-height:1.55;color:var(--ink);margin-bottom:14px}
-.tier-handles{display:flex;flex-wrap:wrap;gap:5px}
-.tier-handles span{font-family:var(--mono);font-size:10px;color:var(--ink-faint);background:var(--paper-3);padding:3px 7px;border-radius:2px;letter-spacing:.02em}
+/* CHART 01: heatmap */
+.heatmap{display:grid;gap:3px;margin-top:8px}
+.heatmap-row{display:grid;grid-template-columns:170px repeat(var(--cols,7),1fr);gap:3px;align-items:center}
+.heatmap-row.hd .hcell{font-family:"IBM Plex Mono",monospace;font-size:9px;letter-spacing:.10em;color:var(--ink-faint);text-transform:uppercase;text-align:center;padding:6px 4px;font-weight:500;background:transparent;border:none}
+.heatmap-row .label{font-size:12px;color:var(--ink);font-weight:500;padding-right:8px;text-align:right}
+.heatmap-row .label.cat{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.14em;color:var(--ink-faint);text-transform:uppercase;font-weight:500}
+.hcell{height:36px;border-radius:2px;display:flex;align-items:center;justify-content:center;font-family:"IBM Plex Mono",monospace;font-size:11px;color:#fff;font-weight:500;position:relative;cursor:default;transition:transform .2s}
+.hcell:hover{transform:scale(1.06);z-index:2;box-shadow:0 4px 12px rgba(12,24,67,.18)}
+.hcell.empty{background:#EFEEEA;color:var(--ink-faint)}
+.hcell .anim-fill{position:absolute;inset:0;border-radius:2px;animation:heatfill 1.4s ease-out both}
+@keyframes heatfill{0%{transform:scale(.0);opacity:0}40%{opacity:1}100%{transform:scale(1);opacity:1}}
+.hcell .v{position:relative;z-index:1}
 
-/* ===== Before/After (Claude vs Beacon) ===== */
-.ba-tones{display:flex;flex-wrap:wrap;gap:6px;margin:14px 0 18px}
-.chip{font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;padding:5px 10px;background:var(--paper-2);border:1px solid var(--rule);color:var(--ink);border-radius:50px;cursor:pointer;font-weight:500;transition:.15s}
-.chip:hover{border-color:var(--ink-dim);color:var(--ink-dim)}
-.chip.active{background:var(--ink);color:var(--paper);border-color:var(--ink)}
-.ba-grid{display:flex;flex-direction:column;gap:14px}
-.ba-row{display:grid;grid-template-columns:1fr 60px 1fr;gap:0;background:var(--paper-2);border:1px solid var(--rule);border-radius:3px;overflow:hidden}
-@media (max-width:900px){.ba-row{grid-template-columns:1fr}}
-.ba-side{padding:18px 20px;display:flex;flex-direction:column;gap:8px;min-width:0}
-.ba-before{background:var(--paper-3)}
-.ba-after{background:var(--paper-2)}
-.ba-side-label{font-family:var(--mono);font-size:9.5px;letter-spacing:.2em;color:var(--ink-faint);text-transform:uppercase;font-weight:600}
-.ba-side-h{font-family:var(--serif);font-size:18px;font-weight:600;color:var(--ink);line-height:1.2}
-.ba-side-text{font-size:13px;line-height:1.55;color:var(--ink)}
-.ba-side-meta{font-family:var(--mono);font-size:10px;color:var(--ink-faint);letter-spacing:.04em;display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:auto;padding-top:6px}
-.ba-side-meta a{color:var(--ink-dim)}
-.ba-arrow{display:flex;align-items:center;justify-content:center;background:var(--paper);position:relative}
-@media (max-width:900px){.ba-arrow{padding:6px;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}}
-.ba-arrow svg{width:22px;height:22px;color:var(--navy-bright)}
-.ba-delta{font-family:var(--mono);font-size:9px;letter-spacing:.12em;color:var(--ink-faint);text-transform:uppercase;font-weight:600;text-align:center;padding:4px 6px;line-height:1.4}
-.ba-delta strong{display:block;color:var(--navy-bright);font-size:12px;letter-spacing:.04em}
-.ba-tone-pill{font-family:var(--mono);font-size:9px;padding:2px 7px;border-radius:50px;letter-spacing:.08em;font-weight:600;text-transform:uppercase;display:inline-block}
-.tone-claude{background:var(--warn-soft);color:var(--warn)}
-.tone-beacon{background:var(--accent-soft);color:var(--ink-dim)}
+/* CHART 02: lex bars */
+.lex-bars{display:grid;gap:6px;align-items:center;font-size:12px}
+.lex-bars > div{padding:4px 0}
+.lex-bars .lb-head{font-family:"IBM Plex Mono",monospace;font-size:9px;letter-spacing:.14em;color:var(--ink-faint);text-transform:uppercase;text-align:right;font-weight:500;border-bottom:1px solid var(--rule);padding-bottom:6px}
+.lex-bars .lb-head.first{text-align:left}
+.lex-row-label{font-family:"Cormorant Garamond",serif;font-style:italic;font-size:16px;color:var(--ink);font-weight:500}
+.lex-bar-wrap{display:flex;align-items:center;gap:8px;justify-content:flex-end}
+.lex-bar{height:22px;background:var(--rule-2);border-radius:2px;position:relative;overflow:hidden;animation:lexgrow 1.6s cubic-bezier(.2,.8,.2,1) both}
+@keyframes lexgrow{0%{width:0}100%{width:var(--w)}}
+.lex-bar.c0{background:var(--navy-bright)}
+.lex-bar.c1{background:var(--accent)}
+.lex-bar.c2{background:var(--warn)}
+.lex-bar.c3{background:#A6353F}
+.lex-bar.c4{background:var(--ink-dim)}
+.lex-num{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--ink);min-width:42px;text-align:right}
 
-/* ===== Quant table ===== */
-.qtbl-wrap{overflow-x:auto;border:1px solid var(--rule);border-radius:3px;background:var(--paper-2);margin-top:14px}
-.contrib-head{font-family:var(--mono);font-size:10px;letter-spacing:.16em;color:var(--ink);text-transform:uppercase;font-weight:600;margin-top:36px;padding-top:20px;border-top:1px solid var(--rule)}
-.contrib-wrap{overflow-x:auto;border:1px solid var(--rule);border-radius:3px;background:var(--paper-2);margin-top:14px}
-.contrib-tbl{min-width:760px}
-.contrib-tbl thead th{cursor:default}
-.contrib-tbl thead th:first-child{width:22%}
-.contrib-tbl thead th:nth-child(2){width:30%;color:var(--warn)}
-.contrib-tbl thead th:nth-child(3){width:48%;color:var(--ink-dim)}
-.contrib-tbl thead th:hover{background:var(--paper-3);color:inherit}
-.contrib-tbl tbody td{vertical-align:top;line-height:1.55}
-.contrib-tbl td.dim{font-family:var(--sans);font-weight:600;color:var(--ink);font-size:13px}
-.contrib-tbl td.claude-side{color:var(--warn);font-style:normal;font-size:12.5px;font-family:var(--sans)}
-.contrib-tbl td.beacon-side{color:var(--ink);font-size:12.5px;font-family:var(--sans)}
-.qtbl{width:100%;border-collapse:collapse;font-size:13px;min-width:760px}
-.qtbl thead th{background:var(--paper-3);text-align:left;padding:11px 12px;font-family:var(--mono);font-size:10px;letter-spacing:.12em;color:var(--ink);text-transform:uppercase;font-weight:600;border-bottom:1px solid var(--rule);cursor:pointer;user-select:none;white-space:nowrap}
-.qtbl thead th:hover{background:var(--accent-soft);color:var(--ink-dim)}
-.qtbl thead th.sorted{color:var(--navy-bright)}
-.qtbl thead th .arr{display:inline-block;margin-left:4px;font-size:9px;color:var(--navy-bright)}
-.qtbl tbody td{padding:11px 12px;border-bottom:1px solid var(--rule);vertical-align:middle}
-.qtbl tbody tr:last-child td{border-bottom:none}
-.qtbl tbody tr:hover{background:var(--paper-3)}
-.qtbl .h-cell{display:flex;align-items:center;gap:10px;min-width:200px}
-.av{width:30px;height:30px;border-radius:50%;background:var(--accent);color:#FCFFFF;font-family:var(--mono);font-size:10px;font-weight:600;display:flex;align-items:center;justify-content:center;flex-shrink:0;letter-spacing:.04em}
-.av.t1{background:var(--warn)}
-.av.t2{background:var(--navy-bright)}
-.av.t3{background:var(--accent)}
-.av.t4{background:var(--ink-faint)}
-.h-name{font-weight:500;color:var(--ink);line-height:1.2}
-.h-name small{display:block;font-family:var(--mono);font-size:9.5px;color:var(--ink-faint);font-weight:400;letter-spacing:.02em;margin-top:1px}
-.qtbl td.num{font-family:var(--mono);text-align:right;font-size:12px;letter-spacing:.02em;font-variant-numeric:tabular-nums}
-.qtbl td.tag-cell{white-space:nowrap}
-.tag{font-family:var(--mono);font-size:9.5px;padding:3px 8px;border-radius:50px;letter-spacing:.08em;font-weight:600;text-transform:uppercase;display:inline-block}
-.tag-new{background:var(--accent-soft);color:var(--ink-dim)}
-.tag-con{background:var(--paper-3);color:var(--ink-faint)}
-.tag-warn{background:var(--warn-soft);color:var(--warn)}
-.bar{position:relative;height:6px;background:var(--paper-3);border-radius:50px;width:140px;overflow:hidden}
-.bar-fill{position:absolute;left:0;top:0;height:100%;background:var(--navy-bright);border-radius:50px}
+/* CHART 03: orbs */
+.eng-stage{display:flex;align-items:center;justify-content:center;gap:80px;padding:30px 0 8px;min-height:340px;position:relative;flex-wrap:wrap}
+.eng-orb{position:relative;display:flex;flex-direction:column;align-items:center;gap:14px}
+.orb{border-radius:50%;position:relative;display:flex;align-items:center;justify-content:center;color:#fff;font-family:"Cormorant Garamond",serif;font-size:28px;font-weight:600;letter-spacing:-.01em;animation:pulseOrb 3.2s ease-in-out infinite}
+.orb.left{background:radial-gradient(circle at 35% 35%,#7795CC,#1B2866);box-shadow:0 0 0 0 rgba(58,77,167,.5)}
+.orb.right{background:radial-gradient(circle at 35% 35%,#B96873,#5C1A23);box-shadow:0 0 0 0 rgba(139,38,53,.5);animation-delay:.5s}
+@keyframes pulseOrb{0%,100%{box-shadow:0 0 0 0 rgba(58,77,167,.45)}50%{box-shadow:0 0 0 32px rgba(58,77,167,0)}}
+.orb-cap{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.14em;color:var(--ink);text-transform:uppercase;text-align:center}
+.orb-cap b{font-family:"Cormorant Garamond",serif;font-size:18px;color:var(--ink);font-weight:600;text-transform:none;letter-spacing:0;display:block;margin-bottom:2px;font-style:italic}
+.eng-ratio{font-family:"Cormorant Garamond",serif;font-size:60px;color:var(--ink-dim);font-weight:500;letter-spacing:-.02em;line-height:1;display:flex;flex-direction:column;align-items:center;gap:6px}
+.eng-ratio .num{display:block;animation:fadeUp .9s ease-out both}
+.eng-ratio .lab{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.18em;color:var(--ink-faint);text-transform:uppercase;font-weight:500}
+@keyframes fadeUp{0%{opacity:0;transform:translateY(8px)}100%{opacity:1;transform:translateY(0)}}
+.eng-bullets{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:24px}
+.eng-bullet{background:var(--paper);border:1px solid var(--rule);padding:14px 16px;border-radius:2px}
+.eng-bullet .b1{font-family:"Cormorant Garamond",serif;font-size:30px;font-weight:600;color:var(--ink-dim);line-height:1}
+.eng-bullet .b2{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.14em;color:var(--ink-faint);text-transform:uppercase;margin-top:6px}
+.eng-bullet .b3{font-size:12px;color:var(--ink);margin-top:4px}
 
-/* ===== Profile cards ===== */
-.profiles{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:14px}
-@media (max-width:1024px){.profiles{grid-template-columns:repeat(2,1fr)}}
-@media (max-width:680px){.profiles{grid-template-columns:1fr}}
-.pcard{background:var(--paper-2);border:1px solid var(--rule);border-radius:3px;padding:18px;cursor:pointer;transition:.15s;position:relative}
-.pcard:hover{border-color:var(--navy-bright)}
-.pcard.open{grid-column:1/-1;cursor:default}
-.pcard.open:hover{border-color:var(--rule)}
-.pc-top{display:flex;align-items:center;gap:12px;margin-bottom:12px}
-.pc-av{width:42px;height:42px;border-radius:50%;background:var(--accent);color:#FCFFFF;font-family:var(--mono);font-size:13px;font-weight:600;display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.pc-av.t1{background:var(--warn)}
-.pc-av.t2{background:var(--navy-bright)}
-.pc-av.t3{background:var(--accent)}
-.pc-av.t4{background:var(--ink-faint)}
-.pc-h{font-family:var(--serif);font-size:19px;font-weight:600;color:var(--ink);line-height:1.18}
-.pc-meta{font-family:var(--mono);font-size:9.5px;color:var(--ink-faint);letter-spacing:.04em;margin-top:1px}
-.pc-role{font-size:12.5px;color:var(--ink);line-height:1.45;margin-bottom:10px;min-height:36px}
-.pc-typ{font-family:var(--mono);font-size:9px;color:var(--ink-dim);letter-spacing:.12em;text-transform:uppercase;font-weight:600;padding-top:8px;border-top:1px dashed var(--rule);display:flex;justify-content:space-between;align-items:center}
-.pc-toggle{font-family:var(--mono);font-size:14px;color:var(--ink-faint);font-weight:400}
-.pcard.open .pc-toggle{color:var(--warn)}
-.pdetail{margin-top:14px;padding-top:14px;border-top:1px solid var(--rule);display:grid;grid-template-columns:1.5fr 1fr;gap:24px}
-@media (max-width:680px){.pdetail{grid-template-columns:1fr}}
-.pd-headline{font-family:var(--serif);font-size:18px;font-weight:500;line-height:1.35;color:var(--ink);margin-bottom:10px;font-style:normal}
-.pd-career{font-size:12.5px;line-height:1.6;color:var(--ink);margin-bottom:14px}
-.pd-stats{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px}
-.pd-stat{background:var(--paper-3);padding:10px;border-radius:3px}
-.pd-stat-k{font-family:var(--mono);font-size:9px;letter-spacing:.14em;color:var(--ink-faint);text-transform:uppercase;margin-bottom:3px}
-.pd-stat-v{font-family:var(--serif);font-size:22px;font-weight:600;color:var(--ink);line-height:1}
-.pd-tl-h{font-family:var(--mono);font-size:9.5px;letter-spacing:.2em;color:var(--ink-faint);text-transform:uppercase;margin-bottom:10px;font-weight:600}
-.pd-tl{display:flex;flex-direction:column;gap:9px;border-left:1px solid var(--rule);padding-left:14px;position:relative}
-.pd-tl-item{position:relative;font-size:12px;line-height:1.5}
-.pd-tl-item::before{content:"";position:absolute;left:-18px;top:6px;width:7px;height:7px;border-radius:50%;background:var(--navy-bright);border:1px solid var(--paper-2)}
-.pd-tl-d{font-family:var(--mono);font-size:9.5px;color:var(--ink-faint);letter-spacing:.04em;text-transform:uppercase;font-weight:600}
-.pd-tl-t{color:var(--ink);margin-top:1px}
-.pd-tl-t a{color:var(--ink-dim)}
+/* CHART 04: streamgraph */
+.flow-wrap{position:relative}
+.flow-svg{width:100%;height:380px;display:block;margin-top:10px}
+.flow-band{transition:opacity .3s}
+.flow-wrap:hover .flow-band{opacity:.4}
+.flow-wrap .flow-band:hover{opacity:1}
+.flow-tick{font-family:"IBM Plex Mono",monospace;font-size:10px;fill:var(--ink-faint);letter-spacing:.10em}
 
-/* ===== Itinerary (timeline spine) ===== */
-.itin{margin-top:14px;border-left:2px solid var(--rule);padding-left:0;position:relative;margin-left:14px}
-.itin-item{position:relative;padding:12px 14px 12px 26px;background:var(--paper-2);border:1px solid var(--rule);border-radius:3px;margin-bottom:10px;margin-left:14px}
-.itin-item::before{content:"";position:absolute;left:-22px;top:18px;width:14px;height:14px;border-radius:50%;background:var(--navy-bright);border:3px solid var(--paper);box-sizing:border-box}
-.itin-item.gaza::before{background:var(--warn)}
-.itin-item.ext::before{background:var(--accent)}
-.itin-item.sync{background:var(--accent-soft);border-color:var(--accent)}
-.itin-item.sync::before{background:var(--ink-dim)}
-.itin-day{display:flex;align-items:center;gap:14px;margin-bottom:5px;flex-wrap:wrap}
-.itin-d{font-family:var(--mono);font-size:10px;letter-spacing:.12em;color:var(--ink-faint);text-transform:uppercase;font-weight:600}
-.itin-loc{font-family:var(--mono);font-size:10px;color:var(--ink-dim);font-weight:600;letter-spacing:.04em;text-transform:uppercase}
-.itin-act{font-size:14px;color:var(--ink);font-weight:500;line-height:1.4;margin-bottom:5px;font-family:var(--serif);font-size:17px;font-weight:500}
-.itin-att{display:flex;flex-wrap:wrap;gap:5px}
-.itin-att span{font-family:var(--mono);font-size:9.5px;color:var(--ink-faint);background:var(--paper-3);padding:2px 7px;border-radius:2px}
+/* CHART 05: gradient dial */
+.gradient-stack{display:grid;grid-template-columns:1fr;gap:14px;margin-top:6px;max-width:880px}
+.grad-row{display:grid;grid-template-columns:160px 1fr 80px;gap:14px;align-items:center}
+.grad-row .label{font-family:"Cormorant Garamond",serif;font-size:18px;color:var(--ink);font-weight:600}
+.grad-row .label .sub{font-family:"IBM Plex Mono",monospace;font-size:9px;letter-spacing:.14em;color:var(--ink-faint);text-transform:uppercase;font-weight:500;display:block;margin-top:2px}
+.grad-track{position:relative;height:34px;background:linear-gradient(90deg,#5C1A23 0%,#A03445 18%,#A6A6A6 50%,#5B6484 75%,#0C1843 100%);border-radius:2px;overflow:hidden}
+.grad-track .scale{position:absolute;inset:0;display:flex;justify-content:space-between;padding:0 6px;align-items:flex-end;pointer-events:none}
+.grad-track .scale span{font-family:"IBM Plex Mono",monospace;font-size:8px;color:rgba(255,255,255,.7);padding-bottom:3px;letter-spacing:.10em}
+.grad-marker{position:absolute;top:-6px;bottom:-6px;width:3px;background:var(--paper);box-shadow:0 0 0 2px var(--ink);animation:slideMark 1.6s cubic-bezier(.2,.8,.2,1) both}
+@keyframes slideMark{0%{left:50%;opacity:0}30%{opacity:1}100%{left:var(--mx);opacity:1}}
+.grad-marker .tip{position:absolute;top:-22px;left:50%;transform:translateX(-50%);background:var(--ink);color:#fff;font-family:"IBM Plex Mono",monospace;font-size:10px;padding:2px 6px;border-radius:2px;white-space:nowrap;font-weight:500}
+.grad-marker .tip::after{content:"";position:absolute;left:50%;top:100%;transform:translateX(-50%);border:4px solid transparent;border-top-color:var(--ink)}
+.grad-val{font-family:"Cormorant Garamond",serif;font-size:22px;font-weight:600;color:var(--ink);text-align:right}
+.grad-val.neg{color:var(--warn)}
+.grad-val.pos{color:var(--ink-dim)}
+.grad-section{background:var(--paper);border:1px solid var(--rule);padding:18px 22px;border-radius:2px;margin-bottom:14px}
+.grad-section h6{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.16em;color:var(--ink-faint);text-transform:uppercase;font-weight:500;margin-bottom:14px;display:flex;align-items:center;gap:10px}
+.grad-section h6::before{content:"";width:8px;height:8px;background:var(--navy-bright);display:inline-block}
 
-/* ===== Findings (Gaza) cards ===== */
-.gaza-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:14px}
-@media (max-width:900px){.gaza-grid{grid-template-columns:1fr}}
-.gcard{background:var(--paper-2);border:1px solid var(--rule);border-radius:3px;padding:20px;display:flex;flex-direction:column}
-.gcard-tag{font-family:var(--mono);font-size:9px;letter-spacing:.18em;color:var(--ink-faint);text-transform:uppercase;font-weight:600;margin-bottom:8px}
-.gcard-h{font-family:var(--serif);font-size:22px;font-weight:600;color:var(--ink);line-height:1.18;margin-bottom:6px}
-.gcard-sub{font-family:var(--mono);font-size:10px;letter-spacing:.04em;color:var(--ink-dim);margin-bottom:14px;font-weight:600}
-.gcard-finds{display:flex;flex-direction:column;gap:6px;margin-bottom:14px}
-.gcard-find{font-size:13px;line-height:1.55;color:var(--ink);padding-left:18px;position:relative}
-.gcard-find::before{content:"";position:absolute;left:0;top:8px;width:8px;height:1.5px;background:var(--navy-bright)}
-.gcard-twts{margin-top:auto;padding-top:14px;border-top:1px dashed var(--rule);display:flex;flex-direction:column;gap:10px}
-.gcard-twt{font-size:12px;line-height:1.5;color:var(--ink)}
-.gcard-twt-d{font-family:var(--mono);font-size:9.5px;color:var(--ink-faint);letter-spacing:.04em;font-weight:600;text-transform:uppercase;display:block;margin-bottom:2px}
+@media (max-width:1100px){
+  body{grid-template-columns:200px 1fr}
+  aside.sidebar{padding:24px 14px 18px}
+  main{padding:32px 28px 64px}
+  .metrics{grid-template-columns:repeat(2,1fr)}
+  .findings,.sources{grid-template-columns:1fr 1fr}
+  .quotes{grid-template-columns:1fr}
+  h1.serif{font-size:42px}
+  h2.serif{font-size:28px}
+  .eng-stage{gap:30px}
+}
+@media (max-width:720px){
+  body{grid-template-columns:1fr}
+  aside.sidebar{position:relative;height:auto;border-right:none;border-bottom:1px solid var(--rule)}
+  .nav{flex-direction:row;flex-wrap:wrap;gap:6px}
+  .nav a{padding:4px 8px}
+  .metrics,.findings,.quotes,.sources{grid-template-columns:1fr}
+  main{padding:24px 20px 48px}
+}
 
-/* ===== Anti-pattern panel ===== */
-.aw{display:grid;grid-template-columns:300px 1fr;gap:24px;margin-top:14px}
-@media (max-width:900px){.aw{grid-template-columns:1fr}}
-.aw-stats{display:flex;flex-direction:column;gap:10px}
-.aw-stat{background:var(--paper-2);border:1px solid var(--rule);padding:14px 16px;border-radius:3px}
-.aw-stat-n{font-family:var(--serif);font-size:30px;font-weight:600;color:var(--ink);line-height:1;letter-spacing:-.01em}
-.aw-stat-v{font-family:var(--mono);font-size:10px;letter-spacing:.12em;color:var(--ink-faint);text-transform:uppercase;margin-top:5px;font-weight:500;line-height:1.4}
-.aw-feed{display:flex;flex-direction:column;gap:10px}
-.aw-item{background:var(--paper-2);border:1px solid var(--rule);padding:14px 16px;border-radius:3px;border-left:3px solid var(--navy-bright)}
-.aw-meta{font-family:var(--mono);font-size:9.5px;letter-spacing:.08em;color:var(--ink-faint);text-transform:uppercase;font-weight:600;margin-bottom:6px}
-.aw-q{font-family:var(--serif);font-size:16px;line-height:1.4;color:var(--ink);font-weight:400;margin-bottom:8px}
-.aw-targets{display:flex;flex-wrap:wrap;gap:5px}
-.aw-targets span{font-family:var(--mono);font-size:9.5px;color:var(--ink-dim);background:var(--accent-soft);padding:2px 8px;border-radius:2px;letter-spacing:.02em}
+/* ============================================================
+   ADDITIONAL CHART MODULES (06–17)
+   ============================================================ */
 
-/* ===== Sustained rail ===== */
-.sus-rail{position:relative;height:120px;background:var(--paper-2);border:1px solid var(--rule);border-radius:3px;margin-top:14px;padding:14px 24px}
-.sus-line{position:absolute;left:24px;right:24px;top:50%;height:2px;background:var(--rule);border-radius:50px}
-.sus-pt{position:absolute;top:50%;transform:translate(-50%,-50%);width:13px;height:13px;border-radius:50%;background:var(--accent);border:3px solid var(--paper-2);box-sizing:content-box;cursor:default}
-.sus-pt.hot{background:var(--warn)}
-.sus-pt-lab{position:absolute;font-family:var(--mono);font-size:9px;color:var(--ink-faint);letter-spacing:.04em;font-weight:600;white-space:nowrap;top:calc(50% + 18px);transform:translateX(-50%);text-transform:uppercase}
-.sus-pt:nth-child(odd) + .sus-pt-lab{top:calc(50% - 22px)}
-.sus-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:14px}
-@media (max-width:900px){.sus-cards{grid-template-columns:1fr 1fr}}
-@media (max-width:600px){.sus-cards{grid-template-columns:1fr}}
-.sus-card{background:var(--paper-2);border:1px solid var(--rule);border-radius:3px;padding:14px}
-.sus-card-d{font-family:var(--mono);font-size:9.5px;color:var(--ink-faint);letter-spacing:.12em;text-transform:uppercase;font-weight:600;margin-bottom:5px}
-.sus-card-w{font-family:var(--serif);font-size:14px;font-weight:600;color:var(--ink-dim);line-height:1.2;margin-bottom:3px}
-.sus-card-t{font-family:var(--serif);font-size:17px;font-weight:600;color:var(--ink);line-height:1.25;margin-bottom:6px}
-.sus-card-desc{font-size:12px;line-height:1.5;color:var(--ink)}
+/* CHART 06: radial compass */
+.compass-wrap{display:flex;justify-content:center;padding:10px 0 4px}
+.compass-svg{width:100%;max-width:520px;height:520px}
+.compass-grid{stroke:var(--rule);stroke-width:1;fill:none;opacity:.6}
+.compass-axis{stroke:var(--rule);stroke-width:1}
+.compass-axis-label{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.10em;fill:var(--ink-faint);text-transform:uppercase}
+.compass-poly{fill-opacity:.15;stroke-width:2;stroke-linejoin:round;stroke-dasharray:1500;stroke-dashoffset:1500;animation:compassDraw 1.6s cubic-bezier(.2,.8,.2,1) forwards}
+@keyframes compassDraw{to{stroke-dashoffset:0;fill-opacity:.18}}
+.compass-dot{r:4;animation:compassDot .9s cubic-bezier(.2,.8,.2,1) both}
+@keyframes compassDot{0%{r:0;opacity:0}100%{r:4;opacity:1}}
+.compass-tick{font-family:"IBM Plex Mono",monospace;font-size:9px;fill:var(--ink-faint)}
 
-/* ===== Quotes wall ===== */
-.q-wrap{margin-top:14px}
-.q-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:14px}
-@media (max-width:900px){.q-grid{grid-template-columns:1fr}}
-.qcard{background:var(--paper-2);border:1px solid var(--rule);border-radius:3px;padding:18px;display:flex;flex-direction:column;gap:10px}
-.qcard-top{display:flex;align-items:center;gap:10px}
-.qcard-top .av{width:32px;height:32px;font-size:10px}
-.qcard-h{font-weight:600;font-size:13px;color:var(--ink)}
-.qcard-h small{display:block;font-family:var(--mono);font-size:9px;color:var(--ink-faint);letter-spacing:.08em;font-weight:500;margin-top:1px;text-transform:uppercase}
-.qcard-q{font-family:var(--serif);font-size:17px;line-height:1.42;color:var(--ink);font-weight:400}
-.qcard-q::before{content:"\201C";font-family:var(--serif);font-size:30px;color:var(--accent);line-height:0;vertical-align:-12px;margin-right:2px;font-weight:500}
-.qcard-q::after{content:"\201D";font-family:var(--serif);font-size:30px;color:var(--accent);line-height:0;vertical-align:-22px;margin-left:1px;font-weight:500}
-.qcard-meta{margin-top:auto;display:flex;justify-content:space-between;align-items:center;padding-top:8px;border-top:1px dashed var(--rule);gap:10px;flex-wrap:wrap}
-.qcard-theme{font-family:var(--mono);font-size:9px;color:var(--ink-dim);background:var(--accent-soft);padding:3px 8px;border-radius:50px;letter-spacing:.06em;text-transform:uppercase;font-weight:600}
-.qcard-date{font-family:var(--mono);font-size:9.5px;color:var(--ink-faint);letter-spacing:.04em;font-weight:500}
-.qcard-date a{color:var(--ink-dim)}
+/* CHART 07: quadrant scatter */
+.quad-wrap{position:relative;padding:10px 0}
+.quad-svg{width:100%;max-width:760px;height:480px;display:block;margin:0 auto}
+.quad-grid{stroke:var(--rule);stroke-width:1}
+.quad-axis{stroke:var(--ink);stroke-width:1.5}
+.quad-axis-label{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.14em;fill:var(--ink-faint);text-transform:uppercase}
+.quad-quadrant-label{font-family:"Cormorant Garamond",serif;font-style:italic;font-size:14px;fill:var(--ink-faint);font-weight:500}
+.quad-dot{animation:quadDot 1s cubic-bezier(.2,.8,.2,1) both;cursor:pointer;transition:r .2s}
+.quad-dot:hover{r:14}
+@keyframes quadDot{0%{opacity:0;transform:translate(var(--dx),var(--dy)) scale(.3)}100%{opacity:1;transform:translate(0,0) scale(1)}}
+.quad-dot-label{font-family:"IBM Plex Mono",monospace;font-size:10px;fill:var(--ink);font-weight:500;pointer-events:none}
 
-/* ===== Verification ===== */
-.ver-kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:14px;margin-bottom:24px}
-@media (max-width:900px){.ver-kpis{grid-template-columns:1fr}}
-.ver-kpi{background:var(--ink);color:var(--paper);padding:18px 20px;border-radius:3px}
-.ver-kpi-k{font-family:var(--mono);font-size:9.5px;letter-spacing:.18em;color:#9DB3E0;text-transform:uppercase;margin-bottom:8px;font-weight:500}
-.ver-kpi-v{font-family:var(--serif);font-size:32px;font-weight:500;line-height:1;color:#FCFFFF;margin-bottom:6px}
-.ver-kpi-d{font-size:12px;line-height:1.5;color:#C2D0EC}
-.ver-tbl-wrap{border:1px solid var(--rule);border-radius:3px;overflow:hidden;background:var(--paper-2);margin-bottom:24px}
-.ver-tbl{width:100%;border-collapse:collapse;font-size:13px}
-.ver-tbl thead th{background:var(--paper-3);text-align:left;padding:10px 14px;font-family:var(--mono);font-size:10px;letter-spacing:.12em;color:var(--ink);text-transform:uppercase;font-weight:600;border-bottom:1px solid var(--rule)}
-.ver-tbl tbody td{padding:10px 14px;border-bottom:1px solid var(--rule);vertical-align:middle}
-.ver-tbl tbody tr:last-child td{border-bottom:none}
-.ver-tbl .num{font-family:var(--mono);font-size:12px;text-align:right;font-variant-numeric:tabular-nums}
-.ver-tbl .stat{font-family:var(--mono);font-size:10px;letter-spacing:.08em;font-weight:600;text-transform:uppercase}
-.stat.applied{color:var(--ink-dim)}
-.stat.analyzed{color:var(--olive)}
-.stat.triangulated{color:var(--warn)}
-.stat.gap{color:var(--ink-faint)}
-.src-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
-@media (max-width:1024px){.src-grid{grid-template-columns:repeat(2,1fr)}}
-@media (max-width:600px){.src-grid{grid-template-columns:1fr}}
-.src{background:var(--paper-2);border:1px solid var(--rule);border-radius:3px;padding:14px}
-.src-n{font-family:var(--mono);font-size:9.5px;color:var(--ink-faint);letter-spacing:.18em;text-transform:uppercase;font-weight:600;margin-bottom:5px}
-.src-pub{font-family:var(--mono);font-size:10px;color:var(--ink-dim);letter-spacing:.04em;font-weight:600;margin-bottom:6px;text-transform:uppercase}
-.src-t{font-family:var(--serif);font-size:15px;font-weight:600;color:var(--ink);line-height:1.25;margin-bottom:5px}
-.src-d{font-size:12px;line-height:1.5;color:var(--ink);margin-bottom:6px}
-.src-l{font-family:var(--mono);font-size:9.5px;letter-spacing:.04em}
-.lim-h{font-family:var(--serif);font-size:18px;font-weight:600;color:var(--ink);margin:24px 0 8px}
-.lim{padding-left:22px;margin:0;font-size:13px;line-height:1.65}
-.lim li{margin-bottom:6px}
+/* CHART 08: slope chart */
+.slope-wrap{position:relative}
+.slope-svg{width:100%;max-width:760px;height:380px;display:block;margin:0 auto}
+.slope-line{stroke-width:2;fill:none;stroke-dasharray:600;stroke-dashoffset:600;animation:slopeDraw 1.4s cubic-bezier(.2,.8,.2,1) both}
+@keyframes slopeDraw{to{stroke-dashoffset:0}}
+.slope-dot{r:5;animation:compassDot .9s ease-out both}
+.slope-label{font-family:"Cormorant Garamond",serif;font-size:13px;fill:var(--ink);font-weight:500}
+.slope-side{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.14em;fill:var(--ink-faint);text-transform:uppercase}
 
-/* ===== Footer ===== */
-.foot-bar{padding:24px 0;border-top:2px solid var(--ink);margin-top:40px;display:flex;justify-content:space-between;align-items:center;font-family:var(--mono);font-size:10px;letter-spacing:.08em;color:var(--ink-faint);text-transform:uppercase;flex-wrap:wrap;gap:12px}
+/* CHART 09: timeline spine */
+.tline{position:relative;margin:18px 0 8px;padding-left:36px}
+.tline::before{content:"";position:absolute;left:14px;top:0;bottom:0;width:2px;background:var(--rule)}
+.tline-row{position:relative;padding:14px 0;animation:tlineFade .8s ease-out both}
+.tline-row:nth-child(1){animation-delay:.1s}.tline-row:nth-child(2){animation-delay:.2s}.tline-row:nth-child(3){animation-delay:.3s}.tline-row:nth-child(4){animation-delay:.4s}.tline-row:nth-child(5){animation-delay:.5s}.tline-row:nth-child(6){animation-delay:.6s}.tline-row:nth-child(7){animation-delay:.7s}.tline-row:nth-child(8){animation-delay:.8s}
+@keyframes tlineFade{0%{opacity:0;transform:translateX(-12px)}100%{opacity:1;transform:translateX(0)}}
+.tline-row::before{content:"";position:absolute;left:-29px;top:18px;width:14px;height:14px;border-radius:50%;background:var(--paper-2);border:2px solid var(--navy-bright);box-shadow:0 0 0 4px var(--paper)}
+.tline-row.warn::before{border-color:var(--warn)}
+.tline-row.olive::before{border-color:var(--olive)}
+.tline-date{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.14em;color:var(--ink-faint);text-transform:uppercase}
+.tline-title{font-family:"Cormorant Garamond",serif;font-size:18px;font-weight:600;color:var(--ink);margin:2px 0}
+.tline-desc{font-size:13px;color:var(--ink);max-width:78ch}
 
-/* ===== Utility ===== */
-.note{background:var(--paper-3);border-left:3px solid var(--accent);padding:14px 18px;font-size:13px;line-height:1.6;color:var(--ink);margin:18px 0;border-radius:0 3px 3px 0}
-.note strong{color:var(--ink-dim)}
-.warn-note{background:var(--warn-soft);border-left-color:var(--warn);color:var(--ink)}
-.warn-note strong{color:var(--warn)}
+/* CHART 10: activity pulse */
+.pulse-wrap{position:relative}
+.pulse-svg{width:100%;height:240px;display:block}
+.pulse-area{fill:url(#pulseGrad);opacity:0;animation:pulseAreaFade 1.4s ease-out forwards}
+@keyframes pulseAreaFade{to{opacity:1}}
+.pulse-line{stroke:var(--ink-dim);stroke-width:2;fill:none;stroke-dasharray:2000;stroke-dashoffset:2000;animation:pulseDraw 2.4s cubic-bezier(.4,.1,.3,1) forwards}
+@keyframes pulseDraw{to{stroke-dashoffset:0}}
+.pulse-peak{r:5;fill:var(--warn);animation:pulsePeak 2s ease-in-out infinite}
+@keyframes pulsePeak{0%,100%{r:4}50%{r:7}}
+.pulse-peak-label{font-family:"IBM Plex Mono",monospace;font-size:10px;fill:var(--ink);letter-spacing:.10em}
+.pulse-tick{font-family:"IBM Plex Mono",monospace;font-size:9px;fill:var(--ink-faint)}
 
-/* ===== Misc ===== */
-.t-grid-2{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:start}
-@media (max-width:900px){.t-grid-2{grid-template-columns:1fr}}
-.tbl-cap{font-family:var(--mono);font-size:10px;letter-spacing:.1em;color:var(--ink-faint);text-transform:uppercase;font-weight:600;padding:8px 14px;background:var(--paper-3);border-bottom:1px solid var(--rule)}
-.dial-block{background:var(--paper-2);border:1px solid var(--rule);border-radius:3px;padding:18px;margin-top:14px;display:grid;grid-template-columns:1fr 2fr;gap:24px;align-items:center}
-@media (max-width:900px){.dial-block{grid-template-columns:1fr}}
-.dial-num{font-family:var(--serif);font-size:64px;font-weight:500;color:var(--ink);line-height:1;letter-spacing:-.02em}
-.dial-num small{font-family:var(--mono);font-size:11px;color:var(--ink-faint);font-weight:500;display:block;margin-top:6px;letter-spacing:.1em;text-transform:uppercase;line-height:1.4}
-.dial-text{font-size:13px;line-height:1.6;color:var(--ink)}
-.dial-text strong{color:var(--ink-dim)}
+/* CHART 11: sankey */
+.sankey-wrap{position:relative}
+.sankey-svg{width:100%;height:420px;display:block}
+.sankey-node{fill:var(--ink);transition:fill .2s}
+.sankey-link{fill-opacity:.45;animation:sankeyFade 1.2s ease-out both}
+@keyframes sankeyFade{0%{fill-opacity:0}100%{fill-opacity:.45}}
+.sankey-link:hover{fill-opacity:.85}
+.sankey-label{font-family:"Cormorant Garamond",serif;font-size:13px;fill:var(--ink);font-weight:500}
+.sankey-label-num{font-family:"IBM Plex Mono",monospace;font-size:10px;fill:var(--ink-faint)}
 
-/* a touch of motion for the interactive bits */
-.fade-in{animation:fade .25s ease}
-@keyframes fade{from{opacity:0;transform:translateY(2px)}to{opacity:1;transform:translateY(0)}}
+/* CHART 12: chord diagram */
+.chord-wrap{display:flex;justify-content:center;padding:8px 0}
+.chord-svg{width:100%;max-width:520px;height:520px}
+.chord-arc{stroke:var(--paper);stroke-width:2}
+.chord-link{fill-opacity:.35;animation:sankeyFade 1.2s ease-out both;mix-blend-mode:multiply}
+.chord-link:hover{fill-opacity:.85}
+.chord-label{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.10em;fill:var(--ink);text-transform:uppercase;font-weight:500}
+
+/* CHART 13: horseshoe gauge */
+.horse-wrap{display:flex;justify-content:center;padding:10px 0;flex-direction:column;align-items:center;gap:8px}
+.horse-svg{width:100%;max-width:600px;height:340px}
+.horse-track{stroke:url(#horseGrad);stroke-width:18;fill:none;stroke-linecap:round}
+.horse-bg{stroke:var(--rule);stroke-width:18;fill:none;stroke-linecap:round;opacity:.4}
+.horse-marker{fill:var(--paper);stroke:var(--ink);stroke-width:3;animation:horseMark 1.2s cubic-bezier(.2,.8,.2,1) both}
+@keyframes horseMark{0%{transform:scale(0);opacity:0}100%{transform:scale(1);opacity:1}}
+.horse-anchor-lab{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.14em;fill:var(--ink-faint);text-transform:uppercase}
+.horse-conv{font-family:"Cormorant Garamond",serif;font-size:42px;fill:var(--ink-dim);font-weight:600;font-style:italic}
+.horse-conv-lab{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.16em;fill:var(--ink-faint);text-transform:uppercase}
+
+/* CHART 14: pendulum */
+.pend-wrap{position:relative;padding:10px 0}
+.pend-svg{width:100%;max-width:600px;height:320px;display:block;margin:0 auto}
+.pend-arc{stroke:var(--rule);stroke-width:2;fill:none;stroke-dasharray:4 6;opacity:.6}
+.pend-arm{stroke:var(--ink);stroke-width:2;fill:none;transform-origin:50% 100%;animation:pendSwing 3.5s cubic-bezier(.4,0,.2,1) infinite alternate}
+@keyframes pendSwing{0%{transform:rotate(var(--swingMin,-25deg))}100%{transform:rotate(var(--swingMax,25deg))}}
+.pend-bob{fill:var(--warn);stroke:var(--ink);stroke-width:2}
+.pend-marker{fill:var(--ink-dim);stroke:var(--paper);stroke-width:2;animation:compassDot 1.2s ease-out both}
+.pend-tick{font-family:"IBM Plex Mono",monospace;font-size:10px;fill:var(--ink-faint);letter-spacing:.10em}
+.pend-current{font-family:"Cormorant Garamond",serif;font-size:24px;fill:var(--ink);font-weight:600}
+
+/* CHART 15: bubble swarm */
+.swarm-wrap{position:relative}
+.swarm-svg{width:100%;height:420px;display:block}
+.swarm-bubble{transition:transform .25s,fill-opacity .25s;cursor:pointer;animation:swarmIn 1s cubic-bezier(.2,.8,.2,1) both;fill-opacity:.85}
+.swarm-bubble:hover{fill-opacity:1}
+@keyframes swarmIn{0%{r:0;opacity:0}100%{opacity:1}}
+.swarm-label{font-family:"IBM Plex Mono",monospace;font-size:10px;fill:#fff;font-weight:600;text-anchor:middle;pointer-events:none}
+.swarm-label-dark{fill:var(--ink)}
+
+/* CHART 16: tier ladder */
+.tier-wrap{display:grid;gap:10px;margin-top:8px}
+.tier-row{display:grid;grid-template-columns:180px 1fr;gap:10px;align-items:stretch;animation:tlineFade .6s ease-out both}
+.tier-row:nth-child(1){animation-delay:.05s}.tier-row:nth-child(2){animation-delay:.15s}.tier-row:nth-child(3){animation-delay:.25s}.tier-row:nth-child(4){animation-delay:.35s}.tier-row:nth-child(5){animation-delay:.45s}.tier-row:nth-child(6){animation-delay:.55s}
+.tier-badge{display:flex;align-items:center;justify-content:center;font-family:"Cormorant Garamond",serif;font-size:20px;font-weight:600;color:#fff;border-radius:2px;padding:14px 18px;text-align:center;line-height:1.15;letter-spacing:.005em}
+.tier-badge.short{font-size:34px;letter-spacing:0}
+.tier-badge.t1{background:#1B2866}
+.tier-badge.t2{background:#3A4DA7}
+.tier-badge.t3{background:#7795CC}
+.tier-badge.t4{background:#6F7A4A}
+.tier-badge.t5{background:#8B2635}
+.tier-badge.t6{background:#5B6484}
+.tier-items{display:flex;flex-wrap:wrap;gap:8px;background:var(--paper-2);border:1px solid var(--rule);padding:10px 12px;border-radius:2px}
+.tier-item{padding:6px 12px;background:var(--paper);border:1px solid var(--rule);border-radius:2px;font-size:13px;color:var(--ink);font-family:"Cormorant Garamond",serif;font-weight:500;display:flex;align-items:center;gap:6px;transition:transform .2s}
+.tier-item:hover{transform:translateY(-2px)}
+.tier-arrow{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.06em}
+.tier-arrow.up{color:var(--ink-dim)}
+.tier-arrow.down{color:var(--warn)}
+
+/* CHART 17: quote constellation */
+.qcon-wrap{position:relative}
+.qcon-svg{width:100%;height:480px;display:block;background:var(--paper-2);border:1px solid var(--rule)}
+.qcon-axis{stroke:var(--rule);stroke-width:1;stroke-dasharray:2 4}
+.qcon-tick{font-family:"IBM Plex Mono",monospace;font-size:9px;fill:var(--ink-faint);letter-spacing:.10em}
+.qcon-bubble{fill:var(--ink-dim);fill-opacity:.65;cursor:pointer;animation:swarmIn 1.2s cubic-bezier(.2,.8,.2,1) both;transition:fill-opacity .2s,r .2s}
+.qcon-bubble:hover{fill-opacity:.95;r:18}
+.qcon-quote-popup{position:absolute;background:var(--ink);color:#fff;padding:10px 14px;border-radius:2px;font-family:"Cormorant Garamond",serif;font-style:italic;font-size:14px;max-width:280px;line-height:1.4;display:none;pointer-events:none;z-index:5;box-shadow:0 6px 18px rgba(12,24,67,.25)}
+.qcon-quote-popup .qmeta{display:block;margin-top:6px;font-family:"IBM Plex Mono",monospace;font-size:9px;letter-spacing:.14em;color:#9DA8C9;text-transform:uppercase;font-style:normal}
+
 </style>
 </head>
 <body>
-<div class="shell">
-  <!-- ============ SIDEBAR ============ -->
-  <aside class="side">
-    <div class="brand">
-      <div class="brand-mark">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="color:var(--ink)">
-          <circle cx="12" cy="12" r="9"/>
-          <path d="M3 12h18M12 3a13 13 0 0 1 0 18M12 3a13 13 0 0 0 0 18"/>
-        </svg>
+<aside class="sidebar">
+  <div class="brand">
+    <div>
+      <div class="name">Vine &amp; Fig Tree</div>
+      <div class="sub">Institute · Output Comparison</div>
+    </div>
+  </div>
+  <nav class="nav">
+    <a href="#sec-summary"><span class="nx">02</span>Executive Summary</a>
+    <a href="#sec-asymmetry"><span class="nx">03</span>Engagement Layer</a>
+    <a href="#sec-sidebyside"><span class="nx">04</span>Side-by-side</a>
+    <a href="#sec-radar"><span class="nx">05</span>Capability dimensions</a>
+    <a href="#sec-engagement"><span class="nx">06</span>Engagement metrics</a>
+    <a href="#sec-layers"><span class="nx">07</span>What each layer added</a>
+    <a href="#sec-timeline"><span class="nx">08</span>April 2026 events</a>
+    <a href="#sec-method"><span class="nx">09</span>How the comparison was done</a>
+  </nav>
+  <div class="foot">
+Maronite-Israel research query<br/>Claude + web search vs. Beacon<br/>April 30, 2026<br/>For SME review
+  </div>
+</aside>
+
+<main>
+<!--
+@module: hero
+@schema: { id, kicker, title (HTML allowed), dek, byline }
+-->
+<section id="sec-hero" class="first">
+  <div class="toprule"></div>
+  <div class="kicker">Output comparison · Maronite-Israel research query · April 30, 2026</div>
+  <h1 class="serif">Latest Posts. Underlying Numbers.<br/>What Beacon Returned for the Brief.</h1>
+  <p class="dek">Most of the brief's content — historical foundation, major-statement coverage, think tank analyses, news of the April 2026 diplomatic events — was reachable from web search of news outlets. The brief's distinctive analytical claims and three of its six strategic recommendations rested on a narrower band of evidence that lives in the posts themselves rather than in news coverage of them: engagement metrics at capture time, account-level posting cadence, confirmed negative findings, audience composition, and figures whose news footprint is too thin for search engines to surface. This dashboard records what Beacon's database contributed beneath the news layer, what Claude with web search would have produced on its own, and where the two outputs overlapped.</p>
+  <div class="byline">Prepared for SME review · April 30, 2026</div>
+</section>
+
+
+<!--
+@module: exec_summary
+@schema: {
+  id, kicker, title, dek,
+  metrics: [{k, v, u, p, alt, navy, olive, ms}],   // 4-8 cards
+  findings: [{kind:"|warn|olive", h, p, ev:"|strong|mod|low"}]
+}
+-->
+<section id="sec-summary">
+  <h4>Section 01 · Where the brief required Beacon's database</h4>
+  <h2 class="serif">Three of six strategic recommendations rested on evidence types web search does not reliably produce.</h2>
+  <p class="dek">Web search of news coverage can reach most of the events and statements in the brief — the Lebanese Presidency announcement, Geagea's New TV interview, Kataeb's formal endorsement, the Patriarch's positioning, the Father Pierre killing, the Jesus statue incident, the historical foundation. What it cannot reliably reach is the layer beneath: the view count attached to a specific post, the daily-editorial cadence of a party account, the absence of any post by a named figure, the audience-clustering pattern, and the long-tail figures whose news footprint is too thin to rank. The brief's actionable recommendations on rapid-response messaging, Arabic-language monitoring priorities, and the accounts watchlist all drew on that beneath-the-news layer. The pages below record the deltas honestly, including where the comparison gap is narrower than it first appears.</p>
+
+  <div class="metrics">
+<div class="mc"><div class="mk">Recommendations · substantially Beacon-dependent</div><div class="mv">3 of 6</div><div class="mu">Rapid-response messaging, Arabic-language monitoring, accounts watchlist — drew on engagement, cadence, and corpus-surface evidence</div><div class="pbar"><div class="pfill" style="width:50%"></div></div><div class="ms">Brief</div></div>
+<div class="mc alt"><div class="mk">Recommendations · web-search supportable</div><div class="mv">3 of 6</div><div class="mu">SLA trust deficit (historical), Patriarch dual-track engagement (news-covered), demographic clock (Al-Akhbar 242K figure)</div><div class="pbar"><div class="pfill" style="width:50%"></div></div><div class="ms">Brief</div></div>
+<div class="mc navy"><div class="mk">Posts cited with engagement at capture time</div><div class="mv">30+</div><div class="mu">View and like counts attached to specific tweets and IG posts. News coverage of these events almost never quotes engagement metrics</div><div class="pbar"><div class="pfill" style="width:92%"></div></div><div class="ms">Beacon-distinctive</div></div>
+<div class="mc olive"><div class="mk">Confirmed negative findings</div><div class="mv">3</div><div class="mu">Bishop Zaidan, El-Hage, Sater — zero posts across all platforms in the dataset. Web search cannot confirm absence</div><div class="pbar"><div class="pfill" style="width:85%"></div></div><div class="ms">Beacon-only</div></div>
+<div class="mc"><div class="mk">Long-tail figures surfaced from corpus search</div><div class="mv">4</div><div class="mu">Khalloul, Zakaria, Aoun's official accounts, the LF party-account machine — three are news-covered, Zakaria's 5,200+ tweets vs thin news footprint</div><div class="pbar"><div class="pfill" style="width:67%"></div></div><div class="ms">Beacon</div></div>
+<div class="mc"><div class="mk">Account-level cadence claims</div><div class="mv">3</div><div class="mu">5,484 LF party tweets · daily editorial pattern · Zakaria's 5,200+ tweets · Gabriel's 287+ IG posts</div><div class="pbar"><div class="pfill" style="width:75%"></div></div><div class="ms">Beacon-only</div></div>
+<div class="mc alt"><div class="mk">Web-search supportable content in the brief</div><div class="mv">~70%</div><div class="mu">Historical foundation, news coverage of major events and statements, think tank analyses, demographic figures</div><div class="pbar"><div class="pfill" style="width:70%"></div></div><div class="ms">Both</div></div>
+<div class="mc olive"><div class="mk">Output overlap · synthesis &amp; framing</div><div class="mv">100%</div><div class="mu">Drafting, structure, editorial inclusion, credibility flagging — Claude on top of either source layer</div><div class="pbar"><div class="pfill" style="width:100%"></div></div><div class="ms">Both</div></div>
+  </div>
+
+  <div class="div-dot"></div>
+
+  <div class="findings">
+<div class="fbox"><h5>The defensible Beacon delta is narrower than the recency story suggests</h5><p>Most of the April 2026 events the brief cites — the Lebanese Presidency announcement, the Kataeb endorsement, Geagea's New TV interview, the statue incident, Father Pierre coverage — are reachable from web search of news outlets. Where Beacon went deeper was in attaching engagement metrics, posting cadence, and corroboration patterns to those events. That depth drove specific analytical claims (e.g., 'Gemayel's negotiation tweet reached nearly 40% of his most-viral overall tweet') that web search alone could not have produced.</p><span class="ev strong">Verified</span></div>
+<div class="fbox olive"><h5>Engagement metrics drove the analytical layer in ways news coverage did not</h5><p>That Khalloul's two anti-Carlson tweets together drew 1.44 million views (signaling demand for the 'Christians thrive in Israel' counter-narrative). That the Lebanese Presidency announcement reached 1.46 million views (signaling massive public interest in the diplomatic opening). That Gemayel's negotiation tweet reached his third-highest view count overall (signaling constituency appetite). News articles covering these events do not quote view counts. Beacon retained the metric at capture time.</p><span class="ev strong">Distinctive</span></div>
+<div class="fbox warn"><h5>Negative findings and cadence claims are categorically database-only</h5><p>'Bishop Zaidan, El-Hage, and Sater have no posts in the dataset' requires a corpus to query against. '5,484 LF party-account tweets including a daily editorial' requires counting an actual post stream. These claim categories cannot be produced by web search of news coverage at any level of effort, because absence and cadence are not what news outlets report on.</p><span class="ev strong">Beacon-only</span></div>
+<div class="fbox"><h5>Long-tail figures get surfaced differently by corpus search than by news search</h5><p>Henri Zakaria has 5,200+ tweets but a thin news footprint — search engines would rank news-covered figures higher even if Zakaria is more contextually important. The brief's accounts watchlist includes Zakaria, the Lteif twins, Rami Naim, and Ibrahim Mrad in part because corpus search surfaces them by activity rather than by news rank. This is a genuine difference in retrieval shape, not a capability claim.</p><span class="ev">Retrieval shape</span></div>
+  </div>
+</section>
+
+
+<!--
+@module: chart_orbs   (Motion Chart 03)
+@schema: {
+  id, kicker, title, dek,
+  ctitle, clabel, csub,
+  left:  {label, big_num, caption, size_px},     // size 60..260
+  right: {label, big_num, caption, size_px},
+  ratio: {num, lab},
+  bullets: [{b1,b2,b3}],                         // 3 bullets
+  findings: [{kind,h,p,ev}]
+}
+-->
+<section id="sec-asymmetry" data-vft-chart>
+  <h4>Section 02 · The engagement-metric asymmetry</h4>
+  <h2 class="serif">Posts cited with view and like counts: 30+ from Beacon, near-zero from news coverage of the same events.</h2>
+  <p class="dek">The clearest defensible delta is engagement metrics on specific posts. News articles cover events; they almost never quote 'this tweet got 151,439 views.' Beacon's database retains the metric at capture time. The orbs scale to the asymmetry on this specific dimension — not to the overall comparison, which is narrower.</p>
+
+  <div class="chart-card">
+    <div class="ctitle"><span class="pin"></span>Posts cited with engagement metrics attached</div>
+    <div class="clabel">Diameter scales to the count of individual posts referenced with view/like counts.</div>
+    <div class="csub">Beacon: 30+ posts cited with engagement at capture time. Web search of news coverage: occasional engagement quoted in tech-press coverage of viral moments only.</div>
+
+    <div class="eng-stage">
+      <div class="eng-orb">
+        <div class="orb left" style="width:220px;height:220px">30+</div>
+        <div class="orb-cap"><b>Beacon's database</b>posts with engagement</div>
       </div>
-      <div class="brand-name">Beacon<small>VFT Institute</small></div>
+      <div class="eng-ratio"><span class="num">engagement</span><span class="lab">is the cleanest delta</span></div>
+      <div class="eng-orb">
+        <div class="orb right" style="width:60px;height:60px;font-size:13px">~3</div>
+        <div class="orb-cap"><b>Web search of news coverage</b>viral moments quote view counts</div>
+      </div>
     </div>
 
-    <div class="seal">
-      <div class="seal-label">Companion · Claude vs. Beacon</div>
-      <div class="seal-title">Lebanese Christian Leaders &amp; Israel</div>
-      <div class="seal-meta">v1.1 · Apr 28, 2026<br>Beacon DB · 15 X · 7 IG · 6 podcasts · 9 KB sources</div>
+    <div class="eng-bullets">
+<div class="eng-bullet"><div class="b1">1,462,165</div><div class="b2">Top engagement</div><div class="b3">@lbpresidency announcement of first direct Israel-Lebanon contact in over four decades. The diplomatic event itself is news-searchable; the view count attached to the tweet is not.</div></div>
+<div class="eng-bullet"><div class="b1">5,484</div><div class="b2">LF party tweets</div><div class="b3">Cadence of the Lebanese Forces party account, including a daily editorial. Cadence is categorically not reportable from news coverage — it requires counting an actual stream.</div></div>
+<div class="eng-bullet"><div class="b1">0</div><div class="b2">Posts by Bishop Zaidan</div><div class="b3">Confirmed negative finding across all platforms in the dataset. Web search cannot confirm an absence — only a database can.</div></div>
     </div>
 
-    <div class="nav-label">Sections</div>
-    <nav class="nav" id="nav">
-      <a href="#overview"><span class="nav-num">01</span><span>Overview</span></a>
-      <a href="#metrics"><span class="nav-num">02</span><span>Data Coverage</span></a>
-      <a href="#spectrum"><span class="nav-num">03</span><span>Position Spectrum</span></a>
-      <a href="#comparison"><span class="nav-num">04</span><span>Claude vs. Beacon</span></a>
-      <a href="#voices"><span class="nav-num">05</span><span>Voices &amp; Volume</span></a>
-      <a href="#profiles"><span class="nav-num">06</span><span>Figure Profiles</span></a>
-      <a href="#timeline"><span class="nav-num">07</span><span>Event Timeline</span></a>
-      <a href="#findings"><span class="nav-num">08</span><span>Cross-Platform Finds</span></a>
-      <a href="#archetypes"><span class="nav-num">09</span><span>Tier Archetypes</span></a>
-      <a href="#anti"><span class="nav-num">10</span><span>Anti-Patterns</span></a>
-      <a href="#evolution"><span class="nav-num">11</span><span>Position Evolution</span></a>
-      <a href="#quotes"><span class="nav-num">12</span><span>Quote Wall</span></a>
-      <a href="#sources"><span class="nav-num">13</span><span>Verification &amp; Sources</span></a>
-    </nav>
-
-    <div class="foot">
-      Vine &amp; Fig Tree Institute<br>
-      Beacon AI · Narrative Intelligence<br>
-      Internal use only · Not for redistribution
+    <div class="findings" style="margin-top:18px">
+<div class="fbox"><h5>Why the engagement delta matters analytically</h5><p>Several of the brief's claims rest on these numbers: that Gemayel's negotiation tweet reached 'nearly 40% of his most-viral overall tweet' (constituency appetite signal), that Khalloul's two Tucker responses together drew 1.44 million views (demand signal), that the Patriarch's IG presence carries audience weight independent of his press coverage. None of these claims are sustainable without the engagement layer.</p></div>
+<div class="fbox olive"><h5>Where the gap is genuinely narrow</h5><p>For the question 'what happened in Lebanon-Israel relations in April 2026,' Claude with web search can produce a competent timeline of events — the Presidency announcement, the Geagea interview, the Kataeb endorsement, the statue incident, the Father Pierre killing. The events are in the news. The view counts and the cadence patterns aren't.</p></div>
     </div>
-  </aside>
+  </div>
+</section>
 
-  <!-- ============ MAIN ============ -->
-  <main class="main">
 
-    <!-- 01 OVERVIEW / HERO -->
-    <section id="overview">
-      <div class="hero-rule"></div>
-      <div class="kicker"><span class="kicker-num">01</span><span>Companion to a Claude-generated brief</span><span class="kicker-rule"></span><span>Apr 28, 2026</span></div>
-      <h1 class="h1">Lebanese Christian Leaders &amp; Israel</h1>
-      <p class="lede">A multi-source intelligence layer over a standard Claude report — what an LLM-only summary missed, and what only Beacon can verify with timestamped quotes, engagement data, longitudinal position tracking, and cross-platform corroboration.</p>
-      <div class="body">
-        <p>Claude produced a plausible biographical brief on nine Lebanese Christian figures. Beacon produces a verified one. Across 15 X accounts (15,332 tweets), 7 Instagram accounts (1,102 posts), six podcast transcripts, 14 sourced citations, and a 258,906-segment knowledge base spanning 9 think tanks, Beacon resolves three position tiers, traces a twelve-year ideological reversal in the Maronite Patriarch, captures a 151K-view breakout tweet from Samy Gemayel, surfaces a Trump &harr; ALPAC back-channel invisible to LLMs, surfaces three high-engagement voices Claude missed entirely (Khalloul, Zakaria, Aoun), and flags three figures in the Claude report with zero verifiable digital footprint.</p>
-        <p>This is a companion document. Read it next to the Claude brief: every section maps to a dimension where the LLM alone falls short.</p>
-      </div>
-      <div class="byline">Prepared by Beacon Intelligence · Apr 28, 2026 · Subject window: Mar &ndash; Apr 2026, with longitudinal context Nov 2024 &ndash; Apr 2026</div>
-    </section>
+<!--
+@module: inventory
+@schema: { id, kicker, title, intro,
+  columns: ["Account","Handle",...],
+  rows: [["Row label","col 2","col 3",...], ...],
+  note (optional)
+}
+-->
+<section id="sec-sidebyside">
+  <h4>Section 03 · Question-by-question comparison</h4>
+  <h2 class="serif">What each source could produce for ten representative sub-questions.</h2>
+  <p class="ctxt">The middle column reflects what Claude with web search would realistically produce — not Claude with no tools. The right column reflects what Beacon's database returned in the actual brief output. The honest answer for most rows is that web search reaches the event; Beacon adds the engagement, cadence, or confirmation layer beneath it.</p>
 
-    <!-- 02 METRICS -->
-    <section id="metrics">
-      <div class="kicker"><span class="kicker-num">02</span><span>Data Coverage</span><span class="kicker-rule"></span><span>Eight signal cards</span></div>
-      <h2 class="h2">What an LLM cannot see &mdash; and what Beacon ingested</h2>
-      <p class="body">Each card is a dimension a Claude-only brief leaves blank. Coverage is heavily weighted toward X &mdash; the dominant venue for live political commentary on Lebanon in this window. Instagram supplements with institutional pastoral posts. Podcast and news layers triangulate the events that drive social commentary. The knowledge base spans 9 think tanks across 258,906 indexed segments &mdash; this is the layer that sources Patriarch Al-Rahi&apos;s 12-year reversal.</p>
-      <div class="metrics" id="metrics-grid"></div>
-      <div class="note"><strong>Reading note.</strong> Tweet counts are total ingestions, not Lebanon-Israel-keyword filtered. The 12 active X accounts in this report account for 15,332 of those ingested tweets; three additional X handles in the Claude report (El-Hage, Abdel Sater, Zaidan&apos;s Eparchy) have zero tweets in the database. Three voices not in the Claude brief at all &mdash; Khalloul, Zakaria, and President Aoun &mdash; were surfaced by Beacon&apos;s account discovery layer.</div>
-    </section>
+  <table class="tbl">
+    <thead><tr><th>Sub-question in the brief</th><th>Claude + web search</th><th>Beacon's database layer</th></tr></thead>
+    <tbody>
+<tr><td class="">What did Geagea say in his April 26, 2026 New TV interview?</td><td class="">Yes — Naharnet, LBCI, and other outlets covered the interview</td><td class="">Same content available; Beacon adds the post-level engagement and the institutional-amplification pattern through @lfpartyofficial</td></tr>
+<tr><td class="">How far did Gemayel's April 9 negotiation tweet travel?</td><td class="">Tweet itself is searchable; news coverage notes the endorsement; exact view count is not in coverage</td><td class="mono">Quantified: 151,439 views, 1,376 likes — third-most-viewed tweet on his account</td></tr>
+<tr><td class="">What did Patriarch Al-Rahi post on Instagram on April 19?</td><td class="">Difficult — Instagram content is poorly indexed by general search; major IG statements occasionally get news coverage</td><td class="">Quoted directly with engagement; IG-native content is part of Beacon's ingestion footprint</td></tr>
+<tr><td class="">Which podcasts and outlets covered the Father Pierre killing?</td><td class="">Reachable through multiple separate searches; six-source pattern requires manual aggregation</td><td class="">Six sources returned in a single corpus query: Megyn Kelly, PBS, NPR, Daily Wire, Al Jazeera, Bishop Mansour's eparchy</td></tr>
+<tr><td class="">Has Bishop Zaidan, Bishop El-Hage, or Sater posted anything trackable?</td><td class="">Cannot confirm absence via search — would default to 'no major statements covered'</td><td class="">Confirmed: zero posts across all platforms in the dataset</td></tr>
+<tr><td class="">How does Brigitte Gabriel's audience compare to Geagea's?</td><td class="">General inference possible (Gabriel writes in English, Geagea in Arabic); no quantified clustering</td><td class="mono">Quantified: Gabriel US-clustered (1.37M IG likes, English content); Geagea Arabic-Lebanese audience</td></tr>
+<tr><td class="">Who else in this space should be on the tracker?</td><td class="">News-covered figures yes (Khalloul, Aoun's office); long-tail figures with thin news footprint less likely to surface</td><td class="mono">Surfaced from corpus by activity rather than news rank: Khalloul, Zakaria (5,200+ tweets, thin news coverage), Aoun's official accounts, the LF party machine</td></tr>
+<tr><td class="">What is the cadence pattern of the Lebanese Forces party account?</td><td class="">Cadence is not reportable from news coverage; the account's existence is searchable</td><td class="mono">5,484 tweets including a daily editorial pattern — visible only by counting the actual stream</td></tr>
+<tr><td class="">What is the engagement pattern across pro-Israel Maronite voices?</td><td class="">Approximate inference from news prominence; no quantified comparison possible</td><td class="mono">Quantified across ~15 accounts with view/like counts at capture time</td></tr>
+<tr><td class="">Synthesis, structure, framing, credibility flagging, recommendation logic</td><td class="">Claude handles this layer</td><td class="">Same — Claude wrote the synthesis on top of Beacon's data</td></tr>
+    </tbody>
+  </table>
+  <p class="note" style="margin-top:10px">Rows 1-4 are where Claude+search reaches the event but Beacon adds depth. Rows 5-9 are where the gap is structural — Beacon's database is the only source. Row 10 is where the layers overlap entirely.</p>
+</section>
 
-    <!-- 03 POSITION SPECTRUM -->
-    <section id="spectrum">
-      <div class="kicker"><span class="kicker-num">03</span><span>Position Spectrum</span><span class="kicker-rule"></span><span>Three tiers</span></div>
-      <h2 class="h2">Three tiers of Lebanese Christian pro-Israel positioning</h2>
-      <p class="body">Across the cohort, positions cluster into three discrete tiers. Tier 1 voices openly call for alliance, normalization, or Israeli sovereignty. Tier 2 voices support direct negotiation and Hezbollah disarmament without endorsing Israeli military operations. Tier 3 voices remain pastoral &mdash; calling for peace through scriptural and prayerful framing without direct Israel positioning.</p>
-      <div class="tiers" id="tiers-grid"></div>
-    </section>
 
-    <!-- 04 CLAUDE VS BEACON -->
-    <section id="comparison">
-      <div class="kicker"><span class="kicker-num">04</span><span>Claude vs. Beacon</span><span class="kicker-rule"></span><span>Side-by-side</span></div>
-      <h2 class="h2">What Claude said. What Beacon proved.</h2>
-      <p class="body">Six matched pairs. The left side is what a generic LLM with training-data knowledge can produce: plausible, biographical, generic. The right side is what Beacon adds: timestamped quotes, engagement metrics, cross-platform corroboration, and ideologically-tagged source citations.</p>
-      <div class="ba-tones" id="ba-tones"></div>
-      <div class="ba-grid" id="ba-grid"></div>
-
-      <div class="contrib-head">Contribution matrix &mdash; what Beacon adds across eight dimensions</div>
-      <p class="body">A generic Claude brief gives you a plausible biographical sketch. The Beacon layer gives you what an LLM cannot: verified posts, exact engagement, podcast triangulation, longitudinal position tracking, and continuous live monitoring.</p>
-      <div class="contrib-wrap">
-        <table class="qtbl contrib-tbl" id="contrib-tbl">
-          <thead><tr>
-            <th>Dimension</th>
-            <th>Claude alone</th>
-            <th>With Beacon layer</th>
-          </tr></thead>
-          <tbody></tbody>
-        </table>
-      </div>
-    </section>
-
-    <!-- 05 QUANT TABLE -->
-    <section id="voices">
-      <div class="kicker"><span class="kicker-num">05</span><span>Voices &amp; Volume</span><span class="kicker-rule"></span><span>Sortable</span></div>
-      <h2 class="h2">15 accounts, ranked by ingestion volume and reach</h2>
-      <p class="body">Volume of tweets ingested is not the same as influence. Henri Zakaria has 5,199 tweets archived; Fouad Arbid has 96. Arbid&apos;s direct line to the Trump administration, however, gives him institutional access that no other figure in this dataset has. Click any column to sort.</p>
-      <div class="qtbl-wrap">
-        <table class="qtbl" id="qtbl">
-          <thead><tr>
-            <th data-k="h">Voice</th>
-            <th data-k="tot" class="num">Tweets</th>
-            <th data-k="f" class="num">Followers</th>
-            <th data-k="topreach" class="num">Top reach</th>
-            <th data-k="tier">Tier</th>
-            <th data-k="kind">Status</th>
-          </tr></thead>
-          <tbody></tbody>
-        </table>
-      </div>
-    </section>
-
-    <!-- 06 PROFILES -->
-    <section id="profiles">
-      <div class="kicker"><span class="kicker-num">06</span><span>Figure Profiles</span><span class="kicker-rule"></span><span>Click to expand</span></div>
-      <h2 class="h2">Nine figures &mdash; with timeline, role, and tier</h2>
-      <p class="body">Each profile expands inline to show career context and a documented timeline of position-defining moments. Where a figure has thin or no Beacon coverage, that is stated plainly.</p>
-      <div class="profiles" id="profiles-grid"></div>
-    </section>
-
-    <!-- 07 TIMELINE / ITINERARY -->
-    <section id="timeline">
-      <div class="kicker"><span class="kicker-num">07</span><span>Event Timeline</span><span class="kicker-rule"></span><span>Mar &ndash; Apr 2026</span></div>
-      <h2 class="h2">The two months that hardened the cohort&apos;s position</h2>
-      <p class="body">The killing of Father Pierre El-Rahi on March 9, 2026 is the inflection point. Within 48 hours, every tier-1 voice repositioned. Within four weeks, tier-2 voices broke into open negotiation advocacy with Samy Gemayel&apos;s 151K-view tweet on April 9. Tier-3 voices held their pastoral framing throughout.</p>
-      <div class="itin" id="itin"></div>
-    </section>
-
-    <!-- 08 KEY FINDINGS -->
-    <section id="findings">
-      <div class="kicker"><span class="kicker-num">08</span><span>Cross-Platform Finds</span><span class="kicker-rule"></span><span>Three case studies</span></div>
-      <h2 class="h2">What only multi-source intelligence reveals</h2>
-      <p class="body">These are the cases where a single-platform view misses the story. The Father Pierre killing reads one way on Megyn Kelly and another on PBS. Samir Geagea&apos;s position is sharper in Arabic on X than in his English press releases. Samy Gemayel&apos;s breakout moment was a single tweet that no news article recapped at the time.</p>
-      <div class="gaza-grid" id="gaza-grid"></div>
-    </section>
-
-    <!-- 09 TYPOLOGY ARCHETYPES -->
-    <section id="archetypes">
-      <div class="kicker"><span class="kicker-num">09</span><span>Tier Archetypes</span><span class="kicker-rule"></span><span>Five role types</span></div>
-      <h2 class="h2">Five archetypes inside the three tiers</h2>
-      <p class="body">Within the position tiers, voices play different functional roles in the broader narrative ecosystem. Some are diaspora amplifiers; some are institutional pastoralists; some are direct-access lobbyists with no public reach but real power. Mapping role types is more useful than counting positions.</p>
-      <div class="tiers" id="archetypes-grid"></div>
-    </section>
-
-    <!-- 10 ANTI-PATTERNS -->
-    <section id="anti">
-      <div class="kicker"><span class="kicker-num">10</span><span>Anti-Patterns</span><span class="kicker-rule"></span><span>What virality looks like</span></div>
-      <h2 class="h2">The high-engagement edge of the spectrum</h2>
-      <p class="body">Engagement data tells you which messages are landing &mdash; not which positions are mainstream. The top-performing posts in this dataset come from the most maximalist voices. That asymmetry, between political modesty and viral reach, is itself a finding.</p>
-      <div class="aw">
-        <div class="aw-stats" id="aw-stats"></div>
-        <div class="aw-feed" id="aw-feed"></div>
-      </div>
-    </section>
-
-    <!-- 11 SUSTAINED / EVOLUTION -->
-    <section id="evolution">
-      <div class="kicker"><span class="kicker-num">11</span><span>Position Evolution</span><span class="kicker-rule"></span><span>Patriarch Al-Rahi · 2014 &ndash; 2026</span></div>
-      <h2 class="h2">The twelve-year reversal Beacon documents and Claude can&apos;t</h2>
-      <p class="body">Cardinal Bechara Al-Rahi went from declaring common cause with Iran and Hezbollah against ISIS in 2014, to praying in 2026 for a comprehensive peace under the banner of the Lebanese state alone. Beacon assembles the evidence chronologically across knowledge base, news, and Instagram.</p>
-      <div class="sus-rail" id="sus-rail"></div>
-      <div class="sus-cards" id="sus-cards"></div>
-    </section>
-
-    <!-- 12 QUOTES -->
-    <section id="quotes">
-      <div class="kicker"><span class="kicker-num">12</span><span>Quote Wall</span><span class="kicker-rule"></span><span>Filterable</span></div>
-      <h2 class="h2">Twenty source-linked quotes, filterable by theme</h2>
-      <p class="body">Every quote is timestamped and sourced. Click a theme chip to filter.</p>
-      <div class="q-wrap">
-        <div class="ba-tones" id="q-themes"></div>
-        <div class="q-grid" id="q-grid"></div>
-      </div>
-    </section>
-
-    <!-- 13 VERIFICATION + SOURCES -->
-    <section id="sources">
-      <div class="kicker"><span class="kicker-num">13</span><span>Verification &amp; Sources</span><span class="kicker-rule"></span><span>Methodology</span></div>
-      <h2 class="h2">How Beacon assembled this layer</h2>
-      <p class="body">Three KPIs, twelve per-voice coverage rows, and a fourteen-card source grid &mdash; followed by a plain-language statement of what Beacon does not yet cover.</p>
-
-      <div class="ver-kpis" id="ver-kpis"></div>
-
-      <h4 class="h4">Per-Voice Coverage</h4>
-      <div class="ver-tbl-wrap">
-        <table class="ver-tbl" id="ver-tbl">
-          <thead><tr><th>Voice</th><th>Sources</th><th class="num">N</th><th>Status</th><th>Note</th></tr></thead>
-          <tbody></tbody>
-        </table>
-      </div>
-
-      <h4 class="h4">Source Grid</h4>
-      <div class="src-grid" id="src-grid"></div>
-
-      <div class="note"><strong>Live monitoring.</strong> Unlike a one-shot Claude brief, this report can be re-run at any time. Live feeds update as accounts post; new podcast episodes ingest within hours; knowledge base segments accumulate continuously. The version on file represents the dataset as of Apr 28, 2026 &mdash; not a permanent ceiling on what Beacon can show.</div>
-
-      <h3 class="lim-h">Known limitations</h3>
-      <ol class="lim" id="lim"></ol>
-    </section>
-
-    <div class="foot-bar">
-      <span>Beacon · VFT Institute · Apr 28, 2026</span>
-      <span>v1.1 · Internal · 15X · 7IG · 6 podcasts · 14 sources · 9 KB origins</span>
-    </div>
-  </main>
-</div>
-
+<!--
+@module: chart_radial_compass   (Motion Chart 06)
+@schema: {
+  id, kicker, title, dek, ctitle, clabel, csub,
+  axes: ["dim 1","dim 2", ...],          // 5–8 axes
+  scaleMax: 5,                            // numeric max
+  entities: [{name, color, vals:[n,n,...]}],   // vals.length === axes.length
+  findings: [{kind,h,p,ev}]
+}
+-->
+<section id="sec-radar" data-vft-chart>
+  <h4>Section 04 · Capability dimensions, calibrated honestly</h4>
+  <h2 class="serif">Where each source contributed across seven dimensions, with Claude+web search as the comparison baseline.</h2>
+  <p class="dek">Scores reflect what each source produced for this specific brief, on a 0–5 scale. Claude with web search closes most of the recency and event-coverage gap that Claude alone cannot. The dimensions where Beacon retains a clear edge are engagement metrics, negative findings, and account-level cadence — categories of evidence that don't live in news coverage.</p>
+  <div class="chart-card">
+    <div class="ctitle"><span class="pin"></span>Capability radar · 7 dimensions · scored by what each layer produced for this brief</div>
+    <div class="clabel">Polygon area indicates breadth of contribution to the final brief.</div>
+    <div class="csub">Scoring: 0 = nothing produced; 5 = primary source of that dimension's content. Claude+search is the honest comparison baseline.</div>
+    <div class="compass-wrap"><svg id="sec-radar__svg" class="compass-svg" viewBox="0 0 520 520"></svg></div>
+    <div class="legend" id="sec-radar__legend"></div>
+    <div class="findings" style="margin-top:18px"><div class="fbox"><h5>Where Claude+search closes the gap</h5><p>Recency, event coverage, and synthesis. The Lebanese Presidency announcement, the Geagea interview, the statue incident, the Father Pierre killing — all in news coverage and reachable via search. The first dashboard version overstated the gap on these dimensions.</p></div>
+<div class="fbox olive"><h5>Where Beacon retains a clear edge</h5><p>Engagement metrics, account cadence, and negative findings are categorically not in news coverage. The long-tail figure dimension is partly closed by web search but Zakaria-type figures (high posting activity, thin news footprint) still favor corpus search.</p></div></div>
+  </div>
+</section>
 <script>
-/* ====== DATA ====== */
-const META = {
-  title:"Lebanese Christian Leaders & Israel",
-  kicker:"Companion Report · How Beacon Enriched the Claude Brief",
-  byline:"Prepared by Beacon Intelligence · Apr 28, 2026 · Companion to a Claude-generated brief"
-};
-
-const METRICS = [
-  {k:"Verified social posts", v:"12K", u:"+", p:"Tweets &amp; IG with engagement metrics &mdash; Claude alone can only describe", navy:true},
-  {k:"Knowledge base segments", v:"258,906", u:"indexed", p:"Across 9 think tanks &mdash; Claude has none of this"},
-  {k:"X tweets ingested", v:"15,332", u:"records", p:"Active cohort total · ~5.5K from @lfpartyofficial alone", olive:true},
-  {k:"Voices Claude missed", v:"3", u:"surfaced", p:"Khalloul · Zakaria · Aoun &mdash; not in the original 9-figure brief", alt:true},
-  {k:"Top single-tweet reach", v:"628K", u:"views", p:"Khalloul on Tucker Carlson · Jan 13, 2026"},
-  {k:"Claude figures with zero data", v:"3", u:"flagged", p:"El-Hage · Abdel Sater · Zaidan &mdash; unverifiable in any layer", alt:true},
-  {k:"Father Pierre coverage", v:"6", u:"sources", p:"3 podcasts · 3 outlets · cross-platform &mdash; Claude had zero"},
-  {k:"Position tracking arc", v:"12", u:"years", p:"Patriarch Al-Rahi 2014 &rarr; 2026 reversal documented", navy:true}
-];
-
-const TIERS = [
-  {num:"Tier 1", name:"Maximalist Pro-Israel", arc:"Alliance · Normalization · Sovereignty", kind:"t1",
-   desc:"Openly call for Israeli sovereignty over Christian areas, an alliance with Israel, or full normalization. Praise IDF operations directly. Highest social media virality in the cohort &mdash; Tucker Carlson rebuttals reaching 600K+ views.",
-   handles:["Khalloul","Zakaria","Gabriel","Arbid"]},
-  {num:"Tier 2", name:"Pro-Negotiation", arc:"End war · Disarm Hezbollah · Sovereignty-first", kind:"t2",
-   desc:"Support direct US-mediated negotiation with Israel and Hezbollah disarmament as state policy. Blame Iran and Hezbollah for the war. Stop short of endorsing Israeli military operations or normalization. Includes Geagea, Gemayel, the LF and Kataeb party machines, and President Aoun.",
-   handles:["Geagea","Gemayel","LF","Kataeb","Aoun"]},
-  {num:"Tier 3", name:"Pastoral / Prayer", arc:"Peacemaking · Christian protection · Institutional", kind:"t3",
-   desc:"Use spiritual and scriptural language. Document Christian suffering and call for international protection. Avoid direct Israel positioning. Includes the Maronite Patriarchate, Bishop Mansour&apos;s Eparchy, and the IDC advocacy network in Washington.",
-   handles:["Patriarch","Mansour","IDC"]}
-];
-
-const ARCHETYPES = [
-  {num:"01", name:"The Sovereign Christian Israeli", arc:"In-system advocacy", kind:"t1",
-   desc:"A Maronite who is also an Israeli citizen, IDF veteran, and former Knesset candidate. Bridges the Lebanese-Christian and Israeli narratives, calling on south Lebanese Maronites to seek Israeli sovereignty. Massive viral reach.",
-   handles:["Shadi Khalloul"]},
-  {num:"02", name:"The Diaspora Maximalist", arc:"From outside, calling for partition", kind:"t1",
-   desc:"Diaspora-based, advocates for an independent Christian Mount Lebanon state. Views the Lebanese Republic itself as illegitimate. Anti-Arab nationalist framing, Christian-survival rhetoric.",
-   handles:["Henri Zakaria","Brigitte Gabriel"]},
-  {num:"03", name:"The Back-Channel Lobbyist", arc:"Low reach · High access", kind:"t1",
-   desc:"Negligible social media reach, direct lines to the Trump administration. ALPAC chairman with a signed Make Lebanon Great Again hat. Operates through political access, not media coverage.",
-   handles:["Fouad Arbid","Toufic Baaklini"]},
-  {num:"04", name:"The Sovereignty Statesman", arc:"Pro-negotiation party-political", kind:"t2",
-   desc:"Mainstream Lebanese Christian party leadership. Supports negotiation as state policy, demands Hezbollah disarmament, but operates within Lebanese sovereignty framing. The Lebanese Forces party machine amplifies daily through #موقف_اليوم editorial.",
-   handles:["Samir Geagea","Samy Gemayel","George Okais","Ghassan Hasbani"]},
-  {num:"05", name:"The Pastoral Voice", arc:"Scripture · Prayer · Protection", kind:"t3",
-   desc:"Patriarch, bishop, or institutional advocacy NGO. Uses Matthew 5:9 and prayer language. Documents Christian suffering. Avoids direct Israel positioning even as private positions evolve. Highest credibility, lowest virality.",
-   handles:["Patriarch Al-Rahi","Bishop Mansour","IDC"]}
-];
-// Fix syntax error in ARCHETYPES (kind: "" not "")
-</script>
-<script>
-/* re-declare ARCHETYPES cleanly to avoid syntax issue above */
-window.ARCHETYPES = [
-  {num:"01", name:"The Sovereign Christian Israeli", arc:"In-system advocacy", kind:"t1",
-   desc:"A Maronite who is also an Israeli citizen, IDF veteran, and former Knesset candidate. Bridges the Lebanese-Christian and Israeli narratives, calling on south Lebanese Maronites to seek Israeli sovereignty. Massive viral reach.",
-   handles:["Shadi Khalloul"]},
-  {num:"02", name:"The Diaspora Maximalist", arc:"From outside, calling for partition", kind:"t1",
-   desc:"Diaspora-based, advocates for an independent Christian Mount Lebanon state or full alliance with Israel. Views the Lebanese Republic itself as illegitimate. Anti-Arab nationalist framing, Christian-survival rhetoric. Highest individual tweet virality in the cohort.",
-   handles:["Henri Zakaria","Brigitte Gabriel"]},
-  {num:"03", name:"The Back-Channel Lobbyist", arc:"Low reach · High access", kind:"",
-   desc:"Negligible social media reach, direct lines to the Trump administration. ALPAC chairman with a signed Make Lebanon Great Again hat. Operates through political access, not media coverage. Explicitly thanks Israel for 1982.",
-   handles:["Fouad Arbid","Toufic Baaklini"]},
-  {num:"04", name:"The Sovereignty Statesman", arc:"Party-political negotiation track", kind:"t2",
-   desc:"Mainstream Lebanese Christian party leadership. Supports US-mediated negotiation as state policy, demands Hezbollah disarmament, but operates within Lebanese sovereignty framing. The Lebanese Forces party machine amplifies daily through #موقف_اليوم editorial.",
-   handles:["Samir Geagea","Samy Gemayel","George Okais","Ghassan Hasbani"]},
-  {num:"05", name:"The Pastoral Voice", arc:"Scripture · Prayer · Protection", kind:"t3",
-   desc:"Patriarch, bishop, or institutional advocacy NGO. Uses Matthew 5:9 and prayer language. Documents Christian suffering. Avoids direct Israel positioning even as private positions evolve. Highest credibility, lowest virality.",
-   handles:["Patriarch Al-Rahi","Bishop Mansour","IDC"]}
-];
-</script>
-<script>
-/* re-declare META, METRICS, TIERS as window globals for safety */
-window.META = META;
-window.METRICS = METRICS;
-window.TIERS = TIERS;
-
-const INITIALS = {
-  "Samir Geagea":"SG",
-  "Cardinal Bechara Al-Rahi":"BR",
-  "Samy Gemayel":"SY",
-  "Fouad Arbid":"FA",
-  "Bishop Gregory Mansour":"GM",
-  "Henri Zakaria":"HZ",
-  "Shadi Khalloul":"SK",
-  "Brigitte Gabriel":"BG",
-  "IDC (In Defense of Christians)":"ID",
-  "Lebanese Forces Party":"LF",
-  "Kataeb Party":"KP",
-  "President Joseph Aoun":"JA",
-  "Toufic Baaklini":"TB"
-};
-window.INITIALS = INITIALS;
-
-/* QUANT — ranked voices */
-const QUANT = [
-  {h:"Lebanese Forces Party",        f:5484, b:0,    d:0,   a:0, tot:5484, topreach:8700,   tier:"T2", pct:100, label:"5,484", kind:"con"},
-  {h:"Henri Zakaria",                f:5199, b:0,    d:0,   a:0, tot:5199, topreach:717000, tier:"T1", pct:95,  label:"5,199", kind:"new"},
-  {h:"Samir Geagea",                 f:1630, b:0,    d:0,   a:0, tot:1630, topreach:37700,  tier:"T2", pct:30,  label:"1,630", kind:""},
-  {h:"Brigitte Gabriel",             f:1262, b:0,    d:0,   a:0, tot:1262, topreach:126000, tier:"T1", pct:23,  label:"1,262", kind:"new"},
-  {h:"President Joseph Aoun",        f:475,  b:0,    d:0,   a:0, tot:475,  topreach:31000,  tier:"T2", pct:9,   label:"475",   kind:""},
-  {h:"Shadi Khalloul",               f:419,  b:0,    d:0,   a:0, tot:419,  topreach:628000, tier:"T1", pct:8,   label:"419",   kind:"new"},
-  {h:"IDC (In Defense of Christians)",f:381, b:0,    d:0,   a:0, tot:381,  topreach:7500,   tier:"T3", pct:7,   label:"381",   kind:""},
-  {h:"Kataeb Party",                 f:216,  b:0,    d:0,   a:0, tot:216,  topreach:64500,  tier:"T2", pct:4,   label:"216",   kind:""},
-  {h:"Samy Gemayel",                 f:156,  b:0,    d:0,   a:0, tot:156,  topreach:151000, tier:"T2", pct:3,   label:"156",   kind:"new"},
-  {h:"Fouad Arbid (ALPAC)",          f:96,   b:0,    d:0,   a:0, tot:96,   topreach:3800,   tier:"T1", pct:2,   label:"96",    kind:""},
-  {h:"Toufic Baaklini",              f:14,   b:0,    d:0,   a:0, tot:14,   topreach:0,      tier:"T1", pct:0.3, label:"14",    kind:"con"},
-  {h:"@MaroniteEparchy",             f:0,    b:0,    d:0,   a:0, tot:0,    topreach:0,      tier:"T3", pct:0,   label:"0",     kind:"con"}
-];
-window.QUANT = QUANT;
-
-/* BA — six matched pairs (Claude vs Beacon) */
-const BA = [
-  {h:"Samir Geagea", tone_before:"GENERIC", tone_after:"VERIFIED",
-    delta:"+27K views", delta_sub:"timestamped TV interview",
-    before:{text:"Geagea is open to dialogue with Israel as a Christian political leader. Maronite, head of the Lebanese Forces, and a longstanding figure in Lebanese politics.", date:"Claude · general knowledge"},
-    after:{text:"There is a beast on the border. Recent months have proven we cannot confront it militarily. The solution today is what the President proposed: negotiate with Israel.", date:"Apr 26, 2026 · 27K views", url:"https://x.com/i/status/2048460765988794627"}},
-
-  {h:"Cardinal Bechara Al-Rahi", tone_before:"GENERIC", tone_after:"VERIFIED",
-    delta:"12-yr reversal", delta_sub:"2014 → 2026 documented",
-    before:{text:"The Maronite Patriarch calls for peace and condemns violence in Lebanon, in keeping with traditional Maronite Church teaching.", date:"Claude · general knowledge"},
-    after:{text:"In 2014 he sought common cause with Iran and Hezbollah against ISIS. By 2025 he told CAMERA Lebanon could make peace with Israel when the time was right. By April 2026 he prayed publicly for peace under the banner of the state alone, with sovereignty restored.", date:"Beacon KB + IG + News · 4 sources", url:"https://www.camera.org/article/lebanese-patriarchs-change-of-heart-is-a-real-miracle"}},
-
-  {h:"Samy Gemayel", tone_before:"GENERIC", tone_after:"VERIFIED",
-    delta:"151K views", delta_sub:"highest-reach Lebanese politician tweet",
-    before:{text:"Samy Gemayel leads Kataeb, the Christian-aligned political party founded by his grandfather Pierre Gemayel.", date:"Claude · general knowledge"},
-    after:{text:"We confirm our full and explicit support for the negotiation track between official Lebanon and Israel. The goal is clear: stop the war, disarm Hezbollah, Israeli withdrawal as a first step toward sovereignty and peace.", date:"Apr 9, 2026 · 151K views · 1,376 likes", url:"https://x.com/i/status/2042278117243265417"}},
-
-  {h:"Fouad Arbid", tone_before:"NEAR-ZERO", tone_after:"VERIFIED",
-    delta:"+Trump backchannel", delta_sub:"96 tweets · zero KB · zero news",
-    before:{text:"Fouad Arbid leads ALPAC, the American Lebanese Policy Action Committee. Limited public profile.", date:"Claude · general knowledge, sparse"},
-    after:{text:"President Trump told me he will fix Lebanon 8 months ago and then signed ALPAC&apos;s Make Lebanon Great Again hat. Time for action. — Apr 18, 2026. Plus: Those tanks and soldiers are the best thing that happened to Lebanon in the last 50 years. Thank you, Israel. — Apr 12, referring to 1982.", date:"Apr 12 + Apr 18, 2026 · X only", url:"https://x.com/i/status/2045495151099801717"}},
-
-  {h:"Bishop Gregory Mansour", tone_before:"GENERIC", tone_after:"VERIFIED",
-    delta:"6+ source pickup", delta_sub:"Father Pierre killing · cross-platform",
-    before:{text:"Bishop Mansour heads the Maronite Eparchy of Brooklyn and offers pastoral leadership for North American Maronites.", date:"Claude · general knowledge"},
-    after:{text:"On March 9, 2026 a Catholic priest in Lebanon, Father Pierre El-Rahi, was killed by an Israeli artillery shell after refusing to evacuate his village. Beacon traces the story across Megyn Kelly Show, PBS NewsHour, NPR, Daily Wire, Al Jazeera, and the Eparchy&apos;s own Cry for Peace and Justice statement on Instagram.", date:"Mar 9 &ndash; Apr 3, 2026 · 6 sources", url:"https://www.instagram.com/p/DWFDpGYiR5H/"}},
-
-  {h:"In Defense of Christians (IDC)", tone_before:"GENERIC", tone_after:"VERIFIED",
-    delta:"381 tweets ingested", delta_sub:"institutional Washington framing",
-    before:{text:"IDC is a Washington-based advocacy group for Middle Eastern Christians.", date:"Claude · general knowledge"},
-    after:{text:"Lebanon&apos;s Christians are not a party to this conflict, yet they once again find themselves forced to the front lines, caught between regional powers and armed actors. They quote Matthew 5:9 — Blessed are the peacemakers — alongside #Lebanon #Israel #UnitedStates hashtags.", date:"Mar 13 + Apr 14, 2026", url:"https://x.com/i/status/2032470539332112387"}}
-];
-window.BA = BA;
-const BA_TONES = ["All","GENERIC","VERIFIED","NEAR-ZERO"];
-window.BA_TONES = BA_TONES;
-
-/* PROFILES — 9 figures */
-const PROFILES = [
-  {h:"Samir Geagea", tier:"t2", followers:1630, role:"Leader, Lebanese Forces Party. Former wartime militia commander, jailed 1994&ndash;2005, now the leading Christian sovereignty voice in Lebanese parliament.", typology:"Tier 2 · Sovereignty Statesman",
-    headline:"The clearest articulation of the negotiation track from a sitting Lebanese party leader.",
-    career:"Geagea has gone from Civil War militia leader to imprisoned dissident to four-term LF parliamentary head. His April 2026 TV interview is the most detailed public Israel statement of any Lebanese politician in the Beacon dataset, framing Hezbollah as a beast on the border that cannot be confronted militarily.",
-    timeline:[
-      {date:"Nov 2025", text:"Even if Hezbollah had once acted as the resistance, at other times it served as an arm of the Revolutionary Guards.", url:"https://www.terrorism-info.org.il/en/hezbollahs-defiance-the-instability-of-the-ceasefire-andattempts-to-promote-an-israeli-lebanese-dialogue/"},
-      {date:"Apr 20, 2026", text:"Rejects argument to delay direct meeting between Aoun and Netanyahu. 16.5K views.", url:"https://x.com/i/status/2046255450371375497"},
-      {date:"Apr 20, 2026", text:"Considers the United States an acceptable mediator; Lebanese cannot afford to refuse.", url:"https://x.com/i/status/2046255501999022316"},
-      {date:"Apr 26, 2026", text:"There is a beast on the border. Recent months have proven we cannot confront it militarily. 27K views.", url:"https://x.com/i/status/2048460765988794627"}
-    ]},
-
-  {h:"Cardinal Bechara Al-Rahi", tier:"t3", followers:0, role:"Maronite Patriarch since 2011. The most senior Christian religious figure in Lebanon. Beacon documents a twelve-year reversal across knowledge base, news, and Instagram.", typology:"Tier 3 · Pastoral Voice",
-    headline:"The most consequential ideological reversal Beacon has documented in the cohort.",
-    career:"Al-Rahi&apos;s arc is the headline finding of the report. In 2014 he openly sought common cause with Iran and Hezbollah against ISIS. By 2021 he had begun calling for the Lebanese Army to control southern Lebanon and condemning Hezbollah for deciding peace and war outside the decision of legality. By 2025 he told CAMERA Lebanon could make peace with Israel when the time was right. In April 2026 he prayed for permanent peace under the banner of the state alone.",
-    timeline:[
-      {date:"2014", text:"Sought common cause with Iran and Hezbollah against ISIS, per CAMERA reconstruction.", url:"https://www.camera.org/article/lebanese-patriarchs-change-of-heart-is-a-real-miracle"},
-      {date:"2021", text:"Called on Lebanese Army to control southern Lebanon. Hezbollah threatened his life; IDC organized webinar in his defense.", url:"https://www.camera.org/article/lebanese-patriarchs-change-of-heart-is-a-real-miracle"},
-      {date:"Aug 2025", text:"Lebanon could make peace with Israel when the time was right. Loyalty had to lie exclusively with Lebanon, not with Iran.", url:"https://www.terrorism-info.org.il/en/spotlight-on-terrorism-hezbollah-and-lebanon-august-25-september-1-2025/"},
-      {date:"Nov 30, 2025", text:"Told the BBC during Pope Leo&apos;s visit: He brings hope when the Lebanese feel abandoned and we feel uplifted.", url:"https://www.bbc.com/news/articles/cvgrwedyr0eo"},
-      {date:"Apr 19, 2026", text:"Prayed for ceasefire to become a lasting, comprehensive, and just peace under the banner of the state alone, and through the restoration of its sovereignty.", url:"https://www.instagram.com/p/DXglS-tFUVt/"}
-    ]},
-
-  {h:"Samy Gemayel", tier:"t2", followers:156, role:"Leader of Kataeb Party. Grandson of Pierre Gemayel, brother of assassinated President Bashir Gemayel. Hit the highest single-tweet reach of any Lebanese politician in the dataset.", typology:"Tier 2 · Sovereignty Statesman",
-    headline:"The April 9 breakout: 151K views and the most explicit cross-coalition negotiation endorsement.",
-    career:"Gemayel has positioned himself as the most articulate Christian sovereignty voice on social media. His personal account is small (156 tweets) but his April 9 tweet endorsing the Lebanon-Israel negotiation track is the highest-reach single statement from any Lebanese politician in the Beacon corpus, signaling that the Lebanese public is hungry for direct endorsement of the peace process.",
-    timeline:[
-      {date:"Nov 2024", text:"Iran robbed Lebanon of its sovereignty through Hezbollah for nearly 30 years.", url:"https://www.terrorism-info.org.il/en/spotlight-on-terrorism-hezbollah-lebanon-and-syria-november-4-11-2024/"},
-      {date:"Dec 2025", text:"Avoiding the issue of illegal weapons could lead Lebanon to a new confrontation.", url:"https://www.terrorism-info.org.il/en/spotlight-on-terrorism-hezbollah-and-lebanon-december-1-8-2025/"},
-      {date:"Mar 26, 2026", text:"There is no escape except disarming Hezbollah, the state reclaiming authority, with diplomacy the basis for liberating Lebanese lands. 31K views.", url:"https://x.com/i/status/2037096396164112389"},
-      {date:"Apr 9, 2026", text:"Full and explicit support for the negotiation track. The goal is clear: stop the war, disarm Hezbollah, Israeli withdrawal as a first step toward sovereignty and peace. 151K views.", url:"https://x.com/i/status/2042278117243265417"},
-      {date:"Apr 10, 2026", text:"No one negotiates for us, especially Iran. We want the interest of Lebanon first, not Iran&apos;s influence. 64.5K views.", url:"https://x.com/i/status/2042598190499672356"}
-    ]},
-
-  {h:"Fouad Arbid", tier:"t1", followers:96, role:"Chairman, American Lebanese Policy Action Committee (ALPAC). Direct Trump interlocutor. The lowest social-media reach in the dataset paired with the highest political access.", typology:"Tier 1 · Back-Channel Lobbyist",
-    headline:"The most explicit Israel endorsement in the cohort &mdash; and the only one with a signed Trump MAGA hat to back it up.",
-    career:"Arbid&apos;s influence does not register in news or knowledge base coverage. It registers in his X account, where he reveals direct relationships with the Trump administration, advocates for ALPAC&apos;s Make Lebanon Great Again brand, and explicitly thanks Israel for the 1982 invasion of Lebanon. ALPAC&apos;s explicit goal is the return of Christian diaspora and a US-Lebanon counterterrorism agreement.",
-    timeline:[
-      {date:"Apr 6, 2026", text:"Practically all non-Hezbollah Lebanese know Hezbollah instigated this war on behalf of Iran and ran like cowards to hide in Christian areas as human shields.", url:"https://x.com/i/status/2041023977171177484"},
-      {date:"Apr 12, 2026", text:"I was there in 1982. Got rid of the PLO. Those tanks and soldiers are the best thing that happened to Lebanon in the last 50 years. Thank you, Israel.", url:"https://x.com/i/status/2043280285681287337"},
-      {date:"Apr 18, 2026", text:"President Trump told me he will fix Lebanon 8 months ago and then signed ALPAC&apos;s Make Lebanon Great Again hat. Time for action.", url:"https://x.com/i/status/2045495151099801717"},
-      {date:"Apr 19, 2026", text:"Our goal is returning the Christian diaspora so we can effect real change and a lasting peace in Lebanon. No options should be off the table.", url:"https://x.com/i/status/2045846548089586047"},
-      {date:"Apr 26, 2026", text:"The best option to reform the LAF is to sign a counterterrorism and security agreement with the US and let CENTCOM reconstitute the army&apos;s divisions.", url:"https://x.com/i/status/2048507232837566662"}
-    ]},
-
-  {h:"Bishop Gregory Mansour", tier:"t3", followers:0, role:"Bishop of the Maronite Eparchy of Saint Maron of Brooklyn. Spiritual leader for North American Maronite Catholics; primary US institutional voice on Lebanese Christian welfare.", typology:"Tier 3 · Pastoral Voice",
-    headline:"The Father Pierre killing on March 9 is the cross-platform event that defines the Eparchy&apos;s 2026 voice.",
-    career:"Bishop Mansour&apos;s public positioning happens primarily through the Eparchy&apos;s Instagram and through cross-coverage of events that touch the Lebanese Christian community. The killing of Father Pierre El-Rahi on March 9, 2026 is the single event most thoroughly triangulated in the Beacon dataset &mdash; appearing across three independent podcasts (Megyn Kelly, PBS, NPR), three news outlets (Daily Wire, Al Jazeera, NPR), and the Eparchy&apos;s own social channels.",
-    timeline:[
-      {date:"Mar 9, 2026", text:"Father Pierre El-Rahi killed in southern Lebanon by Israeli artillery shell after refusing to evacuate. Ambassador said US had asked Israel to spare Christian villages.", url:"https://www.dailywire.com/news/maronite-catholic-priest-confirmed-killed-in-southern-lebanon"},
-      {date:"Mar 10, 2026", text:"Megyn Kelly Show Episode 1269: covered the killing as the Israelis killed a Catholic priest in Lebanon. Father Pierre had refused to evacuate because his Catholic residents were not leaving, some 8,000 of them.", url:"https://youtube.com/watch?v=2HfUYz2hThc"},
-      {date:"Mar 12, 2026", text:"PBS NewsHour: in another border village a priest was killed in a double-tap Israeli attack. The war has deepened sectarian tensions between Christians and Shia Muslims.", url:"https://youtube.com/watch?v=LOdh077d7Po"},
-      {date:"Mar 13, 2026", text:"Eparchy issued Cry for Peace and Justice statement.", url:"https://www.instagram.com/p/DWFDpGYiR5H/"},
-      {date:"Apr 3, 2026", text:"NPR All Things Considered closed the loop, citing the US ambassador to Lebanon&apos;s request that Israel spare Christian villages.", url:"https://youtube.com/watch?v=FAc8OxV54A0"}
-    ]},
-
-  {h:"Henri Zakaria", tier:"t1", followers:5199, role:"Vice President, Mount Lebanon Transitional Council. Diaspora-based; advocates for an independent Christian state in Mount Lebanon allied with Israel, Cyprus, Greece.", typology:"Tier 1 · Diaspora Maximalist",
-    headline:"The most radical voice in the dataset &mdash; viral and unapologetic.",
-    career:"Zakaria openly advocates dissolving the Lebanese Republic in favor of a sovereign Maronite Christian state in Mount Lebanon, allied with Israel. His tweets regularly hit 50K&ndash;700K views; one March 13 post on Hezbollah hit 258K. He is the clearest example of a diaspora voice operating outside Lebanese institutional politics.",
-    timeline:[
-      {date:"Dec 24, 2025", text:"To Christians in Lebanon, watch this video and take heed. If you do not build a Mount Lebanon that protects Christian life, in fifty years you will be watching the last Lebanese Christian woman celebrate a final Christmas. 50K views.", url:"https://x.com/i/status/2003803677186769077"},
-      {date:"Mar 11, 2026", text:"The Sunni Arabs in Lebanon are ticking time bombs. Far more dangerous than Hezbollah. 74K views.", url:"https://x.com/i/status/2031708191407349938"},
-      {date:"Mar 13, 2026", text:"Tell the world: Hezbollah did this. 258K views.", url:"https://x.com/i/status/2032562233385906601"},
-      {date:"Mar 26, 2026", text:"Repost if you support the creation of a sovereign Maronite Christian state in Mount Lebanon, a secure homeland for all Eastern Mediterranean Christians. 50K views.", url:"https://x.com/i/status/2037140264616075615"}
-    ]},
-
-  {h:"Shadi Khalloul", tier:"t1", followers:419, role:"Founder, Israeli Christian Aramaic NGO. Maronite. Israeli citizen. IDF veteran. Former Knesset candidate. The only figure in the cohort who is both Maronite and Israeli.", typology:"Tier 1 · Sovereign Christian Israeli",
-    headline:"The 628K-view rebuttal to Tucker Carlson redefines the maximalist position.",
-    career:"Khalloul is the strategic asset of the cohort. As an Israeli Maronite with IDF service, he bridges Lebanese Christian and Israeli narratives in a way no other voice can. His call for south Lebanese Maronites to declare they want Israel protection and sovereignty (498K views) is the most explicit endorsement of partition. His Tucker Carlson rebuttals are the highest-performing content in the dataset.",
-    timeline:[
-      {date:"Nov 20, 2025", text:"I am an indigenous Christian living in Israel, and yes, I am a Zionist. Under the Israeli government, I have equal rights and a good life. 176K views.", url:"https://x.com/i/status/1991608188244766974"},
-      {date:"Jan 13, 2026", text:"I&apos;m a Christian in Israel. Tucker Carlson attacks my home, claiming Christians are better off in Qatar. Really? Israel&apos;s Christians are full citizens. 628K views.", url:"https://x.com/i/status/2011156870489350286"},
-      {date:"Mar 4, 2026", text:"I call all the Christian Maronite towns in south Lebanon to declare they want Israel protection and sovereignty. 498K views.", url:"https://x.com/i/status/2029165770165375263"},
-      {date:"Mar 25, 2026", text:"I grew up as young Aramaic Maronite Christian boy in Israel during the 1980s. Time for a new Lebanon that meets Christian aspirations. Thank God I was born Israeli. 94K views.", url:"https://x.com/i/status/2036926491481825510"}
-    ]},
-
-  {h:"Brigitte Gabriel", tier:"t1", followers:1262, role:"Founder, ACT for America. Lebanese-American Christian advocate. The cohort&apos;s highest individual viral X reach. Beacon IG layer: 279 posts, 1.37M total likes &mdash; the cohort&apos;s highest aggregate IG engagement.", typology:"Tier 1 · Diaspora Maximalist",
-    headline:"X is her primary influence channel, with 126K-view single posts dwarfing her IG reach &mdash; though IG aggregate of 1.37M likes is still the cohort&apos;s largest.",
-    career:"Gabriel&apos;s X content mirrors her Instagram messaging but achieves dramatically higher viral reach per post. She frames Hezbollah as the existential threat to Lebanon, supports Israeli military operations directly, and is the only tracked figure who explicitly calls for Lebanon to join the Abraham Accords. Total IG engagement across 279 posts: 1.37 million likes.",
-    timeline:[
-      {date:"Mar 6, 2026", text:"I call on all Lebanese to unite and join Egypt, Jordan, the UAE, Gulf states, and Saudi Arabia in the Abraham Accord and make peace with Israel. 4,423 IG likes.", url:"https://www.instagram.com/p/DW9HTzHt8VR/"},
-      {date:"Apr 11, 2026", text:"Hezbollah will be destroyed. This is great news for Lebanon. 62K views.", url:"https://x.com/i/status/2042857932933464326"},
-      {date:"Apr 13, 2026", text:"Israel is not going to stop bombing Lebanon until Hezbollah is completely destroyed. This is a good thing for world peace and security. 126K views.", url:"https://x.com/i/status/2043725168007107014"},
-      {date:"Apr 18, 2026", text:"I&apos;m from Lebanon. I know how these people operate. Iran is determined to destroy us. We have to destroy them first. 78K views.", url:"https://x.com/i/status/2045623401641898498"}
-    ]},
-
-  {h:"IDC (In Defense of Christians)", tier:"t3", followers:381, role:"Washington-based advocacy organization for Middle Eastern Christians. Tonia Khouri is listed by Claude as President; Beacon has zero direct social or news mentions of her by name.", typology:"Tier 3 · Pastoral Institutional",
-    headline:"The most institutionally cautious voice in the cohort &mdash; and the only one quoting Matthew 5:9.",
-    career:"IDC frames Lebanon through Christian persecution and international protection rather than direct Israel positioning. They documented Hezbollah hiding in a church (the altercation that led to Father Pierre&apos;s death), and they organized a 2021 webinar in defense of Patriarch Al-Rahi after Hezbollah threatened his life. Their language never directly endorses Israel but consistently frames Hezbollah as the threat.",
-    timeline:[
-      {date:"2021", text:"Organized webinar Standing With the Maronite Patriarch to Protect the Lebanese People from Conflict after Hezbollah threatened al-Rahi&apos;s life.", url:"https://www.camera.org/article/lebanese-patriarchs-change-of-heart-is-a-real-miracle"},
-      {date:"Mar 10, 2026", text:"Disturbing video showing Hezbollah terrorists hiding in a church in South Lebanon. This altercation led to the death of Father Pierre al-Raai. 7.5K views.", url:"https://x.com/i/status/2031234801550676333"},
-      {date:"Mar 13, 2026", text:"Lebanon&apos;s Christians are not a party to this conflict, yet they once again find themselves forced to the front lines, caught between regional powers and armed actors.", url:"https://x.com/i/status/2032470539332112387"},
-      {date:"Apr 14, 2026", text:"Blessed are the peacemakers, for they will be called children of God. — Matthew 5:9. #Lebanon #Israel #UnitedStates", url:"https://x.com/i/status/2044119596471312465"}
-    ]}
-];
-window.PROFILES = PROFILES;
-
-/* ITINERARY — event timeline */
-const ITINERARY = [
-  {day:"03.09", date:"Mar 9, 2026", loc:"Southern Lebanon", act:"Father Pierre El-Rahi killed by Israeli artillery shell after refusing to evacuate his village", att:["8,000 parishioners","6+ outlets","cross-platform"], gaza:true},
-  {day:"03.10", date:"Mar 10, 2026", loc:"Megyn Kelly Show", act:"Episode 1269 covers Father Pierre as the Israelis killed a Catholic priest", att:["podcast","42K viewers"]},
-  {day:"03.11", date:"Mar 11, 2026", loc:"Diaspora · X", act:"Henri Zakaria: The Sunni Arabs in Lebanon are ticking time bombs. 74K views", att:["@realhzakaria","Tier 1"]},
-  {day:"03.13", date:"Mar 13, 2026", loc:"Washington · IDC", act:"Lebanon&apos;s Christians are not a party to this conflict — institutional framing", att:["@indefchristians","Tier 3"]},
-  {day:"03.13", date:"Mar 13, 2026", loc:"Diaspora · X", act:"Henri Zakaria: Tell the world: Hezbollah did this. 258K views", att:["highest March reach"]},
-  {day:"03.25", date:"Mar 25, 2026", loc:"Israel · X", act:"Khalloul: Time for a new Lebanon that meets Christian aspirations. Thank God I was born Israeli. 94K views", att:["@shadikhalloul"]},
-  {day:"03.26", date:"Mar 26, 2026", loc:"Beirut · X", act:"Gemayel: There is no escape except disarming Hezbollah. 31K views", att:["@samygemayel","Tier 2"]},
-  {day:"04.06", date:"Apr 6, 2026", loc:"ALPAC · X", act:"Arbid: practically all non-Hezbollah Lebanese know Hezbollah instigated this war", att:["@fouad_arbid","Trump-adjacent"]},
-  {day:"04.09", date:"Apr 9, 2026", loc:"Beirut · X", act:"Gemayel announces full and explicit support for the negotiation track. 151K views", att:["highest Lebanese politician reach","BREAKOUT"], sync:true},
-  {day:"04.12", date:"Apr 12, 2026", loc:"ALPAC · X", act:"Arbid: Thank you, Israel. Referring to 1982 invasion", att:["most explicit cohort endorsement"]},
-  {day:"04.13", date:"Apr 13, 2026", loc:"Diaspora · X", act:"Gabriel: Israel is not going to stop bombing Lebanon until Hezbollah is completely destroyed. 126K views", att:["@ACTBrigitte"]},
-  {day:"04.18", date:"Apr 18, 2026", loc:"ALPAC · X", act:"Arbid reveals Trump signed ALPAC&apos;s Make Lebanon Great Again hat", att:["Trump back-channel"], ext:true},
-  {day:"04.19", date:"Apr 19, 2026", loc:"Bkerké · IG", act:"Patriarch Al-Rahi prays publicly for lasting, comprehensive, and just peace under the banner of the state alone", att:["Tier 3 · pastoral evolution"]},
-  {day:"04.20", date:"Apr 20, 2026", loc:"Beirut · X", act:"Geagea rejects argument to delay direct Aoun-Netanyahu meeting. 16.5K views", att:["@DrSamirGeagea"]},
-  {day:"04.21", date:"Apr 21, 2026", loc:"LF Party · X", act:"Hasbani: a historic opportunity for Lebanon to pursue long-term stability with Israel", att:["@lfpartyofficial"]},
-  {day:"04.26", date:"Apr 26, 2026", loc:"Beirut · TV", act:"Geagea: There is a beast on the border. The solution is to negotiate with Israel. 27K views", att:["Most detailed Israel statement","Tier 2"], sync:true},
-  {day:"04.28", date:"Apr 28, 2026", loc:"VFT · Beacon", act:"This intelligence layer published", att:["Internal · v1.0"]}
-];
-window.ITINERARY = ITINERARY;
-
-/* GAZA / KEY FINDINGS — three case-study cards */
-const GAZA = [
-  {h:"Father Pierre El-Rahi", title:"Single event, six independent sources", tag:"CROSS-PLATFORM",
-   finds:[
-     "Beacon traces the same event across three podcasts (Megyn Kelly, PBS, NPR), three news outlets (Daily Wire, Al Jazeera, NPR), and direct social posts from the Maronite Eparchy and IDC",
-     "Each source frames the killing differently: Megyn Kelly emphasizes Catholic identity, PBS emphasizes sectarian tension, NPR adds the US ambassador&apos;s request that Israel spare Christian villages",
-     "IDC&apos;s March 10 post documenting Hezbollah hiding in a church reframes the same incident as the cause of the killing, not the consequence",
-     "Single-platform monitoring would have produced one narrative. Beacon assembles five"
-   ],
-   tweets:[
-     {dt:"Mar 9, 2026", qt:"Daily Wire: Maronite Catholic priest confirmed killed in southern Lebanon", url:"https://www.dailywire.com/news/maronite-catholic-priest-confirmed-killed-in-southern-lebanon"},
-     {dt:"Mar 10, 2026", qt:"IDC X: Disturbing video showing Hezbollah terrorists hiding in a church. This altercation led to the death of Father Pierre", url:"https://x.com/i/status/2031234801550676333"},
-     {dt:"Mar 13, 2026", qt:"Eparchy of Saint Maron Cry for Peace and Justice — Instagram", url:"https://www.instagram.com/p/DWFDpGYiR5H/"}
-   ]},
-
-  {h:"Samy Gemayel · April 9", title:"The 151K-view tweet that changed the room", tag:"BREAKOUT",
-   finds:[
-     "Highest single-tweet reach by any Lebanese politician in the Beacon dataset",
-     "Endorsed the Lebanon-Israel negotiation track explicitly &mdash; not as policy aspiration but as a process already underway",
-     "Beacon detected Lebanese public hunger for an open endorsement that traditional polling would have missed",
-     "Followed within 24 hours by Gemayel&apos;s clarifying tweet explicitly excluding Iran from the negotiation table"
-   ],
-   tweets:[
-     {dt:"Apr 9, 2026 · 151K views", qt:"Full and explicit support for the negotiation track between official Lebanon and Israel. The goal is clear: stop the war, disarm Hezbollah, Israeli withdrawal as a first step toward sovereignty and peace.", url:"https://x.com/i/status/2042278117243265417"},
-     {dt:"Apr 10, 2026 · 64.5K views", qt:"No one negotiates for us, especially Iran. We want the interest of Lebanon first, not Iran&apos;s influence.", url:"https://x.com/i/status/2042598190499672356"}
-   ]},
-
-  {h:"ALPAC · Trump back-channel", title:"96 tweets, zero news, one signed MAGA hat", tag:"INVISIBLE TO LLMs",
-   finds:[
-     "Fouad Arbid has zero knowledge base, zero news, and zero podcast mentions across all Beacon layers",
-     "His X account documents direct relationship with President Trump and ALPAC&apos;s explicit Make Lebanon Great Again brand strategy",
-     "He thanks Israel for the 1982 invasion of Lebanon &mdash; the most explicit endorsement from any figure in the cohort",
-     "Lowest social media reach in the dataset paired with the highest political access. Beacon catches what news monitoring cannot"
-   ],
-   tweets:[
-     {dt:"Apr 12, 2026", qt:"I was there in 1982. Got rid of the PLO. Those tanks and soldiers are the best thing that happened to Lebanon in the last 50 years. Thank you, Israel.", url:"https://x.com/i/status/2043280285681287337"},
-     {dt:"Apr 18, 2026", qt:"President Trump told me he will fix Lebanon 8 months ago and then signed ALPAC&apos;s Make Lebanon Great Again hat. Time for action.", url:"https://x.com/i/status/2045495151099801717"},
-     {dt:"Apr 26, 2026", qt:"The best option to reform the LAF is to sign a counterterrorism and security agreement with the US and let CENTCOM reconstitute the army&apos;s divisions.", url:"https://x.com/i/status/2048507232837566662"}
-   ]}
-];
-window.GAZA = GAZA;
-
-/* AW STATS + FEED */
-const AW_STATS = [
-  {n:"628K", v:"Khalloul on Tucker Carlson · Jan 13"},
-  {n:"258K", v:"Zakaria on Hezbollah · Mar 13"},
-  {n:"176K", v:"Khalloul Zionist self-ID · Nov 20"},
-  {n:"151K", v:"Gemayel breakout tweet · Apr 9"},
-  {n:"126K", v:"Gabriel on bombing Hezbollah · Apr 13"},
-  {n:"94K",  v:"Khalloul Born Israeli · Mar 25"}
-];
-window.AW_STATS = AW_STATS;
-
-const AW_FEED = [
-  {meta:"Khalloul · Jan 13, 2026 · 628K views",
-   q:"Tucker Carlson attacks my home, claiming Christians are better off in Qatar. Really? Israel&apos;s Christians are full citizens. We vote, serve in the army, and hold Knesset seats.",
-   targets:["Tucker Carlson","Christian-Israeli","Sovereignty"]},
-  {meta:"Zakaria · Mar 13, 2026 · 258K views",
-   q:"Tell the world: Hezbollah did this.",
-   targets:["Hezbollah","Father Pierre","Diaspora"]},
-  {meta:"Khalloul · Mar 4, 2026 · 498K views",
-   q:"I call all the Christian Maronite towns in south Lebanon to declare they want Israel protection and sovereignty. With this current Lebanese state you have no decent future.",
-   targets:["Partition","South Lebanon","Tier 1"]},
-  {meta:"Gabriel · Apr 13, 2026 · 126K views",
-   q:"Israel is not going to stop bombing Lebanon until Hezbollah is completely destroyed. This is a good thing for world peace and security.",
-   targets:["IDF support","Hezbollah destruction"]},
-  {meta:"Gemayel · Apr 9, 2026 · 151K views",
-   q:"Full and explicit support for the negotiation track between official Lebanon and Israel. The goal is clear: stop the war, disarm Hezbollah, Israeli withdrawal as a first step toward sovereignty and peace.",
-   targets:["Negotiation","Disarmament","Tier 2"]},
-  {meta:"Pres. Aoun · Apr 17, 2026 · 30,985 IG likes",
-   q:"Ceasefire address from the Lebanese presidency &mdash; the institutional baseline against which every other voice in this dataset is measured.",
-   targets:["Institutional","Aoun","Surfaced by Beacon"]}
-];
-window.AW_FEED = AW_FEED;
-
-/* Sustained — Patriarch evolution */
-const SUSTAINED_PTS = [
-  {pos:5,  lab:"2014"},
-  {pos:24, lab:"2021", hot:true},
-  {pos:55, lab:"Aug 2025"},
-  {pos:75, lab:"Nov 2025"},
-  {pos:95, lab:"Apr 2026"}
-];
-window.SUSTAINED_PTS = SUSTAINED_PTS;
-
-const SUSTAINED_CARDS = [
-  {date:"2014", who:"Patriarch Al-Rahi", title:"Common cause with Iran and Hezbollah", desc:"Per CAMERA reconstruction, the Patriarch openly sought common cause with Iran and Hezbollah against ISIS at the height of the Syrian civil war."},
-  {date:"2021", who:"Patriarch Al-Rahi", title:"Threatened by Hezbollah for sovereignty stance", desc:"Began calling for the Lebanese Army to control southern Lebanon. Hezbollah threatened his life. IDC organized a webinar in his defense."},
-  {date:"Aug 2025", who:"Patriarch Al-Rahi", title:"Lebanon could make peace with Israel", desc:"Told a Terrorism Info reporter: Lebanon could make peace with Israel when the time was right. Loyalty had to lie exclusively with Lebanon and not with Iran."},
-  {date:"Nov 2025", who:"Patriarch Al-Rahi", title:"BBC interview during Pope Leo&apos;s visit", desc:"Told the BBC: He brings hope when the Lebanese feel abandoned and we feel uplifted. The papal visit framed Lebanese Christians as a vulnerable but viable community."},
-  {date:"Apr 19, 2026", who:"Patriarch Al-Rahi", title:"Public prayer for state-only peace", desc:"On Instagram, prayed publicly for the ceasefire to become a lasting, comprehensive, and just peace, under the banner of the state alone, and through the restoration of its sovereignty."},
-  {date:"Apr 28, 2026", who:"Beacon", title:"Twelve-year reversal documented end-to-end", desc:"From pro-Hezbollah common cause in 2014 to state-only peace in 2026 &mdash; a complete ideological reversal that Beacon assembles across knowledge base, news, and Instagram."}
-];
-window.SUSTAINED_CARDS = SUSTAINED_CARDS;
-
-/* QUOTES — 20 with theme tags */
-const QUOTES = [
-  {h:"Samir Geagea", date:"Apr 26, 2026 · 27K views",
-    q:"There is a beast on the border. Recent months have proven we cannot confront it militarily. The solution today is what the President proposed: negotiate with Israel.",
-    theme:"Negotiation", url:"https://x.com/i/status/2048460765988794627"},
-  {h:"Samy Gemayel", date:"Apr 9, 2026 · 151K views",
-    q:"Full and explicit support for the negotiation track between official Lebanon and Israel. The goal is clear: stop the war, disarm Hezbollah, Israeli withdrawal as a first step toward sovereignty and peace.",
-    theme:"Negotiation", url:"https://x.com/i/status/2042278117243265417"},
-  {h:"Samy Gemayel", date:"Apr 10, 2026 · 64.5K views",
-    q:"No one negotiates for us, especially Iran. We want the interest of Lebanon first, not Iran&apos;s influence.",
-    theme:"Sovereignty", url:"https://x.com/i/status/2042598190499672356"},
-  {h:"Shadi Khalloul", date:"Mar 4, 2026 · 498K views",
-    q:"I call all the Christian Maronite towns in south Lebanon to declare they want Israel protection and sovereignty. With this current Lebanese state you have no decent future.",
-    theme:"Sovereignty", url:"https://x.com/i/status/2029165770165375263"},
-  {h:"Shadi Khalloul", date:"Jan 13, 2026 · 628K views",
-    q:"I&apos;m a Christian in Israel. Tucker Carlson attacks my home, claiming Christians are better off in Qatar. Really? Israel&apos;s Christians are full citizens. We vote, serve in the army, and hold Knesset seats.",
-    theme:"Christian-Israeli", url:"https://x.com/i/status/2011156870489350286"},
-  {h:"Henri Zakaria", date:"Mar 26, 2026 · 50K views",
-    q:"Repost if you support the creation of a sovereign Maronite Christian state in Mount Lebanon, a secure homeland for all Eastern Mediterranean Christians.",
-    theme:"Partition", url:"https://x.com/i/status/2037140264616075615"},
-  {h:"Henri Zakaria", date:"Mar 13, 2026 · 258K views",
-    q:"Tell the world: Hezbollah did this.",
-    theme:"Anti-Hezbollah", url:"https://x.com/i/status/2032562233385906601"},
-  {h:"Brigitte Gabriel", date:"Apr 13, 2026 · 126K views",
-    q:"Israel is not going to stop bombing Lebanon until Hezbollah is completely destroyed. This is a good thing for world peace and security.",
-    theme:"IDF support", url:"https://x.com/i/status/2043725168007107014"},
-  {h:"Brigitte Gabriel", date:"Apr 18, 2026 · 78K views",
-    q:"I&apos;m from Lebanon. I know how these people operate. Iran is determined to destroy us. We have to destroy them first.",
-    theme:"Anti-Iran", url:"https://x.com/i/status/2045623401641898498"},
-  {h:"Fouad Arbid", date:"Apr 18, 2026",
-    q:"President Trump told me he will fix Lebanon 8 months ago and then signed ALPAC&apos;s Make Lebanon Great Again hat. Time for action.",
-    theme:"Trump access", url:"https://x.com/i/status/2045495151099801717"},
-  {h:"Fouad Arbid", date:"Apr 12, 2026",
-    q:"I was there in 1982. Got rid of the PLO. Those tanks and soldiers are the best thing that happened to Lebanon in the last 50 years. Thank you, Israel.",
-    theme:"Pro-Israel", url:"https://x.com/i/status/2043280285681287337"},
-  {h:"Cardinal Bechara Al-Rahi", date:"Apr 19, 2026",
-    q:"A lasting, comprehensive, and just peace, under the banner of the state alone, and through the restoration of its sovereignty.",
-    theme:"Pastoral", url:"https://www.instagram.com/p/DXglS-tFUVt/"},
-  {h:"Cardinal Bechara Al-Rahi", date:"Aug 2025",
-    q:"Lebanon could make peace with Israel when the time was right. The army would defend all the Lebanese and Hezbollah&apos;s loyalty had to lie exclusively with Lebanon and not with Iran.",
-    theme:"Negotiation", url:"https://www.terrorism-info.org.il/en/spotlight-on-terrorism-hezbollah-and-lebanon-august-25-september-1-2025/"},
-  {h:"IDC (In Defense of Christians)", date:"Mar 13, 2026",
-    q:"Lebanon&apos;s Christians are not a party to this conflict, yet they once again find themselves forced to the front lines, caught between regional powers and armed actors.",
-    theme:"Pastoral", url:"https://x.com/i/status/2032470539332112387"},
-  {h:"IDC (In Defense of Christians)", date:"Apr 14, 2026",
-    q:"Blessed are the peacemakers, for they will be called children of God. — Matthew 5:9 #Lebanon #Israel #UnitedStates",
-    theme:"Pastoral", url:"https://x.com/i/status/2044119596471312465"},
-  {h:"Samir Geagea", date:"Apr 20, 2026 · 16.5K views",
-    q:"I reject the argument that any direct meeting between the Lebanese president and Israeli PM should be delayed. Delaying will only keep Lebanon stuck, perhaps for decades.",
-    theme:"Negotiation", url:"https://x.com/i/status/2046255450371375497"},
-  {h:"Samir Geagea", date:"Nov 2025",
-    q:"Even if Hezbollah had once acted as the resistance, at other times it served as an arm of the Revolutionary Guards, serving Iranian interests at the cost of thousands of Lebanese deaths and the state itself.",
-    theme:"Anti-Hezbollah", url:"https://www.terrorism-info.org.il/en/hezbollahs-defiance-the-instability-of-the-ceasefire-andattempts-to-promote-an-israeli-lebanese-dialogue/"},
-  {h:"Henri Zakaria", date:"Mar 11, 2026 · 74K views",
-    q:"The Sunni Arabs in Lebanon are ticking time bombs. Far more dangerous than Hezbollah.",
-    theme:"Partition", url:"https://x.com/i/status/2031708191407349938"},
-  {h:"Lebanese Forces Party", date:"Apr 21, 2026 (Hasbani)",
-    q:"It is a historic opportunity for Lebanon to reclaim control and pursue long-term stability with Israel.",
-    theme:"Negotiation", url:"https://x.com/i/status/2046542658709909725"},
-  {h:"Shadi Khalloul", date:"Mar 25, 2026 · 94K views",
-    q:"I grew up as young Aramaic Maronite Christian boy in Israel during the 1980s. Time for a new Lebanon that meets Christian aspirations in their homeland Mt. Lebanon. Thank God I was born Israeli, and thank you Israel.",
-    theme:"Christian-Israeli", url:"https://x.com/i/status/2036926491481825510"}
-];
-window.QUOTES = QUOTES;
-
-const QUOTE_THEMES = ["All","Negotiation","Sovereignty","Partition","Christian-Israeli","Pastoral","Anti-Hezbollah","Anti-Iran","IDF support","Pro-Israel","Trump access"];
-window.QUOTE_THEMES = QUOTE_THEMES;
-
-/* VERIFICATION */
-const VER_KPIS = [
-  {k:"Knowledge base segments", v:"258,906", d:"Indexed segments across 9 think tanks (CAMERA, Terrorism Info, Washington Institute, others). Sources Patriarch Al-Rahi&apos;s 2014 &rarr; 2026 reversal that Claude alone cannot reconstruct."},
-  {k:"Cross-platform corroboration", v:"6 / 1", d:"Six independent sources triangulating the Father Pierre El-Rahi killing &mdash; podcasts, news, social, institutional. Not in Claude&apos;s brief."},
-  {k:"Figures with zero coverage", v:"3", d:"El-Hage, Abdel Sater, Zaidan&apos;s Eparchy &mdash; all in Claude&apos;s 9-figure brief, all flagged here as unverifiable in any Beacon layer."}
-];
-
-/* CONTRIBUTION MATRIX — 8 dimensions of Claude alone vs Beacon layer */
-const CONTRIB_MATRIX = [
-  {dim:"Social media posts",
-   claude:"Referenced but unverifiable",
-   beacon:"12,000+ verified tweets and IG posts from tracked accounts &mdash; with engagement metrics"},
-  {dim:"Engagement data",
-   claude:"Estimated, generic",
-   beacon:"Exact view counts, likes, retweets &mdash; e.g., Khalloul 628K, Gemayel 151K, Gabriel 1.37M total IG"},
-  {dim:"Podcast coverage",
-   claude:"Not included",
-   beacon:"Megyn Kelly, PBS NewsHour, NPR, Ben Shapiro &mdash; verified with timestamps"},
-  {dim:"Knowledge base",
-   claude:"General references only",
-   beacon:"258,906 indexed segments across 9 think tanks &mdash; longitudinal context"},
-  {dim:"News cross-reference",
-   claude:"Not included",
-   beacon:"Daily Wire, Al Jazeera, BBC, WaPo coverage of El-Rahi killing, ceasefire, papal visit"},
-  {dim:"Position tracking over time",
-   claude:"Static snapshot",
-   beacon:"Dynamic: Al-Rahi 2014 &rarr; 2021 &rarr; 2025 &rarr; 2026 verified across sources"},
-  {dim:"New voices discovered",
-   claude:"9 figures profiled",
-   beacon:"3 additional high-engagement voices surfaced: Khalloul, Zakaria, Aoun"},
-  {dim:"Continuous monitoring",
-   claude:"One-time output",
-   beacon:"Live feeds update as accounts post &mdash; report can be re-run at any time"}
-];
-window.CONTRIB_MATRIX = CONTRIB_MATRIX;
-window.VER_KPIS = VER_KPIS;
-
-const VER_TABLE = [
-  {h:"Samir Geagea", n:1630, s:"Triangulated", note:"X + KB + News across Nov 2025 → Apr 2026"},
-  {h:"Cardinal Al-Rahi", n:8, s:"Triangulated", note:"KB + News + IG · 12-yr longitudinal arc"},
-  {h:"Samy Gemayel", n:156, s:"Triangulated", note:"X + KB · breakout April 9 documented"},
-  {h:"Fouad Arbid", n:96, s:"Analyzed", note:"X-only · zero KB or news · social-only figure"},
-  {h:"Bishop Mansour", n:240, s:"Triangulated", note:"IG + Podcast (3) + News (3) on Father Pierre"},
-  {h:"Henri Zakaria", n:5199, s:"Applied", note:"X-only · diaspora maximalist baseline"},
-  {h:"Shadi Khalloul", n:419, s:"Applied", note:"X-only · Israeli Maronite, not Lebanese institutional"},
-  {h:"Brigitte Gabriel", n:1262, s:"Applied", note:"X + IG · zero KB or news"},
-  {h:"IDC", n:381, s:"Triangulated", note:"X + KB · Washington institutional voice"},
-  {h:"Lebanese Forces Party", n:5484, s:"Applied", note:"Daily #موقف_اليوم editorial baseline"},
-  {h:"Kataeb Party", n:216, s:"Applied", note:"Party amplification of Gemayel"},
-  {h:"Pres. Aoun", n:475, s:"Applied", note:"Official presidency account · process leadership"},
-  {h:"Toufic Baaklini", n:14, s:"Gap", note:"Inactive on X since Mar 19; off-platform influence not capturable"},
-  {h:"Archbishops El-Hage / Abdel Sater / Zaidan", n:0, s:"Gap", note:"Zero ingested data across all Beacon layers · noted as unverifiable"}
-];
-window.VER_TABLE = VER_TABLE;
-
-const SOURCES = [
-  {n:"01", pub:"Beacon X · 2026", title:"@DrSamirGeagea archive", desc:"1,630 tweets ingested. Latest Apr 26. Includes Apr 26 TV interview thread.", url:"https://x.com/DrSamirGeagea"},
-  {n:"02", pub:"Beacon X · 2026", title:"@samygemayel archive", desc:"156 tweets including Apr 9 breakout (151K views) and Apr 10 Iran exclusion follow-up.", url:"https://x.com/samygemayel"},
-  {n:"03", pub:"Beacon X · 2026", title:"@fouad_arbid archive", desc:"96 tweets revealing direct Trump back-channel and explicit pro-Israel positioning.", url:"https://x.com/fouad_arbid"},
-  {n:"04", pub:"Beacon X · 2026", title:"@shadikhalloul archive", desc:"419 tweets. Israeli Maronite voice. Highest cohort virality on Tucker Carlson rebuttal (628K views).", url:"https://x.com/shadikhalloul"},
-  {n:"05", pub:"Beacon X · 2026", title:"@realhzakaria archive", desc:"5,199 tweets. Mount Lebanon Transitional Council. Diaspora maximalist baseline.", url:"https://x.com/realhzakaria"},
-  {n:"06", pub:"Beacon X · 2026", title:"@ACTBrigitte archive", desc:"1,262 tweets. ACT for America. Reach significantly higher on X than Instagram.", url:"https://x.com/ACTBrigitte"},
-  {n:"07", pub:"Beacon X · 2026", title:"@indefchristians archive", desc:"381 tweets. IDC institutional framing. Matthew 5:9 + Hezbollah in church documentation.", url:"https://x.com/indefchristians"},
-  {n:"08", pub:"Beacon X · 2026", title:"@lfpartyofficial archive", desc:"5,484 tweets. Daily #موقف_اليوم editorial drumbeat amplifying Geagea&apos;s line.", url:"https://x.com/lfpartyofficial"},
-  {n:"09", pub:"Beacon IG · 2026", title:"Maronite Patriarchate", desc:"311 IG posts including the April 19 prayer for state-only peace.", url:"https://www.instagram.com/p/DXglS-tFUVt/"},
-  {n:"10", pub:"Beacon IG · 2026", title:"Eparchy of Saint Maron", desc:"240 posts. Cry for Peace and Justice statement following Father Pierre&apos;s killing.", url:"https://www.instagram.com/p/DWFDpGYiR5H/"},
-  {n:"11", pub:"CAMERA · 2025", title:"Lebanese Patriarch&apos;s Change of Heart Is a Real Miracle", desc:"Pro-Israel knowledge base source. Documents 2014 → 2021 reversal with primary citations.", url:"https://www.camera.org/article/lebanese-patriarchs-change-of-heart-is-a-real-miracle"},
-  {n:"12", pub:"Terrorism Info · Aug 2025", title:"Spotlight: Hezbollah and Lebanon, Aug 25 &ndash; Sep 1, 2025", desc:"Pro-Israel KB. Direct Patriarch Al-Rahi quotes on peace with Israel and exclusive Lebanese loyalty.", url:"https://www.terrorism-info.org.il/en/spotlight-on-terrorism-hezbollah-and-lebanon-august-25-september-1-2025/"},
-  {n:"13", pub:"Terrorism Info · Nov 2025", title:"Hezbollah&apos;s Defiance and the Instability of the Ceasefire", desc:"Pro-Israel KB. Sources Geagea&apos;s Revolutionary Guards quote.", url:"https://www.terrorism-info.org.il/en/hezbollahs-defiance-the-instability-of-the-ceasefire-andattempts-to-promote-an-israeli-lebanese-dialogue/"},
-  {n:"14", pub:"BBC · Nov 30, 2025", title:"Pope Leo Finds His Voice", desc:"BBC interview with Patriarch Al-Rahi during the papal visit.", url:"https://www.bbc.com/news/articles/cvgrwedyr0eo"}
-];
-window.SOURCES = SOURCES;
-
-const LIMITATIONS = [
-  "Three figures from Claude&apos;s nine-figure brief have zero verifiable digital footprint in any Beacon layer: Archbishop Moussa El-Hage, Archbishop Paul Abdel Sater, and Bishop Elias Zaidan. Their positions in this report are not asserted &mdash; they are flagged as unknown.",
-  "Tonia Khouri, listed by Claude as IDC President, has no direct social, news, podcast, or knowledge base mentions in Beacon by name. Her institutional positions are inferred from IDC&apos;s collective output.",
-  "Toufic Baaklini has 14 tweets archived and his last X activity is March 19, 2026. His off-platform institutional influence (IDC and ALPAC linkages) is not directly capturable by Beacon&apos;s current ingestion methods.",
-  "Beacon&apos;s knowledge base is currently weighted pro-Israel (CAMERA, Terrorism Info, Washington Institute). Counter-narrative sources (Gebran Bassil&apos;s FPM, Hezbollah-aligned Christian voices) are not yet ingested as a structured baseline.",
-  "Engagement metrics (views, likes) reflect the X platform algorithm at the time of ingestion. Metrics may have shifted since.",
-  "Arabic-language tweets are translated for analysis. Quote nuances may not survive translation perfectly. Original Arabic is preserved in the ingestion record."
-];
-window.LIMITATIONS = LIMITATIONS;
-</script>
-
-<script>
-/* ====== RENDER ====== */
 (function(){
-  const $ = (sel,scope)=>(scope||document).querySelector(sel);
-  const $$ = (sel,scope)=>Array.from((scope||document).querySelectorAll(sel));
-  const esc = (s)=>String(s||"");
-  const num = (n)=>{
-    if(n==null) return "";
-    const v = typeof n === "number" ? n : Number(n);
-    if(isNaN(v)) return String(n);
-    if(v >= 1e6) return (v/1e6).toFixed(1).replace(/\.0$/,"")+"M";
-    if(v >= 1e3) return v.toLocaleString();
-    return String(v);
-  };
-
-  /* METRICS */
-  const mg = $("#metrics-grid");
-  METRICS.forEach((m,i)=>{
-    const cls = ["mc"];
-    if(m.alt) cls.push("alt");
-    if(m.navy) cls.push("navy");
-    if(m.olive) cls.push("olive");
-    const div = document.createElement("div");
-    div.className = cls.join(" ");
-    const pct = Math.min(100, 25 + (i*9));
-    div.innerHTML = `
-      <div class="mc-k">${esc(m.k)}</div>
-      <div><span class="mc-v">${esc(m.v)}</span><span class="mc-u">${esc(m.u)}</span></div>
-      <div class="mc-p">${esc(m.p)}</div>
-      <div class="mc-bar" style="width:${pct}%"></div>
-    `;
-    mg.appendChild(div);
-  });
-
-  /* TIERS */
-  const tg = $("#tiers-grid");
-  TIERS.forEach(t=>{
-    const div = document.createElement("div");
-    div.className = "tier "+t.kind;
-    div.innerHTML = `
-      <div class="tier-num">${esc(t.num)}</div>
-      <div class="tier-name">${esc(t.name)}</div>
-      <div class="tier-arc">${esc(t.arc)}</div>
-      <div class="tier-desc">${esc(t.desc)}</div>
-      <div class="tier-handles">${t.handles.map(h=>`<span>${esc(h)}</span>`).join("")}</div>
-    `;
-    tg.appendChild(div);
-  });
-
-  /* ARCHETYPES */
-  const ag = $("#archetypes-grid");
-  ag.style.gridTemplateColumns="repeat(2,1fr)";
-  if(window.matchMedia("(max-width:1024px)").matches) ag.style.gridTemplateColumns="1fr";
-  ARCHETYPES.forEach(t=>{
-    const div = document.createElement("div");
-    div.className = "tier "+(t.kind||"");
-    div.innerHTML = `
-      <div class="tier-num">${esc(t.num)}</div>
-      <div class="tier-name">${esc(t.name)}</div>
-      <div class="tier-arc">${esc(t.arc)}</div>
-      <div class="tier-desc">${esc(t.desc)}</div>
-      <div class="tier-handles">${t.handles.map(h=>`<span>${esc(h)}</span>`).join("")}</div>
-    `;
-    ag.appendChild(div);
-  });
-
-  /* BA */
-  const bt = $("#ba-tones");
-  let baFilter = "All";
-  function renderBaTones(){
-    bt.innerHTML = "";
-    BA_TONES.forEach(t=>{
-      const c = document.createElement("button");
-      c.className = "chip"+(t===baFilter?" active":"");
-      c.textContent = t;
-      c.onclick = ()=>{baFilter = t; renderBaTones(); renderBa();};
-      bt.appendChild(c);
+  var DATA={"axes": ["Recency (post-Jan 2026)", "Event coverage", "Engagement metrics", "Account cadence", "Negative findings", "Long-tail figures", "Synthesis & framing"], "scaleMax": 5, "entities": [{"name": "Claude alone (no tools)", "color": "#9DA8C9", "vals": [0, 1, 0, 0, 0, 1, 5]}, {"name": "Claude + web search", "color": "#7795CC", "vals": [4, 4, 1, 0, 0, 2, 5]}, {"name": "Beacon", "color": "#3A4DA7", "vals": [5, 5, 5, 5, 4, 4, 5]}]}; var ID="sec-radar";
+  function render(){
+    var svg=document.getElementById(ID+"__svg");if(!svg)return;svg.innerHTML="";
+    var W=520,H=520,cx=W/2,cy=H/2,R=180;
+    var n=DATA.axes.length, mx=DATA.scaleMax||5;
+    function pt(i,v){var a=(-Math.PI/2)+(2*Math.PI*i/n);var r=(v/mx)*R;return [cx+Math.cos(a)*r, cy+Math.sin(a)*r]}
+    // grid rings
+    for(var k=1;k<=4;k++){
+      var pts=[];for(var i=0;i<n;i++){var p=pt(i,(k/4)*mx);pts.push(p[0]+","+p[1])}
+      var ring=document.createElementNS("http://www.w3.org/2000/svg","polygon");
+      ring.setAttribute("points",pts.join(" "));ring.setAttribute("class","compass-grid");svg.appendChild(ring);
+    }
+    // axes + labels
+    for(var i=0;i<n;i++){
+      var p=pt(i,mx);
+      var ax=document.createElementNS("http://www.w3.org/2000/svg","line");
+      ax.setAttribute("x1",cx);ax.setAttribute("y1",cy);ax.setAttribute("x2",p[0]);ax.setAttribute("y2",p[1]);ax.setAttribute("class","compass-axis");svg.appendChild(ax);
+      var lp=pt(i,mx*1.18);
+      var lb=document.createElementNS("http://www.w3.org/2000/svg","text");
+      lb.setAttribute("class","compass-axis-label");lb.setAttribute("x",lp[0]);lb.setAttribute("y",lp[1]);
+      lb.setAttribute("text-anchor", lp[0]>cx+6?"start":(lp[0]<cx-6?"end":"middle"));
+      lb.setAttribute("dy",lp[1]>cy?"12":(lp[1]<cy?"-2":"4"));
+      lb.textContent=DATA.axes[i];svg.appendChild(lb);
+    }
+    // entities
+    DATA.entities.forEach(function(e,ei){
+      var pts=[];for(var i=0;i<n;i++){var p=pt(i,e.vals[i]);pts.push(p[0]+","+p[1])}
+      var poly=document.createElementNS("http://www.w3.org/2000/svg","polygon");
+      poly.setAttribute("points",pts.join(" "));poly.setAttribute("class","compass-poly");
+      poly.setAttribute("stroke",e.color);poly.setAttribute("fill",e.color);
+      poly.style.animationDelay=(ei*0.3).toFixed(2)+"s";svg.appendChild(poly);
+      for(var i=0;i<n;i++){var p=pt(i,e.vals[i]);
+        var d=document.createElementNS("http://www.w3.org/2000/svg","circle");
+        d.setAttribute("cx",p[0]);d.setAttribute("cy",p[1]);d.setAttribute("r","4");
+        d.setAttribute("fill",e.color);d.setAttribute("class","compass-dot");
+        d.style.animationDelay=(ei*0.3+i*0.05+0.4).toFixed(2)+"s";svg.appendChild(d);}
     });
+    document.getElementById(ID+"__legend").innerHTML=DATA.entities.map(function(e){return "<div class='lg'><span class='sw' style='background:"+e.color+"'></span>"+e.name+"</div>"}).join("");
   }
-  function tonePill(t){
-    const cls = t==="VERIFIED" ? "tone-beacon" : "tone-claude";
-    return `<span class="ba-tone-pill ${cls}">${esc(t)}</span>`;
-  }
-  function renderBa(){
-    const grid = $("#ba-grid"); grid.innerHTML="";
-    const items = baFilter==="All" ? BA : BA.filter(b=>b.tone_before===baFilter || b.tone_after===baFilter);
-    items.forEach(b=>{
-      const row = document.createElement("div");
-      row.className = "ba-row fade-in";
-      row.innerHTML = `
-        <div class="ba-side ba-before">
-          <div class="ba-side-label">Claude · ${esc(b.tone_before)}</div>
-          <div class="ba-side-h">${esc(b.h)}</div>
-          <div class="ba-side-text">${b.before.text}</div>
-          <div class="ba-side-meta">${tonePill(b.tone_before)} <span>${esc(b.before.date||"")}</span></div>
-        </div>
-        <div class="ba-arrow">
-          <div class="ba-delta"><strong>${esc(b.delta)}</strong>${esc(b.delta_sub)}</div>
-        </div>
-        <div class="ba-side ba-after">
-          <div class="ba-side-label">Beacon · ${esc(b.tone_after)}</div>
-          <div class="ba-side-h">${esc(b.h)}</div>
-          <div class="ba-side-text">${b.after.text}</div>
-          <div class="ba-side-meta">${tonePill(b.tone_after)} <span>${esc(b.after.date||"")}</span>${b.after.url?` <a href="${esc(b.after.url)}" target="_blank" rel="noopener">view source &rarr;</a>`:""}</div>
-        </div>
-      `;
-      grid.appendChild(row);
-    });
-  }
-  renderBaTones(); renderBa();
+  window.__VFT_CHARTS__=window.__VFT_CHARTS__||{};window.__VFT_CHARTS__[ID]=render;
+})();
+</script>
 
-  /* CONTRIBUTION MATRIX */
-  (function renderContrib(){
-    const tbl = document.getElementById("contrib-tbl");
-    if(!tbl || !window.CONTRIB_MATRIX) return;
-    const tb = tbl.querySelector("tbody");
-    tb.innerHTML = "";
-    window.CONTRIB_MATRIX.forEach(r=>{
-      const tr = document.createElement("tr");
-      tr.innerHTML = `<td class="dim">${esc(r.dim)}</td><td class="claude-side">${r.claude}</td><td class="beacon-side">${r.beacon}</td>`;
-      tb.appendChild(tr);
-    });
-  })();
 
-  /* QUANT TABLE */
-  const qtbl = $("#qtbl");
-  const qbody = qtbl.querySelector("tbody");
-  let sortKey = "tot", sortDir = -1;
-  const tierClass = (tier)=>{
-    if(tier==="T1") return "t1";
-    if(tier==="T2") return "t2";
-    if(tier==="T3") return "t3";
-    return "t4";
-  };
-  const tierLabel = (tier)=>{
-    if(tier==="T1") return "Maximalist";
-    if(tier==="T2") return "Negotiation";
-    if(tier==="T3") return "Pastoral";
-    return tier;
-  };
-  function renderQuant(){
-    qbody.innerHTML = "";
-    const rows = [...QUANT].sort((a,b)=>{
-      const av = a[sortKey], bv = b[sortKey];
-      if(typeof av === "number" && typeof bv === "number") return (av-bv)*sortDir;
-      return String(av).localeCompare(String(bv))*sortDir;
-    });
-    const max = Math.max(...QUANT.map(r=>r.tot));
-    rows.forEach(r=>{
-      const tr = document.createElement("tr");
-      const initials = INITIALS[r.h] || r.h.split(" ").map(w=>w[0]).slice(0,2).join("").toUpperCase();
-      const tagCls = r.kind==="new"?"tag-new":r.kind==="con"?"tag-warn":"tag-con";
-      const tagLabel = r.kind==="new"?"VIRAL":r.kind==="con"?"LOW DATA":"BASELINE";
-      tr.innerHTML = `
-        <td>
-          <div class="h-cell">
-            <div class="av ${tierClass(r.tier)}">${esc(initials)}</div>
-            <div class="h-name">${esc(r.h)}<small>${esc(tierLabel(r.tier))}</small></div>
-          </div>
-        </td>
-        <td class="num">
-          <div style="display:flex;align-items:center;gap:8px;justify-content:flex-end">
-            <span>${r.tot.toLocaleString()}</span>
-            <div class="bar"><div class="bar-fill" style="width:${(r.tot/max)*100}%"></div></div>
-          </div>
-        </td>
-        <td class="num">${r.tot.toLocaleString()}</td>
-        <td class="num">${r.topreach? num(r.topreach) : "—"}</td>
-        <td class="tag-cell"><span class="tag tag-new" style="background:var(--paper-3);color:var(--ink-dim)">${esc(tierLabel(r.tier))}</span></td>
-        <td class="tag-cell"><span class="tag ${tagCls}">${tagLabel}</span></td>
-      `;
-      qbody.appendChild(tr);
-    });
-    /* update sort arrows */
-    $$(".qtbl thead th").forEach(th=>{
-      th.classList.toggle("sorted", th.dataset.k===sortKey);
-      const old = th.querySelector(".arr");
-      if(old) old.remove();
-      if(th.dataset.k===sortKey){
-        const sp = document.createElement("span");
-        sp.className="arr"; sp.textContent = sortDir>0?"\u25B2":"\u25BC";
-        th.appendChild(sp);
-      }
-    });
-  }
-  $$(".qtbl thead th").forEach(th=>{
-    th.onclick = ()=>{
-      const k = th.dataset.k;
-      if(sortKey===k) sortDir = -sortDir;
-      else { sortKey = k; sortDir = (k==="h"?1:-1); }
-      renderQuant();
-    };
-  });
-  renderQuant();
+<!--
+@module: chart_lex_bars   (Motion Chart 02)
+@schema: {
+  id, kicker, title, dek,
+  ctitle, clabel, csub,
+  views: [
+    { key, label, cols:[ "AJ Eng","AJ+","AA Eng" ],
+      colorClasses:["c0","c1","c2"], colorHex:["#3A4DA7","#7795CC","#8B2635"],
+      rows:[{term, v:[n,n,n], note}] }
+  ],
+  findings: [{kind,h,p,ev}]
+}
+-->
+<section id="sec-engagement" data-vft-chart>
+  <h4>Section 05 · The engagement layer · top posts by reach</h4>
+  <h2 class="serif">Top posts in the brief by view count.</h2>
+  <p class="dek">Each bar below is a specific post quoted or referenced in the brief, with view and like counts captured on April 30, 2026. News coverage of these events almost never quotes the engagement numbers. This is the cleanest defensible delta in the comparison.</p>
 
-  /* PROFILES */
-  const pg = $("#profiles-grid");
-  let openIdx = -1;
-  function renderProfiles(){
-    pg.innerHTML = "";
-    PROFILES.forEach((p,idx)=>{
-      const card = document.createElement("div");
-      card.className = "pcard"+(openIdx===idx?" open":"");
-      card.dataset.idx = idx;
-      const initials = INITIALS[p.h] || p.h.split(" ").map(w=>w[0]).slice(0,2).join("").toUpperCase();
-      const tier = p.tier || "";
-      card.innerHTML = `
-        <div class="pc-top">
-          <div class="pc-av ${tier}">${esc(initials)}</div>
-          <div>
-            <div class="pc-h">${esc(p.h)}</div>
-            <div class="pc-meta">${p.followers? p.followers.toLocaleString()+" tweets · " : ""}${esc(p.typology.split(" · ")[0]||"")}</div>
-          </div>
-        </div>
-        <div class="pc-role">${p.role}</div>
-        <div class="pc-typ"><span>${esc(p.typology)}</span><span class="pc-toggle">${openIdx===idx?"&minus;":"&plus;"}</span></div>
-        ${openIdx===idx?`
-          <div class="pdetail fade-in">
-            <div>
-              <div class="pd-headline">${p.headline}</div>
-              <div class="pd-career">${p.career}</div>
-              <div class="pd-stats">
-                <div class="pd-stat"><div class="pd-stat-k">Tweets archived</div><div class="pd-stat-v">${p.followers.toLocaleString()}</div></div>
-                <div class="pd-stat"><div class="pd-stat-k">Tier</div><div class="pd-stat-v">${esc(p.typology.split("·")[0].trim())}</div></div>
-              </div>
-            </div>
-            <div>
-              <div class="pd-tl-h">Documented Timeline</div>
-              <div class="pd-tl">
-                ${p.timeline.map(t=>`
-                  <div class="pd-tl-item">
-                    <span class="pd-tl-d">${esc(t.date)}</span>
-                    <div class="pd-tl-t">${t.text} ${t.url?` <a href="${esc(t.url)}" target="_blank" rel="noopener">&rarr;</a>`:""}</div>
-                  </div>
-                `).join("")}
-              </div>
-            </div>
-          </div>
-        `:""}
-      `;
-      card.addEventListener("click",(e)=>{
-        if(e.target.closest("a")) return;
-        openIdx = openIdx===idx ? -1 : idx;
-        renderProfiles();
+  <div class="chart-card">
+    <div class="ctitle"><span class="pin"></span>Top posts in the brief by reach · toggle to switch metric</div>
+    <div class="clabel">View counts (toggle 1) and like counts (toggle 2) for the highest-reach posts cited.</div>
+    <div class="csub">All engagement numbers come from Beacon's ingestion at capture time (April 30, 2026).</div>
+
+    <div id="sec-engagement__ctrl" class="chart-controls"></div>
+    <div id="sec-engagement__bars"></div>
+    <div id="sec-engagement__legend" class="legend"></div>
+
+    <div class="findings" style="margin-top:18px">
+<div class="fbox"><h5>Specific analytical claims that depend on these numbers</h5><p>That Gemayel's negotiation tweet reached nearly 40% of his most-viral overall tweet. That Khalloul's two anti-Carlson tweets together reached 1.44 million views. That the Lebanese Presidency announcement drew 1.46 million views, signaling massive public interest. Each claim drove a specific recommendation. None can be made from web search of news coverage alone.</p></div>
+<div class="fbox olive"><h5>Why news coverage doesn't carry these numbers</h5><p>News articles cover the existence and content of viral moments. They rarely report exact view counts, and almost never report engagement on second-tier posts. The view count on a specific tweet at a specific capture time is structured platform data — not journalism — so it lives in databases that retain platform feeds.</p></div>
+    </div>
+  </div>
+</section>
+<script>
+(function(){
+  var DATA = {"views": [{"key": "views", "label": "By views", "cols": ["View count"], "colorClasses": ["c0"], "colorHex": ["#3A4DA7"], "rows": [{"term": "@lbpresidency \u00b7 Israel-Lebanon contact", "v": [1462165]}, {"term": "@partisangirl \u00b7 Beirut counter-narrative", "v": [1234260]}, {"term": "@realhzakaria \u00b7 Palestine linguistic argument", "v": [1071455]}, {"term": "@shadikhalloul \u00b7 'I am an indigenous Christian'", "v": [812724]}, {"term": "@shadikhalloul \u00b7 second Tucker response", "v": [627821]}, {"term": "@shadikhalloul \u00b7 Mt Lebanon protection call", "v": [498575]}, {"term": "@samygemayel \u00b7 negotiation endorsement", "v": [151439]}, {"term": "@drsamirgeagea \u00b7 English Hezbollah tweet", "v": [141078]}]}, {"key": "likes", "label": "By likes", "cols": ["Like count"], "colorClasses": ["c1"], "colorHex": ["#7795CC"], "rows": [{"term": "@partisangirl \u00b7 Beirut counter-narrative", "v": [45154]}, {"term": "@TuckerCarlson \u00b7 Jesus statue response", "v": [39889]}, {"term": "@cforcatholics \u00b7 Maronites praying Rosary", "v": [25466]}, {"term": "@shadikhalloul \u00b7 second Tucker response", "v": [17548]}, {"term": "@clashreport \u00b7 statue first post", "v": [17364]}, {"term": "@shadikhalloul \u00b7 'I am an indigenous Christian'", "v": [11463]}, {"term": "@lbpresidency \u00b7 Israel-Lebanon contact", "v": [2420]}, {"term": "@samygemayel \u00b7 negotiation endorsement", "v": [1376]}]}]};
+  var ID = "sec-engagement";
+  function render(view){
+    var host=document.getElementById(ID+"__bars");if(!host) return;
+    var max=0;view.rows.forEach(function(r){r.v.forEach(function(x){if(x!==null&&x>max)max=x})});
+    host.innerHTML="";
+    var nCols=view.cols.length;
+    var grid="200px "+view.cols.map(function(){return "1fr"}).join(" ");
+    var head=document.createElement("div");head.className="lex-bars";head.style.gridTemplateColumns=grid;
+    head.innerHTML="<div class='lb-head first'>Term</div>"+view.cols.map(function(c){return "<div class='lb-head'>"+c+"</div>"}).join("");
+    host.appendChild(head);
+    view.rows.forEach(function(row,ri){
+      var r=document.createElement("div");r.className="lex-bars";r.style.gridTemplateColumns=grid;
+      var html="<div class='lex-row-label' title='"+(row.note||"")+"'>"+row.term+"</div>";
+      row.v.forEach(function(val,vi){
+        var w=(val===null||val===undefined)?0:(val/max*100);
+        var cls=view.colorClasses[vi]||"c0";
+        var bar=(val===null||val===undefined)
+          ? "<span class='mono' style='font-size:11px;color:var(--ink-faint)'>—</span>"
+          : "<div class='lex-bar "+cls+"' style='--w:"+w.toFixed(2)+"%;width:"+w.toFixed(2)+"%;animation-delay:"+(ri*0.08+vi*0.05).toFixed(2)+"s'></div>";
+        var num=(val===null||val===undefined)?"":val.toLocaleString();
+        html+="<div class='lex-bar-wrap'>"+bar+"<span class='lex-num'>"+num+"</span></div>";
       });
-      pg.appendChild(card);
+      r.innerHTML=html; host.appendChild(r);
+    });
+    var leg=document.getElementById(ID+"__legend");
+    leg.innerHTML=view.cols.map(function(c,i){return "<div class='lg'><span class='sw' style='background:"+(view.colorHex[i]||"#3A4DA7")+"'></span>"+c+"</div>"}).join("");
+  }
+  function buildCtrl(){
+    var host=document.getElementById(ID+"__ctrl");if(!host) return;
+    host.innerHTML="";
+    DATA.views.forEach(function(v,i){
+      var b=document.createElement("button");b.className="chip"+(i===0?" on":"");b.textContent=v.label;
+      b.onclick=function(){host.querySelectorAll(".chip").forEach(function(x){x.classList.remove("on")});b.classList.add("on");render(v)};
+      host.appendChild(b);
     });
   }
-  renderProfiles();
+  buildCtrl();
+  window.__VFT_CHARTS__ = window.__VFT_CHARTS__ || {};
+  window.__VFT_CHARTS__[ID] = function(){ render(DATA.views[0]) };
+})();
+</script>
 
-  /* ITINERARY */
-  const itin = $("#itin");
-  ITINERARY.forEach(it=>{
-    const div = document.createElement("div");
-    let cls = "itin-item";
-    if(it.gaza) cls+=" gaza";
-    if(it.ext) cls+=" ext";
-    if(it.sync) cls+=" sync";
-    div.className = cls;
-    div.innerHTML = `
-      <div class="itin-day">
-        <span class="itin-d">${esc(it.day)} · ${esc(it.date)}</span>
-        <span class="itin-loc">${esc(it.loc)}</span>
-      </div>
-      <div class="itin-act">${it.act}</div>
-      <div class="itin-att">${it.att.map(a=>`<span>${esc(a)}</span>`).join("")}</div>
-    `;
-    itin.appendChild(div);
-  });
 
-  /* GAZA */
-  const gg = $("#gaza-grid");
-  GAZA.forEach(g=>{
-    const div = document.createElement("div");
-    div.className = "gcard";
-    div.innerHTML = `
-      <div class="gcard-tag">${esc(g.tag)}</div>
-      <div class="gcard-h">${esc(g.h)}</div>
-      <div class="gcard-sub">${esc(g.title)}</div>
-      <div class="gcard-finds">${g.finds.map(f=>`<div class="gcard-find">${f}</div>`).join("")}</div>
-      <div class="gcard-twts">${g.tweets.map(t=>`
-        <div class="gcard-twt">
-          <span class="gcard-twt-d">${esc(t.dt)}</span>
-          <span>${t.qt}${t.url?` <a href="${esc(t.url)}" target="_blank" rel="noopener">&rarr;</a>`:""}</span>
-        </div>
-      `).join("")}</div>
-    `;
-    gg.appendChild(div);
-  });
+<!--
+@module: findings_grid
+@schema: { id, kicker, title, dek (optional),
+  findings: [{kind, h, p, ev}]
+}
+-->
+<section id="sec-layers">
+  <h4>Section 06 · What each layer added to the final brief</h4>
+  <h2 class="serif">Honest attribution by layer.</h2>
+  
+  <div class="findings">
+<div class="fbox warn"><h5>Beacon · Engagement metrics on specific posts</h5><p>View counts, like counts, retweet patterns at capture time. Anchored the brief's claims about constituency appetite, audience demand for counter-narratives, and the public's response to the diplomatic opening. News coverage of these events did not include this dimension.</p><span class="ev strong">Beacon-distinctive</span></div>
+<div class="fbox"><h5>Beacon · Negative findings, cadence, and corpus-shaped retrieval</h5><p>Confirmed zero-post status for Bishop Zaidan, El-Hage, and Sater. The 5,484 LF party-account cadence including a daily editorial. The surfacing of Henri Zakaria's 5,200-tweet activity despite his thin news footprint. These are structurally not in news coverage at any level of effort.</p><span class="ev strong">Beacon-only</span></div>
+<div class="fbox olive"><h5>Claude + web search · Event coverage and historical foundation</h5><p>Most of the April 2026 events the brief cites are in news coverage and reachable via search — the Lebanese Presidency announcement, Geagea's New TV interview, Kataeb's endorsement, the statue incident, the Father Pierre killing. The historical foundation (Sections I.A–I.F: Periphery Doctrine, Kahan Commission, SLA, FPM-Hezbollah collapse, Assad's fall) is web-fetchable from think tank archives.</p><span class="ev">Web-supportable</span></div>
+<div class="fbox"><h5>Claude (both versions) · Synthesis, structure, framing</h5><p>The drafting layer — selecting what to include, structuring the historical-foundation section, organizing counter-narratives, flagging credibility risks (the Brigitte Gabriel scope question, the Tonia Khouri 'former president' bio note), connecting data to recommendations — is Claude in both versions of the brief. The Beacon-augmented brief was Claude writing on top of Beacon's data outputs.</p><span class="ev">Both layers</span></div>
+  </div>
+</section>
 
-  /* AW STATS + FEED */
-  const aws = $("#aw-stats");
-  AW_STATS.forEach(s=>{
-    const d = document.createElement("div");
-    d.className = "aw-stat";
-    d.innerHTML = `<div class="aw-stat-n">${esc(s.n)}</div><div class="aw-stat-v">${esc(s.v)}</div>`;
-    aws.appendChild(d);
-  });
-  const awf = $("#aw-feed");
-  AW_FEED.forEach(f=>{
-    const d = document.createElement("div");
-    d.className = "aw-item";
-    d.innerHTML = `
-      <div class="aw-meta">${esc(f.meta)}</div>
-      <div class="aw-q">${f.q}</div>
-      <div class="aw-targets">${f.targets.map(t=>`<span>${esc(t)}</span>`).join("")}</div>
-    `;
-    awf.appendChild(d);
-  });
 
-  /* SUSTAINED rail */
-  const rail = $("#sus-rail");
-  const line = document.createElement("div"); line.className="sus-line"; rail.appendChild(line);
-  SUSTAINED_PTS.forEach((p,i)=>{
-    const dot = document.createElement("div"); dot.className = "sus-pt"+(p.hot?" hot":"");
-    dot.style.left = `calc(${p.pos}% + ${24 - (p.pos*0.48)}px)`;
-    rail.appendChild(dot);
-    const lab = document.createElement("div"); lab.className="sus-pt-lab";
-    lab.style.left = `calc(${p.pos}% + ${24 - (p.pos*0.48)}px)`;
-    lab.style.top = (i%2===0?"calc(50% + 18px)":"calc(50% - 26px)");
-    lab.textContent = p.lab;
-    rail.appendChild(lab);
-  });
-  const susc = $("#sus-cards");
-  SUSTAINED_CARDS.forEach(c=>{
-    const d = document.createElement("div");
-    d.className = "sus-card";
-    d.innerHTML = `
-      <div class="sus-card-d">${esc(c.date)}</div>
-      <div class="sus-card-w">${esc(c.who)}</div>
-      <div class="sus-card-t">${esc(c.title)}</div>
-      <div class="sus-card-desc">${esc(c.desc)}</div>
-    `;
-    susc.appendChild(d);
-  });
+<!--
+@module: chart_timeline_spine   (Motion Chart 09)
+@schema: {
+  id, kicker, title, dek, ctitle, clabel, csub,
+  events: [{date, title, desc, kind: ""|"warn"|"olive"}],   // 4–10 events
+  findings: [{kind,h,p,ev}]
+}
+-->
+<section id="sec-timeline" data-vft-chart>
+  <h4>Section 07 · April 2026 events and what each source attached to them</h4>
+  <h2 class="serif">Twelve datable events in the brief — what news coverage carried versus what Beacon added.</h2>
+  <p class="dek">Each event below is cited in the brief. Most are reachable from web search of news coverage. The Beacon-distinctive contribution was the engagement metric, account-level pattern, or corroboration count attached to each event.</p>
+  <div class="chart-card">
+    <div class="ctitle"><span class="pin"></span>April 2026 evidence in the brief · 12 datable events</div>
+    <div class="clabel">All events are post-cutoff for Claude alone. Most are reachable via web search; Beacon added the depth layer.</div>
+    <div class="csub">Each event description notes what web search would carry and what Beacon's database added.</div>
+    <div class="tline">
+<div class="tline-row "><div class="tline-date">Apr 9</div><div class="tline-title">Samy Gemayel endorses Israel negotiations</div><div class="tline-desc">News coverage notes the endorsement. Beacon added the engagement metric: 151,439 views, 1,376 likes — third-most-viewed tweet on his account.</div></div>
+<div class="tline-row warn"><div class="tline-date">Apr 10</div><div class="tline-title">Lebanese Presidency announces direct Israel contact</div><div class="tline-desc">Diplomatic event widely covered. Beacon added the engagement metric: 1,462,165 views, signaling massive public interest in the announcement specifically.</div></div>
+<div class="tline-row olive"><div class="tline-date">Apr 15</div><div class="tline-title">Kataeb Party formally backs direct talks</div><div class="tline-desc">MTV Lebanon coverage; Kataeb's English-language website. Beacon added cross-amplification through party social accounts.</div></div>
+<div class="tline-row "><div class="tline-date">Apr 19</div><div class="tline-title">Patriarch Al-Rahi Instagram post</div><div class="tline-desc">IG-native content with thin news coverage. Beacon's distinctive contribution: direct quotation of the post and confirmation of his ongoing IG presence.</div></div>
+<div class="tline-row olive"><div class="tline-date">Apr 19</div><div class="tline-title">Geagea anti-Hezbollah statement, retweeted by Dubowitz</div><div class="tline-desc">News coverage of Geagea's statement. Beacon added the network-level finding: FDD CEO retweet via @Osint613 — direct engagement between Lebanese Christian messaging and Washington pro-Israel establishment.</div></div>
+<div class="tline-row warn"><div class="tline-date">Apr 20</div><div class="tline-title">Jesus statue incident in Qlayaa</div><div class="tline-desc">BBC, NYT, CBS, NBC, Guardian all covered. Beacon added engagement velocity: 2.14M views on @clashreport's first major post, the cross-ideological condemnation pattern across left and right voices.</div></div>
+<div class="tline-row "><div class="tline-date">Apr 21</div><div class="tline-title">Geagea Sky News Arabia interview</div><div class="tline-desc">Interview covered in news. Beacon added cross-account amplification through @lfpartyofficial.</div></div>
+<div class="tline-row "><div class="tline-date">Apr 21</div><div class="tline-title">Lebanese Forces party amplifies Hasbani</div><div class="tline-desc">Party-account post with 4,183 views. The institutional-amplification pattern — voices coordinated through @lfpartyofficial — is visible only from cadence analysis.</div></div>
+<div class="tline-row olive"><div class="tline-date">Apr 25</div><div class="tline-title">Burmawi reports Siniora attacks Geagea</div><div class="tline-desc">Diaspora-network signal — not widely covered in mainstream press. Beacon's corpus surfaces it; web search would not prioritize.</div></div>
+<div class="tline-row "><div class="tline-date">Apr 26</div><div class="tline-title">Geagea New TV interview — 'beast on the border'</div><div class="tline-desc">Naharnet, LBCI, and other outlets covered. Web search reaches the content. Beacon adds the engagement metric and the institutional-amplification pattern.</div></div>
+<div class="tline-row "><div class="tline-date">Apr 29</div><div class="tline-title">Amin Gemayel re-emerges in public conversation</div><div class="tline-desc">Ynet and Al Jazeera English coverage. Beacon adds the engagement metric and the symbolic-link framing within the broader cadence.</div></div>
+<div class="tline-row warn"><div class="tline-date">Apr 30</div><div class="tline-title">Boundless Insights podcast with Amb. Leiter</div><div class="tline-desc">Same day as this report. Podcast-search-reachable; Beacon adds cross-platform corroboration and timestamp-level retrieval.</div></div>
+    </div>
+    <div class="findings" style="margin-top:18px"><div class="fbox"><h5>What changed in the comparison after the corrective</h5><p>An earlier version of this dashboard claimed these events were 'not available' to Claude. That was wrong — most of them are in news coverage and reachable via web search. The honest delta is the depth layer: engagement metrics, cadence patterns, network amplification, and corroboration counts attached to each event.</p></div>
+<div class="fbox olive"><h5>Where the depth layer mattered for the brief</h5><p>The brief's analytical claims — about constituency appetite, audience demand, institutional amplification, public response to the diplomatic opening — were built on the engagement and cadence numbers. Web search of news coverage produces a competent timeline; it does not produce the analytical layer that the brief's recommendations depended on.</p></div></div>
+  </div>
+</section>
 
-  /* QUOTES */
-  const qt = $("#q-themes");
-  let qFilter = "All";
-  function renderQTones(){
-    qt.innerHTML = "";
-    QUOTE_THEMES.forEach(t=>{
-      const c = document.createElement("button");
-      c.className = "chip"+(t===qFilter?" active":"");
-      c.textContent = t;
-      c.onclick = ()=>{qFilter = t; renderQTones(); renderQuotes();};
-      qt.appendChild(c);
-    });
+
+<!--
+@module: methodology
+@schema: { id, kicker, title, intro,
+  evidence_table: [{tier, threshold, where}],
+  limitations_title, limitations: ["..."]
+}
+-->
+<section id="sec-method">
+  <h4>Section 08 · Methodology, recalibration, and limitations</h4>
+  <h2 class="serif">How this side-by-side was constructed and what was recalibrated.</h2>
+  <p class="ctxt">The brief was reverse-engineered claim by claim. Each data point was categorized by what would be required to produce it: training-data-only knowledge, web search of news outlets, or Beacon's database. The comparison baseline is Claude with web search — the realistic alternative — not Claude with no tools. An earlier version of this dashboard used the no-tools baseline, which inflated the comparison gap on event-coverage and recency dimensions and was corrected after SME spot-checks demonstrated that Claude+search reaches most of the April 2026 events.</p>
+
+  <table class="tbl">
+    <thead><tr><th>Evidence Tier</th><th>Threshold</th><th>Where it appears</th></tr></thead>
+    <tbody>
+<tr><td><b>Beacon-only</b></td><td>Categorically not in news coverage; requires structured platform data or corpus access</td><td>Engagement metrics on specific posts, account-level cadence, confirmed negative findings, audience-clustering patterns</td></tr>
+<tr><td><b>Beacon-distinctive</b></td><td>Reachable via web search with substantial effort; Beacon returns in single query</td><td>Cross-platform corroboration patterns, long-tail figures with thin news footprint, IG-native content</td></tr>
+<tr><td><b>Web-supportable</b></td><td>Reachable from web search of news outlets and think tank archives</td><td>Major-event coverage, statements covered by news, historical foundation, demographic figures</td></tr>
+<tr><td><b>Both layers</b></td><td>Synthesis, structure, framing, editorial judgment — Claude in both versions of the brief</td><td>Drafting, inclusion decisions, credibility flagging, connection between data and recommendations</td></tr>
+    </tbody>
+  </table>
+
+  <h3 class="serif" style="margin-top:24px">Caveats reviewers should weigh</h3>
+  <ol style="margin-left:22px;color:var(--ink);max-width:78ch">
+<li style="margin:8px 0">This is a record of one query's outputs, not a general capability assessment. Different prompts would produce different deltas — a query about historical Maronite-Israel relations would compress the gap; a query about current account-level posting cadence would widen it.</li>
+<li style="margin:8px 0">An earlier version of this dashboard scoped the comparison to Claude without tools. That baseline inflated the gap on event-coverage and recency dimensions. The current version uses Claude+web search as the realistic comparison baseline.</li>
+<li style="margin:8px 0">Engagement metrics were captured on April 30, 2026 and reflect that snapshot. Numbers will have moved since.</li>
+<li style="margin:8px 0">The negative-findings claim ('Bishop Zaidan has no posts in the dataset') is bounded by what Beacon ingests. A figure who posts only on platforms outside the ingestion footprint would also register as zero.</li>
+<li style="margin:8px 0">Long-tail figures surfaced from corpus search may already be on the SME's radar from other sources. Net-new is relative to the original briefing's nine named figures, not to the SME's full mental model.</li>
+<li style="margin:8px 0">Translations of Arabic-language posts were rendered in good faith for the brief but should be independently verified by a fluent reader before any donor-facing use.</li>
+<li style="margin:8px 0">The recommendation-impact metric (3 of 6 substantially Beacon-dependent) reflects a judgment call on each recommendation; reviewers may classify them differently after reading the brief.</li>
+  </ol>
+</section>
+
+<footer class="footbar">
+<span>Vine &amp; Fig Tree Institute</span>
+<span>Output comparison · Maronite-Israel research query · April 30, 2026</span>
+<span>Comparison baseline: Claude with web search</span>
+</footer>
+</main>
+
+<script>
+/* =========================================================
+   VFT Dashboard V2 — runtime
+   Provides: scroll-spy, progress-bar fill, intersection-replay
+   Each chart module also registers itself onto window.__VFT_CHARTS__
+   ========================================================= */
+(function(){
+  window.__VFT_CHARTS__ = window.__VFT_CHARTS__ || {};
+
+  function setupSpy(){
+    var links = Array.prototype.slice.call(document.querySelectorAll(".nav a"));
+    var sections = links.map(function(a){return document.querySelector(a.getAttribute("href"))}).filter(Boolean);
+    function update(){
+      var y = window.scrollY + 120;
+      var idx = 0;
+      sections.forEach(function(sec, i){if(sec && sec.offsetTop <= y) idx = i});
+      links.forEach(function(a, i){a.classList.toggle("active", i===idx)});
+    }
+    window.addEventListener("scroll", update, {passive:true});
+    update();
   }
-  function renderQuotes(){
-    const grid = $("#q-grid"); grid.innerHTML = "";
-    const items = qFilter==="All" ? QUOTES : QUOTES.filter(q=>q.theme===qFilter);
-    items.forEach(q=>{
-      const initials = INITIALS[q.h] || q.h.split(" ").map(w=>w[0]).slice(0,2).join("").toUpperCase();
-      const profile = PROFILES.find(p=>p.h===q.h);
-      const tier = profile ? profile.tier : "";
-      const card = document.createElement("div");
-      card.className = "qcard fade-in";
-      card.innerHTML = `
-        <div class="qcard-top">
-          <div class="av ${tier}">${esc(initials)}</div>
-          <div class="qcard-h">${esc(q.h)}<small>${esc((profile&&profile.typology)||"")}</small></div>
-        </div>
-        <div class="qcard-q">${q.q}</div>
-        <div class="qcard-meta">
-          <span class="qcard-theme">${esc(q.theme)}</span>
-          <span class="qcard-date">${esc(q.date)}${q.url?` &middot; <a href="${esc(q.url)}" target="_blank" rel="noopener">source &rarr;</a>`:""}</span>
-        </div>
-      `;
-      grid.appendChild(card);
-    });
+
+  function setupBars(){
+    setTimeout(function(){
+      document.querySelectorAll(".mc .pfill").forEach(function(el){
+        var w = el.style.width; el.style.width = "0";
+        requestAnimationFrame(function(){ el.style.width = w; });
+      });
+    }, 100);
   }
-  renderQTones(); renderQuotes();
 
-  /* VERIFICATION */
-  const vk = $("#ver-kpis");
-  VER_KPIS.forEach(k=>{
-    const d = document.createElement("div");
-    d.className = "ver-kpi";
-    d.innerHTML = `<div class="ver-kpi-k">${esc(k.k)}</div><div class="ver-kpi-v">${esc(k.v)}</div><div class="ver-kpi-d">${k.d}</div>`;
-    vk.appendChild(d);
-  });
-  const vt = $("#ver-tbl tbody");
-  VER_TABLE.forEach(r=>{
-    const cls = r.s.toLowerCase();
-    const tr = document.createElement("tr");
-    tr.innerHTML = `
-      <td><strong>${esc(r.h)}</strong></td>
-      <td><span class="stat ${cls}">${esc(r.s)}</span></td>
-      <td class="num">${(r.n||0).toLocaleString()}</td>
-      <td class="stat ${cls}">${esc(r.s.toUpperCase())}</td>
-      <td>${esc(r.note)}</td>
-    `;
-    vt.appendChild(tr);
-  });
-  const sg = $("#src-grid");
-  SOURCES.forEach(s=>{
-    const d = document.createElement("div");
-    d.className = "src";
-    d.innerHTML = `
-      <div class="src-n">${esc(s.n)}</div>
-      <div class="src-pub">${esc(s.pub)}</div>
-      <div class="src-t">${esc(s.title)}</div>
-      <div class="src-d">${esc(s.desc)}</div>
-      <div class="src-l"><a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.url.replace(/^https?:\/\//,"").substring(0,42))}${s.url.length>50?"&hellip;":""} &rarr;</a></div>
-    `;
-    sg.appendChild(d);
-  });
-  const lim = $("#lim");
-  LIMITATIONS.forEach(l=>{
-    const li = document.createElement("li");
-    li.innerHTML = l;
-    lim.appendChild(li);
-  });
+  function setupReplay(){
+    if(!("IntersectionObserver" in window)) return;
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){
+          var id = e.target.id;
+          var fn = window.__VFT_CHARTS__[id];
+          if(typeof fn === "function") fn();
+        }
+      });
+    },{threshold:0.18});
+    document.querySelectorAll("[data-vft-chart]").forEach(function(el){io.observe(el)});
+  }
 
-  /* SCROLL SPY */
-  const navLinks = $$("#nav a");
-  const sections = $$("section");
-  const obs = new IntersectionObserver((entries)=>{
-    entries.forEach(e=>{
-      if(e.isIntersecting){
-        const id = e.target.id;
-        navLinks.forEach(a=>{
-          a.classList.toggle("active", a.getAttribute("href")==="#"+id);
-        });
-      }
-    });
-  }, {rootMargin:"-30% 0px -60% 0px", threshold:0});
-  sections.forEach(s=>obs.observe(s));
-
-  /* smooth scroll */
-  navLinks.forEach(a=>{
-    a.addEventListener("click",e=>{
-      e.preventDefault();
-      const t = document.querySelector(a.getAttribute("href"));
-      if(t) t.scrollIntoView({behavior:"smooth", block:"start"});
+  document.addEventListener("DOMContentLoaded", function(){
+    setupSpy();
+    setupBars();
+    setupReplay();
+    // First render of each chart (so they're visible without waiting for scroll)
+    Object.keys(window.__VFT_CHARTS__).forEach(function(k){
+      try{ window.__VFT_CHARTS__[k]() } catch(e){ console.error("Chart init "+k+":", e) }
     });
   });
 })();
+
 </script>
 </body>
 </html>
