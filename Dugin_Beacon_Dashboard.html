@@ -1,0 +1,1345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="color-scheme" content="light" />
+<meta name="supported-color-schemes" content="light" />
+<title>Alexander Dugin — Ideology, Antisemitism, and Western Amplification</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Libre+Franklin:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+/* =========================================================
+   VFT Dashboard V2 — base theme
+   Drop-in CSS. All design tokens live here.
+   ========================================================= */
+:root{
+  --paper:#F6F2ED;
+  --paper-2:#FCFFFF;
+  --ink:#0C1843;
+  --ink-dim:#3A4DA7;
+  --ink-faint:#5B6484;
+  --rule:#C8CCD8;
+  --rule-2:#D4E3FC;
+  --navy:#0C1843;
+  --navy-bright:#3A4DA7;
+  --navy-deep:#1B2866;
+  --accent:#7795CC;
+  --warn:#8B2635;
+  --olive:#6F7A4A;
+  --sidebar:#F6F2ED;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:var(--paper);color:var(--ink);font-family:"Libre Franklin",system-ui,sans-serif;font-weight:400;line-height:1.55;-webkit-font-smoothing:antialiased}
+body{display:grid;grid-template-columns:230px 1fr;min-height:100vh}
+a{color:var(--ink-dim);text-decoration:none;border-bottom:1px solid var(--rule-2)}
+a:hover{color:var(--navy-deep);border-bottom-color:var(--navy-bright)}
+.serif{font-family:"Cormorant Garamond",Georgia,serif}
+.mono{font-family:"IBM Plex Mono",monospace}
+.kicker{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-faint)}
+
+aside.sidebar{position:sticky;top:0;align-self:start;height:100vh;background:var(--sidebar);border-right:1px solid var(--rule);padding:28px 18px 20px;display:flex;flex-direction:column;gap:16px;overflow-y:auto}
+.brand .name{font-family:"Cormorant Garamond",serif;font-size:18px;font-weight:600;color:var(--ink);letter-spacing:.01em;line-height:1.1}
+.brand .sub{font-family:"IBM Plex Mono",monospace;font-size:9px;letter-spacing:.16em;color:var(--ink-faint);text-transform:uppercase;margin-top:3px}
+.nav{display:flex;flex-direction:column;gap:2px;margin-top:10px;border-top:1px solid var(--rule);padding-top:14px}
+.nav a{display:flex;align-items:baseline;gap:8px;padding:6px 6px;font-size:12px;color:var(--ink);border:none;border-left:2px solid transparent;border-radius:0;font-weight:400;line-height:1.25}
+.nav a .nx{font-family:"IBM Plex Mono",monospace;font-size:9px;color:var(--ink-faint);min-width:16px}
+.nav a:hover{background:rgba(58,77,167,.06);color:var(--navy-deep)}
+.nav a.active{background:rgba(58,77,167,.10);color:var(--navy-deep);border-left-color:var(--navy-bright);font-weight:500}
+.foot{margin-top:auto;font-family:"IBM Plex Mono",monospace;font-size:9px;letter-spacing:.14em;color:var(--ink-faint);line-height:1.6;text-transform:uppercase}
+
+main{padding:40px 44px 80px;max-width:1240px;min-width:0}
+section{padding-top:48px;border-top:1px solid var(--rule);margin-top:36px;scroll-margin-top:24px}
+section.first{border-top:none;margin-top:0;padding-top:0}
+h1.serif{font-size:54px;font-weight:500;line-height:1.04;letter-spacing:-.01em;margin:14px 0 18px}
+h2.serif{font-size:34px;font-weight:500;line-height:1.1;margin:0 0 6px;letter-spacing:-.005em}
+h3.serif{font-size:22px;font-weight:600;margin:0 0 8px}
+h4{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-faint);font-weight:500;margin:0 0 10px}
+.dek{font-family:"Cormorant Garamond",serif;font-style:italic;font-size:21px;color:var(--ink-faint);max-width:780px;margin:0 0 14px;line-height:1.45}
+.byline{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.14em;color:var(--ink-faint);text-transform:uppercase}
+.toprule{height:3px;background:linear-gradient(90deg,var(--ink) 0%,var(--ink-dim) 40%,var(--accent) 80%,var(--paper) 100%);margin-bottom:18px}
+p{margin:0 0 12px;color:var(--ink);max-width:78ch}
+p.note{color:var(--ink-faint);font-size:13px;max-width:78ch}
+.ctxt{color:var(--ink);max-width:78ch}
+
+/* metric cards */
+.metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:18px}
+.mc{background:var(--paper-2);border:1px solid var(--rule);padding:18px 16px;border-radius:2px;position:relative;overflow:hidden}
+.mc.alt{background:#EFEEEA}
+.mc.navy{background:var(--ink);color:#fff}
+.mc.navy .mk,.mc.navy .ms{color:#B8C5E8}
+.mc.navy .mu{color:#9DA8C9}
+.mc.olive{background:#3F4830;color:#fff}
+.mc.olive .mk,.mc.olive .ms{color:#C7CCB1}
+.mc .mk{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.15em;color:var(--ink-faint);text-transform:uppercase;margin-bottom:8px}
+.mc .mv{font-family:"Cormorant Garamond",serif;font-size:36px;font-weight:600;line-height:1;letter-spacing:-.01em}
+.mc .mu{font-size:12px;color:var(--ink-faint);margin-top:6px;line-height:1.4}
+.mc .ms{position:absolute;right:14px;top:14px;font-family:"IBM Plex Mono",monospace;font-size:10px;color:var(--ink-faint)}
+.mc .pbar{margin-top:12px;height:4px;background:rgba(0,0,0,.08);border-radius:2px;overflow:hidden}
+.mc.navy .pbar,.mc.olive .pbar{background:rgba(255,255,255,.18)}
+.mc .pfill{height:100%;background:var(--navy-bright);width:0;transition:width 1.2s cubic-bezier(.2,.8,.2,1)}
+.mc.navy .pfill{background:var(--accent)}
+.mc.olive .pfill{background:#C7CCB1}
+
+/* tables */
+table.tbl{width:100%;border-collapse:collapse;margin-top:14px;font-size:13px;background:var(--paper-2);border:1px solid var(--rule)}
+table.tbl th,table.tbl td{padding:10px 12px;text-align:left;border-bottom:1px solid var(--rule)}
+table.tbl thead th{background:#EFEEEA;font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-faint);font-weight:500}
+table.tbl tbody tr:hover{background:rgba(58,77,167,.04)}
+
+/* dividers */
+.div-dot{height:1px;background:var(--rule);margin:24px 0;position:relative}
+.div-dot::after{content:"\00B7";position:absolute;left:50%;top:-12px;transform:translateX(-50%);background:var(--paper);padding:0 10px;color:var(--ink-faint);font-size:18px}
+
+/* chart card shell */
+.chart-card{background:var(--paper-2);border:1px solid var(--rule);border-radius:2px;padding:24px 28px;margin-top:16px;position:relative}
+.chart-card .ctitle{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.18em;color:var(--ink-faint);text-transform:uppercase;font-weight:500;margin-bottom:6px;display:flex;align-items:center;gap:10px}
+.chart-card .ctitle .pin{display:inline-block;width:6px;height:6px;background:var(--navy-bright);border-radius:50%;animation:pin 2.4s ease-in-out infinite}
+@keyframes pin{0%,100%{opacity:.3;transform:scale(1)}50%{opacity:1;transform:scale(1.6)}}
+.chart-card .clabel{font-family:"Cormorant Garamond",serif;font-size:24px;font-weight:600;color:var(--ink);margin-bottom:4px;line-height:1.2}
+.chart-card .csub{font-size:13px;color:var(--ink-faint);margin-bottom:20px;font-style:italic}
+.chart-controls{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0 18px}
+.chip{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;padding:6px 12px;background:var(--paper);border:1px solid var(--rule);color:var(--ink-faint);cursor:pointer;border-radius:2px;transition:all .2s}
+.chip:hover{border-color:var(--navy-bright);color:var(--navy-deep)}
+.chip.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+.legend{display:flex;flex-wrap:wrap;gap:18px;font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.10em;color:var(--ink-faint);text-transform:uppercase;margin-top:14px}
+.legend .lg{display:flex;align-items:center;gap:6px}
+.legend .sw{width:12px;height:12px;border-radius:2px;display:inline-block}
+
+/* findings boxes */
+.findings{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:14px}
+.fbox{background:var(--paper-2);border:1px solid var(--rule);padding:16px 18px;border-radius:2px;border-left:3px solid var(--navy-bright)}
+.fbox.warn{border-left-color:var(--warn)}
+.fbox.olive{border-left-color:var(--olive)}
+.fbox h5{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.16em;color:var(--ink-faint);font-weight:500;text-transform:uppercase;margin-bottom:8px}
+.fbox p{font-size:14px;line-height:1.55;margin:0;color:var(--ink)}
+.fbox .ev{display:inline-block;font-family:"IBM Plex Mono",monospace;font-size:9px;letter-spacing:.14em;background:var(--ink);color:#fff;padding:2px 6px;border-radius:2px;margin-top:8px;text-transform:uppercase}
+.fbox .ev.strong{background:var(--navy-bright)}
+.fbox .ev.mod{background:var(--ink-faint)}
+.fbox .ev.low{background:#9DA8C9;color:var(--ink)}
+
+/* quote wall — single column, larger cards, non-italic body for readability */
+.quotes{display:grid;grid-template-columns:1fr;gap:18px;margin-top:14px}
+.qcard{background:var(--paper-2);border:1px solid var(--rule);padding:30px 36px 26px;border-radius:2px;position:relative}
+.qcard::before{content:"\201C";position:absolute;left:18px;top:6px;font-family:"Cormorant Garamond",serif;font-size:78px;color:var(--rule);line-height:1}
+.qcard q{font-family:"Cormorant Garamond",serif;font-style:normal;font-weight:500;font-size:24px;color:var(--ink);display:block;margin:18px 0 16px;line-height:1.4;quotes:none}
+.qcard q::before,.qcard q::after{content:""}
+.qcard .qmeta{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.12em;color:var(--ink-faint);text-transform:uppercase;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.qcard .qmeta .qh{color:var(--navy-deep);font-weight:500}
+
+/* sources grid */
+.sources{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:14px}
+.scard{background:var(--paper-2);border:1px solid var(--rule);padding:14px 16px;border-radius:2px;font-size:12px;line-height:1.5}
+.scard .sn{font-family:"IBM Plex Mono",monospace;font-size:10px;color:var(--ink-faint)}
+.scard .sp{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.10em;text-transform:uppercase;color:var(--navy-deep);margin:2px 0}
+.scard .st{font-family:"Cormorant Garamond",serif;font-size:15px;color:var(--ink);font-weight:600;line-height:1.25;margin:4px 0}
+.scard .sd{color:var(--ink-faint);font-size:11px}
+
+footer.footbar{margin-top:80px;padding-top:24px;border-top:1px solid var(--rule);font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.14em;color:var(--ink-faint);text-transform:uppercase;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
+
+/* CHART 01: heatmap */
+.heatmap{display:grid;gap:3px;margin-top:8px}
+.heatmap-row{display:grid;grid-template-columns:170px repeat(var(--cols,7),1fr);gap:3px;align-items:center}
+.heatmap-row.hd .hcell{font-family:"IBM Plex Mono",monospace;font-size:9px;letter-spacing:.10em;color:var(--ink-faint);text-transform:uppercase;text-align:center;padding:6px 4px;font-weight:500;background:transparent;border:none}
+.heatmap-row .label{font-size:12px;color:var(--ink);font-weight:500;padding-right:8px;text-align:right}
+.heatmap-row .label.cat{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.14em;color:var(--ink-faint);text-transform:uppercase;font-weight:500}
+.hcell{height:36px;border-radius:2px;display:flex;align-items:center;justify-content:center;font-family:"IBM Plex Mono",monospace;font-size:11px;color:#fff;font-weight:500;position:relative;cursor:default;transition:transform .2s}
+.hcell:hover{transform:scale(1.06);z-index:2;box-shadow:0 4px 12px rgba(12,24,67,.18)}
+.hcell.empty{background:#EFEEEA;color:var(--ink-faint)}
+.hcell .anim-fill{position:absolute;inset:0;border-radius:2px;animation:heatfill 1.4s ease-out both}
+@keyframes heatfill{0%{transform:scale(.0);opacity:0}40%{opacity:1}100%{transform:scale(1);opacity:1}}
+.hcell .v{position:relative;z-index:1}
+
+/* CHART 02: lex bars */
+.lex-bars{display:grid;gap:6px;align-items:center;font-size:12px}
+.lex-bars > div{padding:4px 0}
+.lex-bars .lb-head{font-family:"IBM Plex Mono",monospace;font-size:9px;letter-spacing:.14em;color:var(--ink-faint);text-transform:uppercase;text-align:right;font-weight:500;border-bottom:1px solid var(--rule);padding-bottom:6px}
+.lex-bars .lb-head.first{text-align:left}
+.lex-row-label{font-family:"Cormorant Garamond",serif;font-style:italic;font-size:16px;color:var(--ink);font-weight:500}
+.lex-bar-wrap{display:flex;align-items:center;gap:8px;justify-content:flex-end}
+.lex-bar{height:22px;background:var(--rule-2);border-radius:2px;position:relative;overflow:hidden;animation:lexgrow 1.6s cubic-bezier(.2,.8,.2,1) both}
+@keyframes lexgrow{0%{width:0}100%{width:var(--w)}}
+.lex-bar.c0{background:var(--navy-bright)}
+.lex-bar.c1{background:var(--accent)}
+.lex-bar.c2{background:var(--warn)}
+.lex-bar.c3{background:#A6353F}
+.lex-bar.c4{background:var(--ink-dim)}
+.lex-num{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--ink);min-width:42px;text-align:right}
+
+/* CHART 03: orbs */
+.eng-stage{display:flex;align-items:center;justify-content:center;gap:80px;padding:30px 0 8px;min-height:340px;position:relative;flex-wrap:wrap}
+.eng-orb{position:relative;display:flex;flex-direction:column;align-items:center;gap:14px}
+.orb{border-radius:50%;position:relative;display:flex;align-items:center;justify-content:center;color:#fff;font-family:"Cormorant Garamond",serif;font-size:28px;font-weight:600;letter-spacing:-.01em;animation:pulseOrb 3.2s ease-in-out infinite}
+.orb.left{background:radial-gradient(circle at 35% 35%,#7795CC,#1B2866);box-shadow:0 0 0 0 rgba(58,77,167,.5)}
+.orb.right{background:radial-gradient(circle at 35% 35%,#B96873,#5C1A23);box-shadow:0 0 0 0 rgba(139,38,53,.5);animation-delay:.5s}
+@keyframes pulseOrb{0%,100%{box-shadow:0 0 0 0 rgba(58,77,167,.45)}50%{box-shadow:0 0 0 32px rgba(58,77,167,0)}}
+.orb-cap{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.14em;color:var(--ink);text-transform:uppercase;text-align:center}
+.orb-cap b{font-family:"Cormorant Garamond",serif;font-size:18px;color:var(--ink);font-weight:600;text-transform:none;letter-spacing:0;display:block;margin-bottom:2px;font-style:italic}
+.eng-ratio{font-family:"Cormorant Garamond",serif;font-size:60px;color:var(--ink-dim);font-weight:500;letter-spacing:-.02em;line-height:1;display:flex;flex-direction:column;align-items:center;gap:6px}
+.eng-ratio .num{display:block;animation:fadeUp .9s ease-out both}
+.eng-ratio .lab{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.18em;color:var(--ink-faint);text-transform:uppercase;font-weight:500}
+@keyframes fadeUp{0%{opacity:0;transform:translateY(8px)}100%{opacity:1;transform:translateY(0)}}
+.eng-bullets{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:24px}
+.eng-bullet{background:var(--paper);border:1px solid var(--rule);padding:14px 16px;border-radius:2px}
+.eng-bullet .b1{font-family:"Cormorant Garamond",serif;font-size:30px;font-weight:600;color:var(--ink-dim);line-height:1}
+.eng-bullet .b2{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.14em;color:var(--ink-faint);text-transform:uppercase;margin-top:6px}
+.eng-bullet .b3{font-size:12px;color:var(--ink);margin-top:4px}
+
+/* CHART 04: streamgraph */
+.flow-wrap{position:relative}
+.flow-svg{width:100%;height:380px;display:block;margin-top:10px}
+.flow-band{transition:opacity .3s}
+.flow-wrap:hover .flow-band{opacity:.4}
+.flow-wrap .flow-band:hover{opacity:1}
+.flow-tick{font-family:"IBM Plex Mono",monospace;font-size:10px;fill:var(--ink-faint);letter-spacing:.10em}
+
+/* CHART 05: gradient dial */
+.gradient-stack{display:grid;grid-template-columns:1fr;gap:14px;margin-top:6px;max-width:880px}
+.grad-row{display:grid;grid-template-columns:160px 1fr 80px;gap:14px;align-items:center}
+.grad-row .label{font-family:"Cormorant Garamond",serif;font-size:18px;color:var(--ink);font-weight:600}
+.grad-row .label .sub{font-family:"IBM Plex Mono",monospace;font-size:9px;letter-spacing:.14em;color:var(--ink-faint);text-transform:uppercase;font-weight:500;display:block;margin-top:2px}
+.grad-track{position:relative;height:34px;background:linear-gradient(90deg,#5C1A23 0%,#A03445 18%,#A6A6A6 50%,#5B6484 75%,#0C1843 100%);border-radius:2px;overflow:hidden}
+.grad-track .scale{position:absolute;inset:0;display:flex;justify-content:space-between;padding:0 6px;align-items:flex-end;pointer-events:none}
+.grad-track .scale span{font-family:"IBM Plex Mono",monospace;font-size:8px;color:rgba(255,255,255,.7);padding-bottom:3px;letter-spacing:.10em}
+.grad-marker{position:absolute;top:-6px;bottom:-6px;width:3px;background:var(--paper);box-shadow:0 0 0 2px var(--ink);animation:slideMark 1.6s cubic-bezier(.2,.8,.2,1) both}
+@keyframes slideMark{0%{left:50%;opacity:0}30%{opacity:1}100%{left:var(--mx);opacity:1}}
+.grad-marker .tip{position:absolute;top:-22px;left:50%;transform:translateX(-50%);background:var(--ink);color:#fff;font-family:"IBM Plex Mono",monospace;font-size:10px;padding:2px 6px;border-radius:2px;white-space:nowrap;font-weight:500}
+.grad-marker .tip::after{content:"";position:absolute;left:50%;top:100%;transform:translateX(-50%);border:4px solid transparent;border-top-color:var(--ink)}
+.grad-val{font-family:"Cormorant Garamond",serif;font-size:22px;font-weight:600;color:var(--ink);text-align:right}
+.grad-val.neg{color:var(--warn)}
+.grad-val.pos{color:var(--ink-dim)}
+.grad-section{background:var(--paper);border:1px solid var(--rule);padding:18px 22px;border-radius:2px;margin-bottom:14px}
+.grad-section h6{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.16em;color:var(--ink-faint);text-transform:uppercase;font-weight:500;margin-bottom:14px;display:flex;align-items:center;gap:10px}
+.grad-section h6::before{content:"";width:8px;height:8px;background:var(--navy-bright);display:inline-block}
+
+@media (max-width:1100px){
+  body{grid-template-columns:200px 1fr}
+  aside.sidebar{padding:24px 14px 18px}
+  main{padding:32px 28px 64px}
+  .metrics{grid-template-columns:repeat(2,1fr)}
+  .findings,.sources{grid-template-columns:1fr 1fr}
+  .quotes{grid-template-columns:1fr}
+  h1.serif{font-size:42px}
+  h2.serif{font-size:28px}
+  .eng-stage{gap:30px}
+}
+@media (max-width:720px){
+  body{grid-template-columns:1fr}
+  aside.sidebar{position:relative;height:auto;border-right:none;border-bottom:1px solid var(--rule)}
+  .nav{flex-direction:row;flex-wrap:wrap;gap:6px}
+  .nav a{padding:4px 8px}
+  .metrics,.findings,.quotes,.sources{grid-template-columns:1fr}
+  main{padding:24px 20px 48px}
+}
+
+/* ============================================================
+   ADDITIONAL CHART MODULES (06–17)
+   ============================================================ */
+
+/* CHART 06: radial compass */
+.compass-wrap{display:flex;justify-content:center;padding:10px 0 4px}
+.compass-svg{width:100%;max-width:520px;height:520px}
+.compass-grid{stroke:var(--rule);stroke-width:1;fill:none;opacity:.6}
+.compass-axis{stroke:var(--rule);stroke-width:1}
+.compass-axis-label{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.10em;fill:var(--ink-faint);text-transform:uppercase}
+.compass-poly{fill-opacity:.15;stroke-width:2;stroke-linejoin:round;stroke-dasharray:1500;stroke-dashoffset:1500;animation:compassDraw 1.6s cubic-bezier(.2,.8,.2,1) forwards}
+@keyframes compassDraw{to{stroke-dashoffset:0;fill-opacity:.18}}
+.compass-dot{r:4;animation:compassDot .9s cubic-bezier(.2,.8,.2,1) both}
+@keyframes compassDot{0%{r:0;opacity:0}100%{r:4;opacity:1}}
+.compass-tick{font-family:"IBM Plex Mono",monospace;font-size:9px;fill:var(--ink-faint)}
+
+/* CHART 07: quadrant scatter */
+.quad-wrap{position:relative;padding:10px 0}
+.quad-svg{width:100%;max-width:760px;height:480px;display:block;margin:0 auto}
+.quad-grid{stroke:var(--rule);stroke-width:1}
+.quad-axis{stroke:var(--ink);stroke-width:1.5}
+.quad-axis-label{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.14em;fill:var(--ink-faint);text-transform:uppercase}
+.quad-quadrant-label{font-family:"Cormorant Garamond",serif;font-style:italic;font-size:14px;fill:var(--ink-faint);font-weight:500}
+.quad-dot{animation:quadDot 1s cubic-bezier(.2,.8,.2,1) both;cursor:pointer;transition:r .2s}
+.quad-dot:hover{r:14}
+@keyframes quadDot{0%{opacity:0;transform:translate(var(--dx),var(--dy)) scale(.3)}100%{opacity:1;transform:translate(0,0) scale(1)}}
+.quad-dot-label{font-family:"IBM Plex Mono",monospace;font-size:10px;fill:var(--ink);font-weight:500;pointer-events:none}
+
+/* CHART 08: slope chart */
+.slope-wrap{position:relative}
+.slope-svg{width:100%;max-width:760px;height:380px;display:block;margin:0 auto}
+.slope-line{stroke-width:2;fill:none;stroke-dasharray:600;stroke-dashoffset:600;animation:slopeDraw 1.4s cubic-bezier(.2,.8,.2,1) both}
+@keyframes slopeDraw{to{stroke-dashoffset:0}}
+.slope-dot{r:5;animation:compassDot .9s ease-out both}
+.slope-label{font-family:"Cormorant Garamond",serif;font-size:13px;fill:var(--ink);font-weight:500}
+.slope-side{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.14em;fill:var(--ink-faint);text-transform:uppercase}
+
+/* CHART 09: timeline spine */
+.tline{position:relative;margin:18px 0 8px;padding-left:36px}
+.tline::before{content:"";position:absolute;left:14px;top:0;bottom:0;width:2px;background:var(--rule)}
+.tline-row{position:relative;padding:14px 0;animation:tlineFade .8s ease-out both}
+.tline-row:nth-child(1){animation-delay:.1s}.tline-row:nth-child(2){animation-delay:.2s}.tline-row:nth-child(3){animation-delay:.3s}.tline-row:nth-child(4){animation-delay:.4s}.tline-row:nth-child(5){animation-delay:.5s}.tline-row:nth-child(6){animation-delay:.6s}.tline-row:nth-child(7){animation-delay:.7s}.tline-row:nth-child(8){animation-delay:.8s}
+@keyframes tlineFade{0%{opacity:0;transform:translateX(-12px)}100%{opacity:1;transform:translateX(0)}}
+.tline-row::before{content:"";position:absolute;left:-29px;top:18px;width:14px;height:14px;border-radius:50%;background:var(--paper-2);border:2px solid var(--navy-bright);box-shadow:0 0 0 4px var(--paper)}
+.tline-row.warn::before{border-color:var(--warn)}
+.tline-row.olive::before{border-color:var(--olive)}
+.tline-date{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.14em;color:var(--ink-faint);text-transform:uppercase}
+.tline-title{font-family:"Cormorant Garamond",serif;font-size:18px;font-weight:600;color:var(--ink);margin:2px 0}
+.tline-desc{font-size:13px;color:var(--ink);max-width:78ch}
+
+/* CHART 10: activity pulse */
+.pulse-wrap{position:relative}
+.pulse-svg{width:100%;height:240px;display:block}
+.pulse-area{fill:url(#pulseGrad);opacity:0;animation:pulseAreaFade 1.4s ease-out forwards}
+@keyframes pulseAreaFade{to{opacity:1}}
+.pulse-line{stroke:var(--ink-dim);stroke-width:2;fill:none;stroke-dasharray:2000;stroke-dashoffset:2000;animation:pulseDraw 2.4s cubic-bezier(.4,.1,.3,1) forwards}
+@keyframes pulseDraw{to{stroke-dashoffset:0}}
+.pulse-peak{r:5;fill:var(--warn);animation:pulsePeak 2s ease-in-out infinite}
+@keyframes pulsePeak{0%,100%{r:4}50%{r:7}}
+.pulse-peak-label{font-family:"IBM Plex Mono",monospace;font-size:10px;fill:var(--ink);letter-spacing:.10em}
+.pulse-tick{font-family:"IBM Plex Mono",monospace;font-size:9px;fill:var(--ink-faint)}
+
+/* CHART 11: sankey */
+.sankey-wrap{position:relative}
+.sankey-svg{width:100%;height:420px;display:block}
+.sankey-node{fill:var(--ink);transition:fill .2s}
+.sankey-link{fill-opacity:.45;animation:sankeyFade 1.2s ease-out both}
+@keyframes sankeyFade{0%{fill-opacity:0}100%{fill-opacity:.45}}
+.sankey-link:hover{fill-opacity:.85}
+.sankey-label{font-family:"Cormorant Garamond",serif;font-size:13px;fill:var(--ink);font-weight:500}
+.sankey-label-num{font-family:"IBM Plex Mono",monospace;font-size:10px;fill:var(--ink-faint)}
+
+/* CHART 12: chord diagram */
+.chord-wrap{display:flex;justify-content:center;padding:8px 0}
+.chord-svg{width:100%;max-width:520px;height:520px}
+.chord-arc{stroke:var(--paper);stroke-width:2}
+.chord-link{fill-opacity:.35;animation:sankeyFade 1.2s ease-out both;mix-blend-mode:multiply}
+.chord-link:hover{fill-opacity:.85}
+.chord-label{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.10em;fill:var(--ink);text-transform:uppercase;font-weight:500}
+
+/* CHART 13: horseshoe gauge */
+.horse-wrap{display:flex;justify-content:center;padding:10px 0;flex-direction:column;align-items:center;gap:8px}
+.horse-svg{width:100%;max-width:600px;height:340px}
+.horse-track{stroke:url(#horseGrad);stroke-width:18;fill:none;stroke-linecap:round}
+.horse-bg{stroke:var(--rule);stroke-width:18;fill:none;stroke-linecap:round;opacity:.4}
+.horse-marker{fill:var(--paper);stroke:var(--ink);stroke-width:3;animation:horseMark 1.2s cubic-bezier(.2,.8,.2,1) both}
+@keyframes horseMark{0%{transform:scale(0);opacity:0}100%{transform:scale(1);opacity:1}}
+.horse-anchor-lab{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.14em;fill:var(--ink-faint);text-transform:uppercase}
+.horse-conv{font-family:"Cormorant Garamond",serif;font-size:42px;fill:var(--ink-dim);font-weight:600;font-style:italic}
+.horse-conv-lab{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.16em;fill:var(--ink-faint);text-transform:uppercase}
+
+/* CHART 14: pendulum */
+.pend-wrap{position:relative;padding:10px 0}
+.pend-svg{width:100%;max-width:600px;height:320px;display:block;margin:0 auto}
+.pend-arc{stroke:var(--rule);stroke-width:2;fill:none;stroke-dasharray:4 6;opacity:.6}
+.pend-arm{stroke:var(--ink);stroke-width:2;fill:none;transform-origin:50% 100%;animation:pendSwing 3.5s cubic-bezier(.4,0,.2,1) infinite alternate}
+@keyframes pendSwing{0%{transform:rotate(var(--swingMin,-25deg))}100%{transform:rotate(var(--swingMax,25deg))}}
+.pend-bob{fill:var(--warn);stroke:var(--ink);stroke-width:2}
+.pend-marker{fill:var(--ink-dim);stroke:var(--paper);stroke-width:2;animation:compassDot 1.2s ease-out both}
+.pend-tick{font-family:"IBM Plex Mono",monospace;font-size:10px;fill:var(--ink-faint);letter-spacing:.10em}
+.pend-current{font-family:"Cormorant Garamond",serif;font-size:24px;fill:var(--ink);font-weight:600}
+
+/* CHART 15: bubble swarm */
+.swarm-wrap{position:relative}
+.swarm-svg{width:100%;height:420px;display:block}
+.swarm-bubble{transition:transform .25s,fill-opacity .25s;cursor:pointer;animation:swarmIn 1s cubic-bezier(.2,.8,.2,1) both;fill-opacity:.85}
+.swarm-bubble:hover{fill-opacity:1}
+@keyframes swarmIn{0%{r:0;opacity:0}100%{opacity:1}}
+.swarm-label{font-family:"IBM Plex Mono",monospace;font-size:10px;fill:#fff;font-weight:600;text-anchor:middle;pointer-events:none}
+.swarm-label-dark{fill:var(--ink)}
+
+/* CHART 16: tier ladder */
+.tier-wrap{display:grid;gap:10px;margin-top:8px}
+.tier-row{display:grid;grid-template-columns:180px 1fr;gap:10px;align-items:stretch;animation:tlineFade .6s ease-out both}
+.tier-row:nth-child(1){animation-delay:.05s}.tier-row:nth-child(2){animation-delay:.15s}.tier-row:nth-child(3){animation-delay:.25s}.tier-row:nth-child(4){animation-delay:.35s}.tier-row:nth-child(5){animation-delay:.45s}.tier-row:nth-child(6){animation-delay:.55s}
+.tier-badge{display:flex;align-items:center;justify-content:center;font-family:"Cormorant Garamond",serif;font-size:20px;font-weight:600;color:#fff;border-radius:2px;padding:14px 18px;text-align:center;line-height:1.15;letter-spacing:.005em}
+.tier-badge.short{font-size:34px;letter-spacing:0}
+.tier-badge.t1{background:#1B2866}
+.tier-badge.t2{background:#3A4DA7}
+.tier-badge.t3{background:#7795CC}
+.tier-badge.t4{background:#6F7A4A}
+.tier-badge.t5{background:#8B2635}
+.tier-badge.t6{background:#5B6484}
+.tier-items{display:flex;flex-wrap:wrap;gap:8px;background:var(--paper-2);border:1px solid var(--rule);padding:10px 12px;border-radius:2px}
+.tier-item{padding:6px 12px;background:var(--paper);border:1px solid var(--rule);border-radius:2px;font-size:13px;color:var(--ink);font-family:"Cormorant Garamond",serif;font-weight:500;display:flex;align-items:center;gap:6px;transition:transform .2s}
+.tier-item:hover{transform:translateY(-2px)}
+.tier-arrow{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.06em}
+.tier-arrow.up{color:var(--ink-dim)}
+.tier-arrow.down{color:var(--warn)}
+
+/* CHART 17: quote constellation */
+.qcon-wrap{position:relative}
+.qcon-svg{width:100%;height:480px;display:block;background:var(--paper-2);border:1px solid var(--rule)}
+.qcon-axis{stroke:var(--rule);stroke-width:1;stroke-dasharray:2 4}
+.qcon-tick{font-family:"IBM Plex Mono",monospace;font-size:9px;fill:var(--ink-faint);letter-spacing:.10em}
+.qcon-bubble{fill:var(--ink-dim);fill-opacity:.65;cursor:pointer;animation:swarmIn 1.2s cubic-bezier(.2,.8,.2,1) both;transition:fill-opacity .2s,r .2s}
+.qcon-bubble:hover{fill-opacity:.95;r:18}
+.qcon-quote-popup{position:absolute;background:var(--ink);color:#fff;padding:10px 14px;border-radius:2px;font-family:"Cormorant Garamond",serif;font-style:italic;font-size:14px;max-width:280px;line-height:1.4;display:none;pointer-events:none;z-index:5;box-shadow:0 6px 18px rgba(12,24,67,.25)}
+.qcon-quote-popup .qmeta{display:block;margin-top:6px;font-family:"IBM Plex Mono",monospace;font-size:9px;letter-spacing:.14em;color:#9DA8C9;text-transform:uppercase;font-style:normal}
+
+/* === USER OVERRIDE: light backgrounds only, brand colors as accents === */
+/* Force light mode on every device — block iOS/Chrome auto-dark-mode forcing */
+:root{color-scheme:light only!important}
+html,body{color-scheme:light only!important;background-color:#F6F2ED!important;color:#0C1843!important;forced-color-adjust:none}
+/* All metric cards uniform light cream — no alt-card stripe effect */
+.mc, .mc.alt{background:var(--paper-2)!important;color:var(--ink)!important}
+/* Table headers: same cream as cards instead of tan-gray */
+table.tbl thead th{background:var(--paper-2)!important;border-bottom:2px solid var(--rule)!important}
+/* Tier badges: replace dark fills with light card + colored left border + colored text */
+.tier-badge{background:var(--paper-2)!important;color:var(--ink)!important;border:1px solid var(--rule);border-left-width:6px!important;font-weight:600}
+.tier-badge.t1{border-left-color:#1B2866!important;color:#1B2866!important}
+.tier-badge.t2{border-left-color:#3A4DA7!important;color:#3A4DA7!important}
+.tier-badge.t3{border-left-color:#7795CC!important;color:#3A4DA7!important}
+.tier-badge.t4{border-left-color:#6F7A4A!important;color:#6F7A4A!important}
+.tier-badge.t5{border-left-color:#8B2635!important;color:#8B2635!important}
+.tier-badge.t6{border-left-color:#5B6484!important;color:#5B6484!important}
+/* Active filter chip: outlined navy instead of solid navy fill */
+.chip.on{background:var(--paper-2)!important;color:var(--ink)!important;border:1px solid var(--ink)!important;font-weight:600}
+/* Evidence-tier pills inside finding boxes: keep brand color as text + outline, drop dark fill */
+.fbox .ev{background:transparent!important;color:var(--ink-dim)!important;border:1px solid var(--ink-dim);padding:1px 6px}
+.fbox .ev.low{background:transparent!important;color:var(--ink-faint)!important;border:1px solid var(--ink-faint)}
+</style>
+</head>
+<body>
+<aside class="sidebar">
+  <div class="brand">
+    <div>
+      <div class="name">Vine &amp; Fig Tree</div>
+      <div class="sub">Institute · Beacon Threat Brief</div>
+    </div>
+  </div>
+  <nav class="nav">
+    <a href="#sec-summary"><span class="nx">02</span>Executive Summary</a>
+    <a href="#sec-foundations"><span class="nx">03</span>Ideological Foundations</a>
+    <a href="#sec-pillars-compass"><span class="nx">04</span>Three Pillars (Radar)</a>
+    <a href="#sec-ihra"><span class="nx">05</span>IHRA Category Map</a>
+    <a href="#sec-quotes"><span class="nx">06</span>Dugin in His Own Words</a>
+    <a href="#sec-timeline"><span class="nx">07</span>Career Trajectory</a>
+    <a href="#sec-network"><span class="nx">08</span>Network of Allies</a>
+    <a href="#sec-tiers"><span class="nx">09</span>U.S. Amplifier Tiers</a>
+    <a href="#sec-bubbles"><span class="nx">10</span>Reach by Amplifier</a>
+    <a href="#sec-spike"><span class="nx">11</span>March 2026 Spike</a>
+    <a href="#sec-toptweets"><span class="nx">12</span>Top Viral Tweets</a>
+    <a href="#sec-quote-bank"><span class="nx">13</span>15 Worst Statements</a>
+    <a href="#sec-constellation"><span class="nx">14</span>Quote Constellation</a>
+    <a href="#sec-rebuttals"><span class="nx">15</span>Three Rebuttal Framings</a>
+    <a href="#sec-watchlist"><span class="nx">16</span>Top 10 Watchlist</a>
+    <a href="#sec-method"><span class="nx">17</span>Methodology</a>
+    <a href="#sec-sources"><span class="nx">18</span>Source List</a>
+  </nav>
+  <div class="foot">
+Beacon Intelligence Brief<br/>Prepared for senior<br/>advocacy leaders<br/>April 2026
+  </div>
+</aside>
+
+<main>
+<!--
+@module: hero
+@schema: { id, kicker, title (HTML allowed), dek, byline }
+-->
+<section id="sec-hero" class="first">
+  <div class="toprule"></div>
+  <div class="kicker">Beacon Threat Brief · Dugin Dossier · prepared for senior advocacy leaders · April 2026</div>
+  <h1 class="serif">Alexander Dugin:<br/>Ideology, Antisemitism,<br/>and Western Amplification.</h1>
+  <p class="dek">Russian political philosopher Alexander Dugin — architect of “Neo-Eurasianism” and the “Fourth Political Theory” — has become an increasingly visible vector for antisemitism, anti-Israel delegitimization, and anti-democratic ideology entering American public discourse. This brief maps his ideological project, his four-decade antisemitic record, his post-October 7 anti-Israel escalation, the U.S. amplifier ecosystem that has carried his ideas mainstream, and the rebuttal frames advocacy leaders can deploy.</p>
+  <div class="byline">VFT Institute · Beacon Intelligence · April 2026</div>
+</section>
+
+
+<!--
+@module: exec_summary
+@schema: {
+  id, kicker, title, dek,
+  metrics: [{k, v, u, p, alt, navy, olive, ms}],   // 4-8 cards
+  findings: [{kind:"|warn|olive", h, p, ev:"|strong|mod|low"}]
+}
+-->
+<section id="sec-summary">
+  <h4>Section 01 · Executive Summary</h4>
+  <h2 class="serif">Not a fringe curiosity — a documented threat indicator.</h2>
+  <p class="dek">Dugin’s ideas now circulate through a surprisingly mainstream set of American amplifiers. His antisemitism is not incidental to his project — it is structural. The numbers below trace the scale of his reach and the breadth of his antisemitic record across four decades.</p>
+
+  <div class="metrics">
+<div class="mc"><div class="mk">Top Tweet Views</div><div class="mv">9.24M</div><div class="mu">“Israel is a threat to Europe” — January 12, 2026, on @agdugin</div><div class="pbar"><div class="pfill" style="width:100%"></div></div><div class="ms">Verified</div></div>
+<div class="mc alt"><div class="mk">Tucker Carlson Interview</div><div class="mv">8.47M</div><div class="mu">Long-form interview Episode 99, April 29, 2024 — most consequential single amplification</div><div class="pbar"><div class="pfill" style="width:92%"></div></div><div class="ms">Verified</div></div>
+<div class="mc"><div class="mk">March 2026 Tweet Volume</div><div class="mv">943</div><div class="mu">Original tweets in March 2026 — ~3× the prior six-month average of ~309/month</div><div class="pbar"><div class="pfill" style="width:100%"></div></div><div class="ms">Verified</div></div>
+<div class="mc alt"><div class="mk">March 2026 Total Views</div><div class="mv">40.6M</div><div class="mu">Combined view-count across March output — vs. ~15.9M monthly average prior</div><div class="pbar"><div class="pfill" style="width:85%"></div></div><div class="ms">Verified</div></div>
+<div class="mc"><div class="mk">IHRA Categories Met</div><div class="mv">6+</div><div class="mu">Distinct illustrative IHRA antisemitism categories triggered by documented statements</div><div class="pbar"><div class="pfill" style="width:75%"></div></div><div class="ms">Verified</div></div>
+<div class="mc alt"><div class="mk">Decades of Record</div><div class="mv">4</div><div class="mu">From Pamyat (1987) and Conspirology (1993) through April 2026 — unbroken trajectory</div><div class="pbar"><div class="pfill" style="width:100%"></div></div><div class="ms">Verified</div></div>
+<div class="mc"><div class="mk">Arktos Dugin Titles</div><div class="mv">13+</div><div class="mu">Distinct titles published in English by Sweden-based far-right Arktos Media (16 SKUs)</div><div class="pbar"><div class="pfill" style="width:80%"></div></div><div class="ms">Verified</div></div>
+<div class="mc alt"><div class="mk">Alex Jones Interview</div><div class="mv">798K</div><div class="mu">“WORLD EXCLUSIVE” interview, December 12, 2025 — ADL-documented platforming</div><div class="pbar"><div class="pfill" style="width:50%"></div></div><div class="ms">Verified</div></div>
+  </div>
+
+  <div class="div-dot"></div>
+
+  <div class="findings">
+<div class="fbox warn"><h5>Antisemitism is structural, not incidental</h5><p>Dugin’s record spans four decades — from his 1987–1989 service on the Central Council of the explicitly antisemitic Pamyat movement and his 1993 book Conspirology, which scholars identify as centering a Jewish world-conspiracy theory, to a March 2026 essay calling Zionism “Jewish Satanism” and an April 2026 X post titled “The Jewish problem.” His statements map onto at least six distinct illustrative categories of the IHRA Working Definition.</p><span class="ev strong">Verified — primary sources + ADL + State Dept.</span></div>
+<div class="fbox"><h5>Mainstream amplification is now documented</h5><p>Tucker Carlson conducted an 8.5M-view interview. Candace Owens declared she owns two of his books and named her cat after his assassinated daughter. Alex Jones hosted a “WORLD EXCLUSIVE” that drew nearly 800K views. Dugin himself names Carlson, Owens, Jones, Bannon, Gabbard, Musk, Thiel, Posobiec, MTG, Charlie Kirk and others as “MAGA core intellectuals” — a strategic targeting map of the American right.</p><span class="ev strong">Verified — X engagement metrics</span></div>
+<div class="fbox olive"><h5>Hostile-state ideological infrastructure</h5><p>Dugin’s 1997 Foundations of Geopolitics — reportedly used at Russia’s General Staff Academy — explicitly calls for destabilizing the U.S. through internal division and building an anti-Western axis with Iran. Katehon and Geopolitica.ru, both linked to Dugin and to sanctioned Russian oligarch Konstantin Malofeyev, were named by the U.S. State Department in 2020 as pillars of Russia’s disinformation ecosystem.</p><span class="ev strong">State Dept. 2020</span></div>
+<div class="fbox warn"><h5>Post–October 7 anti-Israel escalation</h5><p>Dugin’s anti-Israel output has surged since October 7, 2023. He has called for Iran to develop nuclear weapons to deter Israel, described Israeli leaders as “mad bloodthirsty terrorists” and “human flesh eaters,” framed Israel as serving the Antichrist, and in March 2026 endorsed an Iranian strategy to “erase Israel from the face of the earth.” He explicitly names Iran, Hamas, Hezbollah, and the Houthis as “our friends and strategic allies.”</p><span class="ev strong">Verified — Dugin’s own words</span></div>
+  </div>
+</section>
+
+
+<!--
+@module: findings_grid
+@schema: { id, kicker, title, dek (optional),
+  findings: [{kind, h, p, ev}]
+}
+-->
+<section id="sec-foundations">
+  <h4>Section 02 · Ideological Foundations</h4>
+  <h2 class="serif">Three interlocking pillars — one anti-Western, anti-democratic, and antisemitic project.</h2>
+  
+  <div class="findings">
+<div class="fbox"><h5>Pillar I: Neo-Eurasianism</h5><p>Drawing on the interwar Russian émigré tradition (Trubetskoy, Savitsky), Dugin frames Russia as the heart of a distinct “Eurasian” civilization destined to lead a global coalition against Anglo-American hegemony. His 1997 Foundations of Geopolitics articulated this as a strategic program: a Moscow–Berlin–Paris axis, alliance with Iran, and the destabilization of the U.S. through “separatism and ethnic, social and racial conflicts.”</p><span class="ev strong">Verified — Stanford/Hoover (Dunlop)</span></div>
+<div class="fbox olive"><h5>Pillar II: The Fourth Political Theory</h5><p>In his 2009 book of the same name, Dugin proposed a “fourth” ideology to supersede liberalism, communism, and fascism — all of which he treats as products of Western modernity and rejects. In practice the framework borrows from all three while positioning liberalism as the primary enemy. In the 1990s he called for “a genuine, true, radically revolutionary and consistent fascist fascism” in Russia.</p><span class="ev strong">60 Minutes + academic</span></div>
+<div class="fbox"><h5>Pillar III: Traditionalism</h5><p>Dugin self-identifies as a follower of René Guénon and Julius Evola — thinkers who rejected Enlightenment modernity in favor of a perennial sacred order. In his own words: “Atheism, pluralism, progressism, Enlightenment — all that things are totally, totally evil.” Evola’s racial-civilizational hierarchy explicitly placed Jews in a subordinate spiritual category; Dugin’s synthesis treats liberalism, secularism, and human rights as demonic forces to be destroyed.</p><span class="ev strong">Verified self-identification</span></div>
+<div class="fbox warn"><h5>The Atlanticist / Eurasianist binary places Israel on the enemy side</h5><p>Dugin divides the world between Eurasianism (land-based, traditional, sacred, Russia-led) and Atlanticism (sea-based, liberal, secular, U.S./U.K.-led). Israel and Zionism are placed firmly on the Atlanticist side. In a March 2026 tweet he made the alignment explicit: those “on the side of God (Palestine, Russia, Iran, China, the Resistance)” versus those “on the side of devil (Baal, Epstein, globalism, Dajjal, Antichrist).”</p><span class="ev strong">Verified — @agdugin</span></div>
+  </div>
+</section>
+
+
+<!--
+@module: chart_radial_compass   (Motion Chart 06)
+@schema: {
+  id, kicker, title, dek, ctitle, clabel, csub,
+  axes: ["dim 1","dim 2", ...],          // 5–8 axes
+  scaleMax: 5,                            // numeric max
+  entities: [{name, color, vals:[n,n,...]}],   // vals.length === axes.length
+  findings: [{kind,h,p,ev}]
+}
+-->
+<section id="sec-pillars-compass" data-vft-chart>
+  <h4>Section 02b · Pillar Comparison</h4>
+  <h2 class="serif">Each pillar contributes a different dimension to the same anti-democratic synthesis.</h2>
+  <p class="dek">Each polygon represents one of Dugin’s three core intellectual pillars, scored on six dimensions of the worldview they encode. The polygons overlap because the pillars are designed to interlock; what differs is which dimension each carries most intensely.</p>
+  <div class="chart-card">
+    <div class="ctitle"><span class="pin"></span>Radial compass · 3 pillars · 6 worldview dimensions</div>
+    <div class="clabel">Neo-Eurasianism carries the geopolitics. Fourth Political Theory carries the anti-liberalism. Traditionalism carries the metaphysics.</div>
+    <div class="csub">Author scoring on a 0–5 scale based on textual analysis of Dugin’s primary works. Higher = more central to that pillar.</div>
+    <div class="compass-wrap"><svg id="sec-pillars-compass__svg" class="compass-svg" viewBox="0 0 520 520"></svg></div>
+    <div class="legend" id="sec-pillars-compass__legend"></div>
+    <div class="findings" style="margin-top:18px"><div class="fbox"><h5>Why the polygons overlap</h5><p>All three pillars score high on anti-liberalism and civilizational hierarchy. The synthesis is not three separate critiques bolted together — it is a single project expressed through three intellectual traditions, each lending the others legitimacy and depth.</p><span class="ev">Author analysis</span></div>
+<div class="fbox olive"><h5>Where they differ</h5><p>Neo-Eurasianism supplies the geopolitical operating manual (anti-Americanism, axis-building). The Fourth Political Theory supplies the regime-design language (anti-liberalism, post-democratic authoritarianism). Traditionalism supplies the metaphysical justification — and the most explicit antisemitic coding via Evola.</p><span class="ev">Textual analysis</span></div></div>
+  </div>
+</section>
+<script>
+(function(){
+  var DATA={"axes": ["Anti-Liberal", "Anti-USA", "Hierarchy", "Antisemitic", "Authority", "Metaphysics"], "scaleMax": 5, "entities": [{"name": "Neo-Eurasianism (1997)", "color": "#3A4DA7", "vals": [4, 5, 5, 3, 4, 3]}, {"name": "Fourth Political Theory (2009)", "color": "#8B2635", "vals": [5, 4, 3, 3, 5, 2]}, {"name": "Traditionalism (Gu\u00e9non/Evola)", "color": "#6F7A4A", "vals": [4, 3, 4, 4, 3, 5]}]}; var ID="sec-pillars-compass";
+  function render(){
+    var svg=document.getElementById(ID+"__svg");if(!svg)return;svg.innerHTML="";
+    var W=520,H=520,cx=W/2,cy=H/2,R=180;
+    var n=DATA.axes.length, mx=DATA.scaleMax||5;
+    function pt(i,v){var a=(-Math.PI/2)+(2*Math.PI*i/n);var r=(v/mx)*R;return [cx+Math.cos(a)*r, cy+Math.sin(a)*r]}
+    // grid rings
+    for(var k=1;k<=4;k++){
+      var pts=[];for(var i=0;i<n;i++){var p=pt(i,(k/4)*mx);pts.push(p[0]+","+p[1])}
+      var ring=document.createElementNS("http://www.w3.org/2000/svg","polygon");
+      ring.setAttribute("points",pts.join(" "));ring.setAttribute("class","compass-grid");svg.appendChild(ring);
+    }
+    // axes + labels
+    for(var i=0;i<n;i++){
+      var p=pt(i,mx);
+      var ax=document.createElementNS("http://www.w3.org/2000/svg","line");
+      ax.setAttribute("x1",cx);ax.setAttribute("y1",cy);ax.setAttribute("x2",p[0]);ax.setAttribute("y2",p[1]);ax.setAttribute("class","compass-axis");svg.appendChild(ax);
+      var lp=pt(i,mx*1.18);
+      var lb=document.createElementNS("http://www.w3.org/2000/svg","text");
+      lb.setAttribute("class","compass-axis-label");lb.setAttribute("x",lp[0]);lb.setAttribute("y",lp[1]);
+      lb.setAttribute("text-anchor", lp[0]>cx+6?"start":(lp[0]<cx-6?"end":"middle"));
+      lb.setAttribute("dy",lp[1]>cy?"12":(lp[1]<cy?"-2":"4"));
+      lb.textContent=DATA.axes[i];svg.appendChild(lb);
+    }
+    // entities
+    DATA.entities.forEach(function(e,ei){
+      var pts=[];for(var i=0;i<n;i++){var p=pt(i,e.vals[i]);pts.push(p[0]+","+p[1])}
+      var poly=document.createElementNS("http://www.w3.org/2000/svg","polygon");
+      poly.setAttribute("points",pts.join(" "));poly.setAttribute("class","compass-poly");
+      poly.setAttribute("stroke",e.color);poly.setAttribute("fill",e.color);
+      poly.style.animationDelay=(ei*0.3).toFixed(2)+"s";svg.appendChild(poly);
+      for(var i=0;i<n;i++){var p=pt(i,e.vals[i]);
+        var d=document.createElementNS("http://www.w3.org/2000/svg","circle");
+        d.setAttribute("cx",p[0]);d.setAttribute("cy",p[1]);d.setAttribute("r","4");
+        d.setAttribute("fill",e.color);d.setAttribute("class","compass-dot");
+        d.style.animationDelay=(ei*0.3+i*0.05+0.4).toFixed(2)+"s";svg.appendChild(d);}
+    });
+    document.getElementById(ID+"__legend").innerHTML=DATA.entities.map(function(e){return "<div class='lg'><span class='sw' style='background:"+e.color+"'></span>"+e.name+"</div>"}).join("");
+  }
+  window.__VFT_CHARTS__=window.__VFT_CHARTS__||{};window.__VFT_CHARTS__[ID]=render;
+})();
+</script>
+
+
+<!--
+@module: chart_heatmap   (Motion Chart 01)
+@schema: {
+  id, kicker, title, dek,
+  ctitle, clabel, csub,
+  cols: [{id, lab}],                           // up to ~9
+  dimensions: [{cat, k, vals:{<colId>:<num|null>}}],
+  filters: ["All", "<cat1>", ...],             // optional category chips
+  legend (optional override),
+  findings: [{kind,h,p,ev}]
+}
+-->
+<section id="sec-ihra" data-vft-chart>
+  <h4>Section 03 · Documented Antisemitic Record</h4>
+  <h2 class="serif">Dugin’s output, mapped to IHRA antisemitism categories.</h2>
+  <p class="dek">Each row is a major Dugin text or platform; each column is an illustrative example from the IHRA Working Definition of Antisemitism. Cell scores reflect how strongly the source triggers that category, scaled so dark red = paradigmatic example (“hostile to Jews”) and gray = no fit. Rows are ordered roughly by date.</p>
+
+  <div class="chart-card">
+    <div class="ctitle"><span class="pin"></span>IHRA category fit · 9 Dugin sources × 8 categories</div>
+    <div class="clabel">At least six IHRA categories are triggered across multiple sources. The 2026 outputs concentrate the densest pattern.</div>
+    <div class="csub">Color scale: dark red = paradigmatic example (“hostile to Jews”), gray = no category fit. Source ratings: VERIFIED for direct primary sources (Twitter, Substack); STRONG/MODERATE for academic-mediated reporting of Russian-language works.</div>
+
+    <div id="sec-ihra__ctrl" class="chart-controls"></div>
+    <div id="sec-ihra__hm" class="heatmap" style="--cols:8"></div>
+
+    <div class="legend">
+      <div class="lg"><span class="sw" style="background:#5C1A23"></span>−2.0 hostile</div>
+      <div class="lg"><span class="sw" style="background:#A03445"></span>−1.0</div>
+      <div class="lg"><span class="sw" style="background:#A6A6A6"></span>0 neutral</div>
+      <div class="lg"><span class="sw" style="background:#5B6484"></span>+1.0</div>
+      <div class="lg"><span class="sw" style="background:#0C1843"></span>+2.0 sympathetic</div>
+    </div>
+
+    <div class="findings" style="margin-top:18px">
+<div class="fbox warn"><h5>At least six IHRA categories triggered across the corpus</h5><p>The ADL’s ADL’s and the U.S. State Department’s working frameworks both rely on the IHRA Working Definition. Dugin’s output triggers calls-to-harm, demonization, collective Jewish responsibility, classic antisemitic symbolism, Holocaust relativization, and world-Jewish-conspiracy myths — with multiple sources hitting each category.</p><span class="ev strong">IHRA mapping</span></div>
+<div class="fbox"><h5>The pattern intensifies in 2026</h5><p>The October 2024 “Great War” essay marks the post-October 7 turn. By March 2026 the Multipolar Press essay and the @agdugin Twitter cluster concentrate the densest IHRA pattern — calling Zionism “Jewish Satanism,” describing all categories of Jews as part of a “Frankist network,” and endorsing the “erasure” of Israel.</p><span class="ev">Temporal analysis</span></div>
+    </div>
+  </div>
+</section>
+<script>
+(function(){
+  var DATA = {"cols": [{"id": "c1", "lab": "Calls to Harm Jews"}, {"id": "c2", "lab": "Demonize / Dehumanize"}, {"id": "c3", "lab": "Collective Blame"}, {"id": "c4", "lab": "Dual Loyalty"}, {"id": "c5", "lab": "Antisemitic Symbols"}, {"id": "c6", "lab": "Holocaust Comparison"}, {"id": "c7", "lab": "Holocaust Denial / Trivialization"}, {"id": "c8", "lab": "World Jewish Conspiracy"}], "dimensions": [{"cat": "Books / Essays", "k": "Conspirology (1993)", "vals": {"c1": 0, "c2": -1, "c3": -2, "c4": -1, "c5": -1, "c6": 0, "c7": 0, "c8": -2}}, {"cat": "Books / Essays", "k": "Foundations of Geopolitics (1997)", "vals": {"c1": -2, "c2": -1, "c3": -2, "c4": -1, "c5": 0, "c6": 0, "c7": 0, "c8": -1}}, {"cat": "Books / Essays", "k": "Fourth Political Theory (2009)", "vals": {"c1": 0, "c2": -1, "c3": -1, "c4": -1, "c5": 0, "c6": 0, "c7": 0, "c8": -1}}, {"cat": "Books / Essays", "k": "Arktos: \u201cGreat War\u201d (Oct 2024)", "vals": {"c1": -2, "c2": -2, "c3": -1, "c4": -1, "c5": -2, "c6": -1, "c7": 0, "c8": -1}}, {"cat": "Books / Essays", "k": "Arktos: \u201cGreater Israel\u201d (Dec 2024)", "vals": {"c1": -1, "c2": -2, "c3": -1, "c4": 0, "c5": -1, "c6": -2, "c7": -2, "c8": -1}}, {"cat": "Books / Essays", "k": "Multipolar Press: \u201cEssence of Zionism\u201d (Mar 2026)", "vals": {"c1": -1, "c2": -2, "c3": -2, "c4": -1, "c5": -2, "c6": -1, "c7": -1, "c8": -2}}, {"cat": "Twitter (@agdugin)", "k": "@agdugin: anti-Israel cluster (Mar 2026)", "vals": {"c1": -2, "c2": -2, "c3": -1, "c4": -1, "c5": -2, "c6": -1, "c7": -1, "c8": -1}}, {"cat": "Twitter (@agdugin)", "k": "@agdugin: Rothschild/Soros (Nov 2025)", "vals": {"c1": 0, "c2": -1, "c3": -2, "c4": -2, "c5": -1, "c6": 0, "c7": 0, "c8": -2}}, {"cat": "Twitter (@agdugin)", "k": "@agdugin: \u201cThe Jewish problem\u201d (Apr 2026)", "vals": {"c1": -1, "c2": -2, "c3": -2, "c4": -1, "c5": -1, "c6": 0, "c7": 0, "c8": -2}}], "filters": ["All", "Books / Essays", "Twitter (@agdugin)"]};
+  var ID = "sec-ihra";
+  function color(v){
+    if(v===null||v===undefined) return null;
+    var stops=[[-2,[92,26,35]],[-1,[160,52,69]],[0,[166,166,166]],[1,[91,100,132]],[2,[12,24,67]]];
+    var c=Math.max(-2,Math.min(2,v));
+    for(var i=0;i<stops.length-1;i++){
+      if(c>=stops[i][0]&&c<=stops[i+1][0]){
+        var t=(c-stops[i][0])/(stops[i+1][0]-stops[i][0]);
+        var a=stops[i][1],b=stops[i+1][1];
+        return "rgb("+Math.round(a[0]+(b[0]-a[0])*t)+","+Math.round(a[1]+(b[1]-a[1])*t)+","+Math.round(a[2]+(b[2]-a[2])*t)+")";
+      }
+    }
+    return "rgb(120,120,120)";
+  }
+  function render(filter){
+    var host = document.getElementById(ID+"__hm");
+    if(!host) return;
+    host.innerHTML="";
+    var hd=document.createElement("div"); hd.className="heatmap-row hd";
+    hd.innerHTML="<div></div>"+DATA.cols.map(function(c){return "<div class='hcell'>"+c.lab+"</div>"}).join("");
+    host.appendChild(hd);
+    var prev="";
+    DATA.dimensions.forEach(function(row,idx){
+      if(filter && filter!=="All" && row.cat!==filter) return;
+      if(row.cat!==prev){
+        var sep=document.createElement("div");sep.className="heatmap-row";
+        sep.innerHTML="<div class='label cat'>"+row.cat+"</div>"+DATA.cols.map(function(){return "<div></div>"}).join("");
+        host.appendChild(sep);prev=row.cat;
+      }
+      var r=document.createElement("div");r.className="heatmap-row";
+      var html="<div class='label'>"+row.k+"</div>";
+      DATA.cols.forEach(function(col,ci){
+        var v=row.vals[col.id];
+        if(v===null||v===undefined){html+="<div class='hcell empty'>n/a</div>"}
+        else{
+          var bg=color(v); var disp=(v>0?"+":"")+v.toFixed(1);
+          var d=(idx*0.05+ci*0.03).toFixed(2);
+          html+="<div class='hcell' title='"+col.lab+" — "+row.k+": "+disp+"'><div class='anim-fill' style='background:"+bg+";animation-delay:"+d+"s'></div><span class='v'>"+disp+"</span></div>";
+        }
+      });
+      r.innerHTML=html; host.appendChild(r);
+    });
+  }
+  function buildCtrl(){
+    var host=document.getElementById(ID+"__ctrl"); if(!host || !DATA.filters || !DATA.filters.length) return;
+    host.innerHTML="";
+    DATA.filters.forEach(function(c,i){
+      var b=document.createElement("button"); b.className="chip"+(i===0?" on":""); b.textContent=c;
+      b.onclick=function(){host.querySelectorAll(".chip").forEach(function(x){x.classList.remove("on")});b.classList.add("on");render(c)};
+      host.appendChild(b);
+    });
+  }
+  buildCtrl();
+  window.__VFT_CHARTS__ = window.__VFT_CHARTS__ || {};
+  window.__VFT_CHARTS__[ID] = function(){ render(DATA.filters && DATA.filters[0] || "All") };
+})();
+</script>
+
+
+<!--
+@module: quote_wall
+@schema: { id, kicker, title,
+  quotes: [{q, h, meta}]
+}
+-->
+<section id="sec-quotes">
+  <h4>Section 03b · Selected Primary Sources</h4>
+  <h2 class="serif">Dugin in his own words — verified primary sources.</h2>
+  <div class="quotes">
+<div class="qcard"><q>The essence of Zionism lies in it being a kind of ‘Jewish Satanism.’</q><div class="qmeta"><span class="qh">Multipolar Press (Substack)</span><span>“The Essence of Zionism” · March 6, 2026 · VERIFIED</span></div></div>
+<div class="qcard"><q>The Iranian strategy is for now to exhaust the Israeli interceptors and erase Israel from the face of the earth turning it into Gaza.</q><div class="qmeta"><span class="qh">@agdugin</span><span>March 4, 2026 · 369,638 views · VERIFIED</span></div></div>
+<div class="qcard"><q>Atheism, pluralism, progressism, Enlightenment — all that things are totally, totally evil.</q><div class="qmeta"><span class="qh">Dugin (interview)</span><span>On the Traditionalist refusal of modernity · VERIFIED</span></div></div>
+<div class="qcard"><q>It would also make sense simultaneously to support isolationist tendencies in American politics … introducing geopolitical disorder into internal American activity, encouraging all kinds of separatism and ethnic, social and racial conflicts.</q><div class="qmeta"><span class="qh">Foundations of Geopolitics (1997)</span><span>Reportedly used at Russia’s General Staff Academy · STRONG</span></div></div>
+<div class="qcard"><q>Iran, the Yemeni Houthis, Hezbollah … are our friends and strategic allies.</q><div class="qmeta"><span class="qh">Arktos</span><span>“The Conflict in the Middle East Is the Start of a Great War” · October 5, 2024 · VERIFIED</span></div></div>
+<div class="qcard"><q>Thinking ‘from Auschwitz’ is no longer necessary. Now, one must think ‘from Gaza.’</q><div class="qmeta"><span class="qh">Arktos</span><span>“Greater Israel and the Conquering Messiah” · December 27, 2024 · VERIFIED</span></div></div>
+  </div>
+</section>
+
+
+<!--
+@module: chart_timeline_spine   (Motion Chart 09)
+@schema: {
+  id, kicker, title, dek, ctitle, clabel, csub,
+  events: [{date, title, desc, kind: ""|"warn"|"olive"}],   // 4–10 events
+  findings: [{kind,h,p,ev}]
+}
+-->
+<section id="sec-timeline" data-vft-chart>
+  <h4>Section 04 · Four Decades, One Trajectory</h4>
+  <h2 class="serif">From a 1986 SA-glorifying song to a 2026 “Jewish problem” post.</h2>
+  <p class="dek">Dugin’s antisemitism is not a recent turn or a tactical pivot. It runs from his earliest documented output through his major books, his post–October 7 escalation, and his current 2026 social-media cluster. The trajectory is unbroken across four decades and three media regimes.</p>
+  <div class="chart-card">
+    <div class="ctitle"><span class="pin"></span>Timeline · 1986 → April 2026 · 11 documented inflection points</div>
+    <div class="clabel">Each event is independently sourced — BBC Russian, Stanford/Hoover, ADL, Arktos, Multipolar Press, X.</div>
+    <div class="csub">Red nodes mark the most damaging or escalatory events; olive nodes mark institutional milestones.</div>
+    <div class="tline">
+<div class="tline-row warn"><div class="tline-date">1986</div><div class="tline-title">“Tango SA” under pseudonym “Hans Sievers”</div><div class="tline-desc">BBC Russian (Atanesian) documents the young Dugin recording a song glorifying the Nazi Sturmabteilung, with lyrics including “As SA divisions marched / Towards your sickened East.”</div></div>
+<div class="tline-row warn"><div class="tline-date">1987–89</div><div class="tline-title">Pamyat Central Council</div><div class="tline-desc">Service on the Central Council of the explicitly antisemitic Pamyat movement, documented by Stanford’s John Dunlop. Pamyat drew on the Black Hundreds tradition that organized pogroms and promoted the Protocols of the Elders of Zion.</div></div>
+<div class="tline-row warn"><div class="tline-date">1993</div><div class="tline-title">National Bolshevik Party co-founded; Conspirology published</div><div class="tline-desc">NazBol combined Soviet and Nazi iconography (ADL: extremist). Conspirology, per academic analyses, centers a Jewish world-conspiracy theory as the master key to global politics.</div></div>
+<div class="tline-row olive"><div class="tline-date">1997</div><div class="tline-title">Foundations of Geopolitics</div><div class="tline-desc">Reportedly adopted as a textbook at Russia’s General Staff Academy. Calls for an anti-Western axis with Iran and for destabilizing the U.S. via “separatism and ethnic, social and racial conflicts.”</div></div>
+<div class="tline-row olive"><div class="tline-date">2009</div><div class="tline-title">The Fourth Political Theory</div><div class="tline-desc">Proposes a “fourth” ideology to supersede liberalism, communism, and fascism — in practice borrowing from all three while positioning liberalism as the primary enemy.</div></div>
+<div class="tline-row warn"><div class="tline-date">Apr 2024</div><div class="tline-title">Tucker Carlson interview (Episode 99)</div><div class="tline-desc">8,468,627 views on X. The single most consequential American mainstream amplification of Dugin to date.</div></div>
+<div class="tline-row "><div class="tline-date">Oct 2024</div><div class="tline-title">Arktos: “The Conflict in the Middle East Is the Start of a Great War”</div><div class="tline-desc">Names Iran, the Houthis, and Hezbollah as “our friends and strategic allies” and frames the Middle East conflict as a “second front” of multipolarity against Western hegemony.</div></div>
+<div class="tline-row warn"><div class="tline-date">Dec 2024</div><div class="tline-title">Arktos: “Greater Israel and the Conquering Messiah”</div><div class="tline-desc">Argues the Holocaust’s moral capital has been “entirely expended” and that sympathy should shift “from Auschwitz” to “from Gaza.”</div></div>
+<div class="tline-row olive"><div class="tline-date">Dec 2025</div><div class="tline-title">Alex Jones “WORLD EXCLUSIVE” interview</div><div class="tline-desc">798,066 views on X. ADL-documented platforming of Dugin to the InfoWars audience.</div></div>
+<div class="tline-row warn"><div class="tline-date">Jan 2026</div><div class="tline-title">“Israel is a threat to Europe” — 9.24M views</div><div class="tline-desc">Most-viewed Dugin tweet on record. Marks the inflection point where his Twitter platform begins generating mainstream-scale reach.</div></div>
+<div class="tline-row warn"><div class="tline-date">Mar 2026</div><div class="tline-title">“Essence of Zionism” + “erase Israel” cluster</div><div class="tline-desc">943 original tweets in March (~3× monthly average). Multipolar Press essay calls Zionism “Jewish Satanism”; March 4 tweet endorses the Iranian strategy to “erase Israel from the face of the earth.”</div></div>
+<div class="tline-row warn"><div class="tline-date">Apr 2026</div><div class="tline-title">SNEAKO livestream + “The Jewish problem” post</div><div class="tline-desc">Four-hour SNEAKO livestream (April 13) brings Dugin to a young male YouTube audience. April 12 X post titled “The Jewish problem” makes the underlying frame explicit.</div></div>
+    </div>
+    <div class="findings" style="margin-top:18px"><div class="fbox warn"><h5>No repudiation, no break point</h5><p>Across four decades there is no documented public repudiation of the Pamyat trajectory, the NazBol fusion, or the conspiratorial worldview of Conspirology. Marlène Laruelle (GWU) characterizes the pattern as occasional tactical philo-Zionism overlaid on systematic antisemitism.</p><span class="ev strong">Laruelle (GWU)</span></div>
+<div class="fbox"><h5>Three media regimes, one project</h5><p>The same worldview is delivered first through Russian-language books and pamphlets (1990s), then through English-language far-right publishing via Arktos (2010s–2024), and now through high-velocity Twitter/Substack output (2025–2026). The medium changes; the content does not.</p><span class="ev">Pattern analysis</span></div></div>
+  </div>
+</section>
+
+
+<!--
+@module: chart_chord   (Motion Chart 12)
+@schema: {
+  id, kicker, title, dek, ctitle, clabel, csub,
+  nodes: [{name, color}],                // 6–12
+  links: [{a:<idx>, b:<idx>, value}],
+  findings: [{kind,h,p,ev}]
+}
+-->
+<section id="sec-network" data-vft-chart>
+  <h4>Section 05 · Anti-Israel Network</h4>
+  <h2 class="serif">Dugin as the connective tissue between Russian, Iranian, and Western far-right networks.</h2>
+  <p class="dek">Dugin sits at the intersection of several distinct networks — Russian state-aligned media, the Iranian revolutionary establishment, the European New Right, and the American dissident-right ecosystem. The chord widths approximate the documented strength of each tie based on institutional links, joint appearances, and content-sharing patterns.</p>
+  <div class="chart-card">
+    <div class="ctitle"><span class="pin"></span>Chord · 9 nodes · documented institutional and ideological ties</div>
+    <div class="clabel">Read by node: thicker chords indicate denser, repeated, or institutionally formalized links.</div>
+    <div class="csub">Tie strengths are author-coded ordinal estimates from documented ties (interviews, joint events, sanctions records, publishing relationships). Node abbreviations: Malofeyev = Tsargrad TV / Katehon think tank; Iran Media = Press TV / Tasnim; Iran Axis = Hezbollah / Hamas / Houthis; Arktos / ENR = Arktos Media + the European New Right (de Benoist, Soral); US Mainstream = Carlson, Owens, Jones; US Distrib = Hinkle, SNEAKO, Galloway; US Alt-Right = Spencer, Heimbach; US Critics = O’Fallon, Insurrection Barbie, Shapiro, Beck.</div>
+    <div class="chord-wrap"><svg id="sec-network__svg" class="chord-svg" viewBox="0 0 520 520"></svg></div>
+    <div class="findings" style="margin-top:18px"><div class="fbox warn"><h5>The Malofeyev backbone</h5><p>Konstantin Malofeyev — sanctioned by U.S. Treasury (OFAC) in 2014 and subsequently charged by the DOJ for sanctions violations — funds the institutional infrastructure (Tsargrad TV, Katehon think tank) that platforms Dugin. The U.S. State Department in 2020 named Katehon and Geopolitica.ru as pillars of Russia’s disinformation ecosystem.</p><span class="ev strong">OFAC + State Dept.</span></div>
+<div class="fbox"><h5>Critics are part of the map</h5><p>Critics (Michael O’Fallon, Insurrection Barbie, Ben Shapiro, Glenn Beck, Dana Loesch) are not amplifiers but they are part of the discourse network. O’Fallon coined “Woke Right” to describe Americans who adopt Duginist frames — multipolarity, anti-globalism-as-civilizational-war, anti-liberalism — without necessarily citing Dugin by name.</p><span class="ev">Discourse mapping</span></div></div>
+  </div>
+</section>
+<script>
+(function(){
+  var DATA={"nodes": [{"name": "Dugin", "color": "#0C1843"}, {"name": "Malofeyev", "color": "#3A4DA7"}, {"name": "Iran Media", "color": "#8B2635"}, {"name": "Iran Axis", "color": "#A6353F"}, {"name": "Arktos / ENR", "color": "#6F7A4A"}, {"name": "US Mainstream", "color": "#1B2866"}, {"name": "US Distrib", "color": "#7795CC"}, {"name": "US Alt-Right", "color": "#5B6484"}, {"name": "US Critics", "color": "#9DA8C9"}], "links": [{"a": 0, "b": 1, "value": 20}, {"a": 0, "b": 2, "value": 14}, {"a": 0, "b": 3, "value": 12}, {"a": 0, "b": 4, "value": 18}, {"a": 0, "b": 5, "value": 16}, {"a": 0, "b": 6, "value": 12}, {"a": 0, "b": 7, "value": 10}, {"a": 0, "b": 8, "value": 8}, {"a": 1, "b": 2, "value": 10}, {"a": 1, "b": 4, "value": 8}, {"a": 2, "b": 3, "value": 14}, {"a": 4, "b": 5, "value": 6}, {"a": 4, "b": 7, "value": 7}, {"a": 5, "b": 6, "value": 9}, {"a": 6, "b": 7, "value": 5}]};var ID="sec-network";
+  function render(){
+    var svg=document.getElementById(ID+"__svg");if(!svg)return;svg.innerHTML="";
+    var cx=260,cy=260,Ro=220,Ri=200;
+    var n=DATA.nodes.length, gap=0.04;
+    var totals=DATA.nodes.map(function(){return 0});
+    DATA.links.forEach(function(l){totals[l.a]+=l.value;totals[l.b]+=l.value});
+    var sum=totals.reduce(function(a,b){return a+b},0);
+    if(sum===0)sum=1;
+    var arcs=[],a=0;
+    for(var i=0;i<n;i++){var sweep=(2*Math.PI-n*gap)*(totals[i]/sum);arcs.push({a0:a,a1:a+sweep});a+=sweep+gap}
+    function arcPath(a0,a1,r){
+      var x0=cx+Math.cos(a0)*r,y0=cy+Math.sin(a0)*r,x1=cx+Math.cos(a1)*r,y1=cy+Math.sin(a1)*r;
+      var lg=(a1-a0)>Math.PI?1:0;
+      return [x0,y0,x1,y1,lg];
+    }
+    // outer arcs
+    DATA.nodes.forEach(function(node,i){
+      var [x0,y0,x1,y1,lg]=arcPath(arcs[i].a0,arcs[i].a1,Ro);
+      var [x2,y2,x3,y3]=arcPath(arcs[i].a1,arcs[i].a0,Ri);
+      var d="M "+x0+" "+y0+" A "+Ro+" "+Ro+" 0 "+lg+" 1 "+x1+" "+y1+
+            " L "+x2+" "+y2+" A "+Ri+" "+Ri+" 0 "+lg+" 0 "+x3+" "+y3+" Z";
+      var p=document.createElementNS("http://www.w3.org/2000/svg","path");
+      p.setAttribute("d",d);p.setAttribute("fill",node.color||"#3A4DA7");p.setAttribute("class","chord-arc");svg.appendChild(p);
+      // label
+      var mid=(arcs[i].a0+arcs[i].a1)/2;
+      var lx=cx+Math.cos(mid)*(Ro+18),ly=cy+Math.sin(mid)*(Ro+18);
+      var t=document.createElementNS("http://www.w3.org/2000/svg","text");
+      t.setAttribute("class","chord-label");t.setAttribute("x",lx);t.setAttribute("y",ly+4);
+      t.setAttribute("text-anchor",Math.cos(mid)>0.05?"start":(Math.cos(mid)<-0.05?"end":"middle"));
+      t.textContent=node.name;svg.appendChild(t);
+    });
+    // chords
+    var off=arcs.map(function(a){return a.a0});
+    DATA.links.forEach(function(l,li){
+      var swA=(arcs[l.a].a1-arcs[l.a].a0)*(l.value/totals[l.a]);
+      var swB=(arcs[l.b].a1-arcs[l.b].a0)*(l.value/totals[l.b]);
+      var a0=off[l.a],a1=off[l.a]+swA;off[l.a]+=swA;
+      var b0=off[l.b],b1=off[l.b]+swB;off[l.b]+=swB;
+      var p0=[cx+Math.cos(a0)*Ri,cy+Math.sin(a0)*Ri];
+      var p1=[cx+Math.cos(a1)*Ri,cy+Math.sin(a1)*Ri];
+      var q0=[cx+Math.cos(b0)*Ri,cy+Math.sin(b0)*Ri];
+      var q1=[cx+Math.cos(b1)*Ri,cy+Math.sin(b1)*Ri];
+      var d="M "+p0[0]+" "+p0[1]+" A "+Ri+" "+Ri+" 0 0 1 "+p1[0]+" "+p1[1]+
+            " Q "+cx+" "+cy+" "+q0[0]+" "+q0[1]+
+            " A "+Ri+" "+Ri+" 0 0 1 "+q1[0]+" "+q1[1]+
+            " Q "+cx+" "+cy+" "+p0[0]+" "+p0[1]+" Z";
+      var p=document.createElementNS("http://www.w3.org/2000/svg","path");
+      p.setAttribute("d",d);p.setAttribute("fill",DATA.nodes[l.a].color||"#3A4DA7");p.setAttribute("class","chord-link");
+      p.style.animationDelay=(li*0.06).toFixed(2)+"s";svg.appendChild(p);
+    });
+  }
+  window.__VFT_CHARTS__=window.__VFT_CHARTS__||{};window.__VFT_CHARTS__[ID]=render;
+})();
+</script>
+
+
+<!--
+@module: chart_tier_ladder   (Motion Chart 16)
+@schema: {
+  id, kicker, title, dek, ctitle, clabel, csub,
+  tiers: [
+    {name:"S", items:[{name, change:"up"|"down"|"" }, ...]},
+    {name:"A", items:[...]},
+    ...
+  ],
+  findings: [{kind,h,p,ev}]
+}
+-->
+<section id="sec-tiers" data-vft-chart>
+  <h4>Section 06 · Reach and Amplification</h4>
+  <h2 class="serif">The U.S. amplifier ecosystem, ranked by reach and proximity.</h2>
+  <p class="dek">Tiered by mainstream reach (Tier S) down through ideological distribution nodes (Tier A), institutional and publishing infrastructure (Tier B), and the historical alt-right pipeline (Tier C). Movement arrows mark the figures whose Dugin engagement intensified or diminished in the past 12 months.</p>
+  <div class="chart-card">
+    <div class="ctitle"><span class="pin"></span>Tier ladder · 4 tiers · 13 named amplifiers</div>
+    <div class="clabel">Tier S amplifiers reach mainstream American audiences in the millions; Tier C operates at the dissident periphery.</div>
+    <div class="csub">↑ indicates intensified engagement in the past 12 months. ↓ indicates retreat or repudiation.</div>
+    <div class="tier-wrap">
+<div class="tier-row"><div class="tier-badge t1 short">S</div><div class="tier-items"><div class="tier-item">Tucker Carlson <span class="tier-arrow up">↑</span></div><div class="tier-item">Candace Owens <span class="tier-arrow up">↑</span></div><div class="tier-item">Alex Jones <span class="tier-arrow up">↑</span></div><div class="tier-item">Gen. Michael Flynn</div></div></div>
+<div class="tier-row"><div class="tier-badge t2 short">A</div><div class="tier-items"><div class="tier-item">Jackson Hinkle <span class="tier-arrow up">↑</span></div><div class="tier-item">SNEAKO <span class="tier-arrow up">↑</span></div><div class="tier-item">George Galloway</div><div class="tier-item">Kim Dotcom</div></div></div>
+<div class="tier-row"><div class="tier-badge t3 short">B</div><div class="tier-items"><div class="tier-item">Steve Turley</div><div class="tier-item">Arktos Media (Friberg)</div><div class="tier-item">Multipolar Press</div></div></div>
+<div class="tier-row"><div class="tier-badge t4 short">C</div><div class="tier-items"><div class="tier-item">Matthew Heimbach</div><div class="tier-item">Richard Spencer <span class="tier-arrow down">↓</span></div></div></div>
+    </div>
+    <div class="findings" style="margin-top:18px"><div class="fbox warn"><h5>Movement is mostly upward in 2025–2026</h5><p>Carlson, Owens, Jones, Hinkle, and SNEAKO have all intensified their Dugin engagement in the past 12 months. Carlson’s April 2024 interview crossed 8.5M views; Owens publicly named her cat after Dugin’s assassinated daughter in March 2026; Jones aired a “WORLD EXCLUSIVE” in December 2025; SNEAKO hosted a 4-hour livestream in April 2026.</p><span class="ev strong">Verified engagement metrics</span></div>
+<div class="fbox"><h5>Spencer is the rare downward arrow</h5><p>Richard Spencer — the historical pipeline figure whose ex-wife Nina Kouprianova was Dugin’s primary English translator and whose AltRight.com platform published Dugin — has since turned on Russia and Dugin and supported Ukraine. The pipeline he opened, however, is still in use.</p><span class="ev">ADL + public statements</span></div></div>
+  </div>
+</section>
+
+
+<!--
+@module: chart_bubble_swarm   (Motion Chart 15)
+@schema: {
+  id, kicker, title, dek, ctitle, clabel, csub,
+  bubbles: [{name, value, color}],         // up to ~30
+  caption,                                  // text below chart
+  findings: [{kind,h,p,ev}]
+}
+-->
+<section id="sec-bubbles" data-vft-chart>
+  <h4>Section 06b · Reach by Amplifier</h4>
+  <h2 class="serif">Documented reach — sized by views attributable to each amplifier.</h2>
+  <p class="dek">Each bubble is a single amplifier or amplification event, sized by the documented view-count it produced for Dugin-related content. Critics are included for comparison and shown in slate; their reach is in the same order of magnitude as several amplifiers.</p>
+  <div class="chart-card">
+    <div class="ctitle"><span class="pin"></span>Bubble swarm · 13 amplifiers + 2 critics · sized by documented views</div>
+    <div class="clabel">Tucker Carlson’s interview alone produced more reach than the next four amplifiers combined.</div>
+    <div class="csub">Values are documented views in thousands. Where a single peak event dominates an amplifier’s footprint (e.g., Carlson’s interview, Jones’s exclusive), that event is shown.</div>
+    <div class="swarm-wrap"><svg id="sec-bubbles__svg" class="swarm-svg" viewBox="0 0 980 420"></svg></div>
+    <div class="findings" style="margin-top:18px"><div class="fbox warn"><h5>Two events dominate reach — Carlson and the Israel-threat tweet</h5><p>The April 2024 Tucker Carlson interview (8.47M views) and the January 2026 “Israel is a threat to Europe” tweet (9.24M views) account for the bulk of Dugin’s mainstream-scale reach. Most other amplifications operate one or two orders of magnitude below.</p><span class="ev strong">X engagement</span></div>
+<div class="fbox"><h5>Critics generate reach in the same order of magnitude</h5><p>Michael O’Fallon (208 tweets, ~1.8M views) and Insurrection Barbie (84 tweets, ~1.4M views) generate critic-side reach comparable to several A-tier amplifiers — a meaningful counter-discourse, though still well short of Tier S amplification.</p><span class="ev">Monitored ecosystem</span></div></div>
+  </div>
+</section>
+<script>
+(function(){
+  var DATA={"bubbles": [{"name": "Tucker Carlson interview", "value": 8470, "color": "#0C1843"}, {"name": "Candace Owens (cumulative)", "value": 7400, "color": "#1B2866"}, {"name": "Israel-threat tweet (Jan 26)", "value": 9240, "color": "#5C1A23"}, {"name": "Owens (direct endorsement)", "value": 1400, "color": "#3A4DA7"}, {"name": "Alex Jones interview", "value": 798, "color": "#3A4DA7"}, {"name": "\u201cErase Israel\u201d tweet (Mar 26)", "value": 370, "color": "#8B2635"}, {"name": "Flynn \u201cmultipolar\u201d cluster", "value": 231, "color": "#7795CC"}, {"name": "Synagogue of Satan tweet", "value": 122, "color": "#A6353F"}, {"name": "Zionists/Baal tweet", "value": 114, "color": "#A6353F"}, {"name": "Galloway cluster", "value": 200, "color": "#7795CC"}, {"name": "Hinkle cluster", "value": 140, "color": "#7795CC"}, {"name": "\u201cJewsade\u201d tweet", "value": 90, "color": "#A6353F"}, {"name": "Kim Dotcom cluster", "value": 40, "color": "#7795CC"}, {"name": "O\u2019Fallon (CRITIC)", "value": 1800, "color": "#5B6484"}, {"name": "Insurrection Barbie (CRITIC)", "value": 1400, "color": "#5B6484"}], "caption": ""};var ID="sec-bubbles";
+  function render(){
+    var svg=document.getElementById(ID+"__svg");if(!svg)return;svg.innerHTML="";
+    var W=980,H=420;
+    var bubs=(DATA.bubbles||[]).slice().sort(function(a,b){return b.value-a.value});
+    var maxV=Math.max.apply(null,bubs.map(function(x){return x.value}));
+    // simple non-overlap pack — greedy place by descending size on a pseudo-random stable layout
+    var placed=[];
+    bubs.forEach(function(b,idx){
+      var r=12+Math.sqrt(b.value/maxV)*54;
+      // seeded-ish positioning around center
+      var ang=(idx*137.5)*Math.PI/180;
+      var dist=Math.min(W,H)*0.42*Math.sqrt(idx/Math.max(1,bubs.length));
+      var x=W/2+Math.cos(ang)*dist, y=H/2+Math.sin(ang)*dist*0.78;
+      // collision push
+      for(var pass=0;pass<60;pass++){
+        var ok=true;
+        for(var k=0;k<placed.length;k++){
+          var p=placed[k]; var dx=x-p.x, dy=y-p.y; var d=Math.sqrt(dx*dx+dy*dy);
+          var minD=r+p.r+3;
+          if(d<minD){ok=false; var f=(minD-d)/(d||1); x+=dx*f*0.6; y+=dy*f*0.6}
+        }
+        x=Math.max(r+4,Math.min(W-r-4,x));
+        y=Math.max(r+4,Math.min(H-r-4,y));
+        if(ok)break;
+      }
+      placed.push({x:x,y:y,r:r,b:b});
+    });
+    placed.forEach(function(p,i){
+      var g=document.createElementNS("http://www.w3.org/2000/svg","g");
+      g.setAttribute("class","swarm-bubble");g.style.animationDelay=(i*0.04).toFixed(2)+"s";
+      var c=document.createElementNS("http://www.w3.org/2000/svg","circle");
+      c.setAttribute("cx",p.x);c.setAttribute("cy",p.y);c.setAttribute("r",p.r);c.setAttribute("fill",p.b.color||"#3A4DA7");
+      g.appendChild(c);
+      var t=document.createElementNS("http://www.w3.org/2000/svg","text");
+      t.setAttribute("class","swarm-label");t.setAttribute("x",p.x);t.setAttribute("y",p.y+4);
+      if(p.r<22) t.setAttribute("font-size","9");
+      t.textContent=p.b.name;
+      g.appendChild(t);
+      var tt=document.createElementNS("http://www.w3.org/2000/svg","title");tt.textContent=p.b.name+" — "+p.b.value;g.appendChild(tt);
+      svg.appendChild(g);
+    });
+  }
+  window.__VFT_CHARTS__=window.__VFT_CHARTS__||{};window.__VFT_CHARTS__[ID]=render;
+})();
+</script>
+
+
+<!--
+@module: chart_activity_pulse   (Motion Chart 10)
+@schema: {
+  id, kicker, title, dek, ctitle, clabel, csub,
+  series: [{date:"2025-01", value: 320}, ...],
+  peaks: [{date:"2025-06", label:"Spike"}],   // optional
+  yLabel, xLabel,                              // axis captions
+  findings: [{kind,h,p,ev}]
+}
+-->
+<section id="sec-spike" data-vft-chart>
+  <h4>Section 06c · The March 2026 Spike</h4>
+  <h2 class="serif">In March 2026 Dugin’s tweet volume tripled.</h2>
+  <p class="dek">Monthly original-tweet count from @agdugin. The March 2026 surge — 943 tweets versus a six-month average of ~309 — coincides with the Iran–Israel crisis escalation, the publication of “The Essence of Zionism,” the buildup to the SNEAKO livestream, and a feedback loop of reciprocal amplification with Jones, Hinkle, and SNEAKO.</p>
+  <div class="chart-card">
+    <div class="ctitle"><span class="pin"></span>Activity pulse · 8 months · monthly tweet volume · 3 peaks</div>
+    <div class="clabel">40.6M total views in March 2026 vs. ~15.9M monthly average prior — a ~2.5× reach surge on top of the ~3× volume surge.</div>
+    <div class="csub">Counts are author estimates from monitored output; March 2026 figure is reported.</div>
+    <div class="pulse-wrap"><svg id="sec-spike__svg" class="pulse-svg" viewBox="0 0 980 240"></svg></div>
+    <div class="findings" style="margin-top:18px"><div class="fbox warn"><h5>Iran–Israel crisis as the proximate driver</h5><p>Daily anti-Israel content tracked the Iran–Israel escalation curve. The March 4 tweet endorsing the Iranian strategy to “erase Israel from the face of the earth” (369,638 views) and the March 6 Multipolar Press essay calling Zionism “Jewish Satanism” formed the ideological core of the spike.</p><span class="ev strong">Verified — @agdugin</span></div>
+<div class="fbox"><h5>Reciprocal amplification feedback loop</h5><p>During the spike Dugin began aggressively retweeting content from Jones, Hinkle, SNEAKO, and others, who in turn retweeted him. The result was a self-reinforcing volume–reach cycle, sustained at elevated levels into April even after the proximate crisis cooled.</p><span class="ev">Pattern analysis</span></div></div>
+  </div>
+</section>
+<script>
+(function(){
+  var DATA={"series": [{"date": "25-09", "value": 280}, {"date": "25-10", "value": 310}, {"date": "25-11", "value": 340}, {"date": "25-12", "value": 290}, {"date": "26-01", "value": 380}, {"date": "26-02", "value": 320}, {"date": "26-03", "value": 943}, {"date": "26-04", "value": 480}], "peaks": [{"date": "26-01", "label": "\u201cIsrael is a threat to Europe\u201d \u2014 9.24M views"}, {"date": "26-03", "label": "943 tweets \u00b7 \u201cEssence of Zionism\u201d \u00b7 \u201cerase Israel\u201d"}, {"date": "26-04", "label": "SNEAKO livestream \u00b7 \u201cJewish problem\u201d post"}], "yLabel": "", "xLabel": ""};var ID="sec-spike";
+  function render(){
+    var svg=document.getElementById(ID+"__svg");if(!svg)return;svg.innerHTML="";
+    var W=980,H=240,padL=60,padR=20,padT=20,padB=36;
+    var iw=W-padL-padR, ih=H-padT-padB;
+    var s=DATA.series||[];if(!s.length)return;
+    var vmax=Math.max.apply(null,s.map(function(x){return x.value}));
+    var n=s.length;
+    function px(i){return padL+(i/(n-1))*iw}
+    function py(v){return padT+ih-(v/vmax)*ih}
+    // gradient defs
+    var defs=document.createElementNS("http://www.w3.org/2000/svg","defs");
+    defs.innerHTML='<linearGradient id="pulseGrad" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#3A4DA7" stop-opacity=".35"/><stop offset="100%" stop-color="#3A4DA7" stop-opacity="0"/></linearGradient>';
+    svg.appendChild(defs);
+    // smooth path
+    var d="M "+px(0)+" "+py(s[0].value);
+    for(var i=1;i<n;i++){var x0=px(i-1),x1=px(i),mx=(x0+x1)/2;d+=" C "+mx+" "+py(s[i-1].value)+" "+mx+" "+py(s[i].value)+" "+x1+" "+py(s[i].value)}
+    var area=d+" L "+px(n-1)+" "+(padT+ih)+" L "+px(0)+" "+(padT+ih)+" Z";
+    var ap=document.createElementNS("http://www.w3.org/2000/svg","path");
+    ap.setAttribute("class","pulse-area");ap.setAttribute("d",area);svg.appendChild(ap);
+    var lp=document.createElementNS("http://www.w3.org/2000/svg","path");
+    lp.setAttribute("class","pulse-line");lp.setAttribute("d",d);svg.appendChild(lp);
+    // x-axis ticks (every 4th)
+    for(var i=0;i<n;i+=Math.max(1,Math.round(n/8))){
+      var t=document.createElementNS("http://www.w3.org/2000/svg","text");
+      t.setAttribute("class","pulse-tick");t.setAttribute("x",px(i));t.setAttribute("y",H-12);t.setAttribute("text-anchor","middle");t.textContent=s[i].date;svg.appendChild(t);
+    }
+    // y-axis ticks
+    for(var k=0;k<=4;k++){
+      var v=(vmax/4)*k;
+      var t=document.createElementNS("http://www.w3.org/2000/svg","text");
+      t.setAttribute("class","pulse-tick");t.setAttribute("x",padL-8);t.setAttribute("y",py(v)+3);t.setAttribute("text-anchor","end");t.textContent=Math.round(v).toLocaleString();svg.appendChild(t);
+    }
+    // peaks
+    (DATA.peaks||[]).forEach(function(pk){
+      var idx=s.findIndex(function(x){return x.date===pk.date});if(idx<0)return;
+      var c=document.createElementNS("http://www.w3.org/2000/svg","circle");
+      c.setAttribute("cx",px(idx));c.setAttribute("cy",py(s[idx].value));c.setAttribute("class","pulse-peak");svg.appendChild(c);
+      var t=document.createElementNS("http://www.w3.org/2000/svg","text");
+      t.setAttribute("class","pulse-peak-label");t.setAttribute("x",px(idx));t.setAttribute("y",py(s[idx].value)-12);t.setAttribute("text-anchor","middle");t.textContent=pk.label;svg.appendChild(t);
+    });
+  }
+  window.__VFT_CHARTS__=window.__VFT_CHARTS__||{};window.__VFT_CHARTS__[ID]=render;
+})();
+</script>
+
+
+<!--
+@module: chart_lex_bars   (Motion Chart 02)
+@schema: {
+  id, kicker, title, dek,
+  ctitle, clabel, csub,
+  views: [
+    { key, label, cols:[ "AJ Eng","AJ+","AA Eng" ],
+      colorClasses:["c0","c1","c2"], colorHex:["#3A4DA7","#7795CC","#8B2635"],
+      rows:[{term, v:[n,n,n], note}] }
+  ],
+  findings: [{kind,h,p,ev}]
+}
+-->
+<section id="sec-toptweets" data-vft-chart>
+  <h4>Section 06d · Top Viral Tweets</h4>
+  <h2 class="serif">Dugin’s most-viewed posts — ranked.</h2>
+  <p class="dek">Ten highest-engagement posts from the monitored Dugin ecosystem. Toggle the chip to switch from raw view count to category. The view-count tail confirms that anti-Israel content is the dominant engagement driver.</p>
+
+  <div class="chart-card">
+    <div class="ctitle"><span class="pin"></span>Top posts · ranked by views · toggle category view</div>
+    <div class="clabel">Anti-Israel content dominates the top tier of viral output.</div>
+    <div class="csub">Click a chip to switch view. Bars resize and re-animate. Values in thousands of views.</div>
+
+    <div id="sec-toptweets__ctrl" class="chart-controls"></div>
+    <div id="sec-toptweets__bars"></div>
+    <div id="sec-toptweets__legend" class="legend"></div>
+
+    <div class="findings" style="margin-top:18px">
+<div class="fbox warn"><h5>Anti-Israel content is the engagement engine</h5><p>Of the ten most-viewed posts in the monitored cluster, six are anti-Israel framings (delegitimization, dehumanization, calls to harm) and two more are antisemitic conspiracy posts. The mainstream-amplification posts (Carlson, Owens, Jones interviews) extend reach further but the underlying engagement driver is the antisemitic content itself.</p><span class="ev strong">Ranked engagement</span></div>
+<div class="fbox"><h5>One tweet broke 9 million views</h5><p>“Israel is a threat to Europe” (January 12, 2026) is the single most-viewed post in the cluster — 9.24M views, surpassing even the Tucker Carlson interview tweet and demonstrating that Dugin’s direct Twitter output can reach mainstream-scale audiences without an intermediate amplifier.</p><span class="ev strong">Verified</span></div>
+    </div>
+  </div>
+</section>
+<script>
+(function(){
+  var DATA = {"views": [{"key": "views", "label": "By views (thousands)", "cols": ["Views (thousands)"], "colorClasses": ["c0"], "colorHex": ["#3A4DA7"], "rows": [{"term": "\u201cIsrael is a threat to Europe\u201d (Jan 12, 2026)", "v": [9238], "note": "Most-viewed Dugin post on record"}, {"term": "Tucker Carlson interview (Apr 29, 2024)", "v": [8469], "note": "Long-form Episode 99"}, {"term": "Owens \u201cChristian Tsar\u201d (Dec 29, 2025)", "v": [1227], "note": "Owens declares she owns 2 Dugin books"}, {"term": "Rothschild/Soros conspiracy (Nov 2025)", "v": [931], "note": "Jewish power conspiracy framing"}, {"term": "Alex Jones \u201cWORLD EXCLUSIVE\u201d (Dec 12, 2025)", "v": [798], "note": "InfoWars platform interview"}, {"term": "\u201cErase Israel from the face of the earth\u201d (Mar 4, 2026)", "v": [370], "note": "Endorses Iranian strategy"}, {"term": "Carlson \u201cwon the war for truth\u201d (Apr 8, 2026)", "v": [184], "note": "Dugin praises Carlson"}, {"term": "Owens \u201csincere and brave\u201d (Oct 7, 2025)", "v": [172], "note": "Dugin praises Owens"}, {"term": "\u201cSynagogue of Satan\u201d (Mar 21, 2026)", "v": [122], "note": "Classic antisemitic symbolism"}, {"term": "\u201cZionists/Baal worshipers\u201d (Mar 1, 2026)", "v": [115], "note": "\u201cSabbatean/Frankist extremist sect\u201d"}]}, {"key": "category", "label": "By IHRA category", "cols": ["Anti-Israel", "Antisemitic Conspiracy", "Mainstream Amplification"], "colorClasses": ["c0", "c1", "c2"], "colorHex": ["#8B2635", "#A6353F", "#3A4DA7"], "rows": [{"term": "\u201cIsrael is a threat to Europe\u201d", "v": [9238, 0, 0]}, {"term": "Tucker Carlson interview", "v": [0, 0, 8469]}, {"term": "Owens \u201cChristian Tsar\u201d", "v": [0, 0, 1227]}, {"term": "Rothschild/Soros conspiracy", "v": [0, 931, 0]}, {"term": "Alex Jones \u201cWORLD EXCLUSIVE\u201d", "v": [0, 0, 798]}, {"term": "\u201cErase Israel\u201d", "v": [370, 0, 0]}, {"term": "Carlson \u201cwon the war for truth\u201d", "v": [0, 0, 184]}, {"term": "Owens \u201csincere and brave\u201d", "v": [0, 0, 172]}, {"term": "\u201cSynagogue of Satan\u201d", "v": [122, 0, 0]}, {"term": "\u201cZionists/Baal worshipers\u201d", "v": [0, 115, 0]}]}]};
+  var ID = "sec-toptweets";
+  function render(view){
+    var host=document.getElementById(ID+"__bars");if(!host) return;
+    var max=0;view.rows.forEach(function(r){r.v.forEach(function(x){if(x!==null&&x>max)max=x})});
+    host.innerHTML="";
+    var nCols=view.cols.length;
+    var grid="200px "+view.cols.map(function(){return "1fr"}).join(" ");
+    var head=document.createElement("div");head.className="lex-bars";head.style.gridTemplateColumns=grid;
+    head.innerHTML="<div class='lb-head first'>Term</div>"+view.cols.map(function(c){return "<div class='lb-head'>"+c+"</div>"}).join("");
+    host.appendChild(head);
+    view.rows.forEach(function(row,ri){
+      var r=document.createElement("div");r.className="lex-bars";r.style.gridTemplateColumns=grid;
+      var html="<div class='lex-row-label' title='"+(row.note||"")+"'>"+row.term+"</div>";
+      row.v.forEach(function(val,vi){
+        var w=(val===null||val===undefined)?0:(val/max*100);
+        var cls=view.colorClasses[vi]||"c0";
+        var bar=(val===null||val===undefined)
+          ? "<span class='mono' style='font-size:11px;color:var(--ink-faint)'>—</span>"
+          : "<div class='lex-bar "+cls+"' style='--w:"+w.toFixed(2)+"%;width:"+w.toFixed(2)+"%;animation-delay:"+(ri*0.08+vi*0.05).toFixed(2)+"s'></div>";
+        var num=(val===null||val===undefined)?"":val.toLocaleString();
+        html+="<div class='lex-bar-wrap'>"+bar+"<span class='lex-num'>"+num+"</span></div>";
+      });
+      r.innerHTML=html; host.appendChild(r);
+    });
+    var leg=document.getElementById(ID+"__legend");
+    leg.innerHTML=view.cols.map(function(c,i){return "<div class='lg'><span class='sw' style='background:"+(view.colorHex[i]||"#3A4DA7")+"'></span>"+c+"</div>"}).join("");
+  }
+  function buildCtrl(){
+    var host=document.getElementById(ID+"__ctrl");if(!host) return;
+    host.innerHTML="";
+    DATA.views.forEach(function(v,i){
+      var b=document.createElement("button");b.className="chip"+(i===0?" on":"");b.textContent=v.label;
+      b.onclick=function(){host.querySelectorAll(".chip").forEach(function(x){x.classList.remove("on")});b.classList.add("on");render(v)};
+      host.appendChild(b);
+    });
+  }
+  buildCtrl();
+  window.__VFT_CHARTS__ = window.__VFT_CHARTS__ || {};
+  window.__VFT_CHARTS__[ID] = function(){ render(DATA.views[0]) };
+})();
+</script>
+
+
+<!--
+@module: inventory
+@schema: { id, kicker, title, intro,
+  columns: ["Account","Handle",...],
+  rows: [["Row label","col 2","col 3",...], ...],
+  note (optional)
+}
+-->
+<section id="sec-quote-bank">
+  <h4>Section 07 · Sourced Quote Bank</h4>
+  <h2 class="serif">Dugin’s 15 worst antisemitic and anti-Israel statements — each verified.</h2>
+  <p class="ctxt">Each statement is Dugin’s own words with a verified citation. Statements are ordered by severity and recency. “N/A” in the views column indicates a Substack/Arktos publication rather than a Twitter post.</p>
+
+  <table class="tbl">
+    <thead><tr><th>#</th><th>Quote</th><th>Date</th><th>Source</th><th>IHRA Category</th><th>Views</th></tr></thead>
+    <tbody>
+<tr><td class="">1</td><td class="">“The essence of Zionism lies in it being a kind of ‘Jewish Satanism.’”</td><td class="mono">Mar 6, 2026</td><td class="">Multipolar Press</td><td class="">Demonization</td><td class="">N/A</td></tr>
+<tr><td class="">2</td><td class="">“The Iranian strategy is for now to exhaust the Israeli interceptors and erase Israel from the face of the earth turning it into Gaza.”</td><td class="mono">Mar 4, 2026</td><td class="mono">@agdugin</td><td class="">Calling for harming Jews</td><td class="mono">369,638</td></tr>
+<tr><td class="">3</td><td class="">“The Jewish problem pushes us to revise the very nature of the capitalism… Marx once has said the capitalism is Jewish. He was right.”</td><td class="mono">Apr 12, 2026</td><td class="mono">@agdugin</td><td class="">Jewish power myth</td><td class="mono">18,419</td></tr>
+<tr><td class="">4</td><td class="">“All types of Jews… represent a network of generalized Frankism.”</td><td class="mono">Mar 6, 2026</td><td class="">Multipolar Press</td><td class="">Collective Jewish responsibility</td><td class="">N/A</td></tr>
+<tr><td class="">5</td><td class="">“Zionists and ‘Christian-Zionists’ are Baal worshipers, sabbatean/frankist extremist sect.”</td><td class="mono">Mar 1, 2026</td><td class="mono">@agdugin</td><td class="">Demonization</td><td class="mono">114,498</td></tr>
+<tr><td class="">6</td><td class="">“Selling Holocaust by the shekels.”</td><td class="mono">Oct 2025</td><td class="mono">@agdugin</td><td class="">Holocaust trivialization</td><td class="mono">26,322</td></tr>
+<tr><td class="">7</td><td class="">“Thinking ‘from Auschwitz’ is no longer necessary. Now, one must think ‘from Gaza.’”</td><td class="mono">Dec 27, 2024</td><td class="">Arktos</td><td class="">Holocaust relativization</td><td class="">N/A</td></tr>
+<tr><td class="">8</td><td class="">“Not Crusade — Jewsade.”</td><td class="mono">Mar 19, 2026</td><td class="mono">@agdugin</td><td class="">Demonization / stereotyping</td><td class="mono">90,249</td></tr>
+<tr><td class="">9</td><td class="">Israeli leaders described as “mad bloodthirsty terrorists.”</td><td class="mono">Mar–Apr 2026</td><td class="mono">@agdugin</td><td class="">Demonization</td><td class="mono">48,675</td></tr>
+<tr><td class="">10</td><td class="">“Human flesh eaters” (applied to Israeli/Jewish figures).</td><td class="mono">Feb 2026</td><td class="mono">@agdugin</td><td class="">Dehumanization</td><td class="mono">87,064</td></tr>
+<tr><td class="">11</td><td class="">References to “synagogue of Satan” applied to Israel/Zionism.</td><td class="mono">Mar 21, 2026</td><td class="mono">@agdugin</td><td class="">Classic antisemitic symbolism</td><td class="mono">122,377</td></tr>
+<tr><td class="">12</td><td class="">Israel/Zionism placed on “side of devil (Baal, Epstein, globalism, Dajjal, Antichrist).”</td><td class="mono">Mar 27, 2026</td><td class="mono">@agdugin</td><td class="">Demonization</td><td class="mono">29,495</td></tr>
+<tr><td class="">13</td><td class="">“Israel is a threat to Europe.”</td><td class="mono">Jan 12, 2026</td><td class="mono">@agdugin</td><td class="">Delegitimization</td><td class="mono">9,237,710</td></tr>
+<tr><td class="">14</td><td class="">Rothschild and Soros named as controllers of global affairs in conspiratorial framing.</td><td class="mono">Nov 2025</td><td class="mono">@agdugin</td><td class="">Jewish power conspiracy</td><td class="mono">930,788</td></tr>
+<tr><td class="">15</td><td class="">“Iran, the Yemeni Houthis, Hezbollah… are our friends and strategic allies.”</td><td class="mono">Oct 5, 2024</td><td class="">Arktos</td><td class="">Support for actors calling for Israel’s destruction</td><td class="">N/A</td></tr>
+    </tbody>
+  </table>
+  <p class="note" style="margin-top:10px">All view counts are as of mid-April 2026 from the monitored Beacon X/Twitter ecosystem. Substack and Arktos figures are not view-comparable to Twitter and are flagged “N/A.”</p>
+</section>
+
+
+<!--
+@module: chart_quote_constellation   (Motion Chart 17)
+@schema: {
+  id, kicker, title, dek, ctitle, clabel, csub,
+  xAxis, yAxis,
+  xRange: [-2,2], yRange: [0,100],
+  quotes: [{q, h, x, y, color}],          // up to ~25
+  findings: [{kind,h,p,ev}]
+}
+-->
+<section id="sec-constellation" data-vft-chart>
+  <h4>Section 07b · Quote Constellation</h4>
+  <h2 class="serif">The 15 worst statements — plotted by severity and reach.</h2>
+  <p class="dek">Each bubble is one of the 15 statements from the quote bank, plotted on severity (IHRA-mapped, −2 = mild to +2 = paradigmatic) and reach (log-normalized views, with Substack/Arktos pieces shown at the platform’s baseline). Hover any bubble to read the quote. Color encodes the IHRA category cluster.</p>
+  <div class="chart-card">
+    <div class="ctitle"><span class="pin"></span>Constellation · 15 statements · hover to read the full quote</div>
+    <div class="clabel">The most severe and most-reaching statements cluster in the top right — high severity, high reach.</div>
+    <div class="csub">Bubble color: red = anti-Israel demonization / calls to harm; dark red = conspiracy / Jewish power; olive = Holocaust relativization; navy = symbolism / institutional alignment.</div>
+    <div class="qcon-wrap">
+      <svg id="sec-constellation__svg" class="qcon-svg" viewBox="0 0 980 480"></svg>
+      <div id="sec-constellation__pop" class="qcon-quote-popup"></div>
+    </div>
+    <div class="findings" style="margin-top:18px"><div class="fbox warn"><h5>The cluster is extreme on every axis</h5><p>There are no “mild” Dugin statements in the bank — every one of the 15 quotes scores in the +1.4 to +2.0 severity band. The variance is in reach, not in severity. The headline finding is that severe content is reliably reaching mainstream-scale audiences.</p><span class="ev strong">15 verified quotes</span></div>
+<div class="fbox"><h5>The shape of the constellation is the threat indicator</h5><p>In a normal opinion-corpus constellation, severe content sits in the long tail (low reach). Here the most severe content sits in the top right — paradigmatically antisemitic statements drawing 100K+ to 9M+ views. That inversion is the signal worth watching.</p><span class="ev">Distribution analysis</span></div></div>
+  </div>
+</section>
+<script>
+(function(){
+  var DATA={"xAxis": "Severity \u2192 (IHRA category fit)", "yAxis": "Reach \u2192 (log-normalized views)", "xRange": [-2, 2], "yRange": [0, 100], "quotes": [{"q": "\u201cIsrael is a threat to Europe.\u201d", "h": "@agdugin \u00b7 Jan 12, 2026 \u00b7 9.24M views", "x": 1.4, "y": 98, "color": "#8B2635"}, {"q": "Rothschild and Soros named as controllers of global affairs.", "h": "@agdugin \u00b7 Nov 2025 \u00b7 930K views", "x": 1.6, "y": 78, "color": "#5C1A23"}, {"q": "\u201cThe Iranian strategy is\u2026 to erase Israel from the face of the earth turning it into Gaza.\u201d", "h": "@agdugin \u00b7 Mar 4, 2026 \u00b7 370K views", "x": 1.95, "y": 62, "color": "#8B2635"}, {"q": "References to \u201csynagogue of Satan\u201d applied to Israel and Zionism.", "h": "@agdugin \u00b7 Mar 21, 2026 \u00b7 122K views", "x": 1.5, "y": 48, "color": "#1B2866"}, {"q": "\u201cZionists and \u2018Christian-Zionists\u2019 are Baal worshipers, sabbatean/frankist extremist sect.\u201d", "h": "@agdugin \u00b7 Mar 1, 2026 \u00b7 114K views", "x": 1.7, "y": 47, "color": "#5C1A23"}, {"q": "\u201cNot Crusade \u2014 Jewsade.\u201d", "h": "@agdugin \u00b7 Mar 19, 2026 \u00b7 90K views", "x": 1.7, "y": 43, "color": "#8B2635"}, {"q": "\u201cHuman flesh eaters\u201d (applied to Israeli/Jewish figures).", "h": "@agdugin \u00b7 Feb 2026 \u00b7 87K views", "x": 1.95, "y": 42, "color": "#8B2635"}, {"q": "Israeli leaders described as \u201cmad bloodthirsty terrorists.\u201d", "h": "@agdugin \u00b7 Mar\u2013Apr 2026 \u00b7 49K views", "x": 1.7, "y": 34, "color": "#8B2635"}, {"q": "Israel/Zionism placed on \u201cside of devil (Baal, Epstein, globalism, Dajjal, Antichrist).\u201d", "h": "@agdugin \u00b7 Mar 27, 2026 \u00b7 29K views", "x": 1.5, "y": 28, "color": "#1B2866"}, {"q": "\u201cSelling Holocaust by the shekels.\u201d", "h": "@agdugin \u00b7 Oct 2025 \u00b7 26K views", "x": 1.6, "y": 26, "color": "#6F7A4A"}, {"q": "\u201cThe Jewish problem pushes us to revise the very nature of the capitalism\u2026 Marx once has said the capitalism is Jewish. He was right.\u201d", "h": "@agdugin \u00b7 Apr 12, 2026 \u00b7 18K views", "x": 1.7, "y": 20, "color": "#5C1A23"}, {"q": "\u201cThinking \u2018from Auschwitz\u2019 is no longer necessary. Now, one must think \u2018from Gaza.\u2019\u201d", "h": "Arktos \u00b7 Dec 27, 2024 \u00b7 essay", "x": 1.8, "y": 15, "color": "#6F7A4A"}, {"q": "\u201cAll types of Jews\u2026 represent a network of generalized Frankism.\u201d", "h": "Multipolar Press \u00b7 Mar 6, 2026 \u00b7 Substack", "x": 1.85, "y": 12, "color": "#5C1A23"}, {"q": "\u201cThe essence of Zionism lies in it being a kind of \u2018Jewish Satanism.\u2019\u201d", "h": "Multipolar Press \u00b7 Mar 6, 2026 \u00b7 Substack", "x": 1.95, "y": 10, "color": "#8B2635"}, {"q": "\u201cIran, the Yemeni Houthis, Hezbollah\u2026 are our friends and strategic allies.\u201d", "h": "Arktos \u00b7 Oct 5, 2024 \u00b7 essay", "x": 1.6, "y": 8, "color": "#1B2866"}]};var ID="sec-constellation";
+  function render(){
+    var svg=document.getElementById(ID+"__svg");if(!svg)return;svg.innerHTML="";
+    var W=980,H=480,padL=70,padR=30,padT=30,padB=50;
+    var iw=W-padL-padR,ih=H-padT-padB;
+    var xr=DATA.xRange||[-2,2], yr=DATA.yRange||[0,100];
+    function sx(v){return padL+((v-xr[0])/(xr[1]-xr[0]))*iw}
+    function sy(v){return padT+ih-((v-yr[0])/(yr[1]-yr[0]))*ih}
+    // axes
+    var ax=document.createElementNS("http://www.w3.org/2000/svg","line");
+    ax.setAttribute("class","qcon-axis");ax.setAttribute("x1",padL);ax.setAttribute("x2",padL+iw);ax.setAttribute("y1",sy((yr[0]+yr[1])/2));ax.setAttribute("y2",sy((yr[0]+yr[1])/2));svg.appendChild(ax);
+    var ay=document.createElementNS("http://www.w3.org/2000/svg","line");
+    ay.setAttribute("class","qcon-axis");ay.setAttribute("y1",padT);ay.setAttribute("y2",padT+ih);ay.setAttribute("x1",sx((xr[0]+xr[1])/2));ay.setAttribute("x2",sx((xr[0]+xr[1])/2));svg.appendChild(ay);
+    // axis caption
+    var xL=document.createElementNS("http://www.w3.org/2000/svg","text");
+    xL.setAttribute("class","qcon-tick");xL.setAttribute("x",padL+iw/2);xL.setAttribute("y",H-14);xL.setAttribute("text-anchor","middle");xL.textContent=DATA.xAxis||"";svg.appendChild(xL);
+    var yL=document.createElementNS("http://www.w3.org/2000/svg","text");
+    yL.setAttribute("class","qcon-tick");yL.setAttribute("x",18);yL.setAttribute("y",padT+ih/2);yL.setAttribute("transform","rotate(-90 18 "+(padT+ih/2)+")");yL.setAttribute("text-anchor","middle");yL.textContent=DATA.yAxis||"";svg.appendChild(yL);
+    // quotes as bubbles
+    var pop=document.getElementById(ID+"__pop");
+    (DATA.quotes||[]).forEach(function(q,i){
+      var c=document.createElementNS("http://www.w3.org/2000/svg","circle");
+      c.setAttribute("class","qcon-bubble");c.setAttribute("cx",sx(q.x));c.setAttribute("cy",sy(q.y));c.setAttribute("r",13);
+      c.setAttribute("fill",q.color||"#3A4DA7");c.style.animationDelay=(i*0.05).toFixed(2)+"s";
+      c.addEventListener("mouseenter",function(ev){
+        pop.innerHTML="“"+q.q+"”<span class='qmeta'>"+(q.h||"")+"</span>";
+        pop.style.display="block";pop.style.left=(sx(q.x)/W*100)+"%";pop.style.top="calc("+(sy(q.y)/H*100)+"% + 10px)";
+      });
+      c.addEventListener("mouseleave",function(){pop.style.display="none"});
+      svg.appendChild(c);
+    });
+  }
+  window.__VFT_CHARTS__=window.__VFT_CHARTS__||{};window.__VFT_CHARTS__[ID]=render;
+})();
+</script>
+
+
+<!--
+@module: findings_grid
+@schema: { id, kicker, title, dek (optional),
+  findings: [{kind, h, p, ev}]
+}
+-->
+<section id="sec-rebuttals">
+  <h4>Section 08 · Rebuttal Kit</h4>
+  <h2 class="serif">Three framings to deploy when Dugin or Duginist ideas are cited approvingly.</h2>
+  
+  <div class="findings">
+<div class="fbox warn"><h5>Framing I · SECURITY</h5><p>“When someone cites Dugin approvingly, they are — whether they know it or not — amplifying the strategic objectives of a sanctioned Russian oligarch’s media empire and the Iranian revolutionary establishment. Dugin’s own book calls for America’s internal destruction. This isn’t a difference of opinion — it’s a national security concern.”</p><span class="ev strong">OFAC + State Dept. + Foundations of Geopolitics</span></div>
+<div class="fbox"><h5>Framing II · MORAL</h5><p>“Dugin calls Zionism ‘Jewish Satanism,’ describes all Jews as part of a secret Frankist conspiracy, and endorses strategies to ‘erase Israel from the face of the earth.’ Anyone who promotes his ideas is promoting a worldview built on antisemitic foundations — regardless of which ideas they think they’re borrowing.”</p><span class="ev strong">Multipolar Press + @agdugin</span></div>
+<div class="fbox olive"><h5>Framing III · DEMOCRATIC</h5><p>“Dugin is not a conservative — he’s an anti-democratic ideologue who has praised fascism, rejected pluralism as ‘totally evil,’ and founded a party that combined Soviet and Nazi symbolism. The American conservative tradition is built on individual liberty, constitutional governance, and democratic self-rule — everything Dugin explicitly opposes.”</p><span class="ev strong">Dugin’s own words + ADL</span></div>
+<div class="fbox"><h5>How to choose which framing to use</h5><p>SECURITY frames best for national-defense, foreign-policy, and Republican-leaning audiences who value American strategic interests. MORAL frames best for Jewish institutional, faith-based, and human-rights audiences. DEMOCRATIC frames best for cross-ideological audiences, civic groups, and conservatives who would reject explicitly anti-democratic positioning if shown clearly.</p><span class="ev">Audience strategy</span></div>
+  </div>
+</section>
+
+
+<!--
+@module: inventory
+@schema: { id, kicker, title, intro,
+  columns: ["Account","Handle",...],
+  rows: [["Row label","col 2","col 3",...], ...],
+  note (optional)
+}
+-->
+<section id="sec-watchlist">
+  <h4>Section 09 · Watchlist</h4>
+  <h2 class="serif">Top 10 U.S.-based amplifiers of Dugin or Duginist frames.</h2>
+  <p class="ctxt">Ranked by combined reach, frequency, and proximity to Dugin’s own endorsement map. “Nature of amplification” distinguishes direct platforming (interviews, joint appearances, book endorsements) from indirect frame-adoption (use of “multipolarity,” “Traditionalism,” “liberalism as totalitarianism” without citing Dugin by name).</p>
+
+  <table class="tbl">
+    <thead><tr><th>#</th><th>Name / Handle</th><th>Platform</th><th>Nature of Amplification</th><th>Key Metric</th></tr></thead>
+    <tbody>
+<tr><td class="">1</td><td class="">Tucker Carlson (@TuckerCarlson)</td><td class="">X, Tucker Carlson Network</td><td class="mono">Long-form interview (Ep. 99); Dugin called him first among “MAGA core intellectuals”</td><td class="mono">8.5M views on interview tweet</td></tr>
+<tr><td class="">2</td><td class="">Candace Owens (@realcandaceo)</td><td class="">X, YouTube</td><td class="">Owns his books; public endorsement; named cat after his daughter</td><td class="mono">~1.4M views on direct endorsement tweets</td></tr>
+<tr><td class="">3</td><td class="">Alex Jones (@realalexjones)</td><td class="">X, InfoWars</td><td class="">“WORLD EXCLUSIVE” interview; retweeted by Dugin</td><td class="mono">798K views on interview tweet</td></tr>
+<tr><td class="">4</td><td class="">Jackson Hinkle (@jacksonhinkle)</td><td class="">X, YouTube</td><td class="">“MAGA Communist” distribution node; high retweet-to-view ratio</td><td class="mono">17,930 retweets across 7 tweets</td></tr>
+<tr><td class="">5</td><td class="">SNEAKO (@sneaborern)</td><td class="">YouTube, X</td><td class="mono">4-hour livestream with Dugin (April 2026); reaches young male audience</td><td class="">Documented as “foreign propaganda targeted at young American men”</td></tr>
+<tr><td class="">6</td><td class="">Gen. Michael Flynn (@genflynn)</td><td class="">X</td><td class="">Uses “multipolar” framing without direct citation</td><td class="mono">230K views across 4 tweets</td></tr>
+<tr><td class="">7</td><td class="">George Galloway (@georgegalloway)</td><td class="">X, YouTube</td><td class="">Prolific retweeter of Dugin content</td><td class="mono">25,757 retweets across 36 tweets</td></tr>
+<tr><td class="">8</td><td class="">Kim Dotcom (@kimdotcom)</td><td class="">X</td><td class="">Nine Dugin-related tweets</td><td class="mono">~40K views</td></tr>
+<tr><td class="">9</td><td class="">Steve Turley</td><td class="">YouTube, Arktos</td><td class="">Co-authored foreword with Dugin for Arktos Multipolarity! book</td><td class="">Institutional collaboration</td></tr>
+<tr><td class="">10</td><td class="">Richard Spencer</td><td class="">Various; deplatformed from most mainstream platforms</td><td class="">Historical pipeline via Nina Kouprianova (translator, ex-wife); AltRight.com published Dugin</td><td class="">ADL-documented organizational link — Spencer has since turned on Russia and Dugin</td></tr>
+    </tbody>
+  </table>
+  <p class="note" style="margin-top:10px">Notable critics (NOT amplifiers): @defiyantlyfree / Insurrection Barbie (84 tweets, 1.4M views) and Michael O’Fallon / @sovmichael (208 tweets, 1.8M views — coined “Woke Right”). Both produce critical analysis of Dugin’s influence on the American right.</p>
+</section>
+
+
+<!--
+@module: methodology
+@schema: { id, kicker, title, intro,
+  evidence_table: [{tier, threshold, where}],
+  limitations_title, limitations: ["..."]
+}
+-->
+<section id="sec-method">
+  <h4>Section 10 · Methodology and Limitations</h4>
+  <h2 class="serif">Sources, evidence tiers, and how to read the citations.</h2>
+  <p class="ctxt">This dossier draws on four categories of sources: (1) Dugin’s own published writings, social-media posts, and media appearances (primary sources); (2) academic analyses by leading scholars of Russian nationalism, including Marlène Laruelle, John Dunlop, Andreas Umland, and Anton Shekhovtsov; (3) institutional reports from ADL, U.S. State Department, SPLC, and MEMRI; and (4) social-media monitoring data from X/Twitter and podcast platforms. Throughout we distinguish Dugin’s own words (in quotation marks with source), close associates’ characterizations (identified by name), and secondary analysis (attributed to the analyst or organization).</p>
+
+  <table class="tbl">
+    <thead><tr><th>Evidence Tier</th><th>Threshold</th><th>Where it appears</th></tr></thead>
+    <tbody>
+<tr><td><b>Verified</b></td><td>Independently confirmed against primary source — exact quote with URL or screenshot</td><td>Direct @agdugin posts, Multipolar Press essays, Arktos articles, MEMRI translations of Iranian TV, ADL reports</td></tr>
+<tr><td><b>Strong</b></td><td>Documented by academic source or major investigative outlet citing primary source</td><td>Stanford/Hoover (Dunlop) on Pamyat; BBC Russian on “Tango SA”; Searchlight + Guardian on Paladins Congress</td></tr>
+<tr><td><b>Moderate</b></td><td>Reported by credible source but primary verification limited — Russian-language sources flagged ⚠️</td><td>Conspirology (1993) and parts of Foundations of Geopolitics where translation rather than original was accessed</td></tr>
+<tr><td><b>Low confidence</b></td><td>Single-source claim or analytical inference</td><td>Some attributions of frame-adoption (e.g., whether Flynn’s “multipolar” usage is consciously Duginist) require case-by-case assessment</td></tr>
+    </tbody>
+  </table>
+
+  <h3 class="serif" style="margin-top:24px">Limitations to flag</h3>
+  <ol style="margin-left:22px;color:var(--ink);max-width:78ch">
+<li style="margin:8px 0">Russian-language primary sources (Conspirology 1993; portions of Foundations of Geopolitics 1997) were not independently translated for this dossier. Claims from these texts rely on academic intermediaries (Mosbey, Yablokov, Shnirelman, Brill 2019, BBC Russian) and are flagged ⚠️ throughout.</li>
+<li style="margin:8px 0">MEMRI summaries are used where the original Iranian TV broadcast is access-restricted. Where MEMRI is the sole source, the rating is MODERATE.</li>
+<li style="margin:8px 0">Frame-adoption attribution (e.g., whether a U.S. figure’s use of “multipolar” framing is consciously channeling Dugin or independently arrived at) requires case-by-case assessment and is not asserted as causation in this brief.</li>
+<li style="margin:8px 0">Owens’ cumulative Dugin-mentioning tweet views (~7.4M) are dominated by tweets about the Macron/Brigitte investigation where Dugin is mentioned tangentially (~5.8M). Direct-endorsement tweets account for approximately 1.4M views; both figures are reported separately.</li>
+<li style="margin:8px 0">All engagement metrics reflect monitored data as of mid-April 2026; numbers may have shifted since.</li>
+<li style="margin:8px 0">The IHRA category mappings are author scoring against the IHRA Working Definition’s illustrative examples — they are interpretive, not adjudicative.</li>
+  </ol>
+</section>
+
+
+<!--
+@module: sources
+@schema: { id, kicker, title,
+  sources: [{n, pub, title, desc, url}]
+}
+-->
+<section id="sec-sources">
+  <h4>Section 11 · Source List (Selected)</h4>
+  <h2 class="serif">Selected primary, academic, and institutional sources.</h2>
+  <div class="sources">
+<div class="scard"><div class="sn">[01]</div><div class="sp">Stanford / Hoover Institution</div><div class="st">Aleksandr Dugin’s Foundations of Geopolitics</div><div class="sd">John B. Dunlop, 2004. Authoritative academic study of Foundations and of Dugin’s Pamyat trajectory.</div><a href="https://tec.fsi.stanford.edu/docs/aleksandr-dugins-foundations-geopolitics" target="_blank" rel="noopener" style="font-size:10px;font-family:&quot;IBM Plex Mono&quot;,monospace;letter-spacing:.10em;text-transform:uppercase;display:inline-block;margin-top:6px">Open ↗</a></div>
+<div class="scard"><div class="sn">[02]</div><div class="sp">Anti-Defamation League</div><div class="st">Hate Beyond Borders: The Internationalization of White Supremacy</div><div class="sd">ADL report documenting Dugin’s ties to Spencer, Heimbach, Jones, Friberg/Arktos, and others.</div><a href="https://www.adl.org/resources/report/hate-beyond-borders-internationalization-white-supremacy" target="_blank" rel="noopener" style="font-size:10px;font-family:&quot;IBM Plex Mono&quot;,monospace;letter-spacing:.10em;text-transform:uppercase;display:inline-block;margin-top:6px">Open ↗</a></div>
+<div class="scard"><div class="sn">[03]</div><div class="sp">Multipolar Press (Substack)</div><div class="st">“The Essence of Zionism”</div><div class="sd">Alexander Dugin, March 6, 2026. Calls Zionism “Jewish Satanism”; describes all Jews as a “Frankist” network.</div><a href="https://www.multipolarpress.com/p/the-essence-of-zionism" target="_blank" rel="noopener" style="font-size:10px;font-family:&quot;IBM Plex Mono&quot;,monospace;letter-spacing:.10em;text-transform:uppercase;display:inline-block;margin-top:6px">Open ↗</a></div>
+<div class="scard"><div class="sn">[04]</div><div class="sp">ResearchGate</div><div class="st">From Dublin to Vladivostok: A Systematic Look at Dugin’s Fourth Political Theory</div><div class="sd">John Cody Mosbey, 2022. Academic systematization of Dugin’s Fourth Political Theory.</div><a href="https://www.researchgate.net/publication/360227560" target="_blank" rel="noopener" style="font-size:10px;font-family:&quot;IBM Plex Mono&quot;,monospace;letter-spacing:.10em;text-transform:uppercase;display:inline-block;margin-top:6px">Open ↗</a></div>
+<div class="scard"><div class="sn">[05]</div><div class="sp">@agdugin (X/Twitter)</div><div class="st">“The Jewish problem”</div><div class="sd">April 12, 2026. Direct primary source for the Jewish-power-conspiracy framing.</div><a href="https://x.com/i/status/2043272173175890380" target="_blank" rel="noopener" style="font-size:10px;font-family:&quot;IBM Plex Mono&quot;,monospace;letter-spacing:.10em;text-transform:uppercase;display:inline-block;margin-top:6px">Open ↗</a></div>
+<div class="scard"><div class="sn">[06]</div><div class="sp">MEMRI TV</div><div class="st">Russian Analyst Alexander Dugin: Iran Develop Nuclear Weapons</div><div class="sd">February 11, 2020. MEMRI summary of Iranian TV appearance advocating Iranian nuclear weapons to deter Israel.</div><a href="https://www.memri.org/tv/russian-analyst-alexander-dugin-iran-develop-nuclear-weapons-deter-israel-america-not-bad" target="_blank" rel="noopener" style="font-size:10px;font-family:&quot;IBM Plex Mono&quot;,monospace;letter-spacing:.10em;text-transform:uppercase;display:inline-block;margin-top:6px">Open ↗</a></div>
+<div class="scard"><div class="sn">[07]</div><div class="sp">Arktos</div><div class="st">“The Conflict in the Middle East Is the Start of a Great War”</div><div class="sd">Alexander Dugin, October 5, 2024. Names Iran, Houthis, Hezbollah as “friends and strategic allies.”</div><a href="https://arktos.com/2024/10/05/dugins-directive-the-conflict-in-the-middle-east-is-the-start-of-a-great-war/" target="_blank" rel="noopener" style="font-size:10px;font-family:&quot;IBM Plex Mono&quot;,monospace;letter-spacing:.10em;text-transform:uppercase;display:inline-block;margin-top:6px">Open ↗</a></div>
+<div class="scard"><div class="sn">[08]</div><div class="sp">@TuckerCarlson</div><div class="st">Dugin Episode 99</div><div class="sd">April 29, 2024. The most-viewed mainstream amplification of Dugin to date — 8,468,627 views.</div><a href="https://x.com/i/status/1785066534995714067" target="_blank" rel="noopener" style="font-size:10px;font-family:&quot;IBM Plex Mono&quot;,monospace;letter-spacing:.10em;text-transform:uppercase;display:inline-block;margin-top:6px">Open ↗</a></div>
+<div class="scard"><div class="sn">[09]</div><div class="sp">@realcandaceo</div><div class="st">“Christian Tsar” Dugin endorsement</div><div class="sd">December 29, 2025. Owens declares she owns two of Dugin’s books; 1,226,777 views.</div><a href="https://x.com/i/status/2005686764556411370" target="_blank" rel="noopener" style="font-size:10px;font-family:&quot;IBM Plex Mono&quot;,monospace;letter-spacing:.10em;text-transform:uppercase;display:inline-block;margin-top:6px">Open ↗</a></div>
+<div class="scard"><div class="sn">[10]</div><div class="sp">@realalexjones</div><div class="st">Dugin “WORLD EXCLUSIVE”</div><div class="sd">December 12, 2025. Long-form InfoWars interview; 798,066 views on the X clip.</div><a href="https://x.com/i/status/1999606863462101065" target="_blank" rel="noopener" style="font-size:10px;font-family:&quot;IBM Plex Mono&quot;,monospace;letter-spacing:.10em;text-transform:uppercase;display:inline-block;margin-top:6px">Open ↗</a></div>
+<div class="scard"><div class="sn">[11]</div><div class="sp">The Conversation</div><div class="st">Alexander Dugin, Eurasianism, and the American Election</div><div class="sd">Academic-press analysis of Dugin’s ideological project and U.S. resonance.</div><a href="https://theconversation.com/alexander-dugin-eurasianism-and-the-american-election-87367" target="_blank" rel="noopener" style="font-size:10px;font-family:&quot;IBM Plex Mono&quot;,monospace;letter-spacing:.10em;text-transform:uppercase;display:inline-block;margin-top:6px">Open ↗</a></div>
+<div class="scard"><div class="sn">[12]</div><div class="sp">U.S. Department of State</div><div class="st">Pillars of Russia’s Disinformation and Propaganda Ecosystem (2020)</div><div class="sd">Names Katehon (Dugin board member) and Geopolitica.ru as pillars of Russia’s disinformation ecosystem.</div></div>
+<div class="scard"><div class="sn">[13]</div><div class="sp">Springer</div><div class="st">Gasimov &amp; Laruelle (2025) on Dugin’s reception in Iran</div><div class="sd">Peer-reviewed academic analysis of Dugin as a “metaphysical interlocutor aligned with Shi’i messianism.”</div></div>
+<div class="scard"><div class="sn">[14]</div><div class="sp">BBC Russian</div><div class="st">On Dugin’s “Tango SA” and the Pamyat trajectory</div><div class="sd">Grigor Atanesian: documents the 1986 SA-glorifying song under the pseudonym “Hans Sievers.”</div></div>
+<div class="scard"><div class="sn">[15]</div><div class="sp">Brill (2019, academic volume)</div><div class="st">Dugin’s eschatology and the “Semites” framing</div><div class="sd">Concludes that “Dugin’s eschatology appears a replica of the Nazi prototype,” with “‘Jews’ identified as the ‘Semites’” in his civilizational schema.</div></div>
+<div class="scard"><div class="sn">[16]</div><div class="sp">Searchlight Magazine + The Guardian</div><div class="st">September 2025 “Paladins” Congress</div><div class="sd">Documents the Malofeyev-organized international far-right congress featuring Dugin, de Benoist, Soral, and Collett.</div></div>
+<div class="scard"><div class="sn">[17]</div><div class="sp">U.S. Treasury (OFAC)</div><div class="st">Konstantin Malofeyev sanctions (2014) + DOJ charges</div><div class="sd">Sanctions and subsequent DOJ indictment for sanctions violations against the principal funder of Tsargrad TV and Katehon.</div></div>
+<div class="scard"><div class="sn">[18]</div><div class="sp">@sovmichael (Michael O’Fallon)</div><div class="st">“Woke Right” framing and Dugin tracking</div><div class="sd">208 critical tweets, 1.8M total views. Coined “Woke Right” to describe Americans who adopt Duginist frames without citing Dugin.</div></div>
+  </div>
+</section>
+
+<footer class="footbar">
+<span>Vine &amp; Fig Tree Institute</span>
+<span>Beacon Threat Brief · Dugin Dossier · April 2026</span>
+<span>Sourced primary + academic + monitoring data</span>
+</footer>
+</main>
+
+<script>
+/* =========================================================
+   VFT Dashboard V2 — runtime
+   Provides: scroll-spy, progress-bar fill, intersection-replay
+   Each chart module also registers itself onto window.__VFT_CHARTS__
+   ========================================================= */
+(function(){
+  window.__VFT_CHARTS__ = window.__VFT_CHARTS__ || {};
+
+  function setupSpy(){
+    var links = Array.prototype.slice.call(document.querySelectorAll(".nav a"));
+    var sections = links.map(function(a){return document.querySelector(a.getAttribute("href"))}).filter(Boolean);
+    function update(){
+      var y = window.scrollY + 120;
+      var idx = 0;
+      sections.forEach(function(sec, i){if(sec && sec.offsetTop <= y) idx = i});
+      links.forEach(function(a, i){a.classList.toggle("active", i===idx)});
+    }
+    window.addEventListener("scroll", update, {passive:true});
+    update();
+  }
+
+  function setupBars(){
+    setTimeout(function(){
+      document.querySelectorAll(".mc .pfill").forEach(function(el){
+        var w = el.style.width; el.style.width = "0";
+        requestAnimationFrame(function(){ el.style.width = w; });
+      });
+    }, 100);
+  }
+
+  function setupReplay(){
+    if(!("IntersectionObserver" in window)) return;
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){
+          var id = e.target.id;
+          var fn = window.__VFT_CHARTS__[id];
+          if(typeof fn === "function") fn();
+        }
+      });
+    },{threshold:0.18});
+    document.querySelectorAll("[data-vft-chart]").forEach(function(el){io.observe(el)});
+  }
+
+  document.addEventListener("DOMContentLoaded", function(){
+    setupSpy();
+    setupBars();
+    setupReplay();
+    // First render of each chart (so they're visible without waiting for scroll)
+    Object.keys(window.__VFT_CHARTS__).forEach(function(k){
+      try{ window.__VFT_CHARTS__[k]() } catch(e){ console.error("Chart init "+k+":", e) }
+    });
+  });
+})();
+
+</script>
+</body>
+</html>
