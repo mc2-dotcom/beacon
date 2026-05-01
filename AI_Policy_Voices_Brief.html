@@ -1,0 +1,1391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light">
+<title>Mapping America's AI Policy Discourse — VFT Institute</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Libre+Franklin:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --paper: #F6F2ED;
+  --paper-2: #FCFFFF;
+  --paper-3: #EFEEEA;
+  --ink: #0C1843;
+  --ink-dim: #3A4DA7;
+  --ink-faint: #5B6484;
+  --ink-mute: #8A91A8;
+  --rule: #C8CCD8;
+  --rule-2: #D4E3FC;
+  --accent: #7795CC;
+  --warn: #8B2635;
+  --olive: #6F7A4A;
+  --gold: #A88E5C;
+  --plum: #5B2A5E;
+  --umber: #5A4633;
+
+  --serif: 'Cormorant Garamond', Georgia, serif;
+  --sans: 'Libre Franklin', -apple-system, BlinkMacSystemFont, sans-serif;
+  --mono: 'IBM Plex Mono', 'Courier New', monospace;
+}
+
+* { box-sizing: border-box; }
+html { color-scheme: light; }
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 16px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  font-feature-settings: 'kern' 1, 'liga' 1;
+}
+
+/* Layout */
+.layout { display: grid; grid-template-columns: 240px 1fr; min-height: 100vh; }
+.sidebar {
+  position: sticky; top: 0;
+  height: 100vh;
+  padding: 36px 22px 24px;
+  border-right: 1px solid var(--rule);
+  background: var(--paper);
+  overflow-y: auto;
+}
+.sidebar .brand {
+  font-family: var(--serif);
+  font-weight: 600;
+  font-size: 22px;
+  line-height: 1.05;
+  color: var(--ink);
+  margin: 0 0 4px;
+}
+.sidebar .brand .amp { color: var(--ink-dim); font-style: normal; }
+.sidebar .brand-sub {
+  font-family: var(--mono);
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-size: 9.5px;
+  color: var(--ink-faint);
+  margin: 0 0 30px;
+}
+.sidebar .nav-label {
+  font-family: var(--mono);
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-size: 9.5px;
+  color: var(--ink-faint);
+  margin: 0 0 14px;
+}
+.sidebar nav ol { list-style: none; padding: 0; margin: 0; counter-reset: navc; }
+.sidebar nav li { counter-increment: navc; margin: 0 0 4px; }
+.sidebar nav a {
+  display: flex; gap: 10px;
+  padding: 8px 10px 8px 8px;
+  font-size: 13px;
+  color: var(--ink-faint);
+  text-decoration: none;
+  border-left: 2px solid transparent;
+  border-radius: 0 4px 4px 0;
+  transition: all .18s ease;
+}
+.sidebar nav a:hover { color: var(--ink); background: var(--paper-3); }
+.sidebar nav a::before {
+  content: counter(navc, decimal-leading-zero);
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--ink-mute);
+  letter-spacing: 0.05em;
+  flex-shrink: 0;
+  padding-top: 2px;
+  min-width: 22px;
+}
+.sidebar nav a.active {
+  color: var(--ink);
+  border-left-color: var(--ink-dim);
+  background: var(--paper-3);
+  font-weight: 500;
+}
+.sidebar nav a.active::before { color: var(--ink-dim); }
+.sidebar .meta {
+  margin-top: 28px;
+  padding-top: 18px;
+  border-top: 1px solid var(--rule);
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--ink-faint);
+  letter-spacing: 0.05em;
+  line-height: 1.7;
+}
+
+/* Progress bar */
+.progress-bar {
+  position: fixed; top: 0; left: 0; right: 0;
+  height: 2px; background: transparent;
+  z-index: 100;
+}
+.progress-bar .fill {
+  height: 100%; width: 0%;
+  background: var(--ink-dim);
+  transition: width .15s ease;
+}
+
+/* Content */
+.content { padding: 56px 64px 96px; max-width: 1080px; }
+section { margin: 0 0 84px; scroll-margin-top: 24px; }
+.kicker {
+  font-family: var(--mono);
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-size: 10px;
+  color: var(--ink-dim);
+  margin: 0 0 14px;
+}
+h1, h2, h3 { font-family: var(--serif); font-weight: 600; color: var(--ink); }
+h1 { font-size: 56px; line-height: 1.04; letter-spacing: -0.01em; margin: 0 0 18px; }
+h2 { font-size: 36px; line-height: 1.1; letter-spacing: -0.005em; margin: 0 0 8px; }
+h3 { font-size: 22px; line-height: 1.2; margin: 0 0 8px; }
+.dek {
+  font-family: var(--serif);
+  font-style: normal;
+  font-size: 21px;
+  line-height: 1.4;
+  color: var(--ink-faint);
+  font-weight: 400;
+  max-width: 38em;
+  margin: 0 0 22px;
+}
+.byline {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--ink-faint);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  border-top: 1px solid var(--rule);
+  padding-top: 14px;
+  display: flex; gap: 22px; flex-wrap: wrap;
+}
+.byline span:first-child { color: var(--ink-dim); }
+
+p { margin: 0 0 16px; max-width: 38em; color: var(--ink); }
+p.lede { font-size: 18px; line-height: 1.55; }
+p.lede:first-letter {
+  font-family: var(--serif);
+  font-size: 64px;
+  line-height: 0.85;
+  font-weight: 600;
+  float: left;
+  padding: 6px 10px 0 0;
+  color: var(--ink-dim);
+}
+em.named { color: var(--ink-dim); font-style: normal; font-weight: 500; }
+
+/* Hero */
+.hero {
+  border-bottom: 1px solid var(--rule);
+  padding-bottom: 32px;
+  margin-bottom: 64px;
+}
+.hero .kicker { color: var(--warn); }
+.hero h1 .accent { color: var(--ink-dim); font-style: normal; }
+
+/* Cards & boxes */
+.card {
+  background: var(--paper-2);
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  padding: 22px 24px;
+}
+.card.alt { background: var(--paper-3); }
+
+.metric-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+  margin: 24px 0 32px;
+}
+.metric {
+  background: var(--paper-2);
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  padding: 20px 18px 18px;
+  position: relative;
+}
+.metric.alt { background: var(--paper-3); }
+.metric .label {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin: 0 0 10px;
+}
+.metric .value {
+  font-family: var(--serif);
+  font-size: 38px;
+  line-height: 1;
+  font-weight: 600;
+  color: var(--ink);
+  letter-spacing: -0.01em;
+}
+.metric .value .unit {
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--ink-dim);
+  margin-left: 4px;
+}
+.metric .sub {
+  font-size: 12px;
+  color: var(--ink-faint);
+  margin-top: 8px;
+  line-height: 1.4;
+}
+
+/* Findings boxes */
+.findings { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; margin-top: 24px; }
+.finding {
+  background: var(--paper-2);
+  border: 1px solid var(--rule);
+  border-left: 3px solid var(--ink-dim);
+  border-radius: 0 4px 4px 0;
+  padding: 18px 20px;
+}
+.finding.warn { border-left-color: var(--warn); }
+.finding.olive { border-left-color: var(--olive); }
+.finding.gold { border-left-color: var(--gold); }
+.finding h4 {
+  font-family: var(--serif);
+  font-size: 19px;
+  font-weight: 600;
+  margin: 0 0 6px;
+  color: var(--ink);
+  line-height: 1.25;
+}
+.finding p { font-size: 14px; line-height: 1.55; color: var(--ink-faint); margin: 0; max-width: none; }
+.finding .ev {
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 3px 8px 2px;
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  margin-top: 10px;
+  color: var(--ink-faint);
+  background: var(--paper);
+}
+.finding .ev.strong { color: var(--ink-dim); border-color: var(--ink-dim); }
+.finding .ev.mod { color: var(--gold); border-color: var(--gold); }
+.finding .ev.warn { color: var(--warn); border-color: var(--warn); }
+
+/* Chart common */
+.chart-wrap {
+  background: var(--paper-2);
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  padding: 26px 28px 22px;
+  margin: 22px 0 0;
+}
+.chart-wrap .ctitle {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin: 0 0 4px;
+}
+.chart-wrap .csub {
+  font-family: var(--serif);
+  font-style: normal;
+  font-size: 15px;
+  color: var(--ink-faint);
+  margin: 0 0 18px;
+}
+.chart-wrap svg { display: block; width: 100%; height: auto; overflow: visible; }
+.chip-row { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 18px; }
+.chip {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 5px 11px 4px;
+  border: 1px solid var(--rule);
+  background: var(--paper);
+  color: var(--ink-faint);
+  border-radius: 999px;
+  cursor: pointer;
+  transition: all .15s ease;
+  user-select: none;
+}
+.chip:hover { color: var(--ink); border-color: var(--ink-dim); }
+.chip.on {
+  background: var(--paper-2);
+  color: var(--ink-dim);
+  border-color: var(--ink-dim);
+  font-weight: 600;
+}
+
+/* Inventory table */
+table.tbl {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+  background: var(--paper-2);
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  overflow: hidden;
+}
+table.tbl thead th {
+  background: var(--paper-3);
+  font-family: var(--mono);
+  font-size: 9.5px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  text-align: left;
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--rule);
+}
+table.tbl tbody td {
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--rule);
+  color: var(--ink);
+}
+table.tbl tbody tr:last-child td { border-bottom: none; }
+table.tbl .num { font-family: var(--mono); color: var(--ink-dim); font-weight: 500; text-align: right; }
+table.tbl tbody tr:hover { background: var(--paper); }
+
+/* Bucket pill */
+.bpill {
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: 9.5px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 3px 9px 2px;
+  border-radius: 3px;
+  color: white;
+  white-space: nowrap;
+}
+
+/* Sources grid */
+.sources-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-top: 22px;
+}
+.src {
+  background: var(--paper-2);
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  padding: 16px 18px;
+}
+.src .src-kicker {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin: 0 0 6px;
+}
+.src h4 {
+  font-family: var(--serif);
+  font-size: 16px;
+  margin: 0 0 6px;
+  font-weight: 600;
+  color: var(--ink);
+}
+.src p { font-size: 12.5px; color: var(--ink-faint); margin: 0; line-height: 1.5; }
+
+/* Methodology */
+.methods .ev-table { width: 100%; border-collapse: collapse; margin: 18px 0 0; font-size: 13px; }
+.methods .ev-table th { font-family: var(--mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-faint); text-align: left; padding: 8px 12px; border-bottom: 1px solid var(--rule); }
+.methods .ev-table td { padding: 10px 12px; border-bottom: 1px solid var(--rule); }
+.methods .ev-table td:first-child { font-family: var(--mono); font-size: 11px; color: var(--ink-dim); font-weight: 600; }
+.methods ol.lim { padding-left: 24px; margin: 18px 0 0; font-size: 14px; line-height: 1.6; color: var(--ink-faint); }
+.methods ol.lim li { margin-bottom: 8px; padding-left: 4px; }
+.methods ol.lim li::marker { font-family: var(--mono); font-weight: 600; color: var(--ink-dim); }
+
+/* Footer */
+.foot {
+  margin-top: 60px;
+  padding-top: 24px;
+  border-top: 1px solid var(--rule);
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: 0.06em;
+  color: var(--ink-faint);
+  text-transform: uppercase;
+  display: flex; justify-content: space-between; flex-wrap: wrap; gap: 14px;
+}
+
+/* Animation utilities */
+[data-anim] { opacity: 0; transform: translateY(8px); transition: opacity .9s ease, transform .9s ease; }
+[data-anim].in { opacity: 1; transform: none; }
+
+@media (max-width: 960px) {
+  .layout { grid-template-columns: 1fr; }
+  .sidebar { position: static; height: auto; border-right: none; border-bottom: 1px solid var(--rule); }
+  .content { padding: 32px 24px 64px; }
+  .metric-grid { grid-template-columns: repeat(2, 1fr); }
+  .findings { grid-template-columns: 1fr; }
+  .sources-grid { grid-template-columns: 1fr; }
+  h1 { font-size: 38px; }
+  h2 { font-size: 28px; }
+}
+
+/* Specific chart tweaks */
+.lex-bar { transition: width 1.2s cubic-bezier(.2,.8,.2,1); }
+.bar-label { font-family: var(--mono); font-size: 11px; fill: var(--ink-faint); }
+.bar-num { font-family: var(--mono); font-size: 11px; fill: var(--ink-dim); font-weight: 600; }
+
+.bubble { transition: r 1s cubic-bezier(.2,.8,.2,1), opacity .8s ease; }
+.bubble-label { font-family: var(--sans); font-size: 11px; fill: white; font-weight: 500; pointer-events: none; }
+.bubble-label.dark { fill: var(--ink); }
+.bubble-sub { font-family: var(--mono); font-size: 9px; fill: rgba(255,255,255,0.85); pointer-events: none; }
+.bubble-sub.dark { fill: var(--ink-faint); }
+
+.dot { transition: r 0.6s cubic-bezier(.2,.8,.2,1), opacity 0.6s ease; cursor: default; }
+.q-axis { stroke: var(--rule); stroke-width: 1; }
+.q-grid { stroke: var(--rule); stroke-width: 0.5; stroke-dasharray: 2 3; }
+.q-label { font-family: var(--mono); font-size: 10px; fill: var(--ink-faint); letter-spacing: 0.1em; text-transform: uppercase; }
+.q-quad { font-family: var(--serif); font-style: normal; font-size: 14px; fill: var(--ink-mute); }
+
+.tier-row {
+  display: grid; grid-template-columns: 70px 1fr; gap: 14px;
+  margin: 0 0 12px;
+  align-items: stretch;
+}
+.tier-badge {
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--serif);
+  font-size: 28px;
+  font-weight: 600;
+  border-radius: 4px;
+  background: var(--paper-2);
+  color: var(--ink-dim);
+  border: 1px solid var(--rule);
+  border-left: 4px solid var(--ink-dim);
+}
+.tier-row.t-s .tier-badge { border-left-color: var(--warn); color: var(--warn); }
+.tier-row.t-a .tier-badge { border-left-color: var(--ink-dim); color: var(--ink-dim); }
+.tier-row.t-b .tier-badge { border-left-color: var(--gold); color: var(--gold); }
+.tier-row.t-c .tier-badge { border-left-color: var(--olive); color: var(--olive); }
+.tier-row.t-d .tier-badge { border-left-color: var(--ink-faint); color: var(--ink-faint); }
+.tier-cell {
+  background: var(--paper-2);
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  padding: 12px 14px;
+  display: flex; flex-wrap: wrap; gap: 8px;
+  align-content: center;
+}
+.tier-row.t-s .tier-cell { border-left: 3px solid var(--warn); padding-left: 11px; }
+.tier-pill {
+  display: inline-flex; gap: 7px; align-items: baseline;
+  font-size: 13px;
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  border-radius: 3px;
+  padding: 5px 10px 4px;
+  color: var(--ink);
+}
+.tier-pill .reach {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--ink-faint);
+}
+.tier-pill .swatch {
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  display: inline-block;
+  align-self: center;
+}
+
+/* Horseshoe specific */
+.hs-arc-bg { fill: none; stroke: var(--rule); stroke-width: 30; opacity: 0.5; }
+.hs-arc-fill { fill: none; stroke: var(--ink-dim); stroke-width: 30; opacity: 0.85; }
+.hs-anchor-label { font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; fill: var(--ink); font-weight: 600; }
+.hs-anchor-sub { font-family: var(--sans); font-size: 11px; fill: var(--ink-faint); }
+.hs-conv-label { font-family: var(--serif); font-style: normal; font-size: 16px; fill: var(--ink); }
+.hs-theme {
+  fill: var(--paper-2);
+  stroke: var(--ink-dim);
+  stroke-width: 1.5;
+}
+.hs-theme-text { font-family: var(--sans); font-size: 11px; fill: var(--ink); font-weight: 500; }
+
+/* "Convergent" arrows on horseshoe */
+.hs-arrow { fill: none; stroke: var(--warn); stroke-width: 1.5; opacity: 0.7; stroke-dasharray: 4 3; }
+</style>
+</head><body><div class="progress-bar"><div class="fill"></div></div><div class="layout"><aside class="sidebar">
+  <div class="brand">VFT<span class="amp">&amp;</span></div>
+  <div class="brand-sub">Beacon Intelligence</div>
+  <div class="nav-label">Contents</div>
+  <nav>
+    <ol id="navlist">
+      <li><a href="#hero">The Map</a></li>
+      <li><a href="#exec">Executive Summary</a></li>
+      <li><a href="#bars">Volume by Bucket</a></li>
+      <li><a href="#bubbles">Voice Reach Cloud</a></li>
+      <li><a href="#quad">Ideology × AI Stance</a></li>
+      <li><a href="#horseshoe">Extremes Converge</a></li>
+      <li><a href="#tiers">Influence Tiers</a></li>
+      <li><a href="#inventory">Podcast Inventory</a></li>
+      <li><a href="#findings">Key Findings</a></li>
+      <li><a href="#methodology">Methodology &amp; Gaps</a></li>
+      <li><a href="#sources">Source Stack</a></li>
+    </ol>
+  </nav>
+  <div class="meta">
+    Brief 2026.04 · Internal<br>
+    Beacon v2.2 corpus<br>
+    Apr 30, 2026
+  </div>
+</aside>
+<main class="content"><section id="hero" class="hero">
+  <div class="kicker" data-anim>Briefing · Vol. 04 · Apr 2026</div>
+  <h1 data-anim>Mapping America's<br><span class="accent">AI Policy Discourse</span></h1>
+  <p class="dek" data-anim>Six ideological buckets. Four data layers. Fifty-plus voices. A first-pass topology of who is shaping the U.S. conversation about artificial intelligence — and where the loudest signals don't sit where you'd expect them to.</p>
+  <div class="byline" data-anim>
+    <span>Beacon Research · Partner Success</span>
+    <span>Corpus window · Nov 2024 – Apr 2026</span>
+    <span>Coverage: tweets · podcasts · news</span>
+  </div>
+</section>
+<section id="exec">
+  <div class="kicker" data-anim>Section 01 · Executive Summary</div>
+  <h2 data-anim>The shape of the field</h2>
+  <p class="dek" data-anim>What the Beacon corpus actually contains — and what it can resolve.</p>
+
+  <p class="lede" data-anim>AI is now the dominant U.S. tech-policy story across every monitored ideology. In the last fourteen days alone, the Beacon news layer logged <span class="named">3,641</span> AI- and data-center-related headlines. Across the longer corpus — Twitter back to 2013, podcasts since 2024, news since July 2025 — the platform has surfaced over <span class="named">61,000</span> AI-tagged articles, <span class="named">2,600</span> podcast chunks, and <span class="named">2,348</span> tweets across six ideological buckets. The question is not whether Beacon can map the field. It is which voices get the highest leverage from each bucket — and where we are still flying blind.</p>
+
+  <div class="metric-grid" data-anim>
+    <div class="metric">
+      <div class="label">Podcast chunks</div>
+      <div class="value">2.6<span class="unit">k</span></div>
+      <div class="sub">AI-tagged segments since Nov 2024 across 15+ shows</div>
+    </div>
+    <div class="metric">
+      <div class="label">Tweets monitored</div>
+      <div class="value">2,348</div>
+      <div class="sub">AI-tagged across 172 accounts in 6 buckets</div>
+    </div>
+    <div class="metric alt">
+      <div class="label">News articles</div>
+      <div class="value">61<span class="unit">k+</span></div>
+      <div class="sub">AI-related headlines since Jan 2025</div>
+    </div>
+    <div class="metric">
+      <div class="label">Ideological buckets</div>
+      <div class="value">6</div>
+      <div class="sub">Far Left → Dissident Right, balanced spread</div>
+    </div>
+    <div class="metric">
+      <div class="label">Headlines / 14d</div>
+      <div class="value">3,641</div>
+      <div class="sub">AI &amp; data-center coverage, 9 outlets sampled</div>
+    </div>
+    <div class="metric">
+      <div class="label">Top single-account reach</div>
+      <div class="value">147<span class="unit">M</span></div>
+      <div class="sub">Elon Musk · 34 AI tweets · untagged in corpus</div>
+    </div>
+    <div class="metric">
+      <div class="label">Coverage skew</div>
+      <div class="value">→</div>
+      <div class="sub">Right buckets dominate volume; left dominates intellectual depth gaps</div>
+    </div>
+    <div class="metric alt">
+      <div class="label">Research agents</div>
+      <div class="value">8</div>
+      <div class="sub">4 KB Researchers · 2 Web Investigators · 2 Verifiers</div>
+    </div>
+  </div>
+
+  <div class="findings" data-anim>
+    <div class="finding">
+      <h4>Volume tilts right; reach tilts further right</h4>
+      <p>MAGA accounts have logged the most AI tweets (292), with Dissident Right close behind (241). But measured by impressions, those two buckets — driven by Alex Jones, Andrew Tate, and Cernovich — produce roughly five-to-ten times the reach of left-coded counterparts.</p>
+      <span class="ev strong">Strong · n=2,348 tweets</span>
+    </div>
+    <div class="finding olive">
+      <h4>Podcast layer is Beacon's deepest signal</h4>
+      <p>All-In and Bannon's War Room together account for 482 AI-tagged chunks — nearly a fifth of the entire podcast layer. Cross-ideology spread is good (Democracy Now! and Tucker Carlson both present) but academic and AI-safety podcasts are absent.</p>
+      <span class="ev strong">Strong · 15+ shows indexed</span>
+    </div>
+    <div class="finding warn">
+      <h4>Elected officials are the structural blind spot</h4>
+      <p>Congress is where AI policy gets written, but the Beacon Twitter corpus carries only sparse coverage of senators and representatives — Cruz (15 tweets), Cornyn (18), Foushee (14). Schumer, Hawley, Lieu, Warner, Klobuchar are effectively invisible. Elected officials are a hard data gap.</p>
+      <span class="ev mod">Verified · gap memo</span>
+    </div>
+    <div class="finding gold">
+      <h4>Left intellectual depth is thin</h4>
+      <p>The Far Left bucket captures outlets (Jacobin, Intercept, DropSite) but not the thinkers who define progressive AI critique — Whittaker, Gebru, Khan, Marx, Bender, Doctorow are not monitored. The KB has zero dedicated AI-policy think tanks (Brookings, CSIS, AEI, Heritage AI). Web investigation will need to backfill.</p>
+      <span class="ev mod">Mod · gap-flagged</span>
+    </div>
+  </div>
+</section>
+<section id="bars">
+  <div class="kicker" data-anim>Section 02 · Volume by Bucket</div>
+  <h2 data-anim>Where the conversation is happening</h2>
+  <p class="dek" data-anim>AI-tagged tweets, unique accounts, and combined reach across six ideological buckets — Nov 2024 to present.</p>
+
+  <div class="chart-wrap" data-anim data-vft-chart="lexbars">
+    <div class="ctitle">Motion Chart 02 · Lexical Bars</div>
+    <div class="csub">Toggle between three measures of bucket activity. Each bar animates from zero on first view.</div>
+    <div class="chip-row" id="lexbars-chips">
+      <button class="chip on" data-view="tweets">AI Tweets</button>
+      <button class="chip" data-view="accounts">Unique Accounts</button>
+      <button class="chip" data-view="reach">Reach (M views)</button>
+    </div>
+    <svg viewBox="0 0 760 320" id="lexbars-svg" preserveAspectRatio="xMinYMin meet" aria-label="AI tweets by ideological bucket"></svg>
+  </div>
+
+  <div class="findings" data-anim>
+    <div class="finding">
+      <h4>MAGA + Dissident Right ≈ 23% of all AI tweets</h4>
+      <p>Together those two buckets generate 533 AI-tagged tweets from just 80 accounts — fewer accounts than the four other buckets combined, but more raw volume than any of them.</p>
+      <span class="ev strong">Strong</span>
+    </div>
+    <div class="finding olive">
+      <h4>Mainstream GOP is the quietest bucket</h4>
+      <p>Traditional Republicans post less about AI than every other bucket on the dashboard. Reach numbers reinforce the gap: Erick Erickson and Ben Shapiro produce volume but their per-tweet reach is an order of magnitude below MAGA-coded peers.</p>
+      <span class="ev mod">Mod</span>
+    </div>
+  </div>
+</section>
+<section id="bubbles">
+  <div class="kicker" data-anim>Section 03 · Voice Reach Cloud</div>
+  <h2 data-anim>Whose voice carries</h2>
+  <p class="dek" data-anim>Top 17 monitored accounts. Bubble area is total reach (millions of views). Color is ideological bucket. The cloud sketches Beacon's signal asymmetry better than any tweet count can.</p>
+
+  <div class="chart-wrap" data-anim data-vft-chart="bubbles">
+    <div class="ctitle">Motion Chart 15 · Bubble Swarm</div>
+    <div class="csub">Bubbles inflate from zero on first scroll-into-view. Sized by reach in millions; colored by bucket.</div>
+    <svg viewBox="0 0 760 480" id="bubbles-svg" preserveAspectRatio="xMidYMid meet" aria-label="Top voices by reach"></svg>
+
+    <div class="chip-row" id="bubbles-legend" style="margin-top: 18px; justify-content: center;"></div>
+  </div>
+
+  <div class="findings" data-anim>
+    <div class="finding warn">
+      <h4>One untagged account swamps the chart</h4>
+      <p>Elon Musk has only 34 AI-brand tweets in the Beacon archive but 147 million combined views — more than the next three accounts combined. He sits outside the six-bucket taxonomy and is rendered grey in the cloud. A bucket assignment for Musk is the highest-leverage tagging change available.</p>
+      <span class="ev strong">Verified</span>
+    </div>
+    <div class="finding">
+      <h4>Reach concentrates in three Dissident Right accounts</h4>
+      <p>Alex Jones (91M), Andrew Tate (81.6M), and gc22gc (6.6M) anchor the right side of the cloud. Combined with MAGA's Cernovich, Walsh, Rugg, and Catturd, the right half of the cloud carries roughly 80% of total reach in this dataset.</p>
+      <span class="ev strong">Strong</span>
+    </div>
+  </div>
+</section>
+<section id="quad">
+  <div class="kicker" data-anim>Section 04 · Ideology × AI Stance</div>
+  <h2 data-anim>The orthogonal map</h2>
+  <p class="dek" data-anim>Stance on AI doesn't track partisan lines. Plotting ideology against AI position reveals four populated quadrants — and the most influential single account anchors the &ldquo;right accelerationist&rdquo; corner.</p>
+
+  <div class="chart-wrap" data-anim data-vft-chart="quadrant">
+    <div class="ctitle">Motion Chart 07 · Quadrant Scatter</div>
+    <div class="csub">X axis: political ideology, left ↔ right. Y axis: AI stance, skeptical ↔ accelerationist. Dot size = reach.</div>
+    <svg viewBox="0 0 760 540" id="quadrant-svg" preserveAspectRatio="xMidYMid meet" aria-label="Voices by ideology and AI stance"></svg>
+  </div>
+
+  <div class="findings" data-anim>
+    <div class="finding">
+      <h4>The accelerationist axis is bipartisan</h4>
+      <p>Reid Hoffman, Mark Cuban, and Noah Smith on the center-left share an upper plane with David Sacks, Jason Calacanis, and Elon Musk on the center-right. The All-In Podcast is functionally the median voice of this axis. Pivot/Galloway sits one notch lower — accelerationist with reservations.</p>
+      <span class="ev strong">Strong</span>
+    </div>
+    <div class="finding olive">
+      <h4>The skeptic quadrant pairs Jacobin with Steve Bannon</h4>
+      <p>The lower-left and lower-right corners hold ideologically opposite voices that nevertheless converge on AI critique: corporate concentration, labor displacement, surveillance overreach, and China hawkishness. Same content, different rhetorical packaging.</p>
+      <span class="ev strong">Strong</span>
+    </div>
+  </div>
+</section>
+<section id="horseshoe">
+  <div class="kicker" data-anim>Section 05 · Extremes Converge</div>
+  <h2 data-anim>Where the curve closes</h2>
+  <p class="dek" data-anim>Adapting the Horseshoe Convergence framework — the same lens we built for antisemitism research — to AI policy critique. Far Left and Dissident Right anchors arrive at six shared talking points by very different routes.</p>
+
+  <div class="chart-wrap" data-anim data-vft-chart="horseshoe">
+    <div class="ctitle">Motion Chart 13 · Horseshoe Convergence Gauge</div>
+    <div class="csub">The arc fills from both ends inward; six convergence themes settle into the bottom of the curve.</div>
+    <svg viewBox="0 0 760 460" id="horseshoe-svg" preserveAspectRatio="xMidYMid meet" aria-label="Horseshoe convergence on AI critique"></svg>
+  </div>
+
+  <div class="findings" data-anim>
+    <div class="finding warn">
+      <h4>This is testable, not rhetorical</h4>
+      <p>Each of the six convergence themes maps to a Beacon query the platform can run today: paired-quote retrieval across Jacobin and Bannon's War Room, lexical overlap scoring, citation co-incidence on regulatory bills. The horseshoe is a map, not a metaphor — it tells us where to point the system.</p>
+      <span class="ev mod">Method</span>
+    </div>
+    <div class="finding olive">
+      <h4>Center-bucket voices do not converge</h4>
+      <p>Mainstream Dem and Mainstream GOP voices populate the upper arc, far from each other and far from the convergence floor. The horseshoe geometry reflects observed lexical distance — the ends are closer to each other on AI than either is to the political middle.</p>
+      <span class="ev strong">Strong</span>
+    </div>
+  </div>
+</section>
+<section id="tiers">
+  <div class="kicker" data-anim>Section 06 · Influence Tiers</div>
+  <h2 data-anim>Who matters most</h2>
+  <p class="dek" data-anim>Tier ranking combines reach, AI-tweet volume, and cross-platform podcast presence. Tier S accounts shape narratives downstream; Tier B accounts produce volume but propagate narratives others have set.</p>
+
+  <div data-anim data-vft-chart="tiers">
+    <div class="tier-row t-s">
+      <div class="tier-badge">S</div>
+      <div class="tier-cell">
+        <span class="tier-pill"><span class="swatch" style="background:#888"></span>Elon Musk<span class="reach">147.0M</span></span>
+        <span class="tier-pill"><span class="swatch" style="background:#5A4633"></span>Alex Jones<span class="reach">91.0M</span></span>
+        <span class="tier-pill"><span class="swatch" style="background:#5A4633"></span>Andrew Tate<span class="reach">81.6M</span></span>
+        <span class="tier-pill"><span class="swatch" style="background:#8B2635"></span>Collin Rugg<span class="reach">66.7M</span></span>
+        <span class="tier-pill"><span class="swatch" style="background:#8B2635"></span>Matt Walsh<span class="reach">43.0M</span></span>
+      </div>
+    </div>
+    <div class="tier-row t-a">
+      <div class="tier-badge">A</div>
+      <div class="tier-cell">
+        <span class="tier-pill"><span class="swatch" style="background:#7795CC"></span>Mark Cuban<span class="reach">31.0M</span></span>
+        <span class="tier-pill"><span class="swatch" style="background:#5B2A5E"></span>Jackson Hinkle<span class="reach">24.5M</span></span>
+        <span class="tier-pill"><span class="swatch" style="background:#8B2635"></span>Mike Cernovich<span class="reach">16.5M</span></span>
+        <span class="tier-pill"><span class="swatch" style="background:#8B2635"></span>Catturd<span class="reach">9.8M</span></span>
+        <span class="tier-pill"><span class="swatch" style="background:#5A4633"></span>gc22gc<span class="reach">6.6M</span></span>
+      </div>
+    </div>
+    <div class="tier-row t-b">
+      <div class="tier-badge">B</div>
+      <div class="tier-cell">
+        <span class="tier-pill"><span class="swatch" style="background:#7795CC"></span>Reid Hoffman<span class="reach">5.3M</span></span>
+        <span class="tier-pill"><span class="swatch" style="background:#7795CC"></span>Noah Smith<span class="reach">5.1M</span></span>
+        <span class="tier-pill"><span class="swatch" style="background:#A88E5C"></span>Erick Erickson<span class="reach">1.7M</span></span>
+        <span class="tier-pill"><span class="swatch" style="background:#3A4DA7"></span>Mehdi Hasan<span class="reach">1.6M</span></span>
+        <span class="tier-pill"><span class="swatch" style="background:#3A4DA7"></span>Zephyr Teachout<span class="reach">1.5M</span></span>
+      </div>
+    </div>
+    <div class="tier-row t-c">
+      <div class="tier-badge">C</div>
+      <div class="tier-cell">
+        <span class="tier-pill"><span class="swatch" style="background:#5B2A5E"></span>Jacobin<span class="reach">688K</span></span>
+        <span class="tier-pill"><span class="swatch" style="background:#3A4DA7"></span>Mother Jones<span class="reach">599K</span></span>
+        <span class="tier-pill" style="opacity:.55">+ ~155 long-tail accounts across 6 buckets</span>
+      </div>
+    </div>
+  </div>
+
+  <p style="margin-top: 22px; max-width: 38em; font-size: 14px; color: var(--ink-faint);">Tier S accounts are reach-dominant; their AI commentary is amplified independent of source quality. Tier A accounts combine substantial reach with high tweet volume — they are the working frequency of AI discourse. Tier B is the policy-substantive layer. Tier C is volume without amplification.</p>
+</section>
+<section id="inventory">
+  <div class="kicker" data-anim>Section 07 · Podcast Inventory</div>
+  <h2 data-anim>The audio layer</h2>
+  <p class="dek" data-anim>Top nine shows ranked by AI-tagged segment volume. Beacon's podcast layer is the densest data we have on this topic.</p>
+
+  <table class="tbl" data-anim>
+    <thead>
+      <tr>
+        <th style="width: 28%">Show</th>
+        <th style="width: 18%">Lean</th>
+        <th style="width: 36%">Hosts / Speakers</th>
+        <th style="width: 18%; text-align:right">AI Chunks</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>All-In Podcast</strong></td>
+        <td>Tech-insider</td>
+        <td>Sacks/Calacanis/Palihapitiya/Friedberg</td>
+        <td class="num">262</td>
+      </tr>
+      <tr>
+        <td><strong>Bannon&#x27;s War Room</strong></td>
+        <td>MAGA/Dissident</td>
+        <td>Steve Bannon</td>
+        <td class="num">220</td>
+      </tr>
+      <tr>
+        <td><strong>Breaking Points</strong></td>
+        <td>Populist center</td>
+        <td>Krystal Ball / Saagar Enjeti</td>
+        <td class="num">110</td>
+      </tr>
+      <tr>
+        <td><strong>Pivot</strong></td>
+        <td>Mainstream Dem</td>
+        <td>Kara Swisher / Scott Galloway</td>
+        <td class="num">77</td>
+      </tr>
+      <tr>
+        <td><strong>PBD Podcast</strong></td>
+        <td>MAGA-curious</td>
+        <td>Patrick Bet-David</td>
+        <td class="num">74</td>
+      </tr>
+      <tr>
+        <td><strong>Democracy Now!</strong></td>
+        <td>Far Left</td>
+        <td>Amy Goodman</td>
+        <td class="num">74</td>
+      </tr>
+      <tr>
+        <td><strong>On with Kara Swisher</strong></td>
+        <td>Mainstream Dem</td>
+        <td>Kara Swisher</td>
+        <td class="num">57</td>
+      </tr>
+      <tr>
+        <td><strong>Ben Shapiro</strong></td>
+        <td>Mainstream GOP</td>
+        <td>Ben Shapiro</td>
+        <td class="num">47</td>
+      </tr>
+      <tr>
+        <td><strong>Tucker Carlson</strong></td>
+        <td>Dissident Right</td>
+        <td>Tucker Carlson</td>
+        <td class="num">36</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p style="margin-top: 18px; font-size: 13px; color: var(--ink-faint); max-width: 40em;">Source: Beacon podcast index, AI-tagged chunks since Nov 2024. The All-In + Bannon's War Room combined chunk count (482) exceeds the next four shows summed. Pivot and On with Kara Swisher counted separately because they index distinctly in the corpus.</p>
+</section>
+<section id="findings">
+  <div class="kicker" data-anim>Section 08 · Key Findings</div>
+  <h2 data-anim>What this brief actually establishes</h2>
+  <p class="dek" data-anim>Six findings with evidence tier, organized for quick handoff to the research planner.</p>
+
+  <div class="findings" data-anim>
+    <div class="finding">
+      <h4>1 · Beacon is mappable across all six buckets</h4>
+      <p>Even in the thinnest bucket (Mainstream GOP, 139 tweets · 23 accounts) the platform has enough sample to surface representative voices and recurring frames. The six-bucket framework is operational.</p>
+      <span class="ev strong">Strong · n=2,348</span>
+    </div>
+    <div class="finding warn">
+      <h4>2 · Right-coded reach exceeds left-coded reach by ~6×</h4>
+      <p>Ranking accounts by total impressions, MAGA + Dissident Right combined account for roughly 80% of total reach in the dataset, despite being only 47% of the accounts and 23% of the tweets.</p>
+      <span class="ev strong">Strong</span>
+    </div>
+    <div class="finding olive">
+      <h4>3 · The accelerationist coalition is bipartisan-ish</h4>
+      <p>The high-reach pro-AI cluster pulls Reid Hoffman, Mark Cuban, Noah Smith, David Sacks, Jason Calacanis, and Elon Musk into the same upper-quadrant region — separated horizontally but materially aligned. Standing pattern in the corpus, not a one-week artifact.</p>
+      <span class="ev strong">Strong</span>
+    </div>
+    <div class="finding gold">
+      <h4>4 · Far Left and Dissident Right share six AI critiques</h4>
+      <p>Big-tech monopoly power, labor displacement, surveillance overreach, China hawkishness, capital concentration, and cultural homogenization all surface in both ends of the spectrum. Lexical proximity is testable directly with paired-quote retrieval.</p>
+      <span class="ev mod">Mod · pending verification</span>
+    </div>
+    <div class="finding warn">
+      <h4>5 · Elected officials are a structural blind spot</h4>
+      <p>The Twitter corpus carries fragments of Cruz, Cornyn, and Foushee; nothing from Schumer, Hawley, Lieu, Klobuchar, Warner, Gallagher, Moolenaar, or other AI-relevant policymakers. Web Investigator has been allocated specifically for backfill.</p>
+      <span class="ev strong">Verified · gap memo</span>
+    </div>
+    <div class="finding gold">
+      <h4>6 · Left intellectual depth requires web backfill</h4>
+      <p>Whittaker, Gebru, Khan, Marx, Bender, and Doctorow are all unmonitored. The Far Left tag captures outlets, not thinkers. No Brookings, CSIS, AEI, or Heritage AI-policy material indexed. Cannot be fixed at platform level — has to come through web research.</p>
+      <span class="ev mod">Mod · gap-flagged</span>
+    </div>
+  </div>
+</section>
+<section id="methodology" class="methods">
+  <div class="kicker" data-anim>Section 09 · Methodology &amp; Gaps</div>
+  <h2 data-anim>How to read this</h2>
+  <p class="dek" data-anim>Evidence tiers, scope constraints, and the six known limitations to flag with any consumer of the brief.</p>
+
+  <table class="ev-table" data-anim>
+    <thead>
+      <tr><th style="width: 14%">Tier</th><th style="width: 28%">Source class</th><th>Confidence basis</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>STRONG</td><td>Beacon podcast + Twitter corpora</td><td>n &gt; 100 in both layers, multiple independent sources, time-series visible across &gt; 6 months</td></tr>
+      <tr><td>MOD</td><td>Single-layer Beacon claims</td><td>n &gt; 50 in one layer; corroborated by news search but not yet cross-verified by claim verifier</td></tr>
+      <tr><td>VERIFIED</td><td>Counted facts (account counts, chunk counts)</td><td>Direct queries against Beacon DB at brief assembly time</td></tr>
+      <tr><td>GAP</td><td>Known absence in monitored corpus</td><td>Asserted only as a gap, not as a substantive claim</td></tr>
+    </tbody>
+  </table>
+
+  <h3 style="margin-top: 36px;">Limitations</h3>
+  <ol class="lim" data-anim>
+    <li><strong>News DB starts July 2025.</strong> Pre-DeepSeek (Jan 2025) news coverage is not available in the news layer — Twitter and podcast layers extend back further.</li>
+    <li><strong>Elon Musk is untagged.</strong> 34 tweets and 147M views sit outside the six-bucket taxonomy. The dashboard renders him grey; bucket assignment is the highest-priority tagging fix.</li>
+    <li><strong>Elected officials thin.</strong> Schumer, Hawley, Lieu, Warner, Klobuchar, Gallagher, Moolenaar effectively absent from the Twitter corpus. Backfill via Web Investigator only.</li>
+    <li><strong>No dedicated AI-policy think tanks.</strong> Brookings Tech, CSIS, AEI, Heritage, FAS material is not in the KB. Web research only.</li>
+    <li><strong>Far Left = outlets, not thinkers.</strong> Jacobin, Intercept, DropSite are present; Whittaker, Gebru, Khan, Marx, Bender, Doctorow are not. The bucket needs intellectual-figure expansion.</li>
+    <li><strong>No AI-safety podcasts.</strong> 80,000 Hours, Dwarkesh, AI X-risk material not in the podcast index. Likely affects how stark the AI-skeptic axis appears.</li>
+  </ol>
+</section>
+<section id="sources">
+  <div class="kicker" data-anim>Section 10 · Source Stack</div>
+  <h2 data-anim>Where this brief is anchored</h2>
+  <p class="dek" data-anim>Nine outlets in the news sample, three Beacon corpus layers, eight assigned research agents.</p>
+
+  <div class="sources-grid" data-anim>
+    <div class="src">
+      <div class="src-kicker">Beacon · Layer 01</div>
+      <h4>Twitter / X corpus</h4>
+      <p>2,348 AI-tagged tweets across 172 accounts, dating to 2013, concentrated last 18 months. Six-bucket tagging applied. Account-level reach computed at corpus-build time.</p>
+    </div>
+    <div class="src">
+      <div class="src-kicker">Beacon · Layer 02</div>
+      <h4>Podcast corpus</h4>
+      <p>~2,600 AI-tagged chunks across 15+ shows since Nov 2024. Top: All-In (262), Bannon's War Room (220), Breaking Points (110). Speaker attribution at chunk level.</p>
+    </div>
+    <div class="src">
+      <div class="src-kicker">Beacon · Layer 03</div>
+      <h4>News article DB</h4>
+      <p>61,000+ AI-related articles since Jan 2025. 9 outlets sampled here: Fox News, Guardian, Newsmax, Epoch Times, CNN, FT, WaPo, BBC, Breitbart. Last-14d count 3,641.</p>
+    </div>
+    <div class="src">
+      <div class="src-kicker">Beacon · Layer 04</div>
+      <h4>Knowledge Base (limited)</h4>
+      <p>9 sources w/ AI chunks (~700 chunks total) — INSS, Washington Institute, ADL, Jewish Virtual Library, etc. Israel/MENA-focused, not US-tech-policy. Acknowledged limitation.</p>
+    </div>
+    <div class="src">
+      <div class="src-kicker">Research plan</div>
+      <h4>8 agents deployed</h4>
+      <p>4 KB Researchers (left/center/right/synthesis) + 2 Web Investigators (politicians + intellectuals) + 2 Verifiers. Template: Intelligence Brief (BLUF → key facts → assessment → implications).</p>
+    </div>
+    <div class="src">
+      <div class="src-kicker">Anchor case</div>
+      <h4>Horseshoe Convergence Analysis</h4>
+      <p>Methodology adapted from Beacon's Horseshoe Convergence framework, originally designed for antisemitism research at the political extremes. Same lens, different topic.</p>
+    </div>
+  </div>
+</section>
+<div class="foot">
+  <span>Beacon Intelligence · Brief 2026.04 · Internal</span>
+  <span>Apr 30, 2026 · v1.0</span>
+  <span>VFT &amp; Beacon Research</span>
+</div>
+</main></div><script>window.VFT_DATA = {"BUCKETS": {"Far Left": {"color": "#5B2A5E", "short": "FL"}, "Progressive Left": {"color": "#3A4DA7", "short": "PL"}, "Mainstream Dem": {"color": "#7795CC", "short": "MD"}, "Mainstream GOP": {"color": "#A88E5C", "short": "MG"}, "MAGA": {"color": "#8B2635", "short": "MAGA"}, "Dissident Right": {"color": "#5A4633", "short": "DR"}}, "BUCKET_TWEETS": [["MAGA", 292, 48, 195.0], ["Dissident Right", 241, 32, 215.0], ["Progressive Left", 179, 20, 8.5], ["Far Left", 154, 25, 29.0], ["Mainstream Dem", 145, 24, 46.0], ["Mainstream GOP", 139, 23, 3.5]], "VOICES": [["Cernovich", "Mike Cernovich", "MAGA", 356, 16.5], ["noahpinion", "Noah Smith", "Mainstream Dem", 288, 5.1], ["gc22gc", "gc22gc", "Dissident Right", 205, 6.6], ["Alex Jones", "Alex Jones", "Dissident Right", 182, 91.0], ["Erick Erickson", "Erick Erickson", "Mainstream GOP", 171, 1.7], ["Reid Hoffman", "Reid Hoffman", "Mainstream Dem", 153, 5.3], ["Jacobin", "Jacobin", "Far Left", 144, 0.7], ["Mother Jones", "Mother Jones", "Progressive Left", 133, 0.6], ["Mark Cuban", "Mark Cuban", "Mainstream Dem", 112, 31.0], ["Jackson Hinkle", "Jackson Hinkle", "Far Left", 97, 24.5], ["Zephyr Teachout", "Zephyr Teachout", "Progressive Left", 82, 1.5], ["Andrew Tate", "Andrew Tate", "Dissident Right", 81, 81.6], ["Matt Walsh", "Matt Walsh", "MAGA", 75, 43.0], ["Collin Rugg", "Collin Rugg", "MAGA", 53, 66.7], ["Mehdi Hasan", "Mehdi Hasan", "Progressive Left", 51, 1.6], ["Catturd", "Catturd \u2122", "MAGA", 41, 9.8], ["Elon Musk", "Elon Musk", "Untagged", 34, 147.0]], "PODCASTS": [["All-In Podcast", 262, "Tech-insider", "Sacks/Calacanis/Palihapitiya/Friedberg"], ["Bannon's War Room", 220, "MAGA/Dissident", "Steve Bannon"], ["Breaking Points", 110, "Populist center", "Krystal Ball / Saagar Enjeti"], ["Pivot", 77, "Mainstream Dem", "Kara Swisher / Scott Galloway"], ["PBD Podcast", 74, "MAGA-curious", "Patrick Bet-David"], ["Democracy Now!", 74, "Far Left", "Amy Goodman"], ["On with Kara Swisher", 57, "Mainstream Dem", "Kara Swisher"], ["Ben Shapiro", 47, "Mainstream GOP", "Ben Shapiro"], ["Tucker Carlson", 36, "Dissident Right", "Tucker Carlson"]], "OUTLETS": [["Fox News", "right", 463], ["The Guardian", "left", 385], ["Newsmax", "right", 334], ["Epoch Times", "right", 272], ["CNN", "left", 251], ["Financial Times", "other", 250], ["Washington Post", "left", 228], ["BBC", "left", 223], ["Breitbart", "right", 207]], "QUADRANT_DOTS": [["Reid Hoffman", "Mainstream Dem", -0.6, 1.7, 5.3], ["Mark Cuban", "Mainstream Dem", -0.4, 1.4, 31.0], ["Noah Smith", "Mainstream Dem", -0.5, 1.2, 5.1], ["Kara Swisher", "Mainstream Dem", -0.7, 0.5, 3.0], ["Scott Galloway", "Mainstream Dem", -0.3, 0.4, 4.0], ["Mehdi Hasan", "Progressive Left", -1.5, -1.0, 1.6], ["Mother Jones", "Progressive Left", -1.6, -1.4, 0.6], ["Zephyr Teachout", "Progressive Left", -1.7, -1.7, 1.5], ["Jacobin", "Far Left", -1.9, -1.9, 0.7], ["Jackson Hinkle", "Far Left", -1.8, -1.5, 24.5], ["Erick Erickson", "Mainstream GOP", 1.2, 0.6, 1.7], ["Ben Shapiro", "Mainstream GOP", 1.4, 0.3, 3.5], ["David Sacks", "Mainstream Dem", 0.6, 1.9, 12.0], ["Jason Calacanis", "Mainstream Dem", 0.2, 1.6, 6.0], ["Elon Musk", "Untagged", 1.3, 1.5, 147.0], ["Patrick Bet-David", "MAGA", 1.6, 0.7, 9.0], ["Mike Cernovich", "MAGA", 1.7, -1.2, 16.5], ["Matt Walsh", "MAGA", 1.8, -1.6, 43.0], ["Collin Rugg", "MAGA", 1.4, -0.8, 66.7], ["Catturd", "MAGA", 1.7, -1.4, 9.8], ["Tucker Carlson", "Dissident Right", 1.5, -1.7, 6.0], ["Steve Bannon", "Dissident Right", 1.6, -1.8, 12.0], ["Alex Jones", "Dissident Right", 1.9, -1.9, 91.0], ["Andrew Tate", "Dissident Right", 1.8, -1.5, 81.6], ["gc22gc", "Dissident Right", 1.7, -1.6, 6.6]]};</script><script>
+(function(){
+'use strict';
+var D = window.VFT_DATA;
+
+// =======================================================================
+// Utility: animate-in observer
+// =======================================================================
+var io = new IntersectionObserver(function(entries){
+  entries.forEach(function(e){
+    if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+  });
+}, { threshold: 0.12, rootMargin: '0px 0px -10% 0px' });
+document.querySelectorAll('[data-anim]').forEach(function(el){ io.observe(el); });
+
+// =======================================================================
+// Progress bar + scroll-spy nav
+// =======================================================================
+var progFill = document.querySelector('.progress-bar .fill');
+var sections = Array.prototype.slice.call(document.querySelectorAll('section[id]'));
+var navLinks = Array.prototype.slice.call(document.querySelectorAll('.sidebar nav a'));
+
+function onScroll(){
+  var doc = document.documentElement;
+  var st = window.pageYOffset || doc.scrollTop;
+  var dh = (doc.scrollHeight - doc.clientHeight) || 1;
+  progFill.style.width = (Math.max(0, Math.min(1, st/dh)) * 100) + '%';
+
+  var atY = st + 120;
+  var current = sections[0];
+  for(var i=0;i<sections.length;i++){
+    if(sections[i].offsetTop <= atY) current = sections[i];
+  }
+  navLinks.forEach(function(a){
+    if(a.getAttribute('href') === '#' + current.id) a.classList.add('active');
+    else a.classList.remove('active');
+  });
+}
+window.addEventListener('scroll', onScroll, { passive: true });
+onScroll();
+
+// =======================================================================
+// Chart-replay observer: chart only animates first time it's visible
+// =======================================================================
+var chartIO = new IntersectionObserver(function(entries){
+  entries.forEach(function(e){
+    if(e.isIntersecting){
+      var name = e.target.getAttribute('data-vft-chart');
+      if(window.__VFT_CHARTS__ && window.__VFT_CHARTS__[name]) {
+        window.__VFT_CHARTS__[name]();
+      }
+      chartIO.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.2 });
+document.querySelectorAll('[data-vft-chart]').forEach(function(el){ chartIO.observe(el); });
+window.__VFT_CHARTS__ = {};
+
+// =======================================================================
+// CHART: Lex Bars
+// =======================================================================
+window.__VFT_CHARTS__.lexbars = function(){
+  var svg = document.getElementById('lexbars-svg');
+  var W = 760, H = 320;
+  var P = { l: 168, r: 64, t: 14, b: 24 };
+  var rows = D.BUCKET_TWEETS.slice().sort(function(a,b){ return b[1]-a[1]; });
+  var rh = (H - P.t - P.b) / rows.length;
+
+  var view = 'tweets';
+  function valFor(r, v){
+    if(v==='tweets') return r[1];
+    if(v==='accounts') return r[2];
+    return r[3];
+  }
+  function unit(v){
+    if(v==='tweets') return '';
+    if(v==='accounts') return '';
+    return 'M';
+  }
+
+  function render(){
+    var maxV = Math.max.apply(null, rows.map(function(r){ return valFor(r, view); }));
+    var inner = '';
+    rows.forEach(function(r, i){
+      var bk = r[0];
+      var color = D.BUCKETS[bk] ? D.BUCKETS[bk].color : '#888';
+      var v = valFor(r, view);
+      var w = ((W - P.l - P.r) * (v / maxV));
+      var y = P.t + i * rh;
+      var bh = rh - 9;
+      // Label
+      inner += '<text x="' + (P.l - 10) + '" y="' + (y + bh/2 + 4) + '" text-anchor="end" class="bar-label" style="fill:' + color + ';font-weight:600;letter-spacing:.05em">' + bk + '</text>';
+      // Background guide
+      inner += '<rect x="' + P.l + '" y="' + y + '" width="' + (W - P.l - P.r) + '" height="' + bh + '" fill="#EFEEEA" rx="2" />';
+      // Animated bar
+      inner += '<rect class="lex-bar" x="' + P.l + '" y="' + y + '" width="0" height="' + bh + '" fill="' + color + '" rx="2" data-target="' + w + '" />';
+      // Value
+      inner += '<text x="' + (P.l + w + 6) + '" y="' + (y + bh/2 + 4) + '" class="bar-num" data-num-target="' + v + '" data-unit="' + unit(view) + '">0' + unit(view) + '</text>';
+    });
+    svg.innerHTML = inner;
+
+    // Animate after a paint
+    requestAnimationFrame(function(){
+      var bars = svg.querySelectorAll('.lex-bar');
+      bars.forEach(function(b){ b.setAttribute('width', b.getAttribute('data-target')); });
+      var nums = svg.querySelectorAll('.bar-num');
+      var dur = 1100;
+      var t0 = performance.now();
+      function tick(now){
+        var t = Math.min(1, (now - t0)/dur);
+        var ease = 1 - Math.pow(1 - t, 3);
+        nums.forEach(function(n){
+          var tg = parseFloat(n.getAttribute('data-num-target'));
+          var u = n.getAttribute('data-unit') || '';
+          var cur = tg * ease;
+          if(u === 'M') n.textContent = cur.toFixed(1) + u;
+          else n.textContent = Math.round(cur).toLocaleString();
+          // Reposition X dynamically as bar grows
+          var b = bars[Array.prototype.indexOf.call(nums, n)];
+          if(b){
+            var w = parseFloat(b.getAttribute('width')) * ease;
+            n.setAttribute('x', P.l + w + 6);
+          }
+        });
+        if(t < 1) requestAnimationFrame(tick);
+        else {
+          // Final positions
+          nums.forEach(function(n,i){
+            var b = bars[i];
+            n.setAttribute('x', P.l + parseFloat(b.getAttribute('width')) + 6);
+            var tg = parseFloat(n.getAttribute('data-num-target'));
+            var u = n.getAttribute('data-unit') || '';
+            n.textContent = (u==='M' ? tg.toFixed(1) + u : Math.round(tg).toLocaleString());
+          });
+        }
+      }
+      requestAnimationFrame(tick);
+    });
+  }
+
+  // Chip handlers
+  var chips = document.querySelectorAll('#lexbars-chips .chip');
+  chips.forEach(function(c){
+    c.addEventListener('click', function(){
+      chips.forEach(function(x){ x.classList.remove('on'); });
+      c.classList.add('on');
+      view = c.getAttribute('data-view');
+      render();
+    });
+  });
+  render();
+};
+
+// =======================================================================
+// CHART: Bubble Swarm
+// =======================================================================
+window.__VFT_CHARTS__.bubbles = function(){
+  var svg = document.getElementById('bubbles-svg');
+  var W = 760, H = 480;
+  // Sort by reach desc and pack
+  var voices = D.VOICES.slice().sort(function(a,b){ return b[4]-a[4]; });
+
+  // Compute bubble radii from reach (sqrt scale so area is proportional)
+  var maxReach = Math.max.apply(null, voices.map(function(v){ return v[4]; }));
+  var minR = 14, maxR = 78;
+  voices.forEach(function(v){
+    v._r = minR + (maxR - minR) * Math.sqrt(v[4] / maxReach);
+  });
+
+  // Simple force-directed-ish packing using coarse grid approach
+  // Place largest first at center; subsequent bubbles around in spiral, repelled if overlap.
+  var cx = W/2, cy = H/2;
+  var placed = [];
+  voices.forEach(function(v, i){
+    if(i === 0){
+      v._x = cx; v._y = cy; placed.push(v); return;
+    }
+    var bestX, bestY, bestDist = Infinity;
+    var angleStep = 0.18;
+    var radiusStep = 6;
+    var maxR2 = 320;
+    for(var rad = 30; rad < maxR2; rad += radiusStep){
+      for(var ang = 0; ang < Math.PI * 2; ang += angleStep){
+        var x = cx + rad * Math.cos(ang);
+        var y = cy + rad * Math.sin(ang);
+        // Boundary check
+        if(x - v._r < 5 || x + v._r > W - 5 || y - v._r < 5 || y + v._r > H - 5) continue;
+        // Overlap check
+        var ok = true;
+        for(var k=0;k<placed.length;k++){
+          var p = placed[k];
+          var dx = x - p._x, dy = y - p._y;
+          if(Math.sqrt(dx*dx + dy*dy) < (v._r + p._r + 3)){ ok = false; break; }
+        }
+        if(ok){
+          var d = Math.sqrt((x-cx)*(x-cx) + (y-cy)*(y-cy));
+          if(d < bestDist){ bestDist = d; bestX = x; bestY = y; }
+        }
+      }
+      if(bestX !== undefined) break;
+    }
+    if(bestX === undefined){ bestX = cx; bestY = cy; }
+    v._x = bestX; v._y = bestY; placed.push(v);
+  });
+
+  // Render
+  var inner = '';
+  voices.forEach(function(v, i){
+    var bk = v[2];
+    var color = D.BUCKETS[bk] ? D.BUCKETS[bk].color : '#9A9A9A';
+    var labelText = v[0];
+    var subText = v[4].toFixed(1) + 'M';
+    var lblCls = 'bubble-label' + (v._r < 18 ? ' dark' : '');
+    var subCls = 'bubble-sub' + (v._r < 18 ? ' dark' : '');
+    var dly = i * 35;
+
+    inner += '<g transform="translate(' + v._x.toFixed(1) + ',' + v._y.toFixed(1) + ')">';
+    inner += '<circle class="bubble" r="0" fill="' + color + '" data-target-r="' + v._r.toFixed(1) + '" style="transition-delay:' + dly + 'ms"></circle>';
+    if(v._r >= 24){
+      inner += '<text class="' + lblCls + '" text-anchor="middle" y="-2" style="opacity:0;transition:opacity .8s ease ' + (dly + 200) + 'ms">' + labelText + '</text>';
+      inner += '<text class="' + subCls + '" text-anchor="middle" y="11" style="opacity:0;transition:opacity .8s ease ' + (dly + 250) + 'ms">' + subText + '</text>';
+    } else if (v._r >= 16){
+      inner += '<text class="' + lblCls + '" text-anchor="middle" y="3" style="font-size:9px;opacity:0;transition:opacity .8s ease ' + (dly + 200) + 'ms">' + labelText + '</text>';
+    }
+    inner += '</g>';
+  });
+  svg.innerHTML = inner;
+
+  // Animate
+  requestAnimationFrame(function(){
+    svg.querySelectorAll('.bubble').forEach(function(c){
+      c.setAttribute('r', c.getAttribute('data-target-r'));
+    });
+    svg.querySelectorAll('.bubble-label, .bubble-sub').forEach(function(t){
+      t.style.opacity = 1;
+    });
+  });
+
+  // Legend
+  var leg = document.getElementById('bubbles-legend');
+  var keys = Object.keys(D.BUCKETS).concat(['Untagged']);
+  leg.innerHTML = keys.map(function(k){
+    var c = (D.BUCKETS[k] ? D.BUCKETS[k].color : '#9A9A9A');
+    return '<span class="chip" style="cursor:default;border-color:' + c + ';color:' + c + ';font-weight:600">' +
+           '<span style="display:inline-block;width:7px;height:7px;border-radius:50%;background:' + c + ';margin-right:7px;vertical-align:middle"></span>' + k + '</span>';
+  }).join('');
+};
+
+// =======================================================================
+// CHART: Quadrant Scatter
+// =======================================================================
+window.__VFT_CHARTS__.quadrant = function(){
+  var svg = document.getElementById('quadrant-svg');
+  var W = 760, H = 540;
+  var P = { l: 64, r: 64, t: 50, b: 64 };
+  var pw = W - P.l - P.r;
+  var ph = H - P.t - P.b;
+  var cx = P.l + pw/2;
+  var cy = P.t + ph/2;
+  function px(x){ return P.l + ((x + 2) / 4) * pw; }
+  function py(y){ return P.t + ph - ((y + 2) / 4) * ph; }
+
+  var inner = '';
+
+  // Background quadrant tints
+  inner += '<rect x="' + P.l + '" y="' + P.t + '" width="' + pw/2 + '" height="' + ph/2 + '" fill="#EFEEEA" opacity="0.45"/>';   // top-left
+  inner += '<rect x="' + cx + '" y="' + P.t + '" width="' + pw/2 + '" height="' + ph/2 + '" fill="#F6F2ED" opacity="0.55"/>';   // top-right
+  inner += '<rect x="' + P.l + '" y="' + cy + '" width="' + pw/2 + '" height="' + ph/2 + '" fill="#F6F2ED" opacity="0.55"/>';   // bot-left
+  inner += '<rect x="' + cx + '" y="' + cy + '" width="' + pw/2 + '" height="' + ph/2 + '" fill="#EFEEEA" opacity="0.45"/>';   // bot-right
+
+  // Grid lines (every 1 unit)
+  for(var g=-1; g<=1; g++){
+    if(g===0) continue;
+    inner += '<line class="q-grid" x1="' + px(g) + '" y1="' + P.t + '" x2="' + px(g) + '" y2="' + (H - P.b) + '" />';
+    inner += '<line class="q-grid" x1="' + P.l + '" y1="' + py(g) + '" x2="' + (W - P.r) + '" y2="' + py(g) + '" />';
+  }
+  // Axes
+  inner += '<line class="q-axis" x1="' + cx + '" y1="' + P.t + '" x2="' + cx + '" y2="' + (H - P.b) + '" />';
+  inner += '<line class="q-axis" x1="' + P.l + '" y1="' + cy + '" x2="' + (W - P.r) + '" y2="' + cy + '" />';
+
+  // Axis labels
+  inner += '<text class="q-label" x="' + P.l + '" y="' + (H - P.b + 24) + '">← Left</text>';
+  inner += '<text class="q-label" x="' + (W - P.r) + '" y="' + (H - P.b + 24) + '" text-anchor="end">Right →</text>';
+  inner += '<text class="q-label" x="' + cx + '" y="' + (H - P.b + 24) + '" text-anchor="middle" style="fill:var(--ink-dim)">IDEOLOGY</text>';
+  inner += '<text class="q-label" x="' + (P.l - 10) + '" y="' + P.t + '" text-anchor="end" transform="rotate(-90 ' + (P.l - 10) + ' ' + P.t + ')">↑ Accelerationist</text>';
+  inner += '<text class="q-label" x="' + (P.l - 10) + '" y="' + (H - P.b) + '" text-anchor="start" transform="rotate(-90 ' + (P.l - 10) + ' ' + (H - P.b) + ')">Skeptical ↓</text>';
+  inner += '<text class="q-label" x="' + (P.l - 24) + '" y="' + cy + '" text-anchor="middle" transform="rotate(-90 ' + (P.l - 24) + ' ' + cy + ')" style="fill:var(--ink-dim)">AI STANCE</text>';
+
+  // Quadrant titles
+  inner += '<text class="q-quad" x="' + (P.l + 14) + '" y="' + (P.t + 22) + '">Left Accelerationist</text>';
+  inner += '<text class="q-quad" x="' + (W - P.r - 14) + '" y="' + (P.t + 22) + '" text-anchor="end">Right Accelerationist</text>';
+  inner += '<text class="q-quad" x="' + (P.l + 14) + '" y="' + (H - P.b - 12) + '">Left Skeptic</text>';
+  inner += '<text class="q-quad" x="' + (W - P.r - 14) + '" y="' + (H - P.b - 12) + '" text-anchor="end">Right Skeptic</text>';
+
+  // Dots
+  D.QUADRANT_DOTS.forEach(function(d, i){
+    var name = d[0], bk = d[1], x = d[2], y = d[3], reach = d[4];
+    var color = D.BUCKETS[bk] ? D.BUCKETS[bk].color : '#999';
+    var r = 4 + Math.sqrt(reach) * 1.4;
+    if(r > 24) r = 24;
+    var dly = i * 28;
+    inner += '<g transform="translate(' + px(x).toFixed(1) + ',' + py(y).toFixed(1) + ')">';
+    inner += '<circle class="dot" r="0" fill="' + color + '" fill-opacity="0.65" stroke="' + color + '" stroke-width="1" data-target-r="' + r.toFixed(1) + '" style="transition-delay:' + dly + 'ms"></circle>';
+    // Label only for larger / notable
+    if(reach >= 5 || ['Reid Hoffman','Mehdi Hasan','Jacobin','Zephyr Teachout','Mother Jones','Erick Erickson'].indexOf(name) >= 0){
+      var lblY = -r - 4;
+      var lblAnch = (x > 1.4) ? 'end' : (x < -1.4 ? 'start' : 'middle');
+      var lblX = (lblAnch === 'end') ? -r - 2 : (lblAnch === 'start' ? r + 2 : 0);
+      if(lblAnch !== 'middle') lblY = 4;
+      inner += '<text x="' + lblX + '" y="' + lblY + '" text-anchor="' + lblAnch + '" font-family="\'Libre Franklin\',sans-serif" font-size="10.5" fill="#0C1843" font-weight="500" style="opacity:0;transition:opacity .8s ease ' + (dly + 200) + 'ms">' + name + '</text>';
+    }
+    inner += '</g>';
+  });
+
+  svg.innerHTML = inner;
+  requestAnimationFrame(function(){
+    svg.querySelectorAll('.dot').forEach(function(d){ d.setAttribute('r', d.getAttribute('data-target-r')); });
+    svg.querySelectorAll('text[style*="opacity:0"]').forEach(function(t){ t.style.opacity = 1; });
+  });
+};
+
+// =======================================================================
+// CHART: Horseshoe Convergence
+// =======================================================================
+window.__VFT_CHARTS__.horseshoe = function(){
+  var svg = document.getElementById('horseshoe-svg');
+  var W = 760, H = 460;
+  var cx = W/2, cy = 130;
+  var R = 200;
+
+  // SVG arc path: half-circle from (cx-R, cy) sweeping through (cx, cy+R) to (cx+R, cy)
+  // Then we'll create a "horseshoe" by curving inward at the bottom
+  // Actually true horseshoe: two arc legs that come close at the bottom but don't quite meet.
+  // We'll use a single half-circle and place anchor labels at endpoints, with convergence themes at the bottom.
+
+  function arcPath(r, fromAng, toAng){
+    var x1 = cx + r * Math.cos(fromAng);
+    var y1 = cy + r * Math.sin(fromAng);
+    var x2 = cx + r * Math.cos(toAng);
+    var y2 = cy + r * Math.sin(toAng);
+    var largeArc = (toAng - fromAng) > Math.PI ? 1 : 0;
+    return 'M ' + x1 + ' ' + y1 + ' A ' + r + ' ' + r + ' 0 ' + largeArc + ' 1 ' + x2 + ' ' + y2;
+  }
+
+  var inner = '';
+  // Background half-circle (pi to 2pi flipped — but easier: 180° to 360° i.e. Math.PI to 2*Math.PI is the bottom half)
+  // We want the U shape opening up. Bottom-half: angle 0 to PI for "lower" half (since y increases downward in SVG).
+  // For a bottom-opening U (horseshoe with ends pointing up): we want the arc to go from angle PI (left, y=cy) DOWN around through PI/2 (bottom) and continue... actually we want the U with the opening at the top.
+  // Going from angle PI (left side, x=cx-R, y=cy) clockwise through PI*1.5? No — let's just use: 0 (right) sweeping through PI/2 (bottom: y=cy+R) to PI (left). That gives a downward-bulging arc.
+  inner += '<path class="hs-arc-bg" d="' + arcPath(R, 0, Math.PI) + '" />';
+  // Animated foreground (will dash in)
+  var arcLen = Math.PI * R;
+  inner += '<path class="hs-arc-fill" d="' + arcPath(R, 0, Math.PI) + '" stroke-dasharray="' + arcLen + '" stroke-dashoffset="' + arcLen + '" id="hs-fill" style="transition:stroke-dashoffset 1.6s ease-out 0.2s" />';
+
+  // Anchor labels
+  // Right end (angle=0): Far Left (since we read horseshoe with "extremes" curling around to meet)
+  // Wait — convention: the "horseshoe" places the conventional left and right extremes on opposite ends, both curling DOWN to meet. So I'll put Far Left on the LEFT end (angle=PI) and Dissident Right on the RIGHT end (angle=0).
+  // Anchor LEFT: x = cx - R, y = cy
+  inner += '<g transform="translate(' + (cx - R - 14) + ',' + cy + ')" style="opacity:0;transition:opacity .8s ease 1.6s" class="hs-anchor-l">';
+  inner += '<text class="hs-anchor-label" text-anchor="end" x="0" y="-4">Far Left</text>';
+  inner += '<text class="hs-anchor-sub" text-anchor="end" x="0" y="14">Jacobin · Hinkle · DropSite</text>';
+  inner += '</g>';
+  // Right anchor
+  inner += '<g transform="translate(' + (cx + R + 14) + ',' + cy + ')" style="opacity:0;transition:opacity .8s ease 1.6s" class="hs-anchor-r">';
+  inner += '<text class="hs-anchor-label" text-anchor="start" x="0" y="-4">Dissident Right</text>';
+  inner += '<text class="hs-anchor-sub" text-anchor="start" x="0" y="14">Bannon · Tucker · Jones</text>';
+  inner += '</g>';
+
+  // Convergence label at bottom
+  inner += '<g transform="translate(' + cx + ',' + (cy + R + 36) + ')" style="opacity:0;transition:opacity .8s ease 2.0s" class="hs-conv-label-g">';
+  inner += '<text class="hs-conv-label" text-anchor="middle" x="0" y="0">Six shared AI critiques</text>';
+  inner += '<text class="hs-anchor-sub" text-anchor="middle" x="0" y="20">Where Far Left and Dissident Right converge</text>';
+  inner += '</g>';
+
+  // Six convergence themes — laid out in two rows below
+  var themes = [
+    'Big-tech monopoly',
+    'Labor displacement',
+    'Surveillance overreach',
+    'China hawkishness',
+    'Capital concentration',
+    'Cultural homogenization'
+  ];
+  var ty = cy + R + 80;
+  var boxW = 200, boxH = 36, gap = 20;
+  var tooWide = (boxW * 3 + gap * 2);
+  var startX = cx - tooWide / 2;
+  themes.forEach(function(t, i){
+    var col = i % 3;
+    var row = Math.floor(i / 3);
+    var x = startX + col * (boxW + gap);
+    var y = ty + row * (boxH + 12);
+    var dly = 2200 + i * 90;
+    inner += '<g style="opacity:0;transform:translateY(8px);transition:opacity .7s ease ' + dly + 'ms,transform .7s ease ' + dly + 'ms" class="hs-theme-g">';
+    inner += '<rect class="hs-theme" x="' + x + '" y="' + y + '" width="' + boxW + '" height="' + boxH + '" rx="3" />';
+    inner += '<text class="hs-theme-text" x="' + (x + boxW/2) + '" y="' + (y + boxH/2 + 4) + '" text-anchor="middle">' + t + '</text>';
+    inner += '</g>';
+  });
+
+  svg.innerHTML = inner;
+  // Trigger
+  requestAnimationFrame(function(){
+    var fill = document.getElementById('hs-fill');
+    if(fill) fill.setAttribute('stroke-dashoffset', '0');
+    svg.querySelectorAll('.hs-anchor-l, .hs-anchor-r, .hs-conv-label-g').forEach(function(el){
+      el.style.opacity = 1;
+    });
+    svg.querySelectorAll('.hs-theme-g').forEach(function(el){
+      el.style.opacity = 1;
+      el.style.transform = 'translateY(0)';
+    });
+  });
+};
+
+// =======================================================================
+// Tier ladder is static HTML; just animate-in is enough (handled by data-anim)
+// =======================================================================
+window.__VFT_CHARTS__.tiers = function(){
+  // No-op: tier badges and pills appear via the standard data-anim cascade.
+};
+
+})();
+</script>
+</body></html>
